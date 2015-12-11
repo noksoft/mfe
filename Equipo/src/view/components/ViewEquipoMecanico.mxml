@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components:ViewEquipoMecanicoBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:components="view.components.*"
+	creationPolicy="all"
+	preinitialize="preInit();" creationComplete="init();">
+	<fx:Script>
+		<![CDATA[
+			import utils.CommonModel;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:RadioButtonGroup id="radioTipoAdquision" itemClick="changeTipoAdquisicion()"/>
+	</fx:Declarations>
+	<mx:Accordion id="vsEquipo" width="100%" height="100%" left="8" y="23" paddingTop="0">
+		<s:NavigatorContent
+			width="100%" height="100%"
+			label="Consulta">
+			<mx:VBox 
+				label="Consulta"
+				verticalAlign="middle"
+				paddingLeft="10" paddingTop="5"
+				width="100%" height="100%">
+				<s:HGroup
+					width="100%" height="60">
+					<s:HGroup
+						width="100%" height="100%">
+						<s:Label
+							text="Número Ecónomico"/>
+						<s:TextInput
+							id="txtNumeroEconomico"
+							enter="updateData()"/>
+					</s:HGroup>
+				</s:HGroup>
+				<s:DataGrid
+					id="dtgRequisiciones"
+					width="100%" height="100%"
+					dataProvider="{listEquipos}"
+					doubleClickEnabled="true"
+					doubleClick="selectedItem(event);">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Número Ecónomico" 	dataField="numeroeconomico"/>
+							<!--s:GridColumn headerText="Nombre Equipo" 		dataField="nombre"/-->
+							<s:GridColumn headerText="Fecha Adquisición"  	dataField="fechaadquisicion"/>
+							<s:GridColumn headerText="Número de Serie"		dataField="numeroserie"/>
+							<s:GridColumn headerText="Marca Motor" 			dataField="marcamotor"/>
+							<s:GridColumn headerText="Modelo Motor" 		dataField="modelomotor"/>
+							<s:GridColumn headerText="Marca Equipo" 		dataField="marca"/>
+							<s:GridColumn headerText="Submarca Equipo" 		dataField="submarca"/>
+							<s:GridColumn headerText="Tipo Categoría" 		dataField="tipocategoria"/>
+							<s:GridColumn headerText="Categoría Equipo" 	dataField="categoria"/>
+							<s:GridColumn headerText="Subcategoria" 		dataField="subcategoria"/>
+							<s:GridColumn headerText="Descripción" 			dataField="descripcion"/>
+							<s:GridColumn headerText="Cambio de Aceite" 	dataField="cambioaceite"/>
+							<s:GridColumn headerText="Verificación" 		dataField="verificacion"/>
+							<s:GridColumn headerText="Fecha Verificación" 	dataField="fechaverificacion"/>
+						</s:ArrayList>
+					</s:columns>
+				</s:DataGrid>
+				<s:HGroup
+					width="100%" height="60">
+					<s:Button
+						label="Limpiar" click="cleanFilters()"/>
+				</s:HGroup>
+			</mx:VBox>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			id="containerEquipoMecanico"
+			label="Alta Equipo Mécanico">
+			<s:Scroller width="100%" height="100%">
+				<s:VGroup
+					width="100%" height="100%"
+					paddingTop="10">
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="No. Ecónomico" textAlign="right" width="120" top="4"/>
+						<s:TextInput width="100%" id="txtNoEconomico" text="{itemSelected.numeroeconomico}"/>
+						<s:Label text="No. Serie" textAlign="right" width="120" top="4"/>
+						<s:TextInput width="100%" id="txtNoSerie" text="{itemSelected.numeroserie}"/>
+					</s:HGroup>
+					
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Factura" textAlign="right" width="120" top="4"/>
+						<s:TextInput width="100%" id="txtFactura" text="{itemSelected.factura}"
+									 maxChars="25"/>
+						<s:Label text="Pedimento" textAlign="right" width="120" top="4"/>
+						<s:TextInput id="txtPedimento" width="100%" text="{itemSelected.pedimiento}"/>
+					</s:HGroup>
+					<s:VGroup width="100%" verticalAlign="middle" gap="2">
+						<s:HGroup width="100%" verticalAlign="middle" gap="2">
+							<s:Label text="Cargar foto" textAlign="right" width="120"/>
+							<s:TextInput
+								id="txtImageFoto"
+								editable="false"
+								enabled="false"
+								width="100%"
+								text="{itemSelected.fotoequipo}"/>
+							<!--s:Image id="imgFoto" height="60" width="60" /-->
+							
+							<s:Button 
+								label="Imagen foto"
+								width="130"
+								click="obtenerFoto();"/>
+						</s:HGroup>
+					</s:VGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Subcategoria" textAlign="right" width="120"/>
+						<s:DropDownList
+							width="100%"
+							id="listSubCategoria"
+							prompt="Seleccionar sub-categoria" 
+							change="changeSubcategoria()"
+							dataProvider="{acListSubcategorias}"
+							labelField="subcategoria"/>
+						<s:Label text="Marca" textAlign="right" width="120"/>
+						<s:DropDownList
+							id="listMarca"
+							width="100%"  
+							enabled="{flagMarca}"
+							prompt="Seleccionar Marca" 
+							change="changeMarca()"
+							dataProvider="{acListMarcas}"
+							labelField="marca"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Submarca/modelo" textAlign="right" width="120"/>
+						<s:DropDownList 
+							id="listSubMarca"
+							width="100%" 
+							enabled="{flagSubmarca}"
+							prompt="Selecciona la submarca" 
+							requireSelection="true" 
+							dataProvider="{acListSubmarcas}" 
+							labelField="submarca"/>
+						<s:Label text="Fecha adquisición" textAlign="right" width="120"/>
+						<mx:DateField 
+							id="dtf_adquisicion"
+							width="100%"
+							yearNavigationEnabled="true"
+							dayNames="{CommonModel.dayArray}"
+							monthNames="{CommonModel.monthArray}"
+							disabledRanges="{[ {rangeStart: new Date(1960, 01, 01), rangeEnd: new Date()} ]}"
+							maxYear="{maxYear}"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Tipo de adquisición" textAlign="right" width="120"/>
+						<s:RadioButton value="Nuevo" label="Nuevo" group="{radioTipoAdquision}" symbolColor="#FFFFFF" selected="true"/>
+						<s:RadioButton value="Usado" label="Usado" group="{radioTipoAdquision}" symbolColor="#FFFFFF"/>	
+						<s:Spacer width="5"/>
+						<s:Label text="Modelo (año):" textAlign="right" width="120"/>
+						<s:NumericStepper
+							id="nsModelo"
+							minimum="1960"
+							maximum="{maxYear}"
+							width="200"
+							value="{Number(itemSelected.anioequipo)}"/>
+						<s:Label 
+							text="No. de Motor" 
+							textAlign="right" 
+							width="120"
+							/>
+						<s:TextInput 
+							id="txtNoMotor"
+							text="{itemSelected.modelomotor}"
+							width="300"
+							maxChars="9"
+							restrict="0-9"/>
+					</s:HGroup>	
+					<s:HGroup
+						width="100%" verticalAlign="middle">
+						<s:Label text="Descripción" textAlign="right" width="120"/>
+						<s:TextArea
+							id="txtDescripcion"
+							text="{itemSelected.descripcion}"
+							height="43" width="100%"/>
+					</s:HGroup>
+					
+					<!--	Second Section	-->
+					<s:HGroup 
+						width="100%" 
+						verticalAlign="middle">
+						<s:Label 
+							text="Cambio de Aceite / km" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nsCambAceite"
+							snapInterval="500"
+							value="{Number(itemSelected.cambioaceite)}"
+							minimum="500"
+							maximum="200000"/>
+						<s:Label 
+							text="Tipo de Medida" 
+							textAlign="right" 
+							width="120"/>
+						<s:DropDownList
+							id="cmbTipoMedida"
+							dataProvider="{acTipoMedidas}"
+							width="100%"
+							labelField="name"
+							selectedIndex="-1"
+							prompt="Selecciona una Medida"/>
+					</s:HGroup>	
+					<s:HGroup 
+						width="100%" 
+						verticalAlign="middle">
+						<s:Label 
+							text="Llanta" 
+							textAlign="right" 
+							width="120"/>
+						<s:TextInput
+							id="txtLlanta"
+							text="{itemSelected.llanta}"
+							width="300"
+							maxChars="15"/>
+					</s:HGroup>
+					<s:HGroup 
+						width="100%" 
+						verticalAlign="middle">		
+						<s:Label 
+							text="HP" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpHP"
+							width="300"
+							value="{Number(itemSelected.hp)}"
+							snapInterval="500"
+							minimum="500"
+							maximum="500000"/>
+						<s:Label 
+							text="Torque" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpTorque"
+							width="120"
+							value="{Number(itemSelected.torque)}"
+							snapInterval="50"
+							minimum="10"
+							maximum="500000"/>
+					</s:HGroup>
+					<s:HGroup 
+						width="100%" 
+						verticalAlign="middle">		
+						<s:Label 
+							text="KW" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpkw"
+							width="300"
+							value="{Number(itemSelected.kw)}"
+							snapInterval="1"
+							minimum="1"
+							maximum="500000"/>
+						<s:Label 
+							text="Voltaje" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpVoltaje"
+							width="120"
+							value="{Number(itemSelected.voltaje)}"
+							snapInterval="1"
+							minimum="1"
+							maximum="500000"/>
+						<s:Label 
+							text="Amperes" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpAmperes"
+							width="120"
+							value="{Number(itemSelected.amperes)}"
+							snapInterval="1"
+							minimum="1"
+							maximum="500000"/>
+					</s:HGroup>
+					<s:HGroup 
+						width="100%" 
+						verticalAlign="middle">		
+						<s:Label 
+							text="Capacidad Presión" 
+							textAlign="right" 
+							width="120"/>
+						<s:NumericStepper
+							id="nstpCapacidadPresion"
+							width="300"
+							value="{Number(itemSelected.capacidadpresion)}"
+							snapInterval="1"
+							minimum="1"
+							maximum="500000"/>
+						<s:Label 
+							text="Marca Motor" 
+							textAlign="right" 
+							width="120"/>
+						<s:DropDownList 
+							width="100%"
+							id="listMarcaMotor"
+							prompt="Selecciona la marca" 
+							dataProvider="{acMarcasMotor}"
+							labelField="marcaMotor"/>
+						<s:Label 
+							text="Modelo Motor" 
+							textAlign="right" 
+							width="120"/>
+						<s:TextInput
+							id="txtModeloMotor"
+							text="{itemSelected.modelomotor}"
+							width="120"/>
+					</s:HGroup>
+					<mx:ControlBar>
+						<s:Button 
+							label="Limpiar" 
+							icon="@Embed(source='assets/icons/cancel.png')"
+							useHandCursor="true"
+							buttonMode="true"
+							click="cleanFormulario()"/>
+						<s:Button 
+							id="guardarButton" 
+							label="{titleFormulario}" 
+							icon="@Embed(source='assets/icons/add.png'" 
+							styleName="primaryButton"
+							useHandCursor="true"
+							buttonMode="true"
+							click="saveItem()"/>
+						<s:Button
+							id="btnDelete"
+							label="Borrar"
+							icon="@Embed(source='assets/icons/delete.png')"
+							useHandCursor="true"
+							buttonMode="true"
+							click="deleteItem()"/>
+					</mx:ControlBar>
+				</s:VGroup>
+			</s:Scroller>
+		</s:NavigatorContent>
+	</mx:Accordion>
+</components:ViewEquipoMecanicoBase>

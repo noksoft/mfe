@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark"  height="26"
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				autoDrawBackground="true" doubleClickEnabled="true" creationComplete="init()" doubleClick="changeTextEnabled(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			private function init():void
+			{
+				setStyle("rollOverColor", 0xfaddce);
+				setStyle("selectionColor", 0xfcebe2);
+			}
+			private function getListMarcas():void
+			{
+				var listSubMarcasEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_LIST_SUBMARCAS);
+				listSubMarcasEvent.marcaVO = data as MarcaVO;
+				dispatchEvent(listSubMarcasEvent)
+			}
+			private function deleteElementOfList(e:CloseEvent):void
+			{
+				if (e.detail==Alert.YES){
+					var deleteMarcaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_DELETE_DATA);
+					deleteMarcaEvent.marcaVO = data as MarcaVO;
+					dispatchEvent(deleteMarcaEvent);
+				}
+			}
+			
+			protected function changeTextEnabled(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				txtTMP.editable = true;
+			}
+			
+			protected function txtTMP_enterHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var marca:MarcaVO = new MarcaVO();
+				marca.idMarca = MarcaVO(data).idMarca;
+				marca.estatus = MarcaVO(data).estatus;
+				marca.listMarca = MarcaVO(data).listMarca;
+				marca.marca = txtTMP.text;
+				var editMarcaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_UPDATE_DATA);
+				editMarcaEvent.marcaVO = marca;
+				dispatchEvent(editMarcaEvent);
+				txtTMP.editable = false;
+				
+			}
+			private function preventAlert(e:Event):void
+			{
+				Alert.yesLabel = "Si";
+				Alert.noLabel = "No";
+				Alert.show("¿Quieres borrar el item?","Borrar",3,null, deleteElementOfList)
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="middle"/>
+	</s:layout>
+	<s:HGroup width="100%" verticalAlign="middle" paddingRight="5" paddingLeft="2" paddingBottom="2" paddingTop="2">
+		<s:TextInput  id="txtTMP" skinClass="com.actioninteractive.nok.skins.TextInputLine0Skin" 
+					  editable="false" text="{data.marca}" width="100%" enter="txtTMP_enterHandler(event)"
+					  click="getListMarcas()"/>
+		<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="getListMarcas()"/>
+		<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList" click="preventAlert(event)"/>
+		
+	</s:HGroup>
+	
+	
+</s:ItemRenderer>

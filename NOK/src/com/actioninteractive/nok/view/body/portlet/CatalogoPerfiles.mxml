@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+////////////////////////////////////////////////////////////////////////////////
+//
+//  ACTION INFORMATION TECHOLOGY
+//  Copyright 2013 Action IT
+//  All Rights Reserved.
+//
+//  NOTICE: Action IT permits you to use this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+//  Creator: Ing. Carlos Zaragoza Ortiz <carlos@actionit.mx>
+//  Component: CATALOGO DE PERFILES
+//  Capturar los nuevos perfiles así como su personalización basado en un estandar.
+////////////////////////////////////////////////////////////////////////////////
+-->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*">
+	<fx:Declarations>
+		
+		<s:RadioButtonGroup id="radioTipoEquipo"/>
+	</fx:Declarations>
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<!--  ENCABEZADO DEL PANEL   -->
+			<s:Label text="listado de perfiles, secciones y portlets" x="5" y="10"/>
+			<!--<s:TextInput y="6" right="50" width="200" alpha=".5" id="txtBusquedaArticulos" 
+						 />
+			<s:Button y="6" skinClass="com.actioninteractive.nok.skins.ButtonSearhSkin"  right="10" 
+					  icon="{AssetManagerIn.iconZoom}"/>	-->
+			<!--  CONTENEDOR GENERAL     -->
+			<s:SkinnableContainer width="100%" height="100%" x="1" y="6">
+				<s:layout>
+					<s:HorizontalLayout paddingRight="20" />
+				</s:layout>
+				
+				<s:Group width="100%" height="100%">
+					<s:layout>
+						<s:VerticalLayout paddingTop="30"/>
+					</s:layout>
+					<!--Contenedor principal-->
+					
+					<s:ButtonBar dataProvider="{vsPerfiles}"/>
+					<mx:ViewStack id="vsPerfiles" x="0" y="0" width="100%" height="100%" borderAlpha="0">
+						<s:NavigatorContent width="100%" height="100%" label="Perfiles">
+							<s:layout>
+								<s:HorizontalLayout />
+							</s:layout>
+							<s:Group x="10" y="15" width="100%" height="100%">
+								<s:layout>
+									<s:HorizontalLayout/>
+								</s:layout>
+								<!--Contenedor principal-->
+								
+								
+								<s:Group width="100%" height="100%">
+									<s:layout>
+										<s:VerticalLayout />
+									</s:layout>
+									
+									
+									<s:HGroup width="100%" verticalAlign="middle">
+										<s:Label text="Descripción" textAlign="right" width="120" top="4"/>
+										<s:TextInput width="100%" editable="false"/>
+									</s:HGroup>
+									<s:HGroup width="100%" verticalAlign="middle">
+										<s:Label text="Perfiles" textAlign="right" width="120" top="4"/>
+										<s:VGroup width="100%" horizontalAlign="center">
+											<s:Label text="Disponibles"/>
+											<s:HGroup width="100%" verticalAlign="middle">
+												<s:Label text="Filtros:"/>
+												<s:DropDownList width="100%" prompt="Escribe el nombre de un perfil"/>
+											</s:HGroup>
+											<s:List width="100%"></s:List>	
+										</s:VGroup>
+										
+										<s:VGroup width="100%" horizontalAlign="center">
+											<s:Label text="Portlets"/>
+											<s:HGroup width="100%" verticalAlign="middle">
+												<s:Label text="Filtros:"/>
+												<s:DropDownList width="100%" prompt="Secciones"/>
+											</s:HGroup>
+											<s:List width="100%"></s:List>	
+										</s:VGroup>
+									</s:HGroup>
+									<s:HGroup width="100%" horizontalAlign="right">
+										<s:Button label="Actualizar"/>
+										<s:Button label="Borrar" />
+										<s:Button label="Alta"/>
+										<s:Button label="Cancelar"/>
+									</s:HGroup>
+								</s:Group>
+								
+							</s:Group>
+						</s:NavigatorContent>
+						<s:NavigatorContent width="100%" height="100%" label="Portlets">
+							<s:Group width="100%" height="100%">
+								<s:layout>
+									<s:VerticalLayout />
+								</s:layout>
+								
+								
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Portles disponibles" textAlign="right" width="120" top="4"/>
+									<s:DataGrid width="100%" requestedRowCount="4">
+										<s:columns>
+											<s:ArrayList>
+												<s:GridColumn dataField="dataField2" headerText="Portlet"></s:GridColumn>
+												<s:GridColumn dataField="dataField3" headerText="Sección asignada"></s:GridColumn>
+											</s:ArrayList>
+										</s:columns>
+										<s:typicalItem>
+											<fx:Object dataField1="Sample Data" dataField2="Sample Data"
+													   dataField3="Sample Data"></fx:Object>
+										</s:typicalItem>
+										<s:ArrayList>
+											<fx:Object dataField1="data1" dataField2="data1" dataField3="data1"></fx:Object>
+											<fx:Object dataField1="data2" dataField2="data2" dataField3="data2"></fx:Object>
+											<fx:Object dataField1="data3" dataField2="data3" dataField3="data3"></fx:Object>
+											<fx:Object dataField1="data4" dataField2="data4" dataField3="data4"></fx:Object>
+										</s:ArrayList>
+									</s:DataGrid>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Nombre" textAlign="right" width="120" top="4"/>
+									<s:TextInput width="100%" editable="false"/>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Sección asignada" textAlign="right" width="120" top="4"/>
+									<s:DropDownList width="100%"></s:DropDownList>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Posición" textAlign="right" width="120" top="4"/>
+									<s:TileGroup width="65" height="55" columnWidth="30" horizontalAlign="center"
+												 horizontalGap="2" orientation="rows" requestedColumnCount="2"
+												 requestedRowCount="2" rowHeight="30" verticalAlign="middle"
+												 verticalGap="-5">
+										<s:Button label="1"/>
+										<s:Button label="2"/>
+										<s:Button label="3"/>
+										<s:Button x="17" label="4"/>
+									</s:TileGroup>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Aspecto" textAlign="right" width="120" top="4"/>
+									<s:TileGroup width="130" height="30" columnWidth="30" horizontalAlign="center"
+												 horizontalGap="2" orientation="rows" requestedColumnCount="4"
+												 requestedRowCount="1" rowHeight="30" verticalAlign="middle"
+												 verticalGap="-5">
+										<s:Button label="1"/>
+										<s:Button label="2"/>
+										<s:Button label="3"/>
+										<s:Button x="17" label="4"/>
+									</s:TileGroup>
+								</s:HGroup>
+								<s:HGroup width="100%" horizontalAlign="right">
+									<s:Button label="Actualizar"/>
+									<s:Button label="Borrar" />
+									<s:Button label="Alta"/>
+									<s:Button label="Cancelar"/>
+								</s:HGroup>
+							</s:Group>
+						</s:NavigatorContent>
+						<s:NavigatorContent width="100%" height="100%" label="Secciones">
+							<s:Group width="100%" height="100%">
+								<s:layout>
+									<s:VerticalLayout />
+								</s:layout>
+								
+								
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Secciones disponibles" textAlign="right" width="120" top="4"/>
+									<s:DataGrid width="100%" requestedRowCount="4">
+										<s:columns>
+											<s:ArrayList>
+												<s:GridColumn dataField="dataField3" headerText="Sección"></s:GridColumn>
+											</s:ArrayList>
+										</s:columns>
+										<s:typicalItem>
+											<fx:Object dataField1="Sample Data" dataField2="Sample Data"
+													   dataField3="Sample Data"></fx:Object>
+										</s:typicalItem>
+										<s:ArrayList>
+											<fx:Object dataField1="data1" dataField2="data1" dataField3="data1"></fx:Object>
+											<fx:Object dataField1="data2" dataField2="data2" dataField3="data2"></fx:Object>
+											<fx:Object dataField1="data3" dataField2="data3" dataField3="data3"></fx:Object>
+											<fx:Object dataField1="data4" dataField2="data4" dataField3="data4"></fx:Object>
+										</s:ArrayList>
+									</s:DataGrid>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Nombre" textAlign="right" width="120" top="4"/>
+									<s:TextInput width="100%" editable="false"/>
+								</s:HGroup>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Nombre corto" textAlign="right" width="120" top="4"/>
+									<s:TextInput width="100%" editable="false"/>
+								</s:HGroup>
+								<s:HGroup width="100%" horizontalAlign="right">
+									<s:Button label="Actualizar"/>
+									<s:Button label="Borrar" />
+									<s:Button label="Alta"/>
+									<s:Button label="Cancelar"/>
+								</s:HGroup>
+							</s:Group>
+						</s:NavigatorContent>
+					</mx:ViewStack>
+					
+				</s:Group>
+			</s:SkinnableContainer>
+			
+			
+		</s:SkinnableContainer>
+		
+	</portlet:children>
+</portlet:Portlet>

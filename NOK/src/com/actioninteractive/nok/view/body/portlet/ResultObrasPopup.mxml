@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:CustomPopup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
+					   xmlns:component="com.actioninteractive.nok.view.body.component.*" width="700" height="500"
+					   close="{PopUpManager.removePopUp(this)}" title="Obras encontradas">
+	<fx:Declarations>
+		<mx:DateFormatter id="formatoFecha"  formatString="MM/DD/YYYY"/>
+	<s:RemoteObject id="remoteObraDelete" destination="{NokConstants.SERVICE_DESTINATION_OBRA}" endpoint="{NokConstants.SERVICE_URL}">
+		<s:method name="deleteObraAopSession" result="deleteObraResult(event)" fault="deleteObraFault(event)"/>
+	</s:RemoteObject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.constant.NokConstants;
+			import com.actioninteractive.nok.event.ObraEvent;
+			import com.actioninteractive.nok.model.ObraModel;
+			import com.actioninteractive.nok.vo.ObraVO;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			public var obraSelected:ObraVO;
+			[Inject]
+			[Bindable]
+			public var obraModel:ObraModel;
+			
+			
+			
+			protected function deleteObraResult(event:ResultEvent):void
+			{
+				// TODO Auto-generated method stub
+				//this.dg_obras.selectedItem;
+				obraModel.acListObrasEncontradas.removeItemAt(dg_obras.selectedIndex);
+			}
+			
+			protected function deleteObraFault(event:FaultEvent):void
+			{
+				// TODO Auto-generated method stub
+				Alert.show("En este momento no se pudo borrar, intenta más tarde","Error");
+			}
+			
+			
+			protected function getDataObraToDash(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				var evento:ObraEvent = new ObraEvent(ObraEvent.OBRA_ITEM_SELECTED_DATA);
+				evento.obraVO = event.currentTarget.selectedItem;
+				obraSelected = event.currentTarget.selectedItem;
+				dispatchEvent(evento);
+				PopUpManager.removePopUp(this);
+			}
+			
+			
+			private function fecha_labelFunc(item:Object, column:GridColumn):String {
+				var fecha:String = formatoFecha.format(item.fechaInicio);
+				return fecha;
+			}
+			private var datosBorrado:*;
+			public function borrarRegistro(event:MouseEvent, datos:*):void
+			{
+				datosBorrado = datos;				
+				Alert.show("Estas segurod de borrar","Pregunta",3,this,borra);
+				
+				
+			}
+			private function borra(e:CloseEvent):void{
+				if(e.detail==Alert.YES){
+					remoteObraDelete.deleteObraAopSession(datosBorrado as ObraVO);
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:DataGrid width="100%" doubleClick="getDataObraToDash(event)" doubleClickEnabled="true" 
+				height="100%" dataProvider="{obraModel.acListObrasEncontradas}" id="dg_obras">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn headerText="Contrato" dataField="contrato"/>
+				<s:GridColumn headerText="Nombre" dataField="nombre" />
+				<s:GridColumn headerText="Fecha inicio" dataField="fechaInicio" labelFunction="fecha_labelFunc"/>
+				<s:GridColumn headerText="Fecha término"  dataField="fechaTermina" labelFunction="fecha_labelFunc"/>
+				<s:GridColumn>
+					<s:itemRenderer>
+						<fx:Component>
+							<s:GridItemRenderer>
+								
+								
+								<s:Button  label="Delete" click="outerDocument.borrarRegistro(event, data)"/>
+							</s:GridItemRenderer>
+						</fx:Component>
+						
+					</s:itemRenderer>
+				</s:GridColumn>
+			</s:ArrayList>
+		</s:columns>
+	</s:DataGrid>
+		
+	
+<mx:ControlBar>
+	<s:Label fontSize="15" text="Elementos: {obraModel.acListObrasEncontradas.length.toString()}"/>
+
+</mx:ControlBar>
+</component:CustomPopup>

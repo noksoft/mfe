@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename ReflectionImageSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns="http://www.degrafa.com/2007">
+	
+	<geometry>
+		<RegularRectangle id="RegularRectangle1" height="{skinHeight}" width="{skinWidth}">
+				<fill>
+					<LinearGradientFill angle="90">
+						<GradientStop alpha="0.8" color="#FFFFFF" ratio="0"/>
+						<GradientStop alpha="0" color="#FFFFFF" ratio="0.8"/>
+					</LinearGradientFill>
+				</fill>
+		</RegularRectangle>
+	</geometry>
+</GraphicBorderSkin>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<portlet:PortletBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*"
+	skinClass="{currentSkin}"
+	width="100%" height="100%" 
+	mouseChildren="{!effectPlaying}"
+	dragEnter="dragEnterHanlder(event)"
+	dragDrop="dragAcceptedHandler(event)"
+	mouseUp="mouseUpHandler()"
+	>
+	
+	<portlet:layout>
+		<s:VerticalLayout 
+			gap="3"
+			paddingLeft="5" paddingRight="5" paddingBottom="5"
+			/>
+	</portlet:layout>
+	
+	<fx:Declarations>
+		<s:Fade id="fadeOut" 
+			alphaFrom="1" alphaTo="0"
+			target="{this}"
+			effectEnd="fadeOutEnd()"
+			/>
+		<s:Fade id="fadeIn"
+			alphaFrom="0" alphaTo="1"
+			target="{this}"
+			effectEnd="fadeInEnd()"
+			/>
+	</fx:Declarations>
+	
+	<s:HGroup id="portletHeader"
+		width="100%" height="24"
+		verticalAlign="middle"
+		paddingLeft="10" paddingRight="10"
+		visible="{!dataSource.isEmpty}"
+		mouseDown="mouseDownUpHandler(event)"
+		mouseMove="mouseMoveHandler(event)"
+		>
+		<s:Label id="portletName"
+			text="{dataSource.nombre_submenu}"
+			paddingTop="5" trackingRight="0.3"
+			fontSize="13" color="0xF2F2F2"
+			fontFamily="MyriadProBold"
+			/>
+		
+		<s:Spacer width="100%" />
+		
+		<s:Image id="sizeIconLeft"
+			source="{leftSizeIcon}"
+			buttonMode="true"
+			click="leftSizeIconClicked()"
+			/>
+		<s:Image id="sizeIconRight"
+			source="{rightSizeIcon}"
+			buttonMode="true"
+			click="rightSizeIconClicked()"
+			/>
+	</s:HGroup>
+	
+	<s:Scroller 
+		width="100%" height="100%"
+		horizontalScrollPolicy="off" verticalScrollPolicy="on"
+		>
+		<s:Group id="portletChildren"
+			width="100%" height="100%"
+			visible="{!dataSource.isEmpty}"
+			creationComplete="addChildrenToLayout()"
+			clipAndEnableScrolling="true"
+			>
+			
+		</s:Group>
+	</s:Scroller>
+	
+</portlet:PortletBase>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:EquipoViewBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:view="view.*"
+	title="Equipo"
+	width="100%" height="100%" xmlns:components="view.components.*">
+	<fx:Script>
+		<![CDATA[
+			import utils.CommonModel;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+
+	</fx:Declarations>
+	<view:layout>
+		<s:VerticalLayout verticalAlign="middle" horizontalAlign="center"/>
+	</view:layout>
+	
+	<s:ButtonBar 
+		id="btnBarEquipo" 
+		textAlign="center"
+		width="100%"
+		dataProvider="{vsEquipo}"/>
+	
+	<mx:ViewStack id="vsEquipo" width="100%" height="100%" left="8" y="23" paddingTop="0">
+		<s:NavigatorContent
+			width="100%" height="100%"
+			id="containerMaquinariaPesada"
+			label="Maquinaria Pesada">
+			<components:ViewMaquinariaPesado
+				id="viewMaquinariaPesada"
+				paddingLeft="10" paddingRight="10"
+				width="100%" height="100%"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			label="Transporte Pesado">
+				<components:ViewTransportePesado
+					id="viewTransportePesado"
+					width="100%" height="100%"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			label="Transporte Ligero">
+				<components:ViewTransporteLigero
+					id="viewTransporteLigero"
+					width="100%" height="100%"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			label="Equipo Topografico">
+				<components:ViewEquipoTopografico
+					id="viewEquipoTopografico"
+					width="100%" height="100%"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			label="Equipo Mecánico">
+			<components:ViewEquipoMecanico
+				id="viewEquipoMecanico"
+				width="100%" height="100%"/>	
+		</s:NavigatorContent>
+	</mx:ViewStack>
+	
+	
+</view:EquipoViewBase>

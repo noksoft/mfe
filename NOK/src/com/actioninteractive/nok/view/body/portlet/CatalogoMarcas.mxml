@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	CATALOGO DE MARCAS Y SUBMARCAS
+	
+-->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009"
+				 xmlns:s="library://ns.adobe.com/flex/spark"
+				 xmlns:mx="library://ns.adobe.com/flex/mx"
+				 xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*"
+				 creationComplete="init();">
+	<fx:Declarations>
+		
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.vo.CategoriaVO;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			import com.actioninteractive.nok.vo.SubCategoriaVO;
+			import com.actioninteractive.nok.vo.SubMarcaVO;
+			import com.actioninteractive.nok.vo.TipocategoriaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			private var acMarcas:ArrayCollection = new ArrayCollection();
+			[Bindable]
+			private var acSubMarcas:ArrayCollection = new ArrayCollection();
+			private var eventTipoCategoria:CRUDEvent;
+			[Bindable]private var flagOpcCatSub:Boolean = false;
+			
+			
+			/**
+			 * Inicializa los valores por default de la aplicación
+			 */
+			private function init():void{
+				vsCategorizacion.selectedIndex = 0;
+				setStylesViews(1);
+				eventTipoCategoria = new CRUDEvent(CRUDEvent.TIPOCATEGORIA_GET_LIST);
+				eventTipoCategoria.tipocategoriaVO = new TipocategoriaVO();
+				dispatchEvent(eventTipoCategoria);
+			}
+			
+			private function setStylesViews(_view:int):void{
+				switch(_view){
+					case 1:
+							viewTipoCategorias.setStyle("backgroundColor", "0xDDDDDD");
+							viewMarcasSubmarcas.setStyle("backgroundColor", "0xFFFFFF");
+							viewCategoriaSubcategorias.setStyle("backgroundColor", "0xFFFFFF");
+						break;
+					case 2:
+							viewTipoCategorias.setStyle("backgroundColor", "0xFFFFFF");
+							viewCategoriaSubcategorias.setStyle("backgroundColor", "0xDDDDDD");
+							viewMarcasSubmarcas.setStyle("backgroundColor", "0xFFFFFF");
+						break;
+					case 3:
+							viewTipoCategorias.setStyle("backgroundColor", "0xFFFFFF");
+							viewCategoriaSubcategorias.setStyle("backgroundColor", "0xFFFFFF");
+							viewMarcasSubmarcas.setStyle("backgroundColor", "0xDDDDDD");
+						break;
+					default:
+							viewTipoCategorias.setStyle("backgroundColor", "0xFFFFFF");
+							viewCategoriaSubcategorias.setStyle("backgroundColor", "0xFFFFFF");
+							viewMarcasSubmarcas.setStyle("backgroundColor", "0xFFFFFF");
+						break;
+				}
+			}
+			
+			/**
+			 * Metódo que permite guardar un nuevo elemento a la Lista
+			 */
+			protected function enterAddingToList(opc:int):void
+			{
+				trace("opc: " + opc);
+				switch(opc){
+					case 0:
+							if (txtTipoCategoria.text == '')
+							{
+								txtTipoCategoria.errorString = "No puedes introducir valores vacios";
+							}else{
+								//Dispara evento para el controllador
+								txtTipoCategoria.errorString = "";
+								var saveTipocategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.TIPOCATEGORIA_SAVE_DATA);
+								var tipocategoriaVO:TipocategoriaVO = new TipocategoriaVO();
+								tipocategoriaVO.tipocategoria = txtTipoCategoria.text;
+								tipocategoriaVO.estatus = true;
+								saveTipocategoriaEvent.tipocategoriaVO = tipocategoriaVO;
+								dispatchEvent(saveTipocategoriaEvent);
+								txtTipoCategoria.text = '';
+								txtTipoCategoria.setFocus();
+							}
+							break;
+					case 1:
+							if (txtCategoria.text == '')
+							{
+								txtCategoria.errorString = "No puedes introducir valores vacios";
+							}else{
+								//Dispara evento para el controllador
+								txtCategoria.errorString = "";
+								var saveCategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CATEGORIA_SAVE);
+								var categoria:CategoriaVO = new CategoriaVO();
+								categoria.idtipocategoria = TipocategoriaVO(dlistTipoCategoria.selectedItem).id_tipocategoria.toString();
+								categoria.categoria = txtCategoria.text;
+								categoria.estatus = true;
+								saveCategoriaEvent.categoriaVO = categoria;
+								dispatchEvent(saveCategoriaEvent);
+								txtCategoria.text = '';
+								txtCategoria.setFocus();
+							}
+							break;
+					case 2:
+							if (txtSubcategoriaNombre.text == '')
+							{
+								txtSubcategoriaNombre.errorString = "No puedes introducir valores vacios";
+							}else{
+								//Dispara evento para el controllador
+								txtSubcategoriaNombre.errorString = "";
+								var saveSubcategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.SUBCATEGORIA_SAVE_PRODUCTOS);
+								var subcategoria:SubCategoriaVO = new SubCategoriaVO();
+								subcategoria.subcategoria = txtSubcategoriaNombre.text;
+								saveSubcategoriaEvent.subcategoriaVO = subcategoria;
+								dispatchEvent(saveSubcategoriaEvent);
+								txtSubcategoriaNombre.text = '';
+								txtSubcategoriaNombre.setFocus();
+							}
+						break;
+					case 3:
+							txtMarcasNombre.errorString = "";
+							if (txtMarcasNombre.text == '')
+							{
+								txtMarcasNombre.errorString = "No puedes introducir valores vacios";
+							}else{
+								var saveMarcaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_SAVE_DATA);
+								var marca:MarcaVO = new MarcaVO();
+								marca.marca = txtMarcasNombre.text;
+								saveMarcaEvent.marcaVO = marca;
+								dispatchEvent(saveMarcaEvent);
+								txtMarcasNombre.text = '';
+								txtSubmarcasNombre.text = '';
+								txtSubmarcasNombre.setFocus();
+							}
+						break;
+					case 4:
+							if (txtSubmarcasNombre.text == '')
+							{
+								txtSubmarcasNombre.errorString = "No puedes introducir valores vacios";
+							}else if (listMarcas.selectedIndex == -1){
+								txtSubmarcasNombre.errorString = "Debes seleccionar una Marca de la lista";
+							}else
+							{
+								var saveSubMarcaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_SAVE_SUBMARCA);
+								var submarca:SubMarcaVO = new SubMarcaVO();
+								submarca.estatus = "true";
+								submarca.idMarca = MarcaVO(listMarcas.selectedItem).idMarca;
+								submarca.submarca = txtSubmarcasNombre.text;
+								saveSubMarcaEvent.subMarcaVO = submarca;
+								dispatchEvent(saveSubMarcaEvent);
+								txtSubmarcasNombre.text='';
+								txtSubmarcasNombre.setFocus();
+							}
+						break;
+					
+				}
+				
+			}
+			protected function creationEvent(e:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+			}
+			
+			private function changeTipoCategoria():void{
+				
+				if(dlistTipoCategoria.selectedIndex > -1){
+					var _tempCategoriaVO:CategoriaVO = new CategoriaVO();
+					_tempCategoriaVO.idtipocategoria = TipocategoriaVO(dlistTipoCategoria.selectedItem).id_tipocategoria;
+					_tempCategoriaVO.estatus = true;
+					_tempCategoriaVO.idCategoria = '';
+					_tempCategoriaVO.filterEstatusCategoria = 'true';
+					var _eventCategoria:CRUDEvent = new CRUDEvent(CRUDEvent.CATEGORIA_LIST);
+					_eventCategoria.categoriaVO = _tempCategoriaVO;
+					dispatchEvent(_eventCategoria);
+					flagOpcCatSub = true;
+				}else{
+					flagOpcCatSub = false;
+				}
+			}
+			
+			//changeMarcasProductos
+			private function changeMarcasProductos ():void{
+				trace("Init changeMarcasProductos");
+			}
+			
+			//changeSubMarcasProductos
+			private function changeSubMarcasProductos ():void{
+				trace("Init changeSubMarcasProductos");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<portlet:children>
+		<s:SkinnableContainer width="100%" height="100%" >
+			<s:layout>
+				<s:VerticalLayout/>
+			</s:layout>
+			<s:HGroup
+				width="100%"
+				paddingTop="10" paddingLeft="10">
+					<s:Label 
+						text="Tipo Categorías" 
+						id="viewTipoCategorias"
+						buttonMode="true" useHandCursor="true"
+						click="vsCategorizacion.selectedIndex=0; setStylesViews(1);"/>
+					<s:Label text="|"/>
+					<s:Label 
+						id="viewCategoriaSubcategorias"
+						text="Categorías y Subcategorías" 
+						buttonMode="true" useHandCursor="true"
+						click="vsCategorizacion.selectedIndex=1; setStylesViews(2);"/>
+					<s:Label text="|"/>
+					<s:Label
+						id="viewMarcasSubmarcas"
+						text="Marcas y SubMarcas" 
+						buttonMode="true" useHandCursor="true"
+						click="vsCategorizacion.selectedIndex=2; setStylesViews(3);"/>
+			</s:HGroup>
+			
+			<mx:ViewStack
+				id="vsCategorizacion"
+				width="100%"
+				height="100%"
+				x="0" y="0">
+					<s:NavigatorContent
+						width="100%" height="100%"
+						label="Tipo Categorías">
+						<s:HGroup width="100%" height="100%" gap="-1" paddingBottom="-5">
+							
+							<s:Group width="50%" height="100%">
+								<s:layout>
+									<s:VerticalLayout/>
+								</s:layout>
+								<s:SkinnableContainer height="40" width="100%" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+									<s:layout>
+										<s:HorizontalLayout verticalAlign="middle" paddingLeft="5" paddingRight="5"/>
+									</s:layout>
+									<s:Label text="Tipo Categoría" color="0x707070"/>
+									<s:TextInput id="txtTipoCategoria" width="100%" 
+												 skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+												 prompt="Escribe el tipo de categoría y teclea enter" enter="enterAddingToList(0)"/>	
+									<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(0)"/>
+									<!--s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/-->
+								</s:SkinnableContainer>
+								<s:SkinnableContainer width="100%" height="100%">
+									<s:layout>
+										<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+									</s:layout>
+									<s:List borderColor="0xffffff" creationComplete="creationEvent(event)"
+											id="listTipocategorias" doubleClickEnabled="true"
+											dataProvider="{crudModel.acListTipocategorias}" labelField="tipocategoria" 
+											width="100%" height="100%" itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoTipocategoriaRenderer">
+									</s:List>	
+								</s:SkinnableContainer>
+							</s:Group>
+						</s:HGroup>
+					</s:NavigatorContent>
+					<s:NavigatorContent
+						width="100%" height="100%"
+						label="Categorías y Subcategorías">
+						<s:HGroup width="100%" height="100%" gap="-1" paddingBottom="-5">
+							
+							<s:Group width="100%" height="100%">
+								<s:layout>
+									<s:VerticalLayout gap="0"/>
+								</s:layout>
+								<s:SkinnableContainer height="40" width="100%" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+									<s:layout>
+										<s:HorizontalLayout verticalAlign="middle" paddingLeft="5" paddingRight="5"/>
+									</s:layout>
+									<s:Label
+										text="Tipo Categoría"
+										color="0x707070"/>
+									<s:DropDownList
+										id="dlistTipoCategoria"
+										width="200"
+										dataProvider="{crudModel.acListTipocategorias}"
+										prompt="Selecciona la opción"
+										change="changeTipoCategoria()"
+										labelField="tipocategoria"/>
+								</s:SkinnableContainer>
+								<s:HGroup 
+									width="100%" height="100%"
+									gap="0">
+									<s:VGroup
+										width="100%" height="100%">
+											<s:SkinnableContainer height="40" width="100%" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="middle" horizontalAlign="left" paddingLeft="5" paddingRight="5"/>
+												</s:layout>
+												<s:Label text="Categoría" color="0x707070"/>
+												<s:TextInput 
+													id="txtCategoria" width="100%" 
+													skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+													prompt="Escribe la categoría y teclea enter"
+													enter="enterAddingToList(1)"
+													editable="{flagOpcCatSub}"
+													enabled="{flagOpcCatSub}"/>	
+												<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(1)"/>
+												<!--s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/-->
+											</s:SkinnableContainer>
+											<s:SkinnableContainer width="100%" height="100%">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+												</s:layout>
+												<s:List borderColor="0xffffff" creationComplete="creationEvent(event)"
+														id="listCategorias" doubleClickEnabled="false"
+														dataProvider="{crudModel.acListCategoriasProductos}" labelField="categoria" 
+														width="100%" height="100%" itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoCategoriaRenderer">
+												</s:List>	
+											</s:SkinnableContainer>
+									</s:VGroup>
+									<s:VGroup
+										width="100%" height="100%">
+											<s:SkinnableContainer width="100%" height="40" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="middle" horizontalAlign="left" paddingLeft="5" paddingRight="5"/>
+												</s:layout>						
+												<s:Label text="Sub-categoría" color="0x707070"/>
+												<s:TextInput 
+													id="txtSubcategoriaNombre" 
+													width="100%" 
+													skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+													prompt="Escribe la subcategoria y teclea enter" 
+													enter="enterAddingToList(2)"
+													editable="{flagOpcCatSub}"
+													enabled="{flagOpcCatSub}"/>	
+												<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(2)"/>
+												<!--s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList" label="x"/-->
+											</s:SkinnableContainer>
+											<s:SkinnableContainer width="100%" height="100%">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+												</s:layout>	
+												<s:List 
+													id="listSubCategoria"  
+													borderColor="0xffffff" 
+													dataProvider="{crudModel.acListSubcategoriasProcutos}" 
+													labelField="subcategoria" 
+													doubleClickEnabled="false"
+													width="100%" height="100%" 
+													itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoSubCategoriaRenderer"></s:List>	
+											</s:SkinnableContainer>
+									</s:VGroup>
+								</s:HGroup>
+							</s:Group>
+						</s:HGroup>
+					</s:NavigatorContent>
+					<s:NavigatorContent
+						width="100%" height="100%"
+						label="Marcas y SubMarcas">
+						<s:HGroup width="100%" height="100%" gap="-1" paddingBottom="-5">
+							
+							<s:Group width="100%" height="100%">
+								<s:layout>
+									<s:VerticalLayout gap="0"/>
+								</s:layout>
+								<s:SkinnableContainer height="40" width="100%" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+									<s:layout>
+										<s:HorizontalLayout verticalAlign="middle" paddingLeft="5" paddingRight="5"/>
+									</s:layout>
+									<s:HGroup
+										width="100%"
+										height="100%">
+											<s:Label
+												text="Marcas"
+												color="0x707070"/>
+											<s:DropDownList
+												id="dlistMarcasProductos"
+												width="200"
+												dataProvider="{crudModel.acListMarcasProductos}"
+												prompt="Selecciona la opción"
+												change="changeMarcasProductos()"
+												labelField="marcas"/>
+									</s:HGroup>
+									<s:HGroup
+										width="100%"
+										height="100%">
+										<s:Label
+											text="SubMarcas"
+											color="0x707070"/>
+										<s:DropDownList
+											id="dlistSubMarcasProductos"
+											width="200"
+											dataProvider="{crudModel.acListSubMarcasProductos}"
+											prompt="Selecciona la opción"
+											change="changeSubMarcasProductos()"
+											labelField="submarcas"/>
+									</s:HGroup>
+								</s:SkinnableContainer>
+							
+							<s:HGroup
+								width="100%" height="100%"
+								gap="0">
+									<s:VGroup
+										width="100%" height="100%">
+											<s:SkinnableContainer
+												height="40" width="100%"
+												skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+													<s:layout>
+														<s:HorizontalLayout verticalAlign="middle" horizontalAlign="left" paddingLeft="5" paddingRight="5"/>
+													</s:layout>
+													<s:Label text="Marca" color="0x707070"/>
+													<s:TextInput id="txtMarcasNombre" width="100%" 
+																 skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+																 prompt="Escribe la marca y teclea enter" enter="enterAddingToList(3)"/>	
+													<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(3)"/>
+													<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>
+												</s:SkinnableContainer>
+												<s:SkinnableContainer width="100%" height="100%">
+													<s:layout>
+														<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+													</s:layout>
+													<s:List borderColor="0xffffff" creationComplete="creationEvent(event)"
+															id="listMarcas" doubleClickEnabled="true"
+															dataProvider="{crudModel.acListMarcas}" labelField="marca" 
+															width="100%" height="100%" itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoRenderer">
+														
+													</s:List>	
+													
+												</s:SkinnableContainer>
+									</s:VGroup>
+									<s:VGroup
+										width="100%" height="100%">
+											<s:SkinnableContainer width="100%" height="40" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="middle" horizontalAlign="left" paddingLeft="5" paddingRight="5"/>
+												</s:layout>						
+												<s:Label text="Sub-marca" color="0x707070"/>
+												<s:TextInput id="txtSubmarcasNombre" width="100%" skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+															 prompt="Escribe la submarca y teclea enter" enter="enterAddingToList(4)"/>	
+												<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(4)"/>
+												<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList" label="x"/>
+											</s:SkinnableContainer>
+											<s:SkinnableContainer width="100%" height="100%">
+												<s:layout>
+													<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+												</s:layout>	
+												<s:List id="listSubMarcas"  borderColor="0xffffff" dataProvider="{crudModel.acListSubMarcas}" labelField="submarca" 
+														width="100%" height="100%" itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoSubTaskRenderer"></s:List>	
+											</s:SkinnableContainer>
+									</s:VGroup>
+							</s:HGroup>
+							</s:Group>
+						</s:HGroup>
+					</s:NavigatorContent>
+			</mx:ViewStack>
+				
+			
+				
+		</s:SkinnableContainer>
+	</portlet:children>
+	
+</portlet:Portlet>

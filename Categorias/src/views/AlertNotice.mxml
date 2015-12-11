@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:AlertNoticeBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:view="views.*"
+	width="{alertWidth}" height="{alertHeight}"
+	title="{title_window}"
+	color="0xFFFFFF"
+	chromeColor="0xBF5900"
+	close="closeMe()"
+	creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<!--view:AlertHeader headerTitle="{title_window}"/-->
+	<mx:VBox width="100%" height="100%" verticalGap="30" paddingTop="5" paddingBottom="12" paddingLeft="5" paddingRight="5" horizontalAlign="center">
+		<mx:Text id="noticeText" width="100%" height="100%" text="{noticeMessage}" color="0x4D000E"/>
+		<s:Button id="btn_mo" styleName="buttonOKError" label="{OKLabel}" click="closeMe()"  width="100" height="23"/>
+	</mx:VBox>
+</view:AlertNoticeBase>

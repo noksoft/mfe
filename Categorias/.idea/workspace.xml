@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="692282c0-2a1a-48ce-963c-bc7deae6b5d2" name="Default" comment="" />
+    <ignored path="Categorias.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/classes/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Categorias" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Categorias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Categorias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Categorias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Categorias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Categorias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Flash App.Categorias">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="Categorias" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="Categorias" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="Categorias" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Flash App.Categorias" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="692282c0-2a1a-48ce-963c-bc7deae6b5d2" name="Default" comment="" />
+      <created>1449194101141</created>
+      <option name="number" value="Default" />
+      <updated>1449194101141</updated>
+      <workItem from="1449194103532" duration="705000" />
+      <workItem from="1449261318802" duration="41000" />
+      <workItem from="1449261381171" duration="61000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="807000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Categorias.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/SubCategoriaView.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1443794221835" expanded="false" signature="1412:1820" placeholder="..." />
+            <marker date="1443794221835" expanded="true" signature="2491:2714" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="2752:3243" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="2795:3056" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3060:3124" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3251:3297" placeholder="/** Evento que limpia los filtros ...*/" />
+            <marker date="1443794221835" expanded="true" signature="3337:3632" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3677:4230" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3780:4225" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4004:4219" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4280:4814" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4376:4809" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4822:4866" placeholder="/** Confirmación de eliminación ...*/" />
+            <marker date="1443794221835" expanded="true" signature="4941:4998" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5045:5286" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5208:5242" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5246:5281" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5356:5803" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5575:5798" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5716:5792" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5856:6191" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5903:6181" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6269:6433" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6441:6477" placeholder="/*...*/" />
+            <marker date="1443794221835" expanded="true" signature="6481:6512" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="6516:6552" placeholder="/*...*/" />
+            <marker date="1443794221835" expanded="true" signature="6560:6588" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="6655:6957" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6664:6771" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6696:6765" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6785:6952" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7030:7209" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7217:7241" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="7304:7841" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7313:7667" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7345:7661" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7502:7575" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7579:7654" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7681:7836" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7910:8077" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8085:8112" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="8178:8473" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8187:8293" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8219:8287" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8307:8468" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8545:8715" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8727:8757" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="8828:9284" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8837:9115" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8869:9109" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8995:9069" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9129:9279" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9357:9515" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9523:9553" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="9624:9989" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9633:9817" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9665:9811" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9831:9984" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10062:10223" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10231:10261" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="10332:10660" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10341:10492" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10373:10486" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10506:10655" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10733:10890" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Categorias.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/SubCategoriaView.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21300448">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <marker date="1443794221835" expanded="false" signature="1412:1820" placeholder="..." />
+            <marker date="1443794221835" expanded="true" signature="2491:2714" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="2752:3243" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="2795:3056" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3060:3124" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3251:3297" placeholder="/** Evento que limpia los filtros ...*/" />
+            <marker date="1443794221835" expanded="true" signature="3337:3632" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3677:4230" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="3780:4225" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4004:4219" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4280:4814" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4376:4809" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="4822:4866" placeholder="/** Confirmación de eliminación ...*/" />
+            <marker date="1443794221835" expanded="true" signature="4941:4998" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5045:5286" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5208:5242" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5246:5281" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5356:5803" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5575:5798" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5716:5792" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5856:6191" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="5903:6181" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6269:6433" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6441:6477" placeholder="/*...*/" />
+            <marker date="1443794221835" expanded="true" signature="6481:6512" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="6516:6552" placeholder="/*...*/" />
+            <marker date="1443794221835" expanded="true" signature="6560:6588" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="6655:6957" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6664:6771" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6696:6765" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="6785:6952" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7030:7209" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7217:7241" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="7304:7841" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7313:7667" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7345:7661" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7502:7575" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7579:7654" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7681:7836" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="7910:8077" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8085:8112" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="8178:8473" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8187:8293" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8219:8287" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8307:8468" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8545:8715" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8727:8757" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="8828:9284" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8837:9115" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8869:9109" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="8995:9069" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9129:9279" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9357:9515" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9523:9553" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="9624:9989" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9633:9817" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9665:9811" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="9831:9984" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10062:10223" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10231:10261" placeholder="/**...*/" />
+            <marker date="1443794221835" expanded="true" signature="10332:10660" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10341:10492" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10373:10486" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10506:10655" placeholder="{...}" />
+            <marker date="1443794221835" expanded="true" signature="10733:10890" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Categorias.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44618833">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:AlertConfirmationBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	width="{customAlertWidth}" 
+	height="{customAlertHeight}"
+	close="setCustomAlertResponseNegative()"  
+	creationComplete="init()"
+	title="{title_window}"
+	xmlns:view="views.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<view:layout>
+		<s:BasicLayout/>
+	</view:layout>
+	<!--view:AlertHeader headerTitle="{title_window}"/-->
+	<mx:HBox width="100%" height="100%" paddingLeft="8" paddingTop="8" paddingBottom="12" >
+		<mx:Spacer width="-22"/>
+		<mx:VBox width="100%" height="100%" horizontalAlign="center" verticalGap="30"
+				 paddingTop="10">
+			<mx:Text text="{message}"/>
+			<mx:HBox horizontalGap="12" horizontalAlign="center" verticalAlign="bottom">
+				<s:Button id="btn_yes" label="Si" click="setCustomAlertResponse()" width="100" height="23"/>
+				<s:Button id="btn_mo" label="No" click="setCustomAlertResponseNegative()" width="100" height="23"/>
+			</mx:HBox>
+		</mx:VBox>
+	</mx:HBox>
+</view:AlertConfirmationBase>

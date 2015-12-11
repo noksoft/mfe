@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename WidgetPanelSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin 
+	xmlns="*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:degrafa="http://www.degrafa.com/2007">
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition>
+		
+			<!--Shadow-->
+			<degrafa:RoundedRectangle x="-3" y="-3" width="{skinWidth + 8}" height="{skinHeight + 8}" cornerRadius="10" alpha=".04">
+				<degrafa:fill>
+					<degrafa:SolidFill color="0x666666"/>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+			<degrafa:RoundedRectangle x="-2" y="-2" width="{skinWidth + 6}" height="{skinHeight + 6}" cornerRadius="10" alpha=".04">
+				<degrafa:fill>
+					<degrafa:SolidFill color="0x666666"/>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+			<degrafa:RoundedRectangle x="-1" y="-1" width="{skinWidth + 4}" height="{skinHeight + 4}" cornerRadius="10" alpha=".04">
+				<degrafa:fill>
+					<degrafa:SolidFill color="0x33333"/>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+			<!--Body Color-->
+			<degrafa:RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+				<degrafa:fill>
+					<degrafa:SolidFill color="0xfafafa"/>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+			<!--Header-->
+			<degrafa:RoundedRectangleComplex width="{skinWidth}" height="39" topLeftRadius="10" topRightRadius="10">
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xffffff" />
+						<degrafa:GradientStop color="0xd9d9d9" />
+					</degrafa:LinearGradientFill>
+				</degrafa:fill>
+			</degrafa:RoundedRectangleComplex>
+			
+			<degrafa:Line x="0" x1="{skinWidth}" y="39" y1="39">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xb3b3b3" />
+				</degrafa:stroke>
+			</degrafa:Line>			
+			<degrafa:Line x="0" x1="{skinWidth}" y="40" y1="40">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xe4e4e4" />
+				</degrafa:stroke>
+			</degrafa:Line>			
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+	
+</degrafa:GraphicBorderSkin>

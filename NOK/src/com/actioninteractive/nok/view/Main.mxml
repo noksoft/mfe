@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:MainBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:view="com.actioninteractive.nok.view.*"
+	xmlns:header="com.actioninteractive.nok.view.header.*" 
+	xmlns:body="com.actioninteractive.nok.view.body.*"
+	mouseMove="mouseMoved()"
+	click="mouseClicked(event)"
+	>
+	
+	<view:layout>
+		<s:BasicLayout/>
+	</view:layout>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<body:PortletContainer 
+		width="100%" height="100%"
+		top="77"
+		/>
+	
+	<header:Header 
+		width="100%" height="77"
+		top="0"
+		/>
+	
+</view:MainBase>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CATALOGO DE EQUIPO -->
+<catalogo:CatalogoEquipoBase xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" 
+				 xmlns:catalogo="com.actioninteractive.nok.view.body.portlet.*"
+				 addedToStage="init()"
+				 xmlns:altaEquipo="com.actioninteractive.nok.view.body.component.altaEquipo.*">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.model.CommonModel;
+			import com.actioninteractive.nok.view.AssetManagerIn;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:Sequence id="fadeResizeHide"
+					target="{containerMain, containerExtend, btnBack, btnNext}"
+					duration="1000">
+			<s:Fade id="fadeHide" 
+					alphaFrom="1.0"
+					alphaTo="0.0"/>
+			<s:Resize id="resizeHide" 
+					  widthTo="0" 
+					  heightTo="0"/>
+		</s:Sequence>        
+		
+		<s:Parallel id="fadeResizeShow"
+					target="{containerMain, containerExtend, btnBack, btnNext}"
+					duration="1000">
+			<s:Resize id="resizeShow" 
+					  widthTo="100" 
+					  heightTo="50"/>
+			<s:Fade id="fadeShow" 
+					alphaFrom="0.0"
+					alphaTo="1.0"/>
+		</s:Parallel>
+		
+		<s:RadioButtonGroup id="radioTipoAdquision" itemClick="changeTipoAdquisicion()"/>
+		<s:NumberFormatter id="numberFormatter"/>
+	</fx:Declarations>
+	
+	<catalogo:children>
+		
+		<mx:ProgressBar
+			id="progressBar"
+			indeterminate="true"
+			labelPlacement="center"
+			visible="false"/>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<!--  ENCABEZADO DEL PANEL   -->
+			<s:Label text="Alta de equipos" x="5" y="10"/>
+			<s:TextInput 
+				id="txtBusquedaEquipos"
+				y="10" 
+				left="125" right="32" 
+				width="100%" 
+				alpha=".5"
+				enter="buscarEquipo()"/>
+			<s:Button 
+				y="10" right="1"
+				skinClass="com.actioninteractive.nok.skins.ButtonSearhSkin" 
+				icon="{AssetManagerIn.iconZoom}"
+				useHandCursor="true"
+				buttonMode="true"
+				click="buscarEquipo()"/>	
+			<!--  CONTENEDOR GENERAL     -->
+			<s:SkinnableContainer width="100%" height="100%" x="0" y="6">
+				<s:layout>
+					<s:VerticalLayout 
+						paddingRight="20"
+						paddingTop="40"/>
+				</s:layout>					
+					<s:VGroup 
+						id="containerMain"
+						width="100%" height="100%"
+						visible="{!equipoModel.flagCompEquipos}"
+						includeInLayout="{!equipoModel.flagCompEquipos}">							
+						
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="No. Ecónomico" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtNoEconomico"/>
+							<s:Label text="No. Serie" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtNoSerie"
+								editable="{equipoModel.flagSerie}" enabled="{equipoModel.flagSerie}"/>
+						</s:HGroup>
+						
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Factura" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtFactura"
+								maxChars="25"
+								editable="{equipoModel.flagFactura}" enabled="{equipoModel.flagFactura}"/>
+							<s:Label text="Pedimento" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtPedimento"/>
+						</s:HGroup>
+						<s:VGroup width="100%" verticalAlign="middle" gap="2">
+							<s:HGroup width="100%" verticalAlign="middle" gap="2">
+								<s:Label text="Cargar factura" textAlign="right" width="120"/>
+								<s:TextInput 
+									id="txtImageFactura"
+									editable="false"
+									enabled="false"
+									width="100%"/>
+								<s:Button 
+									label="Imagen factura"
+									width="130"
+									click="obtenerFactura();"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle" gap="2">
+								<s:Label text="Cargar foto" textAlign="right" width="120"/>
+								<s:TextInput
+									id="txtImageFoto"
+									editable="false"
+									enabled="false"
+									width="100%"/>
+								<s:Button 
+									label="Imagen foto"
+									width="130"
+									click="obtenerFoto();"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle" gap="2">
+								<s:Label text="Cargar Pedimento" textAlign="right" width="120"/>
+								<s:TextInput
+									id="txtImagePedimento"
+									editable="false"
+									enabled="false"
+									width="100%"/>
+								<s:Button 
+									label="Imagen Pedimento"
+									width="130"
+									click="obtenerPedimento();"/>
+							</s:HGroup>
+						</s:VGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Categoria" textAlign="right" width="120"/>
+							<s:DropDownList
+								id="listCategorias"
+								width="100%" 
+								prompt="Seleccionar categoria" 
+								dataProvider="{marcasModel.acListCategorias}"
+								change="changeCategoria(event)"
+								labelField="categoria"/>
+							<s:Label text="Subcategoria" textAlign="right" width="120"/>
+							<s:DropDownList
+								width="100%"
+								id="listSubCategoria"
+								prompt="Seleccionar sub-categoria" 
+								change="changeSubcategoria(event)"
+								dataProvider="{marcasModel.acListSubcategorias}"
+								labelField="subcategoria"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Marca" textAlign="right" width="120"/>
+							<s:DropDownList
+								id="listMarca"
+								width="100%"  
+								prompt="Seleccionar Marca" 
+								change="changeMarca(event)"
+								dataProvider="{marcasModel.acListMarcas}"
+								enabled="{marcasModel.flagEnableMarca}"
+								labelField="marca"/>
+							<s:Label text="Submarca/modelo" textAlign="right" width="120"/>
+							<s:DropDownList 
+								id="listSubMarca"
+								width="100%" 
+								prompt="Selecciona la submarca" 
+								change="changeSubMarca(event)"
+								enabled="{marcasModel.flagEnableSubMarca}"
+								requireSelection="true" 
+								dataProvider="{marcasModel.acListSubMarcasEquipo}" 
+								labelField="submarca"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Fecha adquisición" textAlign="right" width="120"/>
+						<mx:DateField 
+								id="dtf_adquisicion"
+								yearNavigationEnabled="true"
+								dayNames="{CommonModel.dayArray}"
+								monthNames="{CommonModel.monthArray}"
+								disabledRanges="{[ {rangeStart: new Date(1960, 01, 01), rangeEnd: new Date()} ]}"
+								maxYear="{new Date().fullYear}"/>
+							<s:Label text="Tipo de adquisición" textAlign="right" width="120"/>
+							<s:RadioButton value="Nuevo" label="Nuevo" group="{radioTipoAdquision}" symbolColor="#FFFFFF" selected="true"/>
+							<s:RadioButton value="Usado" label="Usado" group="{radioTipoAdquision}" symbolColor="#FFFFFF"/>								
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Modelo (año):" textAlign="right" width="120"/>
+							<s:NumericStepper
+								id="nsModelo"
+								minimum="1960"
+								maximum="{equipoModel.maxAnioModelo}"
+								width="200"/>
+						</s:HGroup>	
+						<s:HGroup
+							width="100%" verticalAlign="middle">
+								<s:Label text="Descripción" textAlign="right" width="120"/>
+								<s:TextArea
+									id="txtDescripcion"
+									height="43" width="100%"/>
+						</s:HGroup>
+													
+					</s:VGroup>
+				
+				<!--	SECOND CONTAINER	-->
+				<s:HGroup 
+					id="containerExtend"
+					width="100%" verticalAlign="middle"
+					visible="{equipoModel.flagCompEquipos}"
+					includeInLayout="{equipoModel.flagCompEquipos}"/>
+				<s:HGroup 
+					id="containerButtons"
+					height="40"
+					width="100%" horizontalAlign="right">
+					<s:Spacer
+						width="100%"/>
+					<s:Button 
+						label="Actualizar"
+						click="actualizarEquipo()"
+						visible="{equipoModel.flagActualizar}"
+						includeInLayout="{equipoModel.flagActualizar}"/>
+					<s:Button 
+						label="Borrar"
+						click="deleteEquipo()"
+						visible="{equipoModel.flagEliminar}"
+						includeInLayout="{equipoModel.flagEliminar}"/>
+					<s:Button 
+						label="Alta"
+						click="altaEquipo()"
+						visible="{equipoModel.flagAlta}"
+						includeInLayout="{equipoModel.flagAlta}"/>
+					<s:Button 
+						label="Cancelar"
+						click="cancelarEquipo()"/>
+					<s:Button 
+						label="Limpiar"
+						click="limpiar(event)"/>
+				</s:HGroup>
+			</s:SkinnableContainer>
+
+			
+			<s:Button
+				id="btnBack"
+				label=""
+				x="6"
+				bottom="20"
+				skinClass="com.actioninteractive.nok.skins.ButtonBack"
+				visible="{equipoModel.flagCompEquipos}"
+				useHandCursor="true" buttonMode="true"
+				click="anteriorComponente()"/>
+			<s:Button
+				id="btnNext"
+				label="'>'"
+				right="3"
+				bottom="20"
+				skinClass="com.actioninteractive.nok.skins.ButtonNext"
+				visible="{!equipoModel.flagCompEquipos}"
+				useHandCursor="true" buttonMode="true"
+				click="siguienteComponente()"/>
+			
+		</s:SkinnableContainer>
+		
+	</catalogo:children>
+</catalogo:CatalogoEquipoBase>

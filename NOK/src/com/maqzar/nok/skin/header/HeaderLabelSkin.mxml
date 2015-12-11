@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename HeaderLabelSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns="http://www.degrafa.com/2007" 
+	xmlns:filters="flash.filters.*">
+
+    <mx:Script>
+        <![CDATA[
+            [Bindable] private var usedColor:Number = 0xd6d6d6;
+            [Bindable] private var usedColor2:Number = 0xfefefe;
+            [Bindable] private var baseColor:Number = 0xcccccc;
+            
+        ]]>
+    </mx:Script>
+
+    <fills>
+        <SolidFill id="bodyFill" color="{baseColor}" />
+        
+        <LinearGradientFill id="upFill" angle="90">
+        	<GradientStop color="{usedColor}" />
+        	<GradientStop color="{usedColor2}" />
+        </LinearGradientFill>
+        
+    </fills>
+    
+    <geometry>
+    	<GeometryComposition>
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="5" fill="{bodyFill}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="5" fill="{upFill}" />
+        </GeometryComposition>
+    </geometry>
+</GraphicBorderSkin>

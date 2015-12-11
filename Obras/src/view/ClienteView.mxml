@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark" creationComplete="init()"
+                      xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+	<s:layout>
+		<s:HorizontalLayout paddingTop="10" paddingBottom="10"/>
+	</s:layout>
+	<fx:Declarations>
+		<!--		Remote Object Direccion			-->
+		<s:RemoteObject
+			id="roDireccion"
+			endpoint="{NokConstants.ENDPOINT}"
+			destination="direccionBusiness">
+				<s:method
+					name="catMunicipio"
+					result="resultCatMunicipios(event)"
+					fault="faultCatMunicipios(event)"/>
+				<s:method
+					name="catEntidad"
+					result="resultCatEntidad(event)"
+					fault="faultCatEntidad(event)"/>
+				<s:method
+					name="catLocalidad"
+					result="resultCatLocalidad(event)"
+					fault="faultCatLocalidad(event)"/>
+		</s:RemoteObject>
+		
+		<!--		Remote Object Cliente			-->
+		<s:RemoteObject
+			id="roCliente"
+			endpoint="{NokConstants.ENDPOINT}"
+			destination="clienteBusiness">
+				<s:method
+					name="catClientes"
+					result="resultCatClientes(event)"
+					fault="faultCatClientes(event)"/>
+				<s:method
+					name="insertCliente"
+					result="resultInsertCliente(event)"
+					fault="faultInsertCliente(event)"/>
+				<s:method
+					name="updateCliente"
+					result="resultUpdateCliente(event)"
+					fault="faultUpdateCliente(event)"/>
+				<s:method
+					name="deleteCliente"
+					result="resultDeleteCliente(event)"
+					fault="faultDeleteCliente(event)"/>
+		</s:RemoteObject>
+		<!--mx:RegExpValidator
+			id="validatorRegExpRFC"
+			source="{txtRFC}"
+			property="text"
+			flags="g"
+			expression="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$"
+			valid="validatorRegExpRFC_validHandler(event)"
+			invalid="validatorRegExpRFC_invalidHandler(event)"/-->
+		<mx:StringValidator
+			id="validateRFC"
+			source="{txtRFC}"
+			property="text"
+			requiredFieldError="Debes ingresar el RFC"
+			required="true"/>
+		<mx:StringValidator
+			id="validateRazonSocial"
+			source="{txtRazonSocial}"
+			property="text"
+			requiredFieldError="Debe ingresar la Razón Social"
+			required="true"/>
+		<mx:StringValidator
+			id="validateDireccion"
+			source="{txtDireccion}"
+			property="text"
+			requiredFieldError="Debe ingresar una Dirección"
+			required="true"/>
+		<mx:StringValidator
+			id="validateCP"
+			source="{txtCP}"
+			property="text"
+			requiredFieldError="Debe ingresar un C.P."
+			required="true"/>
+		<mx:NumberValidator 
+			id="validatorEntidad"
+			source="{cmbEntidad}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe de seleccionar la Entidad"
+			valid="validEntidadHandler(1);"
+			invalid="validEntidadFault(1);" />
+		<mx:NumberValidator 
+			id="validatorMunicipio"
+			source="{cmbMunicipio}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe de seleccionar el Municipio"
+			valid="validEntidadHandler(2);"
+			invalid="validEntidadFault(2);" />
+		<mx:NumberValidator 
+			id="validatorLocalidad"
+			source="{cmbLocalidad}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe de seleccionar la Localidad"
+			valid="validEntidadHandler(3);"
+			invalid="validEntidadFault(3);" />
+		<mx:StringValidator
+			id="validatorTelefono"
+			source="{txtTelefono}"
+			property="text"
+			requiredFieldError="Debe de ingresar un Télefono"
+			required="true"/>
+		<mx:StringValidator
+			id="validatorCorreo"
+			source="{txtCorreo}"
+			property="text"
+			requiredFieldError="Debe de ingresar un correo"
+			required="true"/>
+		<mx:StringValidator
+			id="validatorNombreContacto"
+			source="{txtContactoNombre}"
+			property="text"
+			requiredFieldError="Debe de ingresar el Nombre del Contacto"
+			required="true"/>
+		<mx:DateValidator id="validatorDateAlta" 
+						  source="{dateAlta}" property="text" 
+						  inputFormat="dd/mm/yyyy"
+						  allowedFormatChars="*#~/"/>
+	</fx:Declarations>
+	<fx:Script source="ClienteSource.as"/>
+	<mx:HDividedBox
+		width="100%" height="100%">
+		<s:Panel title="Lista de clientes" width="100%" height="100%">
+            <s:VGroup
+                    id="containerTable"
+                    width="100%" height="100%">
+                <s:DataGrid
+                        id="dtgClientes"
+                        width="100%" height="100%"
+                        dataProvider="{listClientes}"
+                        doubleClickEnabled="true"
+                        doubleClick="selectCliente(event)">
+                    <s:columns>
+                        <s:ArrayList>
+                            <s:GridColumn headerText="RFC" dataField="rfc"/>
+                            <s:GridColumn headerText="Razón Social" dataField="razonSocial"/>
+                            <s:GridColumn headerText="Dirección" dataField="direccion"/>
+                            <s:GridColumn headerText="C.P." dataField="cp"/>
+                            <s:GridColumn width="80" headerText="Entidad" dataField="entidad"/>
+                            <s:GridColumn width="80" headerText="Municipio" dataField="municipio"/>
+                            <s:GridColumn width="80" headerText="Localidad" dataField="localidad"/>
+                            <s:GridColumn headerText="Teléfono" dataField="telefono"/>
+                            <s:GridColumn headerText="Correo" dataField="correo"/>
+                            <s:GridColumn headerText="WWW" dataField="www"/>
+                            <s:GridColumn width="100" headerText="Nombre Contacto" dataField="contactoNombre"/>
+                            <s:GridColumn width="100" headerText="Fecha Alta" dataField="fechaAlta"/>
+                            <s:GridColumn width="60" headerText="Estatus" dataField="estatus"/>
+                        </s:ArrayList>
+                    </s:columns>
+                </s:DataGrid>
+            </s:VGroup>
+		</s:Panel>
+
+	    <s:Panel title="Gestión del cliente" width="100%" height="100%">
+            <s:layout>
+                <s:VerticalLayout gap="5" paddingBottom="10" paddingLeft="10" paddingRight="10"
+                                  paddingTop="10"/>
+            </s:layout>
+            <s:controlBarContent>
+                <!--s:Button
+                label="Actualizar"
+                icon="@Embed(source='assets/icons/application_form_edit.png')"
+                click="updateTipoCategoria()"/>
+                <s:Button
+                label="Nuevo"
+                icon="@Embed(source='assets/icons/application_add.png')"
+                click="saveTipoCategoria()"/-->
+                <s:Button
+                        label="Limpiar"
+                        icon="@Embed(source='/assets/icons/cancel.png')"
+                        useHandCursor="true"
+                        buttonMode="true"
+                        click="clearFormulario()"/>
+                <s:Button
+                        id="guardarButton"
+                        label="{titleFormulario}"
+                        icon="@Embed(source='/assets/icons/add.png')"
+                        styleName="primaryButton"
+                        useHandCursor="true"
+                        buttonMode="true"
+                        click="saveCliente()"/>
+                <s:Button
+                        id="btnDelete"
+                        label="Borrar"
+                        icon="@Embed(source='/assets/icons/delete.png')"
+                        useHandCursor="true"
+                        buttonMode="true"
+                        click="deleteClient()"/>
+            </s:controlBarContent>
+
+
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="RFC"/>
+                    <s:TextInput
+                            id="txtRFC"
+                            width="300"
+                            maxChars="13"
+                            change="txtRFC.text=txtRFC.text.toLocaleUpperCase()"
+                            text="{itemSelected.rfc}"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Razón Social"/>
+                    <s:TextInput
+                            id="txtRazonSocial"
+                            width="300"
+                            change="txtRazonSocial.text=txtRazonSocial.text.toLocaleUpperCase()"
+                            text="{itemSelected.razonSocial}"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Dirección"/>
+                    <s:TextArea
+                            id="txtDireccion"
+                            width="300"
+                            maxChars="300"
+                            text="{itemSelected.direccion}"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="CP"/>
+                    <s:TextInput
+                            id="txtCP"
+                            restrict="0-9"
+                            maxChars="5"
+                            text="{itemSelected.cp}"
+                            width="300"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Entidad"/>
+                    <s:DropDownList
+                            id="cmbEntidad"
+                            prompt="Selecciona la Entidad"
+                            labelField="entidad"
+                            dataProvider="{listEntidades}"
+                            change="selectEntidad()"
+                            width="300"
+                            buttonMode="true"
+                            useHandCursor="true"
+                            />
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Municipio"/>
+                    <s:DropDownList
+                            id="cmbMunicipio"
+                            prompt="Selecciona el Municipio"
+                            labelField="municipio"
+                            enabled="{flagMunicipio}"
+                            dataProvider="{listMunicipios}"
+                            change="selectMunicipio()"
+                            width="300"
+                            buttonMode="true"
+                            useHandCursor="true"
+                            />
+                </s:HGroup>
+                <s:HGroup
+                        width="100%" height="100%"
+                        verticalAlign="middle"
+                        >
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Localidad"/>
+                    <s:DropDownList
+                            id="cmbLocalidad"
+                            enabled="{flagLocalidad}"
+                            labelField="localidad"
+                            prompt="Selecciona la Localidad"
+                            dataProvider="{listLocalidades}"
+                            change="selectLocalidad()"
+                            width="300"
+                            buttonMode="true"
+                            useHandCursor="true"
+                            />
+                </s:HGroup>
+                <s:HGroup
+                        width="100%" height="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Teléfono"/>
+                    <s:TextInput
+                            id="txtTelefono"
+                            width="300"
+                            text="{itemSelected.telefono}"
+                            restrict="0-9"
+                            maxChars="15"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%" height="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Correo"/>
+                    <s:TextInput
+                            id="txtCorreo"
+                            text="{itemSelected.correo}"
+                            width="300"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%" height="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="www"/>
+                    <s:TextInput
+                            id="txtWWW"
+                            text="{itemSelected.www}"
+                            width="300"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Nombre de Contacto"/>
+                    <s:TextInput
+                            id="txtContactoNombre"
+                            text="{itemSelected.contactoNombre}"
+                            width="300"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Fecha de Alta"/>
+                    <mx:DateField
+                            id="dateAlta"
+                            enabled="{flagDateAlta}"
+                            selectedDate="{itemSelected.fechaAlta}"
+                            width="300"/>
+                </s:HGroup>
+                <s:HGroup
+                        width="100%"
+                        verticalAlign="middle">
+                    <s:Label
+                            width="120" fontWeight="bold" textAlign="right"
+                            text="Estatus"/>
+                    <s:CheckBox
+                            id="cbxEstatus"
+                            selected="{itemSelected.estatus}"
+                            width="300"/>
+                </s:HGroup>
+
+
+	    </s:Panel>
+
+	</mx:HDividedBox>
+</s:SkinnableContainer>

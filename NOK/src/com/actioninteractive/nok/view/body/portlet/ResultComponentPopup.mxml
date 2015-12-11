@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:CustomPopup 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*" 
+	width="{_width}" height="{_height}"
+	close="{PopUpManager.removePopUp(this)}" 
+	title="{titleComponent}">
+	<fx:Declarations>
+		<s:ArrayList id="listColumns"/>
+	</fx:Declarations>
+
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.event.EquipoEvent;
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.vo.ArticuloVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.ArrayList;
+			import mx.controls.dataGridClasses.DataGridColumn;
+			import mx.managers.PopUpManager;
+			
+			import spark.components.DataGrid;
+			import spark.components.gridClasses.GridColumn;
+			import spark.events.GridEvent;
+			public var articuloSelected:ArticuloVO;
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			
+			[Bindable]public var titleComponent:String = "";
+			[Bindable]public var _width:Number = 400;
+			[Bindable]public var _height:Number = 300;
+			[Bindable]public var _collectionItems:ArrayCollection = new ArrayCollection();
+			[Bindable]public var columnsArray:ArrayCollection = new ArrayCollection();//Debe de llenarse de las columnas con las propiedades
+			//headerText:value, dataField:value
+			
+			protected function getItemSelected(event:MouseEvent):void
+			{
+				/* var evento:CRUDEvent = new CRUDEvent(CRUDEvent.ITEM_SELECTED_DATA);
+				evento.articuloVO = event.currentTarget.selectedItem;
+				articuloSelected = event.currentTarget.selectedItem;
+				dispatchEvent(evento); */
+				/* var ev:CRUDEvent = new CRUDEvent(CRUDEvent.EVENT_SELECT_MOUSE_EVENT);
+				ev._eventSelected = event;
+				dispatchEvent(ev); */
+				var evEquipo:EquipoEvent = new EquipoEvent(EquipoEvent.SELECTED_ITEM_FIND);
+				evEquipo.equipoVO = event.currentTarget.selectedItem;
+				dispatchEvent(evEquipo);
+				PopUpManager.removePopUp(this);
+			}
+			
+		]]>
+	</fx:Script>
+	<s:DataGrid
+		id="dataGridComponent"
+		width="{_width - 20}" height="{_height - 100}"
+		doubleClickEnabled="true" doubleClick="getItemSelected(event)"
+		dataProvider="{_collectionItems}">
+			<s:columns>
+				<s:ArrayList>
+					<s:GridColumn headerText="Id Equipo"  			dataField="idEquipo" 			width="70"/> 
+					<s:GridColumn headerText="Num. Ecónomico" 	 	dataField="numeroeconomico" 	width="110"/>
+					<s:GridColumn headerText="Submarca" 			dataField="submarca"	 		width="70"/> 
+					<s:GridColumn headerText="Num. Serie" 			dataField="numeroserie" 		width="70"/> 
+					<s:GridColumn headerText="Adquisición" 			dataField="tipoadquisicion" 	width="70"/> 
+					<s:GridColumn headerText="Fecha Adquisición"	dataField="fechaadquisicion" 	width="70"/> 
+					<s:GridColumn headerText="Marca Motor" 			dataField="marcamotor" 			width="70"/> 
+					<s:GridColumn headerText="Modelo Motor" 		dataField="modelomotor" 		width="70"/> 
+					<s:GridColumn headerText="Marca" 				dataField="marca"	 			width="70"/> 
+					<s:GridColumn headerText="Categoría" 			dataField="categoria" 			width="70"/>
+					<s:GridColumn headerText="Subcategoria" 		dataField="subcategoria" 		width="70"/>
+					<s:GridColumn headerText="Factura" 				dataField="factura" 			width="70"/> 
+					<s:GridColumn headerText="Pedimiento" 			dataField="pedimiento" 			width="70"/> 
+					<s:GridColumn headerText="Cambio Aceite" 		dataField="cambioaceite" 		width="70"/> 
+					<s:GridColumn headerText="Combustible" 			dataField="combustible" 		width="70"/> 
+					<s:GridColumn headerText="Tipo Medida" 			dataField="tipomedida"	 		width="70"/>  
+					<s:GridColumn headerText="Año Equipo" 			dataField="anioequipo" 			width="70"/> 
+					<s:GridColumn headerText="Descripcion" 			dataField="descripcion" 		width="120"/> 
+				</s:ArrayList>
+			</s:columns>
+	</s:DataGrid>
+	
+	
+<mx:ControlBar>
+	<s:Label text="{_collectionItems.length.toString()}" color="0x333333"/>
+
+</mx:ControlBar>
+</component:CustomPopup>

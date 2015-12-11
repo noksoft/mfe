@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.model.CommonModel;
+			import com.actioninteractive.nok.model.EquipoModel;
+			import com.actioninteractive.nok.vo.MarcaMotorVO;
+			import com.actioninteractive.nok.vo.equipo.EquipoVO;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			
+			[Inject]
+			[Bindable]
+			public var modelEquipo:EquipoModel;
+			
+			public var utilMantEquipo:UtilMantEquipo = new UtilMantEquipo();
+			
+			public function actualizarDTO():void{
+				changePermisoFederal();
+				selectFechaVerificacion();
+				selectFechaTenencia();
+				changeCambioAceite();
+				changeCombustible();
+				changeNumMotor();
+				changeMarcaMotor();
+				changeModeloMotor();
+				changeTipoMedida();
+				changeTipoRodaje();
+				changeHP();
+				changeTorque();
+				changeLlanta();
+				changeRin();
+				changeLargoDim();
+				changeAnchoDim();
+				changeAltoDim();
+				changeLargoAdi();
+				changeAnchoAdi();
+				changeAltoAdi();
+				changeCapCarga();
+				changeNumEjes();
+			}
+			
+			public function cleanComponent():void{
+				chbPermisoFederal.selected = false;
+				modelEquipo.equipoVO.permisofederal = "0";
+				
+				nsCambAceite.value = 0;
+				modelEquipo.equipoVO.cambioaceite = "";
+				
+				listCombustible.selectedIndex = -1;
+				modelEquipo.equipoVO.combustible = "";
+				
+				txtNoMotor.text = "";
+				modelEquipo.equipoVO.numeromotor = "";
+				
+				listMarcaMotor.selectedIndex = -1;
+				modelEquipo.equipoVO.marcamotor = "";
+				
+				txtModeloMotor.text = "";
+				modelEquipo.equipoVO.modelomotor = "";
+				
+				txtTipoMedida.text = "";
+				modelEquipo.equipoVO.tipomedida = "";
+				
+				listTipoRodaje.selectedIndex = -1;
+				modelEquipo.equipoVO.tiporodaje = "";
+				
+				nstpHP.value = 0;
+				modelEquipo.equipoVO.hp = "0";
+				
+				nstpTorque.value = 0;
+				modelEquipo.equipoVO.torque = "0";
+				
+				txtLlanta.text = "";
+				modelEquipo.equipoVO.tipollanta = "";
+				
+				nstpRin.value = 0
+				modelEquipo.equipoVO.rin = "0";
+				
+				nstpCapCarga.value = 0;
+				modelEquipo.equipoVO.capacidadcarga = "0";
+				
+				nstpNumEjes.value = 0;
+				modelEquipo.equipoVO.numeroejes = "0";
+				
+				txtChasis.text = "";
+				modelEquipo.equipoVO.numerochasis = "";
+			}
+			
+			public function selectItem(_equipoVO:EquipoVO):void{
+				chbPermisoFederal.selected = Boolean(_equipoVO.permisofederal);
+				nsCambAceite.value = Number(_equipoVO.cambioaceite);
+				
+				for(var ic:int = 0; ic < modelEquipo.acCombustible.length; ic++){
+					var objc:Object = modelEquipo.acCombustible[ic];
+					if(objc.name == _equipoVO.combustible){
+						listCombustible.selectedIndex = ic;
+					}
+				}
+				
+				txtNoMotor.text = _equipoVO.numeromotor;
+				
+				for(var imm:int = 0; imm < modelEquipo.acMarcasMotor.length; imm++){
+					var objmm:Object = modelEquipo.acMarcasMotor[imm];
+					if(objmm.marcaMotor == _equipoVO.marcamotor){
+						listMarcaMotor.selectedIndex = imm;
+					}
+				}
+				
+				txtModeloMotor.text = _equipoVO.modelomotor;
+				
+				txtTipoMedida.text = _equipoVO.tipomedida;
+				
+				for(var itr:int = 0; itr < modelEquipo.acTipoRodaje.length; itr++ ){
+					var objitr:Object = modelEquipo.acTipoRodaje[itr];
+					if(objitr.descripcion == _equipoVO.tiporodaje){
+						listTipoRodaje.selectedIndex = itr;
+					}
+				}
+				
+				nstpHP.value = Number(_equipoVO.hp);;
+				nstpTorque.value = Number(_equipoVO.torque);
+				txtLlanta.text = _equipoVO.tipollanta;
+				nstpRin.value = Number(_equipoVO.rin);
+				nstpLargoDim.value = Number(_equipoVO.dimensioneslargo);
+				nstpAnchoDim.value = Number(_equipoVO.dimensionesancho);
+				nstpAltoDim.value = Number(_equipoVO.dimensionesalto);
+				nstpLargoAdi.value = Number(_equipoVO.dimaditamientolargo);
+				nstpAnchoAdi.value = Number(_equipoVO.dimaditamientoancho);
+				nstpAltoAdi.value = Number(_equipoVO.dimaditamientoalto);
+				
+				nstpCapCarga.value = Number(_equipoVO.capacidadcarga);
+				nstpNumEjes.value = Number(_equipoVO.numeroejes);
+				txtChasis.text = _equipoVO.numerochasis;
+			}
+			
+			/**
+			 * Método para obetner la fecha seleccionada en Fecha de Verificación
+			 */
+			public function selectFechaVerificacion ():void{
+				var tempDate:Date = fechVerificaion.selectedDate;
+				if(tempDate == null){
+					fechVerificaion.text = "Fecha:__ ___ ___";
+				}else{
+					modelEquipo.equipoVO.fechaverificacion = tempDate.getFullYear().toString() +	'/' + (tempDate.getMonth()+1).toString() + '/' + tempDate.getDate();
+				}
+			}
+			
+			/**
+			 * Método para obetner la fecha seleccionada en Fecha de Tenencia
+			 */
+			public function selectFechaTenencia ():void{
+				var tempDate:Date = fechTenencia.selectedDate;
+				if(tempDate == null){
+					fechTenencia.text = "Fecha:__ ___ ___";
+				}else{
+					modelEquipo.equipoVO.fechatenencia = tempDate.getFullYear().toString() +	'/' + (tempDate.getMonth()+1).toString() + '/' + tempDate.getDate();
+				}
+			}
+			
+			private function changeCambioAceite ():void{
+				var value:String = String(nsCambAceite.value);
+				if(value != ""){
+					modelEquipo.equipoVO.cambioaceite = value;
+				}
+			}
+			
+			private function changePermisoFederal():void{
+				var value:String = String(Number(chbPermisoFederal.selected));
+				if(value != ""){
+					modelEquipo.equipoVO.permisofederal = value;
+				}else{
+					modelEquipo.equipoVO.permisofederal = "0";
+				}
+			}
+			
+			private function changeCombustible ():void{
+				var item:Object = listCombustible.selectedItem;
+				modelEquipo.equipoVO.combustible = item.name;
+			}
+			
+			private function changeNumMotor ():void{
+				var value:String = txtNoMotor.text;
+				if(value != ""){
+					modelEquipo.equipoVO.numeromotor = value;
+				}
+			}
+			
+			/**
+			 * Guarda la marca de motor seleccionada
+			 **/
+			private function changeMarcaMotor ():void{
+				var _marcaMotor:MarcaMotorVO = listMarcaMotor.selectedItem as MarcaMotorVO;
+				modelEquipo.equipoVO.idMarcamotor = _marcaMotor.idMarcaMotor
+				modelEquipo.equipoVO.marcamotor = _marcaMotor.marcaMotor;
+			}
+			
+			/**
+			 * Guarda el modelo del motor
+			 **/
+			private function changeModeloMotor ():void{
+				var tempValue:String = txtModeloMotor.text;
+				if(tempValue != ""){
+					modelEquipo.equipoVO.modelomotor = tempValue;
+					//modelEquipo.equipoVO.idModelomotor = tempValue;
+				}
+			}
+			
+			private function changeTipoMedida():void{
+				var value:String = txtTipoMedida.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipomedida = value;
+				}
+			}
+			
+			private function changeTipoRodaje ():void{
+				var value:String = Object(listTipoRodaje.selectedItem).descripcion;
+				if(value != ""){
+					modelEquipo.equipoVO.tiporodaje = value;	
+				}else{
+					modelEquipo.equipoVO.tiporodaje = "";
+				}
+			}
+			
+			private function changeHP ():void{
+				var value:String = String(nstpHP.value);
+				if(value != ""){
+					modelEquipo.equipoVO.hp = value;
+				}
+			}
+			
+			private function changeTorque ():void{
+				var value:String = String(nstpTorque.value);
+				if(value != ""){
+					modelEquipo.equipoVO.torque = value;
+				}
+			}
+			
+			private function changeLlanta ():void{
+				var value:String = txtLlanta.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipollanta = value;
+				}
+			}
+			
+			private function changeRin():void{
+				var value:String = String(nstpRin.value);
+				if(value != ""){
+					modelEquipo.equipoVO.rin = value;
+				}
+			}
+			
+			private function changeLargoDim ():void{
+				var value:String =  String(nstpLargoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensioneslargo = value;
+				}
+			}
+			
+			private function changeAnchoDim ():void{
+				var value:String = String(nstpAnchoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensionesancho = value;
+				}
+			}
+			
+			private function changeAltoDim ():void{
+				var value:String = String(nstpAltoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensionesalto = value;
+				}
+			}
+			
+			
+			private function changeLargoAdi ():void{
+				var value:String =  String(nstpLargoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientolargo = value;
+				}
+			}
+			
+			private function changeAnchoAdi ():void{
+				var value:String = String(nstpAnchoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientoancho = value;
+				}
+			}
+			
+			private function changeAltoAdi ():void{
+				var value:String = String(nstpAltoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientoalto = value;
+				}
+			}
+			
+			private function changeCapCarga():void{
+				var value:String = String(nstpCapCarga.value);
+				if(value != ""){
+					modelEquipo.equipoVO.capacidadcarga = value;
+				}else{
+					modelEquipo.equipoVO.capacidadcarga = "0";
+				}
+			}
+			
+			private function changeNumEjes():void{
+				var value:String = String(nstpNumEjes.value);
+				if(value != ""){
+					modelEquipo.equipoVO.numeroejes = value;
+				}else{
+					modelEquipo.equipoVO.numeroejes = "0";
+				}
+			}
+			
+			private function changeNumChasis():void{
+				var value:String = txtChasis.text;
+				if(value != ""){
+					modelEquipo.equipoVO.numerochasis = value;
+				}else{
+					modelEquipo.equipoVO.numerochasis = "";
+				}
+			}
+			
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:HorizontalLayout/>
+	</s:layout>
+	<!--Contenedor principal-->
+		
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:CheckBox
+				id="chbPermisoFederal"
+				label="Persimo Federal"
+				selected="false"/>
+			<s:Label text="Última fecha Verificación" textAlign="right" width="120" top="4"/>
+			<mx:DateField
+				id="fechVerificaion"
+				dayNames="{CommonModel.dayArray}"
+				monthNames="{CommonModel.monthArray}"/>
+			<s:Label text="Tipo Verificación" textAlign="right" width="120" top="4"/>
+			<s:DropDownList
+				id="listTipoVerificacion"
+				width="100%"
+				dataProvider="{crudModel.acListaVerificacion}"
+				labelField="verificacion"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:Label text="Último pago Tenencia" textAlign="right" width="120" top="4"/>
+			<mx:DateField
+				id="fechTenencia"
+				dayNames="{CommonModel.dayArray}"
+				monthNames="{CommonModel.monthArray}"
+				change="selectFechaTenencia()"/>
+			<s:Label text="Verificar en:" textAlign="right" width="120" top="4"/>
+			<s:DropDownList
+				id="listTenencia"
+				width="100%"
+				dataProvider="{crudModel.acListaTenencia}"
+				labelField="tenencia"
+				selectedIndex="-1"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Cambio de Aceite" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nsCambAceite"
+				snapInterval="500"
+				minimum="500"
+				maximum="500000"/>
+			<s:Label 
+				text="Combustible:" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listCombustible"
+				dataProvider="{modelEquipo.acCombustible}"
+				labelField="name"
+				selectedIndex="-1"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+		
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="No. de Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput 
+				id="txtNoMotor"
+				width="300"
+				maxChars="9"
+				restrict="0-9"/>
+			<s:Label 
+				text="Marca Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listMarcaMotor"
+				width="100%" 
+				prompt="Selecciona la marca" 
+				dataProvider="{modelEquipo.acMarcasMotor}" 
+				labelField="marcaMotor"/>			
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Modelo Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtModeloMotor"
+				width="120"/>
+			<s:Label 
+				text="Tipo de Medida" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtTipoMedida"
+				width="120"
+				text="Horas"
+				keyDown="txtTipoMedida.enabled = true"
+				keyUp="txtTipoMedida.enabled = false"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Tipo de Rodaje" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listTipoRodaje"
+				width="100%" 
+				prompt="Selecciona tipo de Rodaje" 
+				requireSelection="true"
+				dataProvider="{modelEquipo.acTipoRodaje}"
+				labelField="descripcion"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">		
+			<s:Label 
+				text="HP" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpHP"
+				snapInterval="500"
+				minimum="500"
+				maximum="500000"/>
+			<s:Label 
+				text="Torque" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpTorque"
+				snapInterval="50"
+				minimum="10"
+				maximum="500000"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Llanta" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtLlanta"
+				width="300"
+				maxChars="15"/>
+			<s:Label 
+				text="Rin" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpRin"
+				maximum="30"
+				minimum="15"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:VGroup
+				width="100%" 
+				height="100%" 
+				horizontalAlign="center">
+				<s:Label 
+					text="Dimensiones (m)" 
+					textAlign="right" 
+					width="120"/>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Largo" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpLargoDim"
+						maximum="50"
+						minimum="1"/>
+				</s:HGroup>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Ancho" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpAnchoDim"
+						maximum="10"
+						minimum="1"/>
+				</s:HGroup>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Alto" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpAltoDim"
+						maximum="5"
+						minimum="1"/>
+				</s:HGroup>
+			</s:VGroup>
+		</s:HGroup>
+		<s:HGroup
+			width="100%" verticalAlign="middle">
+			<s:Label 
+				text="Capacidad de Carga" 
+				textAlign="right" 
+				width="120" top="4"/>
+			<s:NumericStepper
+				id="nstpCapCarga"
+				snapInterval="1"
+				maximum="20000"
+				minimum="1"/>
+			<s:Label text="Num. Ejes"
+					 textAlign="right" 
+					 width="120" top="4"/>
+			<s:NumericStepper
+				id="nstpNumEjes"
+				snapInterval="1"
+				maximum="10"
+				minimum="1"/>
+			<s:Label text="Num. Chasis" 
+					 textAlign="right" 
+					 width="120" top="4"/>
+			<s:TextInput
+				id="txtChasis"
+				width="120"
+				maxChars="25"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:VGroup
+				width="100%" 
+				height="100%" 
+				horizontalAlign="center">
+				<s:Label 
+					text="Aditamiento (m)" 
+					textAlign="right" 
+					width="120"/>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Largo" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpLargoAdi"
+						maximum="50"
+						minimum="1"/>
+				</s:HGroup>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Ancho" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpAnchoAdi"
+						maximum="10"
+						minimum="1"/>
+				</s:HGroup>
+				<s:HGroup 
+					width="100%" 
+					height="100%">
+					<s:Label 
+						text="Alto" 
+						textAlign="right" 
+						width="120"/>
+					<s:NumericStepper 
+						id="nstpAltoAdi"
+						maximum="5"
+						minimum="1"/>
+				</s:HGroup>
+			</s:VGroup>
+		</s:HGroup>
+		
+	</s:Group>
+</s:Group>

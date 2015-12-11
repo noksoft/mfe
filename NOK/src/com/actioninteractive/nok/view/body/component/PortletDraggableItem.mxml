@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:PortletDraggableItemBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*"
+	height="100%"
+	
+	toolTip="{dataSource.nombre_submenu}"
+	
+	includeInLayout="{!dataSource.selected}"
+	visible="{!dataSource.selected}"
+	
+	mouseDown="mouseDownUpHandler(event)"
+	mouseMove="mouseMoveHandler(event)"
+	>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.view.AssetManager;
+		]]>
+	</fx:Script>
+	
+	<component:layout>
+		<s:BasicLayout />
+	</component:layout>
+	
+	<fx:Declarations>
+		<s:Fade id="fadeIn"
+			alphaFrom="0" alphaTo="1"
+			/>
+	</fx:Declarations>
+	
+	<s:Image 
+		height="100%"
+		source="{dataSource.icon}"
+		/>
+	<!--s:Label
+		text="{dataSource.label}"/-->
+	<s:Image
+		right="-2" bottom="-2"
+		source="{AssetManager.portletMiniAddButtonSkin}"
+		/>
+	
+</component:PortletDraggableItemBase>

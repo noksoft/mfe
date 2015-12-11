@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename WidgetToggleButtonSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns="http://www.degrafa.com/2007" 
+	xmlns:filters="flash.filters.*">
+
+    <mx:Script>
+        <![CDATA[
+            [Bindable] private var usedColor:Number = 0xb6e3f2;
+            [Bindable] private var usedColor2:Number = 0x37b7e7;
+            
+            [Bindable] private var usedColorB:Number = 0xfefefe;
+            [Bindable] private var usedColorB2:Number = 0xd7d7d7;
+            
+            [Bindable] private var baseColor:Number = 0x6bc9ed;
+            [Bindable] private var baseColor2:Number = 0xcccccc;
+            
+        ]]>
+    </mx:Script>
+
+    <fills>
+        <SolidFill id="bodyFill" color="{baseColor2}" />
+        <SolidFill id="bodyFill2" color="{baseColor}" />
+        
+        <LinearGradientFill id="upFill" angle="90">
+        	<GradientStop color="{usedColorB}" />
+        	<GradientStop color="{usedColorB2}" />
+        </LinearGradientFill>
+        
+        <LinearGradientFill id="downFill" angle="90">
+        	<GradientStop color="{usedColor}" />
+        	<GradientStop color="{usedColor2}" />
+        </LinearGradientFill>
+        
+        <LinearGradientFill id="disFill" angle="90">
+        	<GradientStop color="{usedColor}" alpha="0.75" />
+        </LinearGradientFill>
+    </fills>
+    
+    <geometry>
+        
+        <!--THE BUTTON DOES NOT HAVE MOUSE OVER STATES-->
+        <GeometryComposition state="upSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="overSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="downSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="disabledSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{disFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedUpSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill2}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{downFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedOverSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill2}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{downFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedDownSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill2}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{downFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedDisabledSkin">
+        	<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="{skinHeight*0.32}" fill="{bodyFill2}" />
+        	<RoundedRectangle x="1" y="1" width="{skinWidth - 2}" height="{skinHeight - 2}" cornerRadius="{skinHeight*0.32}" fill="{disFill}" />
+        </GeometryComposition>
+    </geometry>
+</GraphicBorderSkin>

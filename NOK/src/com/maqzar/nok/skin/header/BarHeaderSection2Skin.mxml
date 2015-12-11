@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename BarHeaderSection2Skin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns="http://www.degrafa.com/2007">
+	
+	<geometry>
+		<RoundedRectangle width="{skinWidth}" height="{skinHeight}">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop alpha="1" color="0x8fd3ed" />
+					<GradientStop alpha="1" color="0xfdfdfd" ratio="0.025"/>
+					<GradientStop alpha="1" color="0xf1f1f0" ratio="0.075"/>
+					<GradientStop alpha="1" color="0xe0e0df" ratio="0.8"/>
+					<GradientStop alpha="1" color="0xbcd3db" ratio="0.9"/>
+				</LinearGradientFill>
+			</fill>
+		</RoundedRectangle>
+	</geometry>
+</GraphicBorderSkin>

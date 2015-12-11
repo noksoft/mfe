@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename TotalValueSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns="http://www.degrafa.com/2007">
+	
+	<geometry>
+		<RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop alpha="0.7" color="#FFFFFF" ratio="0"/>
+					<GradientStop alpha="1" color="#EDEDED" ratio="0.6"/>
+					<GradientStop alpha="1" color="#C4C4C4" ratio="1"/>
+				</LinearGradientFill>
+			</fill>
+		</RoundedRectangle>
+	</geometry>
+</GraphicBorderSkin>

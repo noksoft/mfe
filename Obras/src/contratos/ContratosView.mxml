@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark" creationComplete="init()" 
+					  xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+	
+	<fx:Declarations>
+		<mx:StringValidator id="validaNumeroContrato" source="{numeroContratoTextInput}" property="text" 
+							requiredFieldError="Se requiere el número de contrato" trigger="{guardarButton}" triggerEvent="click"/>
+		<s:CurrencyValidator id="validaPresupuesto" source="{presupuestoTextInput}" property="text" allowNegative="false" currencySymbol="$" decimalSeparator="." fractionalDigits="2" 
+							 requiredFieldError="Se requiere el presupesto" trigger="{guardarButton}" triggerEvent="click"/>
+		<mx:StringValidator id="validaDescripcion" source="{descripcionTextInput}" property="text" 
+							requiredFieldError="Se requiere descripción del contrato" trigger="{guardarButton}" triggerEvent="click"/>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:RemoteObject id="roClientes" endpoint="{NokConstants.ENDPOINT}" destination="clienteBusiness">
+			<s:method name="catClientes" fault="contratoFault(event)" result="clientesResult(event)"/>
+		</s:RemoteObject>
+		<s:RemoteObject id="roContratos" fault="contratoFault(event)" endpoint="{NokConstants.ENDPOINT}" destination="contratoBusiness">
+			<s:method name="catContrato" result="contratosResult(event)"/>
+			<s:method name="insertContrato" result="insertContratoResult(event)"/>
+			<s:method name="updateContrato" result="updateContratoResult(event)"/>
+			<s:method name="deleteContrato" result="deleteContratoResult(event)"/>
+			<s:method name="updateEstatusContrato" result="updateEstatusContratoResult(event)"/>
+		</s:RemoteObject>
+		<mx:DateFormatter id="dateFormato" formatString="YYYY-MM-DD"/>
+	</fx:Declarations>
+	<fx:Script source="Contratos.as"/>
+	
+	<mx:HDividedBox width="100%" height="100%">
+		<s:Panel width="100%" height="100%" title="Lista de contratos">
+			<s:DataGrid width="100%" height="100%" dataProvider="{contratosList}">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="Contrato" dataField="numeroContrato"/>
+						<s:GridColumn headerText="Descripción" dataField="descripcion"/>
+						<s:GridColumn headerText="Inicia" dataField="fechaInicio" labelFunction="filterFechaFormato"/>
+						<s:GridColumn headerText="Termina" dataField="fechaFin" labelFunction="filterFechaFormato"/>
+						<s:GridColumn headerText="presupuesto" dataField="presupuesto"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			<s:controlBarContent>
+				<s:HGroup width="100%" horizontalAlign="right">
+					
+					<s:Label text="" id="labelTotalContratos"/>
+				</s:HGroup>
+				
+			</s:controlBarContent>
+		</s:Panel>
+		<s:Panel width="100%" height="100%" title="Contratos">
+			<s:layout>
+				<s:VerticalLayout gap="5" paddingBottom="10" paddingLeft="10" paddingRight="10"
+								  paddingTop="10"/>
+			</s:layout>
+			<s:controlBarContent>
+				<s:Button label="Actualizar" icon="assets/icons/application_form_edit.png"/>
+				<s:Button label="Nuevo" icon="assets/icons/application_add.png"/>
+				<s:Button label="Cancelar" icon="assets/icons/cancel.png"/>
+				<s:Button id="guardarButton" label="Guardar" click="guardarContratoButtonClick()" icon="assets/icons/add.png" styleName="primaryButton"/>
+			</s:controlBarContent>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Número de contrato" textAlign="right"/>
+				<s:TextInput width="300" id="numeroContratoTextInput"/>
+				
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Presupuesto" textAlign="right"/>
+				<s:TextInput width="300" id="presupuestoTextInput"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Descripción" textAlign="right"/>
+				<s:TextArea id="descripcionTextInput" width="100%" height="100"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Fechas" textAlign="right"/>
+				<s:Label text="Inicio"/>
+				<mx:DateField id="fechaInicioDateField" yearNavigationEnabled="true" formatString="YYYY-MM-DD"
+							  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+							  dayNames="[D,L,M,M,J,V,S]"/>
+				<s:Label text="-"/>
+				<s:Label text="Fin"/>
+				<mx:DateField id="fechaFinDateField" yearNavigationEnabled="true" 
+							  disabledRanges="{[{rangeEnd: fechaInicioDateField.selectedDate}]}" formatString="YYYY-MM-DD"
+							  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+							  dayNames="[D,L,M,M,J,V,S]"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Cliente" textAlign="right"/>
+				<s:DropDownList width="100%" dataProvider="{clientesList}" labelField="razonSocial" id="clientesComboBox"/>
+			</s:HGroup>
+			
+		</s:Panel>
+	</mx:HDividedBox>
+	
+</s:SkinnableContainer>

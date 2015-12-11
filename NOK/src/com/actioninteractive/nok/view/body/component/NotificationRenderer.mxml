@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:NotificationRendererBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*"
+	>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Image id="notificationIcon"
+		width="30"
+		horizontalAlign="center"
+		source="{priorityIcon}"
+		/>
+	<s:VGroup id="labelGroup"
+		width="130"
+		gap="0"
+		>
+		<s:Label id="originText"
+			width="130"
+			maxDisplayedLines="1"
+			text="{datasource.section+' -> '+datasource.portlet}"
+			toolTip="{datasource.section+' -> '+datasource.portlet}"
+			color="0x666666"
+			/>
+		<s:Label id="notificationText"
+			width="130"
+			text="{datasource.message}"
+			color="0x000000"
+			/>
+	</s:VGroup>
+</component:NotificationRendererBase>

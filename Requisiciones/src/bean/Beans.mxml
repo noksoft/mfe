@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Create by rzaragoza on 23/05/2015
+-->
+<swiz:BeanProvider xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:swiz="http://swiz.swizframework.org" 
+		 xmlns:model="model.*" 
+		 xmlns:controller="controller.*">
+	<model:RequisicionModel id="requisicionModel"/>
+	<controller:RequisicionController id="requisicionController"/>
+</swiz:BeanProvider>

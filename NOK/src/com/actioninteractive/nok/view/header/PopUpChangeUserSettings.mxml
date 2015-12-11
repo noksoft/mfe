@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:CustomPopup 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*"
+	mouseDownOutside="closePopUpUserSetting();">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CommonEvent;
+			import com.actioninteractive.nok.model.CommonModel;
+			import com.actioninteractive.nok.util.Tools;
+			
+			import mx.managers.PopUpManager;
+			
+			[Inject(source="commonModel")]
+			[Bindable]
+			public var commonModel:CommonModel;
+			
+			[Dispatcher]
+			public var dispatcher:IEventDispatcher = new EventDispatcher();
+			
+			public var _eventChangePass:CommonEvent;
+			
+			
+			private function changePassword ():void{
+				try{
+					txtPass.errorString = "";
+					txtRePass.errorString = "";
+					if(txtPass.text != "" && txtRePass.text != ""){
+						if(txtPass.text != txtRePass.text){
+							if(txtPass.text != commonModel.currentUser.pass){
+								_eventChangePass = new CommonEvent(CommonEvent.SAVE_PASSWORD_USER_SETTING_EVENT);
+								_eventChangePass.newPassword = txtPass.text;
+								
+								dispatcher.dispatchEvent(_eventChangePass);
+								closePopUpUserSetting();
+							}else{
+								txtPass.errorString = "Debes ingresar un password diferente a tu anterior";
+								txtRePass.errorString = "Debes ingresar un password diferente a tu anterior";
+							}	
+						}else{
+							txtPass.errorString = "La contraseña debe de coincidir";
+							txtRePass.errorString = "La contraseña debe coincidir";
+						}
+						
+					}else{
+						if(txtPass.text != ""){
+							txtPass.errorString = "Debes ingresar un nuevo password";
+						}
+						if(txtRePass.text != ""){
+							txtRePass.errorString = "Debes ingresar un nuevo password";
+						}
+					}
+				}catch(e:Error){
+					trace(e.message);
+				}
+			}
+			
+			public function closePopUpUserSetting():void{
+				PopUpManager.removePopUp(this);
+			}
+		]]>
+	</fx:Script>
+	<s:HGroup
+		paddingLeft="5" paddingTop="5">
+		<s:Label
+			text="Usuario"
+			width="65"
+			color="#000000"/>
+		<s:Label
+			text="{commonModel.currentUser.usuario}"
+			color="#000000"/>
+	</s:HGroup>
+	<s:HGroup paddingLeft="5">
+		<s:Label
+			text="Contraseña:"
+			width="65"
+			color="#000000"/>
+		<s:TextInput
+			id="txtPass"
+			toolTip="Presiona enter para cambiar tu contraseña"
+			enter="txtRePass.setFocus();"/>
+	</s:HGroup>
+	<s:HGroup paddingLeft="5">
+		<s:Label
+			text="Repite tu contraseña:"
+			width="65"
+			color="#000000"/>
+		<s:TextInput
+			id="txtRePass"
+			toolTip="Presiona enter para confimar tu contraseña"
+			enter="changePassword();"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%"
+		horizontalAlign="center">
+		<s:Button
+			label="Cambiar"
+			buttonMode="true" useHandCursor="true"
+			click="changePassword()"/>
+	</s:HGroup>
+</component:CustomPopup>

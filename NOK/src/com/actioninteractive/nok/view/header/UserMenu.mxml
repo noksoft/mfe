@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<header:UserMenuBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:header="com.actioninteractive.nok.view.header.*"
+	>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.view.AssetManager;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<!--Componentes para el menu de notificaciones-->
+	<mx:Image 
+		y="1"
+		source="{AssetManager.userAlertsSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		click="showNotifications()"
+		/>
+	<s:Label 
+		x="6" y="3"
+		width="13"
+		text="{commonModel.notificationsList.length}" 
+		toolTip="{(commonModel.notificationsList.length > 9)? commonModel.notificationsList.length+' Notifications':''}"
+		textAlign="center"
+		maxDisplayedLines="1"
+		color="0xFFFFFF"
+		fontSize="12"
+		buttonMode="true"
+		click="showNotifications()"
+		/>
+	<!--Componentes para el menu de notificaciones-->
+	
+	<mx:Image 
+		right="0"
+		source="{AssetManager.settingsMenuSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		/>
+	
+	<header:LoginMenu
+		left="15"
+		width="127" height="26"
+		userName="{commonModel.currentUser.nombre}"
+		/>
+	
+	<mx:Image 
+		y="8"
+		right="11"
+		source="{AssetManager.settingsButtonSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		/>
+	
+</header:UserMenuBase>

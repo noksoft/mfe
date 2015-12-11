@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename NormalButtonSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="http://www.degrafa.com/2007" >
+	<mx:Script>
+        <![CDATA[
+            [Bindable] private var usedColor:Number = 0xfefefe;
+            [Bindable] private var usedColor2:Number = 0xd7d7d7;
+            
+            [Bindable] private var baseColor:Number = 0xcccccc;
+            
+            [Bindable] private var cornerRadius:Number = 8;
+            
+            [Bindable] private var innerXY:Number = 0;
+            [Bindable] private var innerXY2:Number = 1;
+            
+            [Bindable] private var innerWidth:Number;
+            [Bindable] private var innerWidth2:Number;
+            
+            [Bindable] private var innerHeight:Number;
+            [Bindable] private var innerHeight2:Number;
+            
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+			{
+	        	super.updateDisplayList(unscaledWidth, unscaledHeight);
+	        	
+	        	innerWidth = skinWidth - (innerXY * 2);
+	            innerHeight = skinHeight - (innerXY * 2);
+	            
+	            innerWidth2 = skinWidth - (innerXY2 * 2);
+	            innerHeight2 = skinHeight - (innerXY2 * 2);
+			}
+        ]]>
+    </mx:Script>
+
+    <fills>
+        <SolidFill id="bodyFill" color="{baseColor}" />
+        
+        <LinearGradientFill id="upFill" angle="90">
+        	<GradientStop color="{usedColor}" />
+        	<GradientStop color="{usedColor2}" />
+        </LinearGradientFill>
+        
+        <LinearGradientFill id="downFill" angle="90">
+        	<GradientStop color="{usedColor2}" />
+        	<GradientStop color="{usedColor}" />
+        </LinearGradientFill>
+        
+        <LinearGradientFill id="disFill" angle="90">
+        	<GradientStop color="{usedColor}" alpha="0.75" />
+        </LinearGradientFill>
+    </fills>
+    
+    <geometry>
+        <!--THE BUTTON DOES NOT HAVE MOUSE OVER STATES-->
+        <GeometryComposition state="upSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="overSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="downSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{downFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="disabledSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{disFill}" />
+        </GeometryComposition>
+        
+         <GeometryComposition state="selectedUpSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedOverSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{upFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedDownSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{downFill}" />
+        </GeometryComposition>
+        
+        <GeometryComposition state="selectedDisabledSkin">
+        	<RoundedRectangle x="{innerXY}" y="{innerXY}" width="{innerWidth}" height="{innerHeight}" cornerRadius="{cornerRadius}" fill="{bodyFill}" />
+        	<RoundedRectangle x="{innerXY2}" y="{innerXY2}" width="{innerWidth2}" height="{innerHeight2}" cornerRadius="{cornerRadius}" fill="{disFill}" />
+        </GeometryComposition>
+    </geometry>
+</GraphicBorderSkin>

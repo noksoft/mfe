@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:components="com.hillelcoren.components.*"
+			   width="474" height="500" close="PopUpManager.removePopUp(this)" title="Asigna Falla">
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:RadioButtonGroup id="prioridadrbtgroup"/>
+	</fx:Declarations>
+	<s:controlBarContent>
+		<s:Button label="Cancelar"/>
+		<s:Spacer width="100%" height="10"/>
+		<s:Button label="Asignar" styleName="primaryButton"/>
+	</s:controlBarContent>
+	<s:VGroup left="0" top="0" width="100%" height="100%" paddingBottom="5" paddingLeft="5"
+			  paddingRight="5" paddingTop="5">
+		<s:Label text="Equipo"/>
+		<s:TextInput width="100%" text="EXCAVADORA HIDRÁULICA PC200-8"/>
+		<s:Label text="Falla"/>
+		<s:TextInput width="100%" text="FALLA AMORTIGUADOR"/>
+		<s:Label text="Subfalla"/>
+		<s:TextInput width="100%" text="COMPRESOR ABC SUB MARZO1COMPRESOR ABC"/>
+		<s:Label text="Fecha de programación"/>
+		<mx:DateField showToday="true"/>
+		<s:Label text="Responsable Asignado"/>
+		<components:AutoComplete width="100%">
+		</components:AutoComplete>
+	</s:VGroup>
+</s:TitleWindow>

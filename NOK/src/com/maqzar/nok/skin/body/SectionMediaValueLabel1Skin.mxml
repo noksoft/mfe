@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename SectionMediaValueLabel1Skin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns="http://www.degrafa.com/2007">
+	
+	<geometry>
+		<RoundedRectangle x="0" y="0" width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+			<fill>
+				<SolidFill color="0xFFFFFF" />
+			</fill>
+		</RoundedRectangle>
+		<RoundedRectangle x="0" y="0" width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop color="#ffffff" />
+					<GradientStop color="#d6d6d6" />
+				</LinearGradientFill>
+			</fill>
+		</RoundedRectangle>
+	</geometry>
+</GraphicBorderSkin>

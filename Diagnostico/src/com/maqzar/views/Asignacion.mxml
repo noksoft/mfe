@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!--
+Created by Usuario on 25/04/2015.
+-->
+<views:AsignacionBase xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+					  xmlns:mx="library://ns.adobe.com/flex/mx"
+					  xmlns:views="com.maqzar.views.*" creationComplete="creacionCompleta()" xmlns:components="com.hillelcoren.components.*">
+	
+	<s:Panel title="Asignacion de Recursos" width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout gap="5" paddingBottom="10" paddingLeft="10" paddingRight="10"
+							  paddingTop="10"/>
+		</s:layout>
+		<s:controlBarContent>
+			
+		</s:controlBarContent>
+		
+		<s:HGroup width="100%">
+			<!-- ENCABEZADO PARA LOS CONTROLES DE BUSQUEDA DE OBRAS Y SU DETALLE-->
+			<s:VGroup width="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label text="Obra" textAlign="right" width="120"/>
+					<s:DropDownList id="ddlObras" change="obrasSelectedDdl()" width="100%" dataProvider="{asignacionModel.acObras}" prompt="-Selecciona una obra-" labelField="nombre"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="top">
+					<s:Label text="Descripcion" textAlign="right" width="120"/>
+					<s:TextArea id="txtDescripcion" width="100%" height="50" editable="false"
+								enabled="false" text="{asignacionModel.obraSelected.descripcion}"/>
+				</s:HGroup>
+				
+			</s:VGroup>
+			<s:VGroup width="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label text="Fecha inicio" textAlign="right" width="120"/>
+					<mx:DateField id="dateFieldFechaInicio" width="100%" dayNames="[D,L,M,M,J,V,S]"
+								  enabled="false" formatString="YYYY-MM-DD"
+								  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+								  text="{asignacionModel.obraSelected.fechaInicio}"
+								  yearNavigationEnabled="true"/>
+					<s:Label text="Fecha término" textAlign="right" width="120"/>
+					<mx:DateField id="dateFieldFechaTermino" width="100%" dayNames="[D,L,M,M,J,V,S]"
+								  enabled="false" formatString="YYYY-MM-DD"
+								  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+								  text="{asignacionModel.obraSelected.fechaTermina}"
+								  yearNavigationEnabled="true"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label text="Residente" textAlign="right" width="120"></s:Label>
+					<s:TextInput id="txtResidente" width="100%" enabled="false"
+								 text="{asignacionModel.obraSelected.nombreEmpleado}"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label text="Jornada laboral" textAlign="right" width="120"></s:Label>
+					<s:TextInput id="txtJornada" width="100%" enabled="false"
+								 text="{asignacionModel.obraSelected.tipoJornada}"/>
+				</s:HGroup>
+				
+			</s:VGroup>
+		</s:HGroup>
+		
+		
+		<s:HGroup width="100%" height="100%">
+			<!-- Asignacion de personal contenido -->
+			<s:VGroup width="100%" height="100%">
+				<s:HGroup width="100%" fontFamily="Roboto" fontSize="12">
+					<s:Label text="Personal" fontWeight="bold" fontSize="16"></s:Label>
+				</s:HGroup>
+				<components:AutoComplete prompt="Escribe el nombre del personal a filtrar" dataProvider="{asignacionModel.acPersonalDisponible}" labelField="nombre" width="100%"/>
+				<s:DataGrid
+					id="dataGridPersonalPorAsignar"
+					width="100%" height="100%"
+					dataProvider="{asignacionModel.acPersonalDisponible}"
+					doubleClickEnabled="true"
+					doubleClick="asignaPersonal(event)">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Nombre" dataField="nombre"/>
+							<s:GridColumn headerText="Estado" dataField="estatus"/>
+							<s:GridColumn headerText="Habilidades" dataField="habilidad"/>
+						</s:ArrayList>
+					</s:columns>
+				</s:DataGrid>
+			</s:VGroup>
+			
+			<s:VGroup width="100%" height="100%">
+				<s:HGroup width="100%" horizontalAlign="center">
+					<s:Label text="Recursos asignados a la obra" color="#53adff" fontWeight="bold" fontSize="16"></s:Label>
+				</s:HGroup>
+				<s:DataGrid
+					id="dataGridPersonalAsignado"
+					width="100%" height="100%"
+					dataProvider="{asignacionModel.acEmpleadosAsignados}"
+					doubleClickEnabled="true">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Nombre" dataField="nombre"/>							
+							<s:GridColumn headerText="Habilidades" dataField="habilidades"/>
+							<s:GridColumn headerText="Estatus" dataField="estatus"/>
+
+							<s:GridColumn headerText="" dataField="">
+								<s:itemRenderer>
+									<fx:Component>
+										<s:GridItemRenderer>
+											
+											<mx:LinkButton label="{data.estatus=='ASIGNADO'?'Inactivar':'Activar'}" click="{outerDocument.cambiaEstatusEmpleado(data)}"/>
+										</s:GridItemRenderer>
+									</fx:Component>
+								</s:itemRenderer>
+							</s:GridColumn>
+						</s:ArrayList>
+					</s:columns>
+				</s:DataGrid>
+			</s:VGroup>
+		</s:HGroup>
+		<s:HGroup width="100%" height="30" verticalAlign="bottom">
+			<s:Label text="Maquinaria, equipo y transporte" fontWeight="bold" fontSize="16"></s:Label>
+		</s:HGroup>
+		<components:AutoComplete prompt="Escribe el nombre del equipo o maquinria a filtrar" dataProvider="{asignacionModel.acEquiposDisponibles}" labelField="numeroeconomico" width="50%"/>
+
+		<s:HGroup width="100%" height="100%">
+			<!-- Asignacion de Maquinaria contenido -->
+			
+			<s:DataGrid
+				id="dataGridMaquinaEquipoTransporteDisponible"
+				width="100%" height="100%"
+				dataProvider="{asignacionModel.acEquiposDisponibles}"
+				doubleClickEnabled="true"
+				doubleClick="asignaMET(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="Número económico" dataField="numeroeconomico"/>
+						<s:GridColumn headerText="Categoria" dataField="tipocategoria"/>
+						<s:GridColumn headerText="Subcategoria" dataField="subcategoria"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			
+			
+			<s:DataGrid
+				id="dataGridMaquinaEquipoTransporteAsignado"
+				width="100%" height="100%"
+				dataProvider="{asignacionModel.acEquiposAsignados}">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="Número económico" dataField="numeroEconomico"/>
+						<s:GridColumn headerText="Categoria" dataField="tipoCategoria"/>
+						<s:GridColumn headerText="Subcategoria" dataField="subCategoria"/>
+						<s:GridColumn headerText="Estatus" dataField="estatus"/>
+						
+						<s:GridColumn headerText="" dataField="">
+							<s:itemRenderer>
+								<fx:Component>
+									<s:GridItemRenderer>
+										
+										<mx:LinkButton label="{data.estatus=='ASIGNADO'?'Inactivar':'Activar'}" click="outerDocument.cambiaEstatusEquipo(data)"/>
+									</s:GridItemRenderer>
+								</fx:Component>
+							</s:itemRenderer>
+						</s:GridColumn>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+		</s:HGroup>
+	</s:Panel>
+	
+	
+</views:AsignacionBase>

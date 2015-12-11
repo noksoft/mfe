@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	width="100%" height="100%"
+	creationComplete="init()">
+	<s:layout>
+		<s:HorizontalLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"/>
+	</s:layout>
+	
+	<fx:Declarations>
+		<s:RemoteObject
+			id="roFalla"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="fallaBusiness">
+			<!--	Metodos para la sección de Fallas	-->
+				<s:method
+					name="catFalla"
+					result="resultCatFalla(event)"
+					fault="faultCatFalla(event)"/>
+				<s:method
+					name="insertFalla"
+					result="resultInsertFalla(event)"
+					fault="faultInsertFalla(event)"/>
+				<s:method
+					name="deleteFalla"
+					result="resultDeleteFalla(event)"
+					fault="faultDeleteFalla(event)"/>
+				<s:method
+					name="updateFalla"
+					result="resultUpdateFalla(event)"
+					fault="faultUpdateFalla(event)"/>
+			<!--	Metodos para la sección de SubFallas	-->
+				<s:method
+					name="catSubfalla"
+					result="resultCatSubFalla(event)"
+					fault="faultCatSubFalla(event)"/>
+				<s:method
+					name="insertSubfalla"
+					result="resultInsertSubFalla(event)"
+					fault="faultInsertSubFalla(event)"/>
+				<s:method
+					name="updateSubfalla"
+					result="resultUpdateSubFalla(event)"
+					fault="faultUpdateSubFalla(event)"/>
+				<s:method
+					name="deleteSubfalla"
+					result="resultDeleteSubFalla(event)"
+					fault="faultDeleteSubFalla(event)"/>
+		</s:RemoteObject>
+		<mx:StringValidator
+			id="validateFallatxt"
+			source="{txtFalla}"
+			property="text"
+			requiredFieldError="Debes ingresar el nombre de la Falla"
+			required="true"/>
+		<mx:StringValidator
+			id="validateSubFallatxt"
+			source="{txtSubFalla}"
+			property="text"
+			requiredFieldError="Debes ingresar el nombre de la SubFalla"
+			required="true"/>
+		<mx:NumberValidator 
+			id="validatorFalla"
+			source="{cmbFalla}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe de seleccionar la Falla"
+			valid="validFallaSelectHandler();"
+			invalid="validFallaSelectFault();" />
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import event.CommonEvent;
+			
+			import model.FallaVO;
+			import model.SubfallaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.validators.Validator;
+			
+			import utils.AlertUtils;
+			
+			[Bindable]private var itemSelectedFalla:FallaVO = new FallaVO();
+			[Bindable]private var itemSelectedSubFalla:SubfallaVO = new SubfallaVO();
+			
+			[Bindable]private var listFallas:ArrayCollection;
+			[Bindable]private var listSubFallas:ArrayCollection;
+			
+			[Bindable]private var titleFormularioFalla:String;
+			[Bindable]private var titleFormularioSubFalla:String;
+			private const CREAR:String = "Crear";
+			private const ACTUALIZAR:String = "Actualizar";
+			
+			
+			/**********	SECCIÓN DE FALLAS	********************/
+			
+			
+			/**
+			 * Metodo que inicializa los datos de la pantalla
+			 */
+			private function init():void{
+				itemSelectedFalla = new FallaVO();
+				itemSelectedSubFalla = new SubfallaVO();
+				upDataFalla();
+				upDataSubFalla();
+			}
+			
+			private function upDataFalla():void{
+				roFalla.catFalla(itemSelectedFalla);
+				titleFormularioFalla = CREAR + " Falla";
+			}
+			
+			private function upDataSubFalla():void{
+				trace(cmbFalla);
+				trace(cmbFalla.selectedItem);
+				var tempFalla:FallaVO = cmbFalla.selectedItem as FallaVO;
+				if(tempFalla != null && tempFalla.idFalla != null && tempFalla.idFalla != ""){
+					var tempSubFalla:SubfallaVO = new SubfallaVO();
+					tempSubFalla.idFalla = tempFalla.idFalla;
+					tempSubFalla.falla = tempFalla.falla;
+					tempSubFalla.estatus = tempFalla.estatus;
+					roFalla.catSubfalla(tempSubFalla);
+				}else{
+					roFalla.catSubfalla(itemSelectedSubFalla);
+					titleFormularioSubFalla = CREAR + " SubFalla";
+				}
+			}
+			
+			private function clearFormularioFalla():void{
+				titleFormularioFalla = "Crear Falla";
+				itemSelectedFalla = new FallaVO();
+				txtFalla.text = "";
+				cbxEstatusFalla.selected = true;
+				
+				txtFalla.errorString = "";
+				
+				upDataFalla();
+			}
+			
+			private function saveFalla():void{
+				var arrayValidationResult:Array = Validator.validateAll([validateFallatxt]);
+				switch(titleFormularioFalla){
+					case CREAR + " Falla":
+						if(arrayValidationResult.length == 0){
+							saveUpdateFalla();
+							roFalla.insertFalla(itemSelectedFalla);
+						}else{
+							AlertUtils.showNoticeMessage("Notificación", "Debe de seleccionar los campos obligatorios");
+						}
+						//updatePropertiesClienteVO();
+						break;
+					case ACTUALIZAR + " Falla":
+						if(arrayValidationResult.length == 0){
+							saveUpdateFalla();
+							roFalla.updateFalla(itemSelectedFalla);
+						}else{
+							AlertUtils.showNoticeMessage("Notificación", "Debe de seleccionar los campos obligatorios");
+						}
+						break;
+					default:
+						break;
+				}
+			}
+			
+			private function saveUpdateFalla():void{
+				itemSelectedFalla.falla  = txtFalla.text;
+			}
+			
+			protected function deleteFalla():void{
+				if(itemSelectedFalla != null && itemSelectedFalla.idFalla != null && itemSelectedFalla.idFalla != ""){
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar la Falla?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmationFalla);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmationFalla (_event:CommonEvent):void{
+				roFalla.deleteFalla(itemSelectedFalla);
+			}
+			
+			protected function selectFalla(_event:MouseEvent):void
+			{
+				titleFormularioFalla = "Actualizar Falla";
+				itemSelectedFalla = _event.currentTarget.selectedItem as FallaVO;
+				itemSelectedFalla.filterEstatusFalla = itemSelectedFalla.estatus.toString();
+			}
+			
+			
+			/***********	SECCIÓN DE SUBFALLAS	*****************/
+			
+			/**
+			 * Metodo que inicializa los datos de la sección de subfalla al seleccionar la falla
+			 */
+			private function selectChangeFalla():void{
+				if(cmbFalla.selectedItem != null){
+					titleFormularioSubFalla = CREAR + " SubFalla";
+					var tempSelectedFalla:FallaVO = cmbFalla.selectedItem as FallaVO;
+					var tempSubFalla:SubfallaVO = new SubfallaVO();
+					tempSubFalla.falla = tempSelectedFalla.falla;
+					tempSubFalla.idFalla = tempSelectedFalla.idFalla;
+					tempSubFalla.estatus = true;
+					roFalla.catSubfalla(tempSubFalla);
+				}
+			}
+			
+			
+			private function clearFormularioSubFalla(cleanAll:Boolean = false):void{
+				titleFormularioSubFalla = "Crear SubFalla";
+				itemSelectedSubFalla = new SubfallaVO();
+				if(cleanAll){
+					cmbFalla.selectedItem = null;					
+				}
+				txtSubFalla.text = "";
+				cbxEstatusSubFalla.selected = true;
+				
+				cmbFalla.errorString = "";
+				txtSubFalla.errorString = "";
+				
+				upDataSubFalla();
+				
+			}
+			
+			private function saveSubFalla():void{
+				var arrayValidationResult:Array = Validator.validateAll([validateSubFallatxt, validatorFalla]);
+				switch(titleFormularioSubFalla){
+					case CREAR + " SubFalla":
+						if(arrayValidationResult.length == 0){
+							saveUpdateSubFalla();
+							roFalla.insertSubfalla(itemSelectedSubFalla);
+						}else{
+							AlertUtils.showNoticeMessage("Notificación", "Debe de seleccionar los campos obligatorios");
+						}
+						//updatePropertiesClienteVO();
+						break;
+					case ACTUALIZAR + " SubFalla":
+						if(arrayValidationResult.length == 0){
+							saveUpdateSubFalla();
+							roFalla.updateSubfalla(itemSelectedSubFalla);
+						}else{
+							AlertUtils.showNoticeMessage("Notificación", "Debe de seleccionar los campos obligatorios");
+						}
+						break;
+					default:
+						break;
+				}
+			}
+			
+			private function saveUpdateSubFalla():void{
+				var tempFalla:FallaVO = cmbFalla.selectedItem as FallaVO;
+				itemSelectedSubFalla.falla = tempFalla.falla;
+				itemSelectedSubFalla.idFalla = tempFalla.idFalla;
+				
+				itemSelectedSubFalla.subfalla = txtSubFalla.text;
+				itemSelectedSubFalla.estatus = cbxEstatusSubFalla.selected;
+			}
+			
+			protected function deleteSubFalla():void{
+				if(itemSelectedSubFalla != null && itemSelectedSubFalla.idSubfalla != null && itemSelectedSubFalla.idSubfalla != ""){
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar la SubFalla?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmationSubFalla);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+					
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmationSubFalla (_event:CommonEvent):void{
+				roFalla.deleteSubfalla(itemSelectedSubFalla);
+			}
+			
+			protected function selectSubFalla(_event:MouseEvent):void
+			{
+				titleFormularioSubFalla = "Actualizar SubFalla";
+				itemSelectedSubFalla = _event.currentTarget.selectedItem as SubfallaVO;
+				for(var i:int = 0; i < listFallas.length; i++){
+					var objFalla:FallaVO = listFallas[i] as FallaVO;
+					if(objFalla.idFalla == itemSelectedSubFalla.idFalla){
+						cmbFalla.selectedItem = objFalla;
+						//selectChangeFalla();
+						break;
+					}
+				}
+			}
+			
+			
+			
+			/**
+			 * Handler del validador del combo de fallas
+			 */
+			private function validFallaSelectHandler():void{
+				cmbFalla.errorString = "";
+			}
+			/**
+			 * Fault del validador del combo de fallas
+			 */
+			private function validFallaSelectFault():void{
+				cmbFalla.errorString = "Debe de seleccionar una Falla";
+			}
+			
+			/*******************************************************/
+			/******************	REMOTE OBJECT *********************/
+			/*******************************************************/
+			
+			/**************		FALLAS		***********************/	
+			
+			//catFalla
+			protected function resultCatFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						listFallas = _event.result as ArrayCollection;						
+					}
+				}catch(e:Error){
+					//trace("Error" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de las Fallas");
+				}
+				
+			}
+			protected function faultCatFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo cargar la información de las fallas.");
+			}
+			
+			//insertFalla
+			protected function resultInsertFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedFalla = new FallaVO();
+						if(listFallas != null){
+							listFallas.addItem(FallaVO(_event.result));
+							clearFormularioFalla();
+						}
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo guardar la información del Cliente");
+				}
+				
+			}
+			
+			protected function faultInsertFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo insertar la falla.");							
+			}
+			
+			
+			//updateFalla
+			protected function resultUpdateFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedFalla = new FallaVO();
+						upDataFalla();
+						clearFormularioFalla();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "updateCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo actualizar la información del Cliente");
+				}
+				
+			}
+			protected function faultUpdateFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo actualizar la falla.");
+				
+			}
+			
+			//deleteFalla
+			protected function resultDeleteFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedFalla = null;
+						clearFormularioFalla();
+						upDataFalla();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo borrar el Cliente");
+				}
+				
+			}
+			protected function faultDeleteFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo borrar la falla.");
+				
+			}
+			
+			
+			/**************		SUB-FALLAS		***********************/	
+			
+			//catSubfalla
+			protected function resultCatSubFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						listSubFallas = _event.result as ArrayCollection;						
+					}
+				}catch(e:Error){
+					//trace("Error" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de las SubFallas");
+				}
+				
+			}
+			protected function faultCatSubFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo cargar la información de las Subfallas.");
+			}
+			
+			//insertSubfalla
+			protected function resultInsertSubFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedSubFalla = new SubfallaVO();
+						if(listSubFallas != null){
+							listSubFallas.addItem(SubfallaVO(_event.result));
+							clearFormularioSubFalla();
+						}
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo guardar la información de la SubFalla");
+				}
+				
+			}
+			
+			protected function faultInsertSubFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo insertar la SubFalla.");							
+			}
+			
+			
+			//updateSubFalla
+			protected function resultUpdateSubFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedSubFalla = new SubfallaVO();
+						upDataSubFalla();
+						clearFormularioSubFalla();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "updateCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo actualizar la información de la SubFalla");
+				}
+				
+			}
+			protected function faultUpdateSubFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo actualizar la SubFalla.");
+				
+			}
+			
+			//deleteSubFalla
+			protected function resultDeleteSubFalla(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelectedSubFalla = null;
+						clearFormularioSubFalla();
+						//upDataSubFalla();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteCliente" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo borrar la SubFalla");
+				}
+				
+			}
+			protected function faultDeleteSubFalla(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error","No se pudo borrar la SubFalla.");
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<mx:HDividedBox
+		width="100%" height="100%">
+		
+		<!--	SECCIÓN FALLA	-->
+		<s:VGroup
+			id="containerTableFalla"
+			width="100%" height="100%">
+			<s:VGroup
+				height="200" width="100%">
+				<s:Label
+					text="{titleFormularioFalla}"/>
+				<s:HGroup
+					width="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Falla"/>
+					<s:TextInput
+						id="txtFalla"
+						width="300"
+						change="txtFalla.text=txtFalla.text.toLocaleUpperCase()"
+						text="{itemSelectedFalla.falla}"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Estatus"/>
+					<s:CheckBox
+						id="cbxEstatusFalla"
+						selected="{itemSelectedFalla.estatus}"
+						width="300"/>
+				</s:HGroup>
+			</s:VGroup>
+		
+			<s:DataGrid
+				id="dtgFallas"
+				width="100%" height="350"
+				dataProvider="{listFallas}"
+				doubleClickEnabled="true"
+				doubleClick="selectFalla(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="ID" dataField="idFalla"/>
+						<s:GridColumn headerText="Falla" dataField="falla"/>
+						<s:GridColumn headerText="Estatus" dataField="estatus"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			
+			<mx:ControlBar
+				height="100" width="100%">
+				<s:Button 
+					label="Limpiar" 
+					icon="@Embed(source='assets/icons/cancel.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="clearFormularioFalla()"/>
+				<s:Button 
+					id="guardarButtonFalla" 
+					label="{titleFormularioFalla}" 
+					icon="@Embed(source='assets/icons/add.png'" 
+					styleName="primaryButton"
+					useHandCursor="true"
+					buttonMode="true"
+					click="saveFalla()"/>
+				<s:Button
+					id="btnDeleteFalla"
+					label="Borrar"
+					icon="@Embed(source='assets/icons/delete.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="deleteFalla()"/>
+			</mx:ControlBar>
+		</s:VGroup>
+		
+		<!--	SECCIÓN SUBFALLA	-->
+		<s:VGroup
+			id="containerTableSubFalla"
+			width="100%" height="100%">
+			<s:VGroup
+				height="200" width="100%">
+				<s:Label
+					text="{titleFormularioSubFalla}"/>
+				<s:HGroup
+					width="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Falla"/>
+					<s:DropDownList
+						id="cmbFalla"
+						prompt="Selecciona la Falla"
+						labelField="falla"
+						dataProvider="{listFallas}"
+						change="selectChangeFalla()"
+						width="300"
+						buttonMode="true"
+						useHandCursor="true"
+						/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Sub Falla"/>
+					<s:TextInput
+						id="txtSubFalla"
+						width="300"
+						change="txtSubFalla.text=txtSubFalla.text.toLocaleUpperCase()"
+						text="{itemSelectedSubFalla.subfalla}"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Estatus"/>
+					<s:CheckBox
+						id="cbxEstatusSubFalla"
+						selected="{itemSelectedSubFalla.estatus}"
+						width="300"/>
+				</s:HGroup>
+			</s:VGroup>
+			
+			
+			<s:DataGrid
+				id="dtgSubFallass"
+				width="100%" height="350"
+				dataProvider="{listSubFallas}"
+				doubleClickEnabled="true"
+				doubleClick="selectSubFalla(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="ID" dataField="idSubfalla"/>
+						<s:GridColumn headerText="SubFalla" dataField="subfalla"/>
+						<s:GridColumn headerText="Falla" dataField="falla"/>
+						<s:GridColumn headerText="Estatus" dataField="estatus"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			
+			<mx:ControlBar
+				height="100">
+				<s:Button 
+					label="Limpiar" 
+					icon="@Embed(source='assets/icons/cancel.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="clearFormularioSubFalla(true)"/>
+				<s:Button 
+					id="guardarButtonSubFalla" 
+					label="{titleFormularioSubFalla}" 
+					icon="@Embed(source='assets/icons/add.png'" 
+					styleName="primaryButton"
+					useHandCursor="true"
+					buttonMode="true"
+					click="saveSubFalla()"/>
+				<s:Button
+					id="btnDeleteSubFalla"
+					label="Borrar"
+					icon="@Embed(source='assets/icons/delete.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="deleteSubFalla()"/>
+			</mx:ControlBar>
+		</s:VGroup>
+	</mx:HDividedBox>
+	
+</s:Panel>

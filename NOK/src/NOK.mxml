@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   preloader="com.maqzar.nok.view.Preloader" 
+			   backgroundColor="0x191919"
+			   minWidth="955" minHeight="600">
+	<fx:Style source="assets/style.css"/>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here 0xAFCBFA, 0x3CB8E7-->
+	</fx:Declarations>
+</s:Application>

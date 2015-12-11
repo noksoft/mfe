@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename ToolbarSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin 
+	xmlns="http://www.degrafa.com/2007" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" >
+
+	<mx:Script>
+		<![CDATA[
+			
+			[Bindable]
+			public var toolbarArrow:int = 5;
+		]]>
+	</mx:Script>
+
+	<geometry>
+		<!--Shadow in bottom-->
+		<RegularRectangle x="0" y="{skinHeight - 1}" width="{skinWidth}" height="4" alpha=".3">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop alpha=".6" color="#000000"/>
+					<GradientStop alpha="0" color="#000000"/>
+				</LinearGradientFill>
+			</fill>
+		</RegularRectangle>
+	
+		<!--Rectangle-->
+		<RegularRectangle width="{skinWidth}" height="{skinHeight - 1}" >
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop alpha=".8" color="#585858" ratio=".3"/>
+					<GradientStop alpha=".9" color="#A1A1A1" ratio=".92"/>
+				</LinearGradientFill>
+			</fill>
+		</RegularRectangle>
+		
+		<!--Top Line-->
+		<Line x="0" x1="{skinWidth}" y="{skinHeight - 1 }" y1="{skinHeight - 1}" >
+			<stroke>
+				<SolidStroke color="#808080" />
+			</stroke>
+		</Line>
+		
+		<!--Bottom Line-->
+		<Line x="0" x1="{skinWidth}" y="0" y1="0" >
+			<stroke>
+				<SolidStroke color="#949DA0" />
+			</stroke>
+		</Line>
+		
+		<!--Arrow-->
+		<Polygon 
+			data="0,1 5.5,-7 11,1 0,1" x="{toolbarArrow}">		
+			<fill>
+				<SolidFill color="#536B74"/>
+			</fill>
+		</Polygon>
+	</geometry>
+</GraphicBorderSkin>

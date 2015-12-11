@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+////////////////////////////////////////////////////////////////////////////////
+//
+//  ACTION INFORMATION TECHOLOGY
+//  Copyright 2014 Action Interactive
+//  All Rights Reserved.
+//
+//  NOTICE: Action IT permits you to use this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+//  Creator: Ing. Carlos Zaragoza Ortiz <carlos@actionit.mx>
+//  Component: CATALOGO DE OBRAS
+//  Capturar los datos de obras, como alta dentro del sistema, dicho componente usa 
+//  apis externas para ubicar en puntos georeferenciados
+////////////////////////////////////////////////////////////////////////////////
+-->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" 
+				 xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*" 
+				 creationComplete="getValuesInitials()" xmlns:esri="http://www.esri.com/2008/ags">
+		
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.DireccionEvent;
+			import com.actioninteractive.nok.event.EmpleadoEvent;
+			import com.actioninteractive.nok.event.ObraEvent;
+			import com.actioninteractive.nok.model.DireccionModel;
+			import com.actioninteractive.nok.model.EmpleadoModel;
+			import com.actioninteractive.nok.model.ObraModel;
+			import com.actioninteractive.nok.view.AssetManagerIn;
+			import com.actioninteractive.nok.vo.EmpleadoVO;
+			import com.actioninteractive.nok.vo.ObraVO;
+			import com.actioninteractive.nok.vo.direccion.EntidadVO;
+			import com.actioninteractive.nok.vo.direccion.LocalidadVO;
+			import com.actioninteractive.nok.vo.direccion.MunicipioVO;
+			import com.esri.ags.SpatialReference;
+			import com.esri.ags.events.MapMouseEvent;
+			import com.esri.ags.geometry.Geometry;
+			import com.esri.ags.geometry.MapPoint;
+			import com.esri.ags.utils.WebMercatorUtil;
+			
+			import mx.collections.IViewCursor;
+			import mx.controls.Alert;
+			import mx.events.IndexChangedEvent;
+			import mx.formatters.DateFormatter;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.validators.Validator;
+			
+			import spark.collections.Sort;
+			import spark.collections.SortField;
+			import spark.components.TitleWindow;
+			import spark.events.IndexChangeEvent;
+			
+			private var flagLocated:Boolean;
+			private var cursorEntidad:IViewCursor;
+			private var cursorMunicipio:IViewCursor;
+			private var cursorLocalidad:IViewCursor;
+			private var cursorEmpleado:IViewCursor;
+			private var cursorLaboral:IViewCursor;
+			private var obraVOtmp:ObraVO;
+			[Bindable] private var updateObra:Boolean;
+			
+			[Inject]
+			[Bindable]
+			public var obraModel:ObraModel;
+			
+			[Inject]
+			[Bindable]
+			public var empleadoModel:EmpleadoModel;
+			
+			[Inject]
+			[Bindable]
+			public var direccionModel:DireccionModel;
+			
+			protected function listarObrasClic(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var listObrasEvent:ObraEvent = new ObraEvent(ObraEvent.OBRA_LIST_DATA);
+				var obra:ObraVO = new ObraVO();
+				listObrasEvent.obraVO = obra;
+				dispatchEvent(listObrasEvent);
+				getValuesInitials();
+			}
+			protected function infoEmpleadoResult(event:ResultEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			private function infoEmpleadoFault(event:FaultEvent):void
+			{
+				// TODO Auto Generated method stub
+				
+			}
+			private function getValuesInitials():void
+			{
+				// Trae la lista de empleadoswo
+				var listEmpleadosEvent:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_LIST_DATA);
+				var empleado:EmpleadoVO = new EmpleadoVO();
+				empleado.idTipoEmpleado = '200'; //Traemos solamente residentes
+				listEmpleadosEvent.empleadoVO = empleado;
+				dispatchEvent(listEmpleadosEvent);
+				var eventEntidad:DireccionEvent = new DireccionEvent(DireccionEvent.ENTIDAD_LIST_DATA);
+				var entidad:EntidadVO = new EntidadVO();
+				eventEntidad.entidadVO = entidad;
+				dispatchEvent(eventEntidad); //Traemos los estados de la republica
+			}
+			
+			
+			private var entidadSeleccionada:String;
+			private var municipioSeleccionado:String;
+			protected function changeEntidadList(event:IndexChangeEvent):void
+			{
+				entidadSeleccionada = event.target.selectedItem['idEntidad'];
+				// TODO Auto-generated method stub
+				var eventMunicipio:DireccionEvent = new DireccionEvent(DireccionEvent.MUNICIPIO_LIST_DATA);
+				var mpio:MunicipioVO = new MunicipioVO();
+				mpio.idEntidad = entidadSeleccionada
+				eventMunicipio.municipioVO = mpio;
+				dispatchEvent(eventMunicipio);
+			}
+			[EventHandler(event="DireccionEvent.LOCALIZA_MUNICIPIO")] //localizamos evento cuando es de update
+			public function filterMunicipios(event:DireccionEvent):void
+			{
+				doSort('idMunicipio', direccionModel.acListMunicipio);
+				cursorMunicipio = direccionModel.acListMunicipio.createCursor();
+				var found:Boolean = cursorMunicipio.findAny(obraVOtmp);
+				//var foundMpio:Boolean = cursorMunicipio.findAny(event.obraVO);
+				if (found)
+				{
+					ddlMunicipio.selectedItem = cursorMunicipio.current;
+					var changeEvent:IndexChangeEvent = new IndexChangeEvent(IndexChangedEvent.CHANGE);
+					this.ddlMunicipio.dispatchEvent(changeEvent);
+					direccionModel.municipioLocated = true;
+					
+				}
+			}
+			
+			[EventHandler(event="DireccionEvent.LOCALIZA_LOCALIDAD")] //localizamos evento cuando es de update
+			public function filterlocalidad(event:DireccionEvent):void
+			{
+				doSort('idLocalidad', direccionModel.acListLocalidad);
+				cursorLocalidad = direccionModel.acListLocalidad.createCursor();
+				var found:Boolean = cursorLocalidad.findAny(obraVOtmp);
+				//var foundMpio:Boolean = cursorMunicipio.findAny(event.obraVO);
+				if (found)
+				{
+					ddlLocalidad.selectedItem = cursorLocalidad.current;
+					
+				}
+			}
+			
+			protected function changeMunicipio(event:IndexChangeEvent):void
+			{
+				municipioSeleccionado = event.target.selectedItem['idMunicipio'];
+				// TODO Auto-generated method stub
+				var eventLocalidad:DireccionEvent =  new DireccionEvent(DireccionEvent.LOCALIDAD_LIST_DATA);
+				var localidad:LocalidadVO = new LocalidadVO();
+				localidad.idEntidad = entidadSeleccionada;
+				localidad.idMunicipio = municipioSeleccionado;
+				eventLocalidad.localidadVO = localidad;
+				dispatchEvent(eventLocalidad);
+			}
+			
+			
+			private function clicAltaDeObra():void
+			{
+				// TODO Auto Generated method stub
+				var errores:Array = Validator.validateAll([validaContrato,validaDescripcionObra,validaNombreDeObra]);
+				ddlJornadaLaboral
+				if (errores.length == 0 && 
+					ddlEntidad.selectedIndex != -1 && 
+					ddlJornadaLaboral.selectedIndex != -1 &&
+					ddlLocalidad.selectedIndex != -1 &&
+					ddlMunicipio.selectedIndex != -1 &&
+					ddlResidente.selectedIndex != -1){
+					//There are not errors, do the action
+					var obra:ObraVO = new ObraVO();
+					obra.contrato = txtContrato.text;
+					obra.descripcion = txtDescripcionObra.text;
+					obra.fechaInicio = dateFieldFechaInicio.text;
+					obra.fechaTermina = dateFieldFechadeTermino.text;
+					obra.idEmpleado = ddlResidente.selectedItem['idEmpleado'];
+					obra.nombre = txtNombreDeObra.text;
+					obra.presupuestoEstimado = 0;
+					obra.status = 'A';
+					obra.jornadaLaboral = ddlJornadaLaboral.selectedItem['jornadaLaboral'];
+					obra.idEntidad = ddlEntidad.selectedItem['idEntidad'];
+					obra.idMunicipio = ddlMunicipio.selectedItem['idMunicipio'];
+					obra.idLocalidad = ddlLocalidad.selectedItem['idLocalidad'];
+					obra.lat = latitud;
+					obra.lng = longitud;
+					if(updateObra){
+						obra.idObra = obraVOtmp.idObra; 
+						var eventObraUpdate:ObraEvent = new ObraEvent(ObraEvent.OBRA_UPDATE_DATA);
+						eventObraUpdate.obraVO = obra;
+						dispatchEvent(eventObraUpdate);
+					}else{
+						var eventObra:ObraEvent = new ObraEvent(ObraEvent.OBRA_SAVE_DATA);
+						eventObra.obraVO = obra;
+						dispatchEvent(eventObra);
+					}
+					
+					
+					
+				}else
+				{
+					Alert.show("Por favor revisar que todo esté completo","Faltan campos por llenar");
+				}
+			}
+			
+			
+			private function cleanBoxes():void
+			{
+				txtContrato.text = '';
+				txtDescripcionObra.text = '';
+				txtNombreDeObra.text = '';
+				ddlEntidad.selectedIndex = -1;
+				ddlJornadaLaboral.selectedIndex = -1;
+				ddlLocalidad.selectedIndex = -1;
+				ddlMunicipio.selectedIndex = -1;
+				ddlResidente.selectedIndex = -1;
+				
+			}
+			
+			protected function buscarObras(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var eventBuscarObra:ObraEvent = new ObraEvent(ObraEvent.OBRA_BUSQUEDA_DATA);
+				var obraBuscar:ObraVO = new ObraVO();
+				obraBuscar.nombre = txtBusquedaObras.text;
+				eventBuscarObra.obraVO = obraBuscar;
+				dispatchEvent(eventBuscarObra);
+			}
+			protected function expandeCajaParaBusqueda(event:MouseEvent, grown:Boolean):void
+			{
+				if(grown)
+				{
+					txtBusquedaObras.left = 150;
+					txtBusquedaObras.alpha = 1;
+					txtBusquedaObras.setFocus();
+				}else
+				{
+					txtBusquedaObras.alpha = .3;
+					txtBusquedaObras.left = null;
+				}
+			}
+			[EventHandler(event="ObraEvent.OBRA_ITEM_FOUND_DATA")]
+			public function lanzarVentanaResultadoEvent():void
+			{
+				var resultWindowObra:ResultObrasPopup = ResultObrasPopup(PopUpManager.createPopUp(this, ResultObrasPopup, true) as spark.components.TitleWindow);
+				PopUpManager.centerPopUp(resultWindowObra);
+				resultWindowObra.addEventListener(ObraEvent.OBRA_ITEM_SELECTED_DATA,itemSelectedEvent);
+			}
+			
+			protected function itemSelectedEvent(event:ObraEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(event.obraVO)
+				{
+					updateObra = true;
+					obraVOtmp = event.obraVO;
+					trace('Econtrado');
+					txtContrato.text = event.obraVO.contrato;
+					txtDescripcionObra.text = event.obraVO.descripcion;
+					dateFieldFechaInicio.text = formatoFecha(event.obraVO.fechaInicio);
+					dateFieldFechadeTermino.text = formatoFecha(event.obraVO.fechaTermina);
+					txtNombreDeObra.text =event.obraVO.nombre 
+					doSort('idEntidad', direccionModel.acListEntidad);
+					latitud = event.obraVO.lat;
+					longitud = event.obraVO.lng;
+					trace("latitud "+latitud + " long "+longitud)
+					//Ubicar en el mapa un lugar.
+					//
+					ubicacion.lat = Number(latitud);
+					ubicacion.lon = Number(longitud);
+					var wgs:SpatialReference = new SpatialReference(4152);
+
+					var x:Number = 6371 * Math.cos(Number(latitud)) * Math.cos(Number(longitud));
+					var y:Number = 6371 * Math.cos(Number(latitud)) * Math.sin(Number(longitud));
+					trace ("x " + x + " y " + y);
+					var mapa:MapPoint = new MapPoint(Number(longitud),Number(latitud) ,wgs);
+					//var mapa:MapPoint = new MapPoint(x,y);
+					mapaObra.centerAt(mapa);
+					
+					cursorEntidad = direccionModel.acListEntidad.createCursor();
+					var found:Boolean = cursorEntidad.findAny(event.obraVO);
+					if (found)
+					{
+						ddlEntidad.selectedItem = cursorEntidad.current;
+						var changeEvent:IndexChangeEvent = new IndexChangeEvent(IndexChangedEvent.CHANGE);
+						this.ddlEntidad.dispatchEvent(changeEvent);
+						direccionModel.entidadLocated = true;
+					}
+					doSort('idEmpleado',empleadoModel.acListEmpleados);
+					cursorEmpleado = empleadoModel.acListEmpleados.createCursor();
+					var foundEmpleado:Boolean = cursorEmpleado.findAny(event.obraVO);
+					if (foundEmpleado)
+					{
+						ddlResidente.selectedItem = cursorEmpleado.current;
+					}
+					
+					doSort('jornadaLaboral',obraModel.jornadasList);
+					cursorLaboral = obraModel.jornadasList.createCursor();
+					var foundLaboral:Boolean = cursorLaboral.findAny(event.obraVO);
+					if(foundLaboral)
+					{
+						ddlJornadaLaboral.selectedItem = cursorLaboral.current;
+					}
+					
+					
+					
+				}
+			}
+			private function doSort(campo:String, arreglo:*):void{
+				var sf:SortField = new SortField(campo);
+				var s:Sort = new Sort();
+				s.fields = [sf];
+				arreglo.sort = s;
+				arreglo.refresh();
+			}
+			
+			
+			protected function cancelarObraEvents(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				updateObra = false;
+				txtContrato.text = '';
+				txtDescripcionObra.text = '';
+				txtNombreDeObra.text = '';
+				ddlEntidad.selectedIndex = -1;
+				ddlMunicipio.selectedIndex = -1;
+				ddlLocalidad.selectedIndex = -1;
+				ddlResidente.selectedIndex = -1;
+				ddlJornadaLaboral.selectedIndex = -1;
+				dateFieldFechaInicio.text = '';
+				dateFieldFechadeTermino.text = '';
+				txtContrato.setFocus();
+				
+			}
+			private function formatoFecha(fecha:*):String
+			{
+				return dateFormatter.format(fecha); 
+			}
+			
+			[EventHandler(event="ObraEvent.OBRA_RESET_CONTROLS")]
+			public function resetControls():void
+			{
+				cancelarObraEvents(null);
+			}
+			
+			private function mouseCatchCoord(event:MouseEvent):void
+			{
+				const mapPoint:MapPoint = mapaObra.toMapFromStage(event.stageX, event.stageY);
+				const latlong:MapPoint = WebMercatorUtil.webMercatorToGeographic(mapPoint) as MapPoint;
+				txtLat.text = latlong.y.toFixed(6);
+				txtLong.text = latlong.x.toFixed(6);
+				
+			}
+			private function loadHandler():void
+			{
+				mapaObra.addEventListener(MouseEvent.MOUSE_MOVE, mouseCatchCoord);
+			}
+			private var latitud:String;
+			private var longitud:String;
+			protected function mapaObra_clickHandler(event:MapMouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				const mapPoint:MapPoint = mapaObra.toMapFromStage(event.stageX, event.stageY);
+				const latlong:MapPoint = WebMercatorUtil.webMercatorToGeographic(mapPoint) as MapPoint;
+				const xy:MapPoint = WebMercatorUtil.geographicToWebMercator(mapPoint) as MapPoint;
+				latitud = latlong.y.toFixed(6);
+				longitud = latlong.x.toFixed(6);
+				trace ("Lat: " + latitud + " Lng: " + longitud);
+				var content:Object = {};
+				content.wm = event;
+				content.ll = WebMercatorUtil.webMercatorToGeographic(event.mapPoint) as MapPoint;
+				ldr.data = content;
+				ldr.label = "Obra: "+ txtNombreDeObra.text;
+				mapaObra.infoWindow.show(event.mapPoint); // "Show the click"
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:RadioButtonGroup id="radiogroup1"/>
+		<mx:StringValidator id="validaContrato" source="{txtContrato}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:StringValidator id="validaDescripcionObra" source="{txtDescripcionObra}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:StringValidator id="validaNombreDeObra" source="{txtNombreDeObra}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:DateFormatter id="dateFormatter" formatString="MM/DD/YYYY"/>
+	</fx:Declarations>
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<s:Label text="Catálogo de obras" x="5" y="10"/>
+			
+			<s:TextInput y="0" right="50" width="17" alpha=".3" id="txtBusquedaObras" 
+						 mouseOver="expandeCajaParaBusqueda(event,true)"
+						 focusOut="expandeCajaParaBusqueda(null,false)"
+						 />
+			<s:Button y="0" skinClass="com.actioninteractive.nok.skins.ButtonSearhSkin"  right="6" 
+					  icon="{AssetManagerIn.iconZoom}" click="buscarObras(event)"/>	
+			
+			<s:SkinnableContainer width="100%" height="100%" x="1" y="6">
+				<s:layout>
+					<s:HorizontalLayout paddingRight="20" />
+				</s:layout>
+				<s:Group width="100%" height="100%">
+					<s:layout>
+						<s:HorizontalLayout paddingTop="40"/>
+					</s:layout>
+					<!--Contenedor principal-->
+					<s:Group width="100%" height="100%" top="3">
+						<s:layout>
+							<s:VerticalLayout/>
+						</s:layout>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Contrato" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtContrato"/>
+							<s:Label text="Nombre de obra" textAlign="right" width="120" top="4"/>
+							<s:TextInput width="100%" id="txtNombreDeObra"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Descripción" textAlign="right" width="120" top="4"/>
+							<s:TextArea width="100%" id="txtDescripcionObra"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Ubicación" textAlign="right" width="120" top="4"/>
+							<s:DropDownList id="ddlEntidad" width="100%" prompt="Estado" 
+											dataProvider="{direccionModel.acListEntidad}" 
+											labelField="entidad" change="changeEntidadList(event)" />
+							<s:DropDownList id="ddlMunicipio" width="100%" prompt="Municipio" 
+											dataProvider="{direccionModel.acListMunicipio}" labelField="municipio" 
+											change="changeMunicipio(event)"/>
+							<s:DropDownList id="ddlLocalidad" width="100%" prompt="Localidad" 
+											dataProvider="{direccionModel.acListLocalidad}" labelField="localidad"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Residente" textAlign="right" width="120" top="4"/>
+							<s:DropDownList id="ddlResidente" width="100%" dataProvider="{empleadoModel.acListEmpleados}" labelField="nombre"/>
+							<s:Label text="Jornada laborar" textAlign="right" width="120" top="4"/>
+							<s:DropDownList id="ddlJornadaLaboral" width="100%" dataProvider="{obraModel.jornadasList}"></s:DropDownList>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label text="Fecha de inicio" textAlign="right" width="120" top="4"/>
+							<mx:DateField id="dateFieldFechaInicio"/>
+							<s:Label text="Fecha de término" textAlign="right" top="4"/>
+							<mx:DateField id="dateFieldFechadeTermino"/>
+							
+							
+							<s:Label text="Lat/Lng" textAlign="right" width="120" top="4"/>
+							<s:TextInput prompt="Latitud" width="100%" id="txtLat" enabled="false"/>
+							<s:TextInput prompt="Longitud" width="100%" id="txtLong" enabled="false"/>
+							
+						</s:HGroup>
+						<s:HGroup width="100%" horizontalAlign="center"  height="100%">
+							<s:Spacer width="120"/>
+							<esri:Map level="13" wrapAround180="true" 
+									  id="mapaObra" load="loadHandler()" mapClick="mapaObra_clickHandler(event)">
+								<esri:infoWindowContent>
+									<esri:LabelDataRenderer id="ldr">
+										<esri:layout>
+											<s:VerticalLayout paddingBottom="5"
+															  paddingLeft="5"
+															  paddingRight="5"
+															  paddingTop="5"/>
+										</esri:layout>
+										<s:Label text="X: {ldr.data.wm.x.toFixed(6)}"/>
+										<s:Label text="Y: {ldr.data.wm.y.toFixed(6)}"/>
+										<s:Label text="Lon: {ldr.data.ll.x.toFixed(6)}"/>
+										<s:Label text="Lat: {ldr.data.ll.y.toFixed(6)}"/>
+									</esri:LabelDataRenderer>
+								</esri:infoWindowContent>
+								<esri:center>
+									<esri:WebMercatorMapPoint id="ubicacion" lon="-98.368235" lat="20.084123"/>
+								</esri:center>
+								<esri:ArcGISTiledMapServiceLayer
+									url="http://server.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer"/>
+								<esri:ArcGISDynamicMapServiceLayer
+									url="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Elevation/ESRI_Elevation_World/GPServer" 
+									alpha=".70"/>
+							</esri:Map>
+						</s:HGroup>
+						<s:HGroup width="100%" horizontalAlign="right" paddingBottom="20">
+							<s:Button label="Actualizar" enabled="{updateObra}" click="clicAltaDeObra()"/>
+							<s:Button label="Borrar" />
+							<s:Button label="Alta" id="buttonAltaObra" click="clicAltaDeObra()" enabled="{!updateObra}"/>
+							<s:Button label="Cancelar" click="cancelarObraEvents(event)"/>
+						</s:HGroup>
+						
+					</s:Group>
+				</s:Group>
+			</s:SkinnableContainer>
+		</s:SkinnableContainer>
+	</portlet:children>
+</portlet:Portlet>

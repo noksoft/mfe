@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bases:ObrasBase xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:view="view.*" 
+				width="100%" height="100%" xmlns:bases="view.bases.*" 
+				xmlns:esri="http://www.esri.com/2008/ags" creationComplete="initialValues(event)">
+	<fx:Declarations>
+		<mx:StringValidator id="validaContrato" source="{txtContrato}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:StringValidator id="validaDescripcionObra" source="{txtDescripcionObra}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:StringValidator id="validaNombreDeObra" source="{txtNombreDeObra}" property="text" trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:DateFormatter id="dateFormatter" formatString="YYYY-MM-DD"/>
+		<mx:DateValidator id="dateFieldFechaInicioDateValidator" source="{dateFieldFechaInicio}" property="text" inputFormat="YYYY-MM-DD"
+						  trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<mx:DateValidator id="dateFieldFechaTerminoDateValidator" source="{dateFieldFechadeTermino}" property="text" inputFormat="YYYY-MM-DD"
+						  trigger="{buttonAltaObra}" triggerEvent="click" requiredFieldError="Este campo es requerido"/>
+		<s:RemoteObject id="remoteObra" destination="obraBusiness" endpoint="{NokConstants.ENDPOINT}" fault="remoteFaultObra(event)">
+			<s:method name="infoObra" result="infoObraResult(event)"/>
+			<s:method name="insertObra" result="insertObraResult(event)"/>
+			<s:method name="deleteObra" result="deleteObraResult(event)"/>
+			<s:method name="updateObra" result="updateObraResult(event)"/>
+		</s:RemoteObject>
+		<s:RemoteObject id="remoteEmpleado" destination="empleadoBusiness" endpoint="{NokConstants.ENDPOINT}" fault="remoteFaultObra(event)">
+			<s:method name="infoEmpleado" result="infoEmpleadoResult(event)"/>
+		</s:RemoteObject>
+		<s:RemoteObject id="remoteDireccion" destination="direccionBusiness" endpoint="{NokConstants.ENDPOINT}" fault="remoteFaultObra(event)">
+			<s:method name="catEntidad" result="catEntidadResult(event)"/>
+			<s:method name="catMunicipio" result="catMunicipioResult(event)"/>
+			<s:method name="catLocalidad" result="catLocalidadResult(event)"/>
+		</s:RemoteObject>
+		
+	</fx:Declarations>
+	<mx:HDividedBox width="100%" height="100%">
+		<s:Panel title="Lista de obras" width="100%" height="100%">
+			<s:layout>
+				<s:VerticalLayout gap="5" paddingBottom="10" paddingLeft="10" paddingRight="10"
+								  paddingTop="10"/>
+			</s:layout>
+			<s:controlBarContent>
+				
+			</s:controlBarContent>
+			
+			<s:VGroup
+				id="containerTable"
+				width="100%" height="100%">
+				<s:DataGrid
+					id="obrasDataGrid"
+					width="100%" height="100%"
+					dataProvider="{aclistObras}"
+					doubleClickEnabled="true"
+					doubleClick="selectObra(event)">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Contrato" dataField="contrato"/>
+							<s:GridColumn headerText="Nombre" dataField="nombre" />
+							<s:GridColumn headerText="Fecha inicio" dataField="fechaInicio" labelFunction="fecha_labelFunc"/>
+							<s:GridColumn headerText="Fecha término"  dataField="fechaTermina" labelFunction="fecha_labelFunc"/>
+							<s:GridColumn>
+								<s:itemRenderer>
+									<fx:Component>
+										<s:GridItemRenderer>
+											
+											
+											<s:Button  label="Borrar" click="outerDocument.borrarRegistro(event, data)"/>
+										</s:GridItemRenderer>
+									</fx:Component>
+									
+								</s:itemRenderer>
+							</s:GridColumn>
+						</s:ArrayList>
+					</s:columns>
+				</s:DataGrid>
+			</s:VGroup>
+		</s:Panel>
+		
+		<s:Panel title="Gestión de la obra" width="100%" height="100%">
+			<s:layout>
+				<s:VerticalLayout gap="5" paddingBottom="10" paddingLeft="10" paddingRight="10"
+								  paddingTop="10"/>
+			</s:layout>
+			<s:controlBarContent>
+				<s:Button label="Actualizar" enabled="{updateObra}" click="clicAltaDeObra()"/>
+				<s:Button label="Alta" id="buttonAltaObra" click="clicAltaDeObra()" enabled="{!updateObra}"/>
+				<s:Button label="Cancelar" click="cancelarObraEvents(event)"/>
+			</s:controlBarContent>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Contrato" textAlign="right" width="120" top="4"/>
+				<s:TextInput width="100%" id="txtContrato"/>
+				<s:Label text="Nombre de obra" textAlign="right" width="120" top="4"/>
+				<s:TextInput width="100%" id="txtNombreDeObra"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Descripción" textAlign="right" width="120" top="4"/>
+				<s:TextArea width="100%" id="txtDescripcionObra"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Ubicación" textAlign="right" width="120" top="4"/>
+				<s:DropDownList id="ddlEntidad" width="100%" prompt="Estado" 
+								dataProvider="{acListEntidad}"
+								labelField="entidad" change="changeEntidadList(event)" />
+				<s:DropDownList id="ddlMunicipio" width="100%" prompt="Municipio" 
+								dataProvider="{acListMunicipio}" labelField="municipio" 
+								change="changeMunicipio(event)"/>
+				<s:DropDownList id="ddlLocalidad" width="100%" prompt="Localidad" 
+								dataProvider="{acListLocalidad}" labelField="localidad"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Residente" textAlign="right" width="120" top="4"/>
+				<s:DropDownList id="ddlResidente" width="100%" prompt="Selecciona un residente" dataProvider="{acListEmpleados}" labelField="nombre"/>
+				<s:Label text="Jornada laborar" textAlign="right" width="120" top="4"/>
+				<s:DropDownList id="ddlJornadaLaboral" prompt="Selecciona una jornada laboral" width="100%" dataProvider="{jornadasList}"></s:DropDownList>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Fecha de inicio" textAlign="right" width="120" top="4"/>
+				<mx:DateField id="dateFieldFechaInicio" yearNavigationEnabled="true" formatString="YYYY-MM-DD"
+							  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+							  dayNames="[D,L,M,M,J,V,S]"/>
+
+				<s:Label text="Fecha de término" textAlign="right" top="4"/>
+				<mx:DateField id="dateFieldFechadeTermino" yearNavigationEnabled="true"
+							  formatString="YYYY-MM-DD"
+							  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+							  dayNames="[D,L,M,M,J,V,S]"/>
+				
+				
+				<s:Label text="Lat/Lng" textAlign="right" width="120" top="4"/>
+				<s:TextInput prompt="Latitud" width="100%" id="txtLat" enabled="false"/>
+				<s:TextInput prompt="Longitud" width="100%" id="txtLong" enabled="false"/>
+				
+			</s:HGroup>
+			<s:HGroup width="100%" horizontalAlign="center"  height="100%">
+				<s:Spacer width="120"/>
+				<esri:Map level="13" wrapAround180="true" 
+						  id="mapaObra" load="loadHandler()" mapClick="mapaObra_clickHandler(event)">
+					<esri:infoWindowContent>
+						<esri:LabelDataRenderer id="ldr">
+							<esri:layout>
+								<s:VerticalLayout paddingBottom="5"
+												  paddingLeft="5"
+												  paddingRight="5"
+												  paddingTop="5"/>
+							</esri:layout>
+							<s:Label text="X: {ldr.data.wm.x.toFixed(6)}"/>
+							<s:Label text="Y: {ldr.data.wm.y.toFixed(6)}"/>
+							<s:Label text="Lon: {ldr.data.ll.x.toFixed(6)}"/>
+							<s:Label text="Lat: {ldr.data.ll.y.toFixed(6)}"/>
+						</esri:LabelDataRenderer>
+					</esri:infoWindowContent>
+					<esri:center>
+						<esri:WebMercatorMapPoint id="ubicacion" lon="-98.368235" lat="20.084123"/>
+					</esri:center>
+					<esri:ArcGISTiledMapServiceLayer
+						url="http://server.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer"/>
+					<esri:ArcGISDynamicMapServiceLayer
+						url="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Elevation/ESRI_Elevation_World/GPServer" 
+						alpha=".70"/>
+				</esri:Map>
+			</s:HGroup>
+		</s:Panel>
+	</mx:HDividedBox>
+</bases:ObrasBase>

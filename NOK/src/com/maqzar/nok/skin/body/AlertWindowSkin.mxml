@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename AlertWindowSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:degrafa="http://www.degrafa.com/2007" 
+	xmlns:geometry="com.degrafa.geometry.*"
+	>
+	
+	<mx:GlowFilter id="glow" inner="false" blurX="8" blurY="8" color="0x666666" strength="1" />
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition filters="{[glow]}">
+			
+			<!--Body Color-->
+			<degrafa:RoundedRectangle width="{skinWidth}" height="{skinHeight + 5}" cornerRadius="10">
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xf2f2f2" />
+						<degrafa:GradientStop color="0xf4f4f4" />
+					</degrafa:LinearGradientFill>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+	
+</degrafa:GraphicBorderSkin>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CATALOGO DE FALLAS -->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*">
+	<fx:Declarations>
+		
+		
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.vo.FallaVO;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			import com.actioninteractive.nok.vo.SubMarcaVO;
+			import com.actioninteractive.nok.vo.SubfallaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			private var acMarcas:ArrayCollection = new ArrayCollection();
+			[Bindable]
+			private var acSubMarcas:ArrayCollection = new ArrayCollection();
+			
+			protected function enterAddingToList(who:Boolean):void
+			{
+				if(who){
+					// TODO Auto-generated method stub
+					if (txtFallaNombre.text == '')
+					{
+						Alert.show("No puedes introducir valores vacios");
+					}else{
+						//Dispara evento para el controllador
+						var saveFallaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.FALLA_SAVE);
+						var falla:FallaVO = new FallaVO();
+						falla.idFalla = "0";
+						falla.falla = txtFallaNombre.text;
+						saveFallaEvent.fallaVO = falla;
+						dispatchEvent(saveFallaEvent);
+						txtFallaNombre.text = '';
+					}	
+				}else
+				{
+					if (txtSubfallaNombre.text == '')
+					{
+						Alert.show("No puedes introducir valores vacios");
+					}else if (listFallas.selectedIndex == -1){
+						Alert.show("Debes seleccionar una Marca de la lista");
+					}else
+					{
+						var saveSubFallaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.SUBFALLA_SAVE);
+						var subfalla:SubfallaVO = new SubfallaVO();
+						subfalla.estatus = true;
+						subfalla.idFalla = listFallas.selectedItem.idFalla;
+						subfalla.idSubfalla = "";
+						subfalla.subfalla = txtSubfallaNombre.text;
+						saveSubFallaEvent.subfallaVO = subfalla;
+						dispatchEvent(saveSubFallaEvent);
+						txtSubfallaNombre.text='';
+					}
+				}
+				
+			}
+			protected function creationEvent(e:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+			}
+		]]>
+	</fx:Script>
+	
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<!--  ENCABEZADO DEL PANEL   -->
+			<s:Label text="Listado de fallas" x="5" y="10"/>
+			
+			<!--  CONTENEDOR GENERAL     -->
+			<s:SkinnableContainer width="100%" height="100%" x="1" y="-7">
+				<s:layout>
+					<s:HorizontalLayout/>
+				</s:layout>
+				<s:Group width="100%" height="100%">
+					<!--Contenedor principal-->
+					
+					<s:layout>
+						<s:VerticalLayout paddingTop="40"/>
+					</s:layout>
+					<s:HGroup width="100%" height="100%" gap="-1" paddingBottom="0">
+						
+						<s:Group width="50%" height="100%">
+							<s:layout>
+								<s:VerticalLayout/>
+							</s:layout>
+							<s:SkinnableContainer height="40" width="100%" 
+												  skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+								<s:layout>
+									<s:HorizontalLayout verticalAlign="middle" paddingLeft="5" paddingRight="5"/>
+								</s:layout>
+								<s:Label text="Falla" color="0x707070"/>
+								<s:TextInput id="txtFallaNombre" width="100%" 
+											 prompt="Escribe la marca y teclea enter" enter="enterAddingToList(true)"/>	
+								<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(true)"/>
+								<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>
+							</s:SkinnableContainer>
+							<s:SkinnableContainer width="100%" height="100%">
+								<s:layout>
+									<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+								</s:layout>
+								<s:List borderColor="0xffffff" creationComplete="creationEvent(event)"
+										id="listFallas" doubleClickEnabled="true"
+										dataProvider="{crudModel.acListFallas}" labelField="falla" 
+										width="100%" height="100%" 
+										itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoFallaRenderer">
+									
+								</s:List>	
+								
+							</s:SkinnableContainer>
+							
+						</s:Group>
+						<s:Group width="50%" height="100%">
+							<s:layout>
+								<s:VerticalLayout/>
+							</s:layout>
+							<s:SkinnableContainer width="100%" height="40" skinClass="com.actioninteractive.nok.skins.PortletInSkin">
+								<s:layout>
+									<s:HorizontalLayout verticalAlign="middle" horizontalAlign="left" paddingLeft="5" paddingRight="5"/>
+								</s:layout>						
+								<s:Label text="Sub-falla" color="0x707070"/>
+								<s:TextInput id="txtSubfallaNombre" width="100%" skinClass="com.actioninteractive.nok.skins.TextInputWhiteSkin"
+											 prompt="Escribe la submarca y teclea enter" enter="enterAddingToList(false)"/>	
+								<s:Button skinClass="com.actioninteractive.nok.skins.ButtonAddList" click="enterAddingToList(false)"/>
+								<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList" label="x"/>
+							</s:SkinnableContainer>
+							<s:SkinnableContainer width="100%" height="100%">
+								<s:layout>
+									<s:HorizontalLayout verticalAlign="top" horizontalAlign="left" paddingBottom="5" paddingTop="-4"/>
+								</s:layout>	
+								<s:List id="listSubFallas" borderColor="0xffffff" 
+										dataProvider="{crudModel.acListSubfallas}" labelField="subfalla" 
+										width="100%" height="100%" 
+										itemRenderer="com.actioninteractive.nok.view.body.renders.ListadoSubFallaRenderer"></s:List>	
+							</s:SkinnableContainer>
+							
+						</s:Group>
+					</s:HGroup>	
+				</s:Group>
+			</s:SkinnableContainer>
+			
+			
+		</s:SkinnableContainer>
+		
+	</portlet:children>
+</portlet:Portlet>

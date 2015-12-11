@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<header:LoginMenuBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:header="com.actioninteractive.nok.view.header.*" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*"
+	clipAndEnableScrolling="true"
+	mouseMove="closeTimerReset()"
+	rollOut="closeTimerStart()"
+	>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.constant.NokConstants;
+			import com.actioninteractive.nok.view.AssetManager;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:Fade id="fadeIn"
+			alphaFrom="0" alphaTo="1"
+			/>
+		<s:Fade id="fadeOut"
+			alphaFrom="1" alphaTo="0"
+			/>
+	</fx:Declarations>
+	
+	<mx:Image id="userMenuSkin"
+		source="{AssetManager.userMenuSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		click="showLoginOptions()"
+		/>
+	
+	<s:SkinnableContainer 
+		width="100%" height="100%"
+		showEffect="{fadeIn}" hideEffect="{fadeOut}"
+		visible="{showLogin}"
+		enabled="{showLogin}" 
+		mouseEnabled="{showLogin}" mouseChildren="{showLogin}"
+		skinClass="com.actioninteractive.nok.skins.UserLoginSkin"
+		>
+		<s:layout>
+			<s:VerticalLayout
+				gap="5"
+				paddingTop="35" paddingBottom="5"
+				paddingLeft="5" paddingRight="5"
+				
+				/>
+		</s:layout>
+		
+		<mx:HRule
+			width="100%"
+			/>
+		
+		<s:HGroup
+			visible="{commonModel.isLoggedIn}"
+			includeInLayout="{commonModel.isLoggedIn}"
+			>
+			<s:Image width="16" source="{AssetManager.userProfileButtonSkin}" />
+			<s:Label text="Profile" />
+		</s:HGroup>
+		
+		<s:HGroup
+			visible="{commonModel.isLoggedIn}"
+			includeInLayout="{commonModel.isLoggedIn}"
+			>
+			<s:Image 
+				width="16" 
+				source="{AssetManager.userSettingsButtonSkin}"
+				useHandCursor="true"
+				buttonMode="true"
+				click="changeSettingsUser()"/>
+			<s:Label text="Settings" />
+		</s:HGroup>
+		
+		<!-- Inicio de sección para mostrar controles para cambiar la contraseña -->
+		<!-- Vamos a mostrar el popup para poder cambiar la actual contraseña del usuario -->
+		
+		
+		<!--
+		<component:PromptTextInput
+			id="userNametxt"
+			width="100%"
+			text="Usuario"
+			prompt="{commonModel.currentUser.usuario}"
+			visible="{commonModel.isChangePassword}"
+			includeInLayout="{commonModel.isChangePassword}"
+			enabled="false"
+			editable="false"/>
+		<component:PromptTextInput
+			id="passtxt"
+			width="100%"
+			prompt="Ingresa tu nueva contraseña"
+			visible="{commonModel.isChangePassword}"
+			includeInLayout="{commonModel.isChangePassword}"/>
+		<component:PromptTextInput
+			id="rePasstxt"
+			width="100%"
+			prompt="Repita la contraseña"
+			visible="{commonModel.isChangePassword}"
+			includeInLayout="{commonModel.isChangePassword}"
+			enter="changePassword()"/>-->
+		<!-- Fin de sección para cambiar la contraseña -->
+		
+		<!-- Inicio de sección para mostrar los controles del logueo -->
+		<!-- isChangePassword -->
+		
+		<component:PromptTextInput id="usernameInput"
+			width="100%"
+			text="Usuario o Correo"
+			promptText="Usuario o Correo"
+			visible="{!commonModel.isLoggedIn}"
+			includeInLayout="{!commonModel.isLoggedIn}"
+			change="textInputChanged()"
+			/>
+		
+		
+		<component:PromptTextInput id="passwordInput"
+			width="100%"
+			text="Contraseña"
+			promptText="Contraseña"
+			visible="{!commonModel.isLoggedIn}"
+			includeInLayout="{!commonModel.isLoggedIn}"
+			change="textInputChanged()"
+			enter="tryLogin()"
+			/>
+		<!-- Fin de sección para mostrar los controles del logueo -->
+		<mx:HRule
+			width="100%"
+			/>
+		
+		<s:Button id="loginButton"
+			label="{userLoginButtonLabel}"
+			icon="{userLoginButtonIcon}"
+			
+			enabled="false"
+			
+			click="tryLogin()"
+			/>
+	</s:SkinnableContainer>
+	
+	<mx:Image 
+		x="10" y="8"
+		source="{AssetManager.userButtonSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		click="showLoginOptions()"
+		/>
+	<mx:Image
+		x="108" y="11"
+		source="{AssetManager.userArrowSkin}"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		click="showLoginOptions()"
+		/>
+	<s:Label id="userNameLabel"
+		y="10"
+		left="26"
+		width="82" height="10"
+		text="{userName}" toolTip="{userName}"
+		maxDisplayedLines="1"
+		fontSize="11"
+		buttonMode="true"
+		click="showLoginOptions()"
+		/>
+</header:LoginMenuBase>

@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	width="100%" height="100%"
+	title="Proveedores"
+	creationComplete="init()">
+	<s:layout>
+		<s:HorizontalLayout paddingTop="10" paddingBottom="10"/>
+	</s:layout>
+	<fx:Declarations>
+		<s:RemoteObject
+			id="roDireccion"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="direccionBusiness">
+				<s:method
+					name="catMunicipio"
+					result="resultCatMunicipios(event)"
+					fault="faultCatMunicipios(event)"/>
+				<s:method
+					name="catEntidad"
+					result="resultCatEntidad(event)"
+					fault="faultCatEntidad(event)"/>
+				<s:method
+					name="catLocalidad"
+					result="resultCatLocalidad(event)"
+					fault="faultCatLocalidad(event)"/>
+		</s:RemoteObject>
+		<s:RemoteObject
+			id="roProveedor"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="proveedorBusiness">
+				<s:method
+					name="catProveedor"
+					result="catProveedorHandler(event)"
+					fault="catProveedorFault(event)"/>
+				<s:method
+					name="insertProveedor"
+					result="insertProveedorHandler(event)"
+					fault="insertProveedorFault(event)"/>
+				<s:method
+					name="updateProveedor"
+					result="updateProveedorHandler(event)"
+					fault="updateProveedorFault(event)"/>
+				<s:method
+					name="deleteProveedor"
+					result="deleteProveedorHandler(event)"
+					fault="deleteProveedorFault(event)"/>
+		</s:RemoteObject>
+		<!--	Validadores		-->
+		<mx:StringValidator
+			id="validateRFC"
+			source="{txtRFC}"
+			property="text"
+			requiredFieldError="Debes ingresar el RFC"
+			required="true"/>
+		<mx:StringValidator
+			id="validateRazonSocial"
+			source="{txtRazonSocial}"
+			property="text"
+			requiredFieldError="Debe ingresar la Razón Social"
+			required="true"/>
+		<mx:StringValidator
+			id="validateNombreContacto"
+			source="{txtNombreContacto}"
+			property="text"
+			requiredFieldError="Debe ingresar un Nombre de Contacto"
+			required="true"/>
+		<mx:StringValidator
+			id="validatorTelefonoEmpresa"
+			source="{txtTelefonoEmpresa}"
+			property="text"
+			requiredFieldError="Debe de ingresar un Télefono de la Empresa"
+			required="true"/>
+		<mx:StringValidator
+			id="validatorCelularEmpresa"
+			source="{txtCelularEmpresa}"
+			property="text"
+			requiredFieldError="Debe de ingresar un Celular de la Empresa"
+			required="true"/>
+		<mx:StringValidator
+			id="validatorCorreo"
+			source="{txtCorreo}"
+			property="text"
+			requiredFieldError="Debe de ingresar un correo"
+			required="true"/>
+		<mx:StringValidator
+			id="validateNombreComercial"
+			source="{txtNombreComercial}"
+			property="text"
+			requiredFieldError="Debe ingresar un Nombre de Contacto"
+			required="true"/>
+		<mx:NumberValidator 
+			id="validatorEntidad"
+			source="{cmbEntidad}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe seleccionar una Entidad"
+			valid="validEntidadHandler(1);"
+			invalid="validEntidadFault(1);" />
+		<mx:NumberValidator 
+			id="validatorMunicipio"
+			source="{cmbMunicipio}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe seleccionar un Municipio"
+			valid="validEntidadHandler(2);"
+			invalid="validEntidadFault(2);" />
+		<mx:NumberValidator 
+			id="validatorLocalidad"
+			source="{cmbLocalidad}"
+			property="selectedIndex"
+			minValue="0"
+			lowerThanMinError="Debe seleccionar una Localidad"
+			valid="validEntidadHandler(3);"
+			invalid="validEntidadFault(3);" />
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import event.CommonEvent;
+			
+			import model.EntidadVO;
+			import model.LocalidadVO;
+			import model.MunicipioVO;
+			import model.ProveedorVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.validators.Validator;
+			
+			import utils.AlertUtils;
+			
+			[Bindable]private var titleFormulario:String;
+			private const CREAR:String = "Crear";
+			private const ACTUALIZAR:String = "Actualizar";
+			
+			[Bindable]private var itemSelected:ProveedorVO = new ProveedorVO();
+			[Bindable]private var entidadSelected:EntidadVO = null;
+			[Bindable]private var municipioSelected:MunicipioVO = null;
+			[Bindable]private var localidadSelected:LocalidadVO = null;
+			
+			
+			[Bindable]private var flagMunicipio:Boolean = false;
+			[Bindable]private var flagLocalidad:Boolean = false;
+			[Bindable]private var flagDateAlta:Boolean = false;
+			[Bindable]private var listProveedores:ArrayCollection;
+			[Bindable]private var listMunicipios:ArrayCollection;
+			[Bindable]private var listEntidades:ArrayCollection;
+			[Bindable]private var listLocalidades:ArrayCollection;
+			
+			private var arrayValidationResult:Array;
+			
+			private function init():void{
+				itemSelected = new ProveedorVO();
+				upData();
+			}
+			
+			private function upData():void{
+				roProveedor.catProveedor(new ProveedorVO());
+				roDireccion.catEntidad(new EntidadVO());
+				titleFormulario = CREAR;
+			}
+			
+			private function clearFormulario():void{
+				titleFormulario = "Crear";
+				itemSelected = new ProveedorVO();
+				cmbEntidad.selectedItem = null;
+				cmbLocalidad.selectedItem = null;
+				cmbMunicipio.selectedItem = null;
+				entidadSelected = null;
+				municipioSelected = null;
+				localidadSelected = null;
+				
+				txtRFC.errorString = "";
+				txtRazonSocial.errorString = "";
+				txtNombreContacto.errorString = "";
+				txtNombreComercial.errorString = "";
+				cmbEntidad.errorString = "";
+				cmbMunicipio.errorString = "";
+				cmbLocalidad.errorString = "";
+				txtTelefonoEmpresa.errorString = "";
+				txtCorreo.errorString = "";
+				txtWWW.errorString = "";
+				txtCelularEmpresa.errorString = "";
+				cbxEstatus.selected = true;
+				
+			}
+			
+			private function saveProveedor():void{
+				switch(titleFormulario){
+					case CREAR:
+						validateAllInputs();
+						if(arrayValidationResult.length == 0){
+							saveUpdateProveedor();
+							roProveedor.insertProveedor(itemSelected);
+						}else{
+							//Alert.show("Debe de seleccionar los campos obligatorios", "Error de Validación");
+							AlertUtils.showNoticeMessage("Notificación","Debe de seleccionar los campos obligatorios.");
+						}
+						//updatePropertiesClienteVO();
+						break;
+					case ACTUALIZAR:
+						validateAllInputs();
+						if(arrayValidationResult.length == 0){
+							saveUpdateProveedor();
+							roProveedor.updateProveedor(itemSelected);
+						}else{
+							//Alert.show("Debe de seleccionar los campos obligatorios", "Error de Validación");
+							AlertUtils.showNoticeMessage("Notificación","Debe de seleccionar los campos obligatorios.");
+						}
+						break;
+					default:
+						break;
+				}
+			}
+			
+			/**
+			 * Valida los campos
+			 */
+			private function validateAllInputs():void{
+				arrayValidationResult = new Array();
+				arrayValidationResult = Validator.validateAll([validateRFC, validateRazonSocial, validateNombreComercial, validateNombreContacto, validatorEntidad, validatorMunicipio, validatorLocalidad, validatorCelularEmpresa, validatorCorreo, validatorTelefonoEmpresa, validatorCelularEmpresa]);
+			}
+			
+			private function saveUpdateProveedor():void{
+				itemSelected.rfcProveedor = txtRFC.text;
+				itemSelected.razonSocial = txtRazonSocial.text;
+				itemSelected.nombreContacto = txtNombreContacto.text;
+				itemSelected.nombreComercial = txtNombreComercial.text;
+				itemSelected.idMunicipio = municipioSelected.idMunicipio;
+				itemSelected.idEntidad = entidadSelected.idEntidad;
+				itemSelected.idLocalidad = localidadSelected.idLocalidad;
+				itemSelected.telefonoEmpresa = txtTelefonoEmpresa.text;
+				itemSelected.celularEmpleado = txtCelularEmpresa.text;
+				itemSelected.correo = txtCorreo.text;
+				itemSelected.www = txtWWW.text;
+				itemSelected.estatus = cbxEstatus.selected;
+				itemSelected.filterEstatusProveedor = cbxEstatus.selected.toString();
+			}
+			
+			protected function deleteProveedor():void{
+				if(itemSelected != null && itemSelected.idProveedor != null && itemSelected.idProveedor != ""){
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar el Proveedor?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmation);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+					
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmation (_event:CommonEvent):void{
+				roProveedor.deleteProveedor(itemSelected);
+			}
+			
+			/**
+			 * Proveedor Seleccionado
+			 */
+			protected function selectProveedor(_event:MouseEvent):void
+			{
+				titleFormulario = "Actualizar";
+				itemSelected = _event.currentTarget.selectedItem as ProveedorVO;
+				for(var i:int = 0; i < listEntidades.length; i++){
+					var objEntidad:EntidadVO = listEntidades[i] as EntidadVO;
+					if(objEntidad.idEntidad == itemSelected.idEntidad){
+						cmbEntidad.selectedItem = objEntidad;
+						selectEntidad();
+						break;
+					}
+				}
+			}
+			
+			/**
+			 * Obtienen los municipios de acuerdo a la entidad seleccionada
+			 */
+			private function selectEntidad():void{
+				if(cmbEntidad.selectedItem != null){
+					cmbEntidad.errorString = "";
+					municipioSelected = null;
+					localidadSelected = null;
+					
+					entidadSelected = cmbEntidad.selectedItem as EntidadVO;
+					var tempMunicipio:MunicipioVO = new MunicipioVO();
+					tempMunicipio.idEntidad = entidadSelected.idEntidad;
+					roDireccion.catMunicipio(tempMunicipio);
+				}
+			}
+			
+			/**
+			 * Obtiene las localidades de acuerdo al municipio seleccionado
+			 */
+			private function selectMunicipio():void{
+				if(cmbMunicipio.selectedItem != null){
+					cmbMunicipio.errorString = "";
+					localidadSelected = null;
+					
+					municipioSelected = cmbMunicipio.selectedItem as MunicipioVO;
+					var tempLocalidad:LocalidadVO = new LocalidadVO();
+					
+					tempLocalidad.idEntidad = entidadSelected.idEntidad;
+					tempLocalidad.idMunicipio = municipioSelected.idMunicipio;
+					roDireccion.catLocalidad(tempLocalidad);
+				}
+			}
+			
+			/**
+			 * Setea la Localidad seleccionada
+			 */
+			private function selectLocalidad():void{
+				if(cmbLocalidad.selectedItem != null){
+					cmbLocalidad.errorString = "";
+					localidadSelected = cmbLocalidad.selectedItem as LocalidadVO;
+				}
+			}
+			
+			/**	Validadores**/
+			
+			protected function validEntidadHandler(type:int):void {
+				switch(type){
+					case 1:
+						cmbEntidad.errorString = "";
+						break;
+					case 2:
+						cmbMunicipio.errorString = "";
+						break;
+					case 3:
+						cmbLocalidad.errorString = "";
+						break;
+					default:
+						break;
+				}
+			}
+			
+			protected function validEntidadFault(type:int):void {
+				switch(type){
+					case 1:
+						cmbEntidad.errorString = "Debe de seleccionar una Entidad";
+						break;
+					case 2:
+						cmbMunicipio.errorString = "Debe de seleccionar un Municipio";
+						break;
+					case 3:
+						cmbLocalidad.errorString = "Debe de seleccionar una Localidad";
+						break;
+					default:
+						break;
+				}
+			}
+			
+			/****************************************/
+			/*******	Remote Objects	*************/
+			/****************************************/
+			//resultCatMunicipios
+			private function resultCatMunicipios(_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						flagMunicipio = true;
+						listMunicipios = _event.result as ArrayCollection;
+						
+						//Esto aplica únicamente cuando se ha seleccionado un elemento del grid
+						if(itemSelected != null && itemSelected.idMunicipio != null && itemSelected.idMunicipio != ""){
+							if(cmbEntidad.selectedItem != null){
+								for(var j:int = 0; j < listMunicipios.length; j++){
+									var objMunicipio:MunicipioVO = listMunicipios[j] as MunicipioVO;
+									if(objMunicipio.idMunicipio == itemSelected.idMunicipio){
+										cmbMunicipio.selectedItem = objMunicipio;
+										selectMunicipio();
+										break;
+									}
+								}
+							}
+						}
+					}
+				}catch(e:Error){
+					AlertUtils.showErrorMessage("Error","No se pudieron cargar los Municipios.");
+				}
+			}
+			private function faultCatMunicipios(_event:FaultEvent):void{
+				flagMunicipio = false;
+				AlertUtils.showErrorMessage("Error","No se pudieron cargar los Municipios.");
+				//Alert.show(_event.fault.message,"faultCatMunicipios");
+			}
+			
+			//resultCatEntidad
+			private function resultCatEntidad(_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listEntidades = _event.result as ArrayCollection;						
+					}
+				}catch(e:Error){
+					//trace("Error" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudieron cargar las Entidades.");
+				}
+			}
+			
+			private function faultCatEntidad(_event:FaultEvent):void{
+				//Alert.show(_event.fault.message,"faultCatEntidad");
+				AlertUtils.showErrorMessage("Error","No se pudieron cargar las Entidades.");
+			}
+			
+			//resultCatLocalidad
+			private function resultCatLocalidad(_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						flagLocalidad = true;
+						listLocalidades = _event.result as ArrayCollection;
+						
+						//Aplica unicamente cuando se a seleccionado un elemento del grid
+						if(itemSelected != null && itemSelected.idLocalidad != null && itemSelected.idLocalidad != ""){
+							for(var k:int = 0; k < listLocalidades.length; k++){
+								var objLocalidad:LocalidadVO = listLocalidades[k] as LocalidadVO;
+								if(objLocalidad.idLocalidad == itemSelected.idLocalidad){
+									cmbLocalidad.selectedItem = objLocalidad;
+									selectLocalidad();
+									break;
+								}
+							}
+						}
+					}
+				}catch(e:Error){
+					flagLocalidad = false;
+					//trace("Error" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudieron cargar las Localidades.");
+				}
+			}
+			
+			private function faultCatLocalidad(_event:FaultEvent):void{
+				flagLocalidad = false;
+				//Alert.show(_event.fault.message,"faultCatLocalidad");
+				AlertUtils.showErrorMessage("Error","No se pudieron cargar las Localidades.");
+			}
+			//catProveedor
+			private function catProveedorHandler (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listProveedores = _event.result as ArrayCollection;						
+					}
+				}catch(e:Error){
+					//trace("Error" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudieron cargar los Proveedores.");
+				}
+			}
+			private function catProveedorFault (_event:FaultEvent):void{
+				//Alert.show(_event.fault.message,"catProveedor");
+				AlertUtils.showErrorMessage("Error","No se pudieron cargar los Proveedores.");
+			}
+			
+			//insertProveedor
+			private function insertProveedorHandler (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new ProveedorVO();
+						if(listProveedores != null){
+							listProveedores.addItem(ProveedorVO(_event.result));
+							clearFormulario();
+						}
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertProveedor" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudo guardar el Proveedor.");
+				}
+			}
+			private function insertProveedorFault (_event:FaultEvent):void{
+				//Alert.show("Error", "insertProveedor" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error","No se pudo guardar el Proveedor.");
+			}
+			
+			//updateProveedor
+			private function updateProveedorHandler (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new ProveedorVO();
+						upData();
+						clearFormulario();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "updateProveedor" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudo actualizar el Proveedor.");
+				}
+			}
+			private function updateProveedorFault (_event:FaultEvent):void{
+				//Alert.show("Error", "updateProveedor" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error","No se pudo actualizar el Proveedor.");
+			}
+			
+			//deleteProveedor
+			private function deleteProveedorHandler (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = null;
+						clearFormulario();
+						upData();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteProveedor" + e.message);
+					AlertUtils.showErrorMessage("Error","No se pudo eliminar el Proveedor.");
+				}
+			}
+			private function deleteProveedorFault (_event:FaultEvent):void{
+				//Alert.show("Error", "deleteProveedor" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error","No se pudo eliminar el Proveedor.");
+			}
+		]]>
+	</fx:Script>
+	<mx:HDividedBox
+		width="100%" height="100%">
+		
+		<s:VGroup
+			id="containerTable"
+			width="100%" height="100%">
+			<s:DataGrid
+				id="dtgClientes"
+				width="100%" height="100%"
+				dataProvider="{listProveedores}"
+				doubleClickEnabled="true"
+				doubleClick="selectProveedor(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="RFC" dataField="rfcProveedor" width="40"/>
+						<s:GridColumn headerText="Razón Social" dataField="razonSocial" width="80"/>
+						<s:GridColumn headerText="Nombre Contacto" dataField="nombreContacto" width="100"/>
+						<s:GridColumn headerText="Teléfono Empresa" dataField="telefonoEmpresa" width="100"/>
+						<s:GridColumn headerText="Celular Empresa" dataField="celularEmpleado" width="100"/>
+						<s:GridColumn headerText="WWW" dataField="www" width="30"/>
+						<s:GridColumn headerText="Correo" dataField="correo" width="80"/>
+						<s:GridColumn headerText="Localidad" dataField="localidad" width="80"/>
+						<s:GridColumn headerText="Municipio" dataField="municipio" width="80"/>
+						<s:GridColumn headerText="Entidad" dataField="entidad" width="80"/>
+						<s:GridColumn headerText="Nombre Comercial" dataField="nombreComercial" width="100"/>
+						<s:GridColumn headerText="Estatus" dataField="estatus" width="60"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+		</s:VGroup>
+		
+		<s:VGroup
+			width="100%"
+			gap="12">
+			<s:Label
+				text="{titleFormulario}"/>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="RFC"/>
+				<s:TextInput
+					id="txtRFC"
+					width="300"
+					maxChars="13"
+					change="txtRFC.text=txtRFC.text.toLocaleUpperCase()"
+					text="{itemSelected.rfcProveedor}"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Razón Social"/>
+				<s:TextInput
+					id="txtRazonSocial"
+					width="300"
+					change="txtRazonSocial.text=txtRazonSocial.text.toLocaleUpperCase()"
+					text="{itemSelected.razonSocial}"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Nombre Contacto"/>
+				<s:TextInput
+					id="txtNombreContacto"
+					width="300"
+					text="{itemSelected.nombreContacto}"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Telefono Empresa"/>
+				<s:TextInput
+					id="txtTelefonoEmpresa"
+					restrict="0-9"
+					maxChars="15"
+					text="{itemSelected.telefonoEmpresa}"
+					width="300"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Celular Empresa"/>
+				<s:TextInput
+					id="txtCelularEmpresa"
+					restrict="0-9"
+					maxChars="15"
+					text="{itemSelected.celularEmpleado}"
+					width="300"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="WWW"/>
+				<s:TextInput
+					id="txtWWW"
+					text="{itemSelected.www}"
+					width="300"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Correo"/>
+				<s:TextInput
+					id="txtCorreo"
+					text="{itemSelected.correo}"
+					width="300"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Entidad"/>
+				<s:DropDownList
+					id="cmbEntidad"
+					prompt="Selecciona la Entidad"
+					labelField="entidad"
+					dataProvider="{listEntidades}"
+					change="selectEntidad()"
+					width="300"
+					buttonMode="true"
+					useHandCursor="true"
+					/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Municipio"/>
+				<s:DropDownList
+					id="cmbMunicipio"
+					prompt="Selecciona el Municipio"
+					labelField="municipio"
+					enabled="{flagMunicipio}"
+					dataProvider="{listMunicipios}"
+					change="selectMunicipio()"
+					width="300"
+					buttonMode="true"
+					useHandCursor="true"
+					/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+				verticalAlign="middle"
+				>
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Localidad"/>
+				<s:DropDownList
+					id="cmbLocalidad"
+					enabled="{flagLocalidad}"
+					labelField="localidad"
+					prompt="Selecciona la Localidad"
+					dataProvider="{listLocalidades}"
+					change="selectLocalidad()"
+					width="300"
+					buttonMode="true"
+					useHandCursor="true"
+					/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Nombre Comercial"/>
+				<s:TextInput
+					id="txtNombreComercial"
+					width="300"
+					text="{itemSelected.nombreComercial}"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+				verticalAlign="middle">
+				<s:Label
+					width="120" fontWeight="bold" textAlign="right"
+					text="Estatus"/>
+				<s:CheckBox
+					id="cbxEstatus"
+					selected="{itemSelected.estatus}"
+					width="300"/>
+			</s:HGroup>
+			
+			<mx:ControlBar>
+				<s:Button 
+					label="Limpiar" 
+					icon="@Embed(source='assets/icons/cancel.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="clearFormulario()"/>
+				<s:Button 
+					id="guardarButton" 
+					label="{titleFormulario}" 
+					icon="@Embed(source='assets/icons/add.png'" 
+					styleName="primaryButton"
+					useHandCursor="true"
+					buttonMode="true"
+					click="saveProveedor()"/>
+				<s:Button
+					id="btnDelete"
+					label="Borrar"
+					icon="@Embed(source='assets/icons/delete.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="deleteProveedor()"/>
+			</mx:ControlBar>
+		</s:VGroup>
+	</mx:HDividedBox>
+</s:Panel>

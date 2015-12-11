@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	width="{_width}" height="{_heigth}">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			[Bindable]public var _width:Number = 400;
+			[Bindable]public var _heigth:Number = 300;
+			[Bindable]public var _title:String = "Alert";
+			[Bindable]public var _message:String = "";
+		]]>
+	</fx:Script>
+	<s:Panel
+		title="{_title}"
+		width="100%"
+		height="100%">
+			<s:TextArea
+				enabled="false"
+				editable="false"
+				width="100%" height="100%"
+				text="{_message}"/>
+	</s:Panel>
+</s:SkinnableContainer>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               height="536" minWidth="955" minHeight="600"
+               creationComplete="initcreationCompleteHandler(event)" xmlns:components="com.hillelcoren.components.*">
+
+    <fx:Script>
+		<![CDATA[
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.events.FlexEvent;
+        import mx.events.ItemClickEvent;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.validators.Validator;
+
+
+        [Bindable]
+        public var acFallas:ArrayCollection;
+        [Bindable]
+        public var acObras:ArrayCollection;
+        [Bindable]
+        public var acEmpleado:ArrayCollection;
+        [Bindable]
+        public var acEquipo:ArrayCollection;
+        [Bindable]
+        public var acFalla:ArrayCollection;
+        [Bindable]
+        public var acSubFalla:ArrayCollection;
+        [Bindable]
+        public var fallaEquipodes:FallaEquipoDTO = new FallaEquipoDTO();
+        [Bindable]
+        protected var itemSelected:FallaEquipoDTO = new FallaEquipoDTO();
+
+        private var arrayValidationResult:Array;
+
+
+        protected function infoObraresultHandler(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acObras = event.result as ArrayCollection;
+
+        }
+
+        protected function infoEmpleadoresultHandler(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acEmpleado = event.result as ArrayCollection;
+        }
+
+
+        protected function infoEquiporesultHandler(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acEquipo = event.result as ArrayCollection;
+        }
+
+
+        protected function infoFallaresultHandler(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acFalla = event.result as ArrayCollection;
+        }
+
+
+        protected function infoSubfallaresultHandler(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acSubFalla = event.result as ArrayCollection;
+        }
+
+        protected function selectedfallaequipo(event:MouseEvent):void {
+            // TODO Auto-generated method stub
+            itemSelected = event.currentTarget.selectedItem as FallaEquipoDTO;
+
+            switch (itemSelected.prioridad) {
+                case 1:
+                    prioridadrbtgroup.selectedValue = "Alta";
+                    break;
+                case 2:
+                    prioridadrbtgroup.selectedValue = "Media";
+                    break;
+                case 3:
+                    prioridadrbtgroup.selectedValue = "Baja";
+                    break;
+                default:
+                    break;
+            }
+
+            switch (itemSelected.tipo_falla) {
+                case 0:
+                    tipoFallabtgroup.selectedValue = "Obra"
+                    break;
+                case 1:
+                    tipoFallabtgroup.selectedValue = "Taller"
+                    break;
+                default:
+                    break;
+            }
+
+            if(itemSelected.id_obra != null
+                    && itemSelected.id_obra != ""){
+                for each(var objObra:ObraDTO in acObras){
+                        if(objObra.idObra == itemSelected.id_obra){
+                           nomObra.selectedItem = objObra;
+                            break;
+                        }
+                }
+            }
+
+            if(itemSelected.id_empleado != null
+                    && itemSelected.id_empleado != ""){
+                for each (var objOperador:EmpleadoDTO in acEmpleado){
+                    if(objOperador.idEmpleado == itemSelected.id_empleado){
+                        autocompleteEmpleados.selectedItem = objOperador;
+                        break;
+                    }
+                }
+            }
+
+            if(itemSelected.id_equipo != null
+                    && itemSelected.id_equipo != ""){
+                for each (var objEquipo:EquipoDTO in acEquipo){
+                    if (objEquipo.id_equipo == itemSelected.id_equipo){
+                        autocompleteEquipo.selectedItem = objEquipo;
+                        break;
+                    }
+                }
+            }
+
+
+            if(itemSelected.id_subfalla != null
+                    && itemSelected.id_subfalla != ""){
+                for each (var objSubfallaTemp:SubFallaDTO in acSubFalla){
+                    if (objSubfallaTemp.idSubfalla == itemSelected.id_subfalla){
+                        autocompleteSubfalla.selectedItem = objSubfallaTemp;
+
+                        for each(var objFallaTemp:FallaDTO in acFalla){
+                            if(objSubfallaTemp.idFalla == objFallaTemp.idFalla){
+                                ddlfallas.selectedItem = objFallaTemp;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+
+
+
+            textareaDescripcion.text = itemSelected.descripcion;
+            prioridadrbtgroup.selectedValue = itemSelected.prioridad;
+            txtObservaciones.text = itemSelected.observaciones;
+            dateSelected.selectedDate = DateField.stringToDate(itemSelected.fecha_registro, "YYYY/MM/DD");
+
+
+
+        }
+
+        protected function Prioridad_itemClickHandler(event:ItemClickEvent):void {
+            // TODO Auto-generated method stub
+            trace("event.currentTarget.selectedValue: " + event.currentTarget.selectedValue);
+        }
+
+        public function cleanAltaFalla():void {
+            nomObra.removeAll();
+            autocompleteEmpleados.removeAll();
+            autocompleteEquipo.removeAll();
+            ddlfallas.removeAll();
+            autocompleteSubfalla.removeAll();
+            textareaDescripcion.text = "";
+            prioridadrbtgroup.selectedValue = "Alta";
+            txtObservaciones.text = "";
+            dateSelected.selectedDate = new Date();
+            tipoFallabtgroup.selectedValue = "Obra";
+        }
+
+        public function beforeSave():void {
+            itemSelected.id_tfallas = "";
+            itemSelected.tipo_falla = radioObra.value == "Obra" ? 1 : 0;
+            itemSelected.id_empleado = autocompleteEmpleados.selectedItem.idEmpleado;
+            itemSelected.id_subfalla = autocompleteSubfalla.selectedItem.idSubfalla;
+            itemSelected.descripcion = textareaDescripcion.text;
+            var prioridad:int;
+            switch (prioridadrbtgroup.selectedValue) {
+                case "Alta":
+                    prioridad = 1;
+                    break;
+                case "Media":
+                    prioridad = 2;
+                    break;
+                case "Baja":
+                    prioridad = 3;
+                    break;
+                default:
+                    break;
+            }
+            itemSelected.prioridad = prioridad;
+            itemSelected.observaciones = txtObservaciones.text;
+            if(dateSelected.selectedDate != null){
+                var tempDate:Date = dateSelected.selectedDate;
+                if(tempDate != null){
+                    dateSelected.errorString = "";
+                    itemSelected.fecha_registro = tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
+                }else{
+                    dateSelected.errorString = "Debes ingresar la fecha";
+                }
+            }
+
+            itemSelected.id_equipo = autocompleteEquipo.selectedItem.id_equipo;
+            itemSelected.id_obra = nomObra.selectedItem.idObra;
+            itemSelected.numeroeconomico = autocompleteEquipo.selectedItem.numeroeconomico;
+            itemSelected.id_obra = ObraDTO(nomObra.selectedItem).idObra;
+            itemSelected.estatus = "1";
+            saveAltaFalla();
+        }
+
+        public function saveAltaFalla():void {
+            if (itemSelected == null) {
+                Alert.show("No hay un elemento seccionado");
+            } else {
+                roAltaFalla.insertFallaEquipo(itemSelected);
+            }
+
+        }
+        private var fallaTipoSelectedToDelete:FallaEquipoDTO;
+        public function deleteAltafalla():void {
+            fallaTipoSelectedToDelete =  dataGridFallas.selectedItem as FallaEquipoDTO;
+            roAltaFalla.deleteFallaEquipo(fallaTipoSelectedToDelete);
+        }
+
+        protected function roAltaFallaFault(event:FaultEvent):void {
+            // TODO Auto-generated method stub
+            trace(event.message);
+        }
+
+        protected function getFallaEquiporesult(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            acFallas = event.result as ArrayCollection;
+            cleanAltaFalla();
+        }
+
+        protected function initcreationCompleteHandler(event:FlexEvent):void {
+            // TODO Auto-generated method stub
+            var fallaEquipo:FallaEquipoDTO = new FallaEquipoDTO();
+            var infoObra:ObraDTO = new ObraDTO();
+            var infoEmpleado:EmpleadoDTO = new EmpleadoDTO();
+            var infoEquipo:EquipoDTO = new EquipoDTO();
+            var catFalla:FallaDTO = new FallaDTO();
+            var catSubfalla:SubFallaDTO = new SubFallaDTO();
+            infoObra.idObra = '';
+            infoObra.nombre = '';
+            infoObra.contrato = '';
+            infoObra.idEmpleado = '';
+            /* fallaEquipo.id_tfallas='';
+             fallaEquipo.numeroeconomico='';
+             fallaEquipo.id_equipo='';
+             fallaEquipo.id_empleado='';
+             fallaEquipo.id_obra='';
+             fallaEquipo.id_subfalla='';
+             */
+            trace(fallaEquipo);
+            roAltaFalla.getFallasEquipo(fallaEquipo);
+            roObras.infoObra(infoObra);
+            roEmpleado.infoEmpleado(infoEmpleado);
+            roEquipo.infoEquipo(infoEquipo);
+            roFalla.catFalla(catFalla);
+            roSubfalla.catSubfalla(catSubfalla);
+
+
+
+
+        }
+
+        private function validateAllInputs():void{
+            arrayValidationResult = new Array();
+            arrayValidationResult = Validator.validateAll([val_Obra,val_Operador,val_Maquinaria,val_Fallas,val_SubFalla,val_Descripcion,val_Observaciones,val_Fecha]);
+        }
+
+        protected function insertFallaEquiporesult(event:ResultEvent):void {
+            // Limpiamos y avisamos del exito
+            if((event.result != null) || (event.result)){
+                Alert.show("Se guardo la falla","Maqzar");
+                roAltaFalla.getFallasEquipo(new FallaEquipoDTO());
+            }else
+            {
+                Alert.show("Existio un problema, intenta más tarde","Maqzar");
+            }
+
+        }
+
+        private function upData():void{
+            itemSelected.id_obra = ObraDTO(nomObra.selectedItem).idObra;
+            itemSelected.id_empleado = EmpleadoDTO(autocompleteEmpleados.selectedItem).idEmpleado;
+            itemSelected.id_equipo = EquipoDTO(autocompleteEquipo.selectedItem).id_equipo;
+            itemSelected.id_subfalla = SubFallaDTO(autocompleteSubfalla.selectedItem).idSubfalla;
+            itemSelected.descripcion = textareaDescripcion.text;
+            switch(prioridadrbtgroup.selectedValue){
+                case "Alta":
+                        itemSelected.prioridad = 1;
+                    break;
+                case "Media":
+                        itemSelected.prioridad = 2;
+                    break;
+                case "Baja":
+                        itemSelected.prioridad = 3;
+                    break;
+                default:
+                    break;
+            }
+
+            itemSelected.observaciones = txtObservaciones.text;
+            if(dateSelected.selectedDate != null){
+                var tempDate:Date = dateSelected.selectedDate;
+                if(tempDate != null){
+                    dateSelected.errorString = "";
+                    itemSelected.fecha_registro = tempDate.getFullYear().toString() + "/"+ (tempDate.getMonth()+1).toString() + "/" + tempDate.getDate().toString();
+                }
+            }
+             switch(tipoFallabtgroup.selectedValue){
+                 case "Obra":
+                        itemSelected.tipo_falla = 0;
+                     break;
+                 case "Taller":
+                        itemSelected.tipo_falla = 1;
+                     break;
+                 default:
+                     break;
+             }
+
+            roAltaFalla.updateFallaEquipo(itemSelected);
+            cleanAltaFalla();
+        }
+
+        private function updateFallasObras():void{
+            roAltaFalla.getFallasEquipo(new FallaEquipoDTO());
+        }
+
+        
+
+        protected function updateFallaEquiporesult(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            try{
+                if(event.result != null){
+                   itemSelected = new FallaEquipoDTO();
+                    updateFallasObras();
+                    cleanAltaFalla();
+                }
+            }catch(e:Error){
+                //AlertUtils.showErrorMessage("Error", "No se puede actualizar la falla");
+                Alert.show("Error","updateFallaEquipo" + e.message)
+            }
+
+
+        }
+
+        protected function deleteFallaEquiporesult(event:ResultEvent):void {
+            // TODO Auto-generated method stub
+            trace("deleteFalla: "+ event.result);
+            if(event.result == true){
+                Alert.show("Se eliminó el registro","Maqzar");
+            }
+            //Quitamos el registro seleccionado.
+            acFallas.removeItemAt(dataGridFallas.selectedIndex);
+        }
+
+        public function cambialist(e:Event):void {
+            var subfalla:SubFallaDTO = new SubFallaDTO();
+            subfalla.idFalla = FallaDTO(ddlfallas.selectedItem).idFalla;
+            roSubfalla.catSubfalla(subfalla);
+        }
+        ]]>
+	</fx:Script>
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+
+        <!-- objeto remoto para alta falla-->
+        <s:RemoteObject id="roAltaFalla" destination="fallaEquipoBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="getFallasEquipo" result="getFallaEquiporesult(event)"/>
+            <s:method name="insertFallaEquipo" result="insertFallaEquiporesult(event)"/>
+            <s:method name="updateFallaEquipo" result="updateFallaEquiporesult(event)"/>
+            <s:method name="deleteFallaEquipo" result="deleteFallaEquiporesult(event)"/>
+        </s:RemoteObject>
+
+        <!--Objeto remoto para obra-->
+        <s:RemoteObject id="roObras" destination="obraBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="infoObra" result="infoObraresultHandler(event)"/>
+        </s:RemoteObject>
+
+        <!-- objeto remoto para el operador-->
+        <s:RemoteObject id="roEmpleado" destination="empleadoBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="infoEmpleado" result="infoEmpleadoresultHandler(event)"/>
+        </s:RemoteObject>
+
+        <!--Objeto remoto para  la maquinaria-->
+        <s:RemoteObject id="roEquipo" destination="equipoBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="infoEquipo" result="infoEquiporesultHandler(event)"/>
+        </s:RemoteObject>
+
+        <!--Objeto remoto para la falla-->
+        <s:RemoteObject id="roFalla" destination="fallaBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="catFalla" result="infoFallaresultHandler(event)"/>
+        </s:RemoteObject>
+
+        <!--Objeto remoto para la subfalla-->
+        <s:RemoteObject id="roSubfalla" destination="fallaBusiness" endpoint="{NokConstants.ENDPOINT}"
+                        fault="roAltaFallaFault(event)">
+            <s:method name="catSubfalla" result="infoSubfallaresultHandler(event)"/>
+        </s:RemoteObject>
+
+        <s:RadioButtonGroup id="prioridadrbtgroup"
+                            itemClick="Prioridad_itemClickHandler(event);"/>
+        <s:RadioButtonGroup id="tipoFallabtgroup"
+                            itemClick="Prioridad_itemClickHandler(event);"/>
+
+		<!-- Validators -->
+
+		<mx:StringValidator id="val_Obra"
+							source = "{nomObra}"
+							property="text"
+							required="true"
+							requiredFieldError="Debes de elejir una obra."/>
+
+		<mx:StringValidator id="val_Operador"
+							source = "{autocompleteEmpleados}"
+							property ="text"
+							required ="true"
+							requiredFieldError="Debes introducir el nombre de un operador."/>
+
+		<mx:StringValidator id="val_Maquinaria"
+							source = "{autocompleteEquipo}"
+							property = "text"
+							required = "true"
+							requiredFieldError = "Debes seleccionar un Equipo."/>
+
+		<mx:StringValidator id="val_Fallas"
+							source = "{ddlfallas}"
+							property = "text"
+							required="true"
+							requiredFieldError="Debes elegir una Falla."/>
+
+		<mx:StringValidator id="val_SubFalla"
+							source="{autocompleteSubfalla}"
+							property="text"
+							required="true"
+							requiredFieldError="Debes elegir una SubFalla."/>
+
+		<mx:StringValidator id="val_Descripcion"
+							source="{textareaDescripcion}"
+							property="text"
+							required="true"
+							requiredFieldError="Debes ingresar una Descripción."/>
+
+		<mx:StringValidator id = "val_Observaciones"
+							source="{txtObservaciones}"
+							property="text"
+							required="true"
+							requiredFieldError="Debes ingresar alguna Observación"/>
+
+		<mx:DateValidator id="val_Fecha"
+						  source="{dateSelected}"
+						  property="text"
+						  inputFormat="YYYY-MM-DD"
+                          required = "true"
+						  requiredFieldError="Es necesario ingresar una Fecha."/>
+
+		<!-- End Validators-->
+
+    </fx:Declarations>
+
+    <s:Group x="0" y="0" width="100%" height="100%">
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Panel width="100%" height="100%" title="Lista de Fallas">
+            <s:controlBarContent>
+                <s:Button label="Eliminar Registro" click="deleteAltafalla()"/>
+            </s:controlBarContent>
+            <s:DataGrid x="0" y="0" width="100%" height="100%" requestedRowCount="4" dataProvider="{acFallas}" id="dataGridFallas"
+                        doubleClickEnabled="true" doubleClick="selectedfallaequipo(event)">
+                <s:columns>
+                    <s:ArrayList>
+                        <s:GridColumn width="150" dataField="numeroeconomico" headerText="Equipo"></s:GridColumn>
+                        <s:GridColumn dataField="falla" headerText="Falla"></s:GridColumn>
+                        <s:GridColumn dataField="subfalla" headerText="Subfalla"></s:GridColumn>
+                        <s:GridColumn dataField="descripcionobra" headerText="Obra"></s:GridColumn>
+                    </s:ArrayList>
+                </s:columns>
+
+            </s:DataGrid>
+        </s:Panel>
+        <s:Panel width="100%" height="100%" title="Gestión de la Falla">
+            <s:layout>
+                <s:VerticalLayout/>
+            </s:layout>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Obra" textAlign="right"/>
+                <components:AutoComplete id="nomObra" width="100%" dataProvider="{acObras}"
+                                         labelField="nombre">
+            </components:AutoComplete>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Operador" textAlign="right"/>
+                <components:AutoComplete id="autocompleteEmpleados" width="100%" dataProvider="{acEmpleado}"
+                                         labelField="nombre"></components:AutoComplete>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Maquinaria" textAlign="right"/>
+                <components:AutoComplete id="autocompleteEquipo" width="100%" dataProvider="{acEquipo}"
+                                         labelField="numeroeconomico"></components:AutoComplete>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Falla" textAlign="right"/>
+                <components:AutoComplete id="ddlfallas" width="100%" dataProvider="{acFalla}" labelField="falla"
+                                         change="{cambialist(event)}"/>
+            </s:HGroup>
+
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Sub falla" textAlign="right"/>
+                <components:AutoComplete id="autocompleteSubfalla" width="100%" dataProvider="{acSubFalla}"
+                                         labelField="subfalla"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Descripción" textAlign="right"/>
+                <s:TextArea id="textareaDescripcion"
+                            y="33" width="100%" height="85"/>
+            </s:HGroup>
+
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Prioridad" textAlign="right"/>
+                <s:RadioButton id="radioAlta" selected="true" label="Alta" value="Alta" group="{prioridadrbtgroup}"/>
+                <s:RadioButton id="radioMedia" label="Media" value="Media" group="{prioridadrbtgroup}"/>
+                <s:RadioButton id="radioBaja" label="Baja" value="Baja" group="{prioridadrbtgroup}"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" paddingTop="0" text="Observaciones" textAlign="right"/>
+                <s:TextArea id="txtObservaciones" width="100%" paddingTop="5" text="{fallaEquipodes.observaciones}"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Fecha" textAlign="right"/>
+                <mx:DateField id="dateSelected" yearNavigationEnabled="true" formatString="YYYY-MM-DD"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label width="120" text="Origen" textAlign="right"/>
+                <s:RadioButton id="radioObra" label="Obra" value="Obra" group="{tipoFallabtgroup}"/>
+                <s:RadioButton id="radioTaller" selected="true" label="Taller" value="Taller"
+                               group="{tipoFallabtgroup}"/>
+            </s:HGroup>
+            <s:HGroup width="100%" height="32">
+                <s:Button width="123"
+                          label="Guardar"
+                          click="beforeSave()"
+                          buttonMode="true"/>
+                <s:Button width="123"
+                        label="Actualizar"
+                        click="upData()"/>
+                <s:Button width="123"
+                          label="Cancelar"
+                          click="cleanAltaFalla()"/>
+            </s:HGroup>
+        </s:Panel>
+    </s:Group>
+</s:Application>

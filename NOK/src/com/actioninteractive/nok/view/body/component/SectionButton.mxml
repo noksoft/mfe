@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:SectionButtonBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:component="com.actioninteractive.nok.view.body.component.*"
+	addedEffect="{fadeIn}"
+	>
+	
+	<fx:Declarations>
+		<s:GlowFilter id="glowText"
+			blurX="3" blurY="3"
+			alpha="0.8"
+			color="0xff5501"
+			/>
+		<s:Fade id="fadeIn"
+			alphaFrom="0" alphaTo="1"
+			/>
+		<s:Fade id="fadeOut"
+			alphaFrom="1" alphaTo="0"
+			/>
+	</fx:Declarations>
+	
+	<mx:Image
+		width="100%"
+		source="{icon}"
+		horizontalCenter="0" verticalCenter="0"
+		buttonMode="true" mouseChildren="false" useHandCursor="true"
+		click="sectionButtonCliked()"
+		/>
+	
+	<s:Label id="sectionName"
+		text="{dataSource.label}"
+		horizontalCenter="0" verticalCenter="0"
+		buttonMode="true"
+		fontSize="12" fontFamily="{font}"
+		trackingRight="{tracking}"
+		click="sectionButtonCliked()"
+		/>
+</component:SectionButtonBase>

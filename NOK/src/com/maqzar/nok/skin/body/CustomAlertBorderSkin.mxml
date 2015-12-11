@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename CustomAlertBorderSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns:geometry="com.degrafa.geometry.*" 
+				   xmlns:degrafa="http://www.degrafa.com/2007">
+	
+	<degrafa:DropShadowFilter id="shadow" color="0x000000" alpha="0.65" distance="3" blurX="2" blurY="2" inner="false"/>
+	<mx:GlowFilter id="glow" inner="false" blurX="10" blurY="10" color="0x666666" strength="2" />
+	<degrafa:SolidFill id="backFill" color="0xffffff" />
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition filters="{[glow]}">
+			<!--Body Color-->
+			<degrafa:RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xf2f2f2" />
+						<degrafa:GradientStop color="0xf4f4f4" />
+					</degrafa:LinearGradientFill>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+			<!--Header-->
+			<degrafa:RoundedRectangleComplex width="{skinWidth}" height="{35}" topLeftRadius="10" topRightRadius="10">
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xffffff" />
+						<degrafa:GradientStop color="0xfdfdfd" />
+					</degrafa:LinearGradientFill>
+				</degrafa:fill>
+			</degrafa:RoundedRectangleComplex>
+			
+			<degrafa:Line x="0" x1="{skinWidth}" y="{35}" y1="{35}">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xd8d8d8" />
+				</degrafa:stroke>
+			</degrafa:Line>
+			
+			<degrafa:Line x="0" x1="{skinWidth}" y="{35 + 1}" y1="{35 + 1}">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xe5e5e5" />
+				</degrafa:stroke>
+			</degrafa:Line>
+			
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+</degrafa:GraphicBorderSkin>	

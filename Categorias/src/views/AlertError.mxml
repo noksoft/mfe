@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:AlertErrorBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	width="{alertWidth}" height="{alertHeight}"  
+	styleName="CustomAlert" 
+	creationComplete="init()" 
+	title="{title_window}"
+	color="0xFFFFFF"
+	chromeColor="0xB30424"
+	close="goToLogInPage()" xmlns:view="views.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<!--view:AlertHeader headerTitle="{title_window}"/-->
+	<mx:VBox width="100%" height="100%" 
+			 verticalGap="30" paddingLeft="5" paddingRight="5" 
+			 horizontalAlign="center" paddingBottom="12"
+			 paddingTop="10">
+		<mx:Text htmlText="{errorMessage}" height="100%" width="100%" color="0x4D000E"/>
+		<s:Button id="btn_mo" styleName="buttonOKError" label="{buttonLabel}" click="goToLogInPage()" width="100" height="23"/>
+	</mx:VBox>	
+</view:AlertErrorBase>

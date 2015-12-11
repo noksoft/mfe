@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename RoundedBoxSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin 
+	xmlns="*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:degrafa="http://www.degrafa.com/2007"
+	>
+	
+	<mx:Script>
+		<![CDATA[
+			
+			[Bindable]private var backgroundColor:uint = 0xf2f2f2; 
+			
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+            {
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+                if(getStyle("backgroundColor") != null)
+            		backgroundColor = getStyle("backgroundColor");
+            }
+            
+		]]>
+	</mx:Script>
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition>
+		
+			<!--Body Color-->
+			<degrafa:RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="10">
+				<degrafa:fill>
+					<degrafa:SolidFill color="{backgroundColor}"/>
+				</degrafa:fill>
+			</degrafa:RoundedRectangle>
+			
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+	
+</degrafa:GraphicBorderSkin>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - d9hcjiqbhdpe5j@localhost" uuid="4c6a885c-e779-4511-ba4c-351a348e5372">
+      <secret-storage>master_key</secret-storage>
+      <user-name>zkriaoigfwylqg</user-name>
+    </data-source>
+    <data-source name="PostgreSQL - d9hcjiqbhdpe5j@ec2-54-225-115-77.compute-1.amazonaws.com" uuid="3489af2b-7959-4ba0-ba6e-daa95f75a055">
+      <secret-storage>master_key</secret-storage>
+      <user-name>zkriaoigfwylqg</user-name>
+      <schema-pattern>d9hcjiqbhdpe5j.pg_catalog d9hcjiqbhdpe5j.public</schema-pattern>
+      <default-schemas>d9hcjiqbhdpe5j.pg_catalog d9hcjiqbhdpe5j.public</default-schemas>
+    </data-source>
+  </component>
+</project>

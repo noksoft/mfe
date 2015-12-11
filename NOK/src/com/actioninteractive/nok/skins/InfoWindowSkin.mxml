@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("com.esri.ags.components.supportClasses.InfoWindowCloseButton")]
+	</fx:Metadata>
+	
+	<!-- SkinParts
+	name=headerGroup, type=spark.components.supportClasses.GroupBase, required=false
+	name=labelText, type=spark.components.supportClasses.TextBase, required=false
+	name=contentGroup, type=spark.components.Group, required=false
+	name=closeButton, type=spark.components.supportClasses.ButtonBase, required=false
+	name=containerGroup, type=spark.components.supportClasses.GroupBase, required=false
+	-->
+	<s:states>
+		<s:State name="normal"/>
+	</s:states>
+	<!--- Defines the appearance of the SkinnableContainer class's background. -->
+	<s:Rect id="contentGroup" left="1" right="1" top="1" bottom="1" >
+		<s:fill>
+			<!---  
+			The color of the drop down's background fill.
+			The default color is 0xFFFFFF.
+			-->
+			<s:SolidColor id="bgFill" color="0xFFFFFF" />
+		</s:fill>
+	</s:Rect>
+</s:Skin>

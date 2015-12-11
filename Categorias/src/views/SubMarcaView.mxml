@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	creationComplete="init()">	
+	<fx:Declarations>
+		<!--	SUB MARCA	-->
+		<s:RemoteObject 
+			id="roCategorias"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="categoriaBusiness">
+			<!-- Permite obtener la lista de Tipos de Categorias -->
+			<s:method 
+				name="infoTipocategoria"
+				result="resultTipoCategorias(event)"
+				fault="faultListTipoCategorias(event)"/>
+			<!-- Permite obtener la lista de Categorías -->
+			<s:method 
+				name="catCategoria"
+				result="resultCategorias(event)"
+				fault="faultListCategorias(event)"/>
+			<!-- Permite obtener la lista de SubCategorías -->
+			<s:method 
+				name="catSubcategoria"
+				result="resultSubCategorias(event)"
+				fault="faultListSubCategorias(event)"/>
+		</s:RemoteObject>
+		
+		<s:RemoteObject
+			id="roMarca"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="articuloBusiness">
+			<!--	Obtiene las Marcas	-->
+				<s:method 
+					name="catMarca"
+					result="resultCatMarca(event)"
+					fault="faultCatMarca(event)"/>
+			<!--	Metodos para las SubMarcas	-->
+				<s:method 
+					name="catSubmarca"
+					result="resultCatSubMarca(event)"
+					fault="faultCatSubMarca(event)"/>
+				<s:method
+					name="insertSubmarca"
+					result="resultHandlerinsertSubmarca(event)"
+					fault="faultHandlerinsertSubmarca(event)"/>
+				<s:method
+					name="updateSubmarca"
+					result="resultUpdateSubMarca(event)"
+					fault="faultUpdateSubMarca(event)"/>
+				<s:method
+					name="deleteSubmarca"
+					result="resultDeleteSubMarca(event)"
+					fault="faultDeleteSubMarca(event)"/>
+		</s:RemoteObject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import event.CommonEvent;
+			
+			import model.CategoriaVO;
+			import model.MarcaVO;
+			import model.SubCategoriaVO;
+			import model.SubMarcaVO;
+			import model.TipoCategoriaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import utils.AlertUtils;
+
+			
+			[Bindable]private var listTipoCategorias:ArrayCollection;
+			[Bindable]private var listCategorias:ArrayCollection;
+			[Bindable]private var listSubCategorias:ArrayCollection;
+			[Bindable]private var listMarcas:ArrayCollection;
+			[Bindable]private var listMarcasEditor:ArrayCollection;
+			[Bindable]private var listSubMarcas:ArrayCollection = new ArrayCollection();
+			[Bindable]private var titleFormulario:String;
+			[Bindable]private var itemSelected:SubMarcaVO;
+			private const CREAR:String = "Crear";
+			private const ACTUALIZAR:String = "Actualizar";
+			
+			[Bindable]private var flagCategoria:Boolean = false;
+			[Bindable]private var flagEditar:Boolean = false;
+			[Bindable]private var flagSubCategoria:Boolean = false;
+			[Bindable]private var flagMarca:Boolean = false;
+			
+			private function init():void{
+				itemSelected = new SubMarcaVO();
+				roCategorias.infoTipocategoria(new TipoCategoriaVO());
+				//roMarca.catMarca(new MarcaVO());
+				upData();
+			}
+			
+			/**
+			 * Evento que limpia los filtros
+			 */
+			private function cleanFilter ():void{
+				flagCategoria = false;
+				flagSubCategoria = false;
+				flagMarca = false;
+				flagEditar = false;
+				cmbTipoCategoria.selectedItem = null;
+				cmbCategoria.selectedItem = null;
+				cmbSubCategoria.selectedItem = null;
+				cmbMarca.selectedItem = null;
+				cmbMarcaEditor.selectedItem = null;
+				cmbTipoCategoria.selectedItem = null;
+				itemSelected = new SubMarcaVO();
+				roCategorias.infoTipocategoria(new TipoCategoriaVO());
+				upData();
+			}
+			
+			/**
+			 * Evento que se ejecuta al seleccionar un Tipo de Categoría
+			 */
+			private function upListCategorias ():void{
+				if(cmbTipoCategoria.selectedItem != null){
+					var tempCategoria:CategoriaVO = new CategoriaVO();
+					tempCategoria.idtipocategoria = TipoCategoriaVO(cmbTipoCategoria.selectedItem).id_tipocategoria;
+					roCategorias.catCategoria(tempCategoria);
+					flagCategoria = true;
+				}
+			}
+			
+			/**
+			 * Evento que se ejecuta al seleccionar una Categoría
+			 */
+			private function upListSubcategorias ():void{
+				if(cmbCategoria.selectedItem != null){
+					var tempSubCategoria:SubCategoriaVO = new SubCategoriaVO();
+					tempSubCategoria.idCategoria = CategoriaVO(cmbCategoria.selectedItem).idCategoria;
+					roCategorias.catSubcategoria(tempSubCategoria);
+					flagSubCategoria = true;
+				}
+			}
+			
+			/**
+			 * Evento que se ejecuta al seleccionar una SubCategoría
+			 */
+			private function upListMarcas ():void{
+				if(cmbCategoria.selectedItem != null){
+					var tempMarca:MarcaVO = new MarcaVO();
+					tempMarca.idSubcategoria = SubCategoriaVO(cmbSubCategoria.selectedItem).idSubcategoria;
+					roMarca.catMarca(tempMarca);
+					flagMarca = true;
+				}
+			}
+			
+			private function upData():void{
+				if(cmbMarca.selectedItem != null){
+					var _marca:MarcaVO = cmbMarca.selectedItem as MarcaVO;
+					var tempSubMarca:SubMarcaVO = new SubMarcaVO();
+					tempSubMarca.idMarca = _marca.idMarca;
+					roMarca.catSubmarca(tempSubMarca);
+				}else{
+					roMarca.catSubmarca(new SubMarcaVO());
+				}
+				titleFormulario = CREAR;
+				itemSelected = new SubMarcaVO();
+				cmbMarcaEditor.selectedItem = null;
+			}
+			
+			private function saveSubMarca():void{
+				if(itemSelected != null && txtSubMarca.text != "" && cmbMarcaEditor.selectedItem != null){
+					itemSelected.idMarca = MarcaVO(cmbMarcaEditor.selectedItem).idMarca;
+					itemSelected.submarca = txtSubMarca.text;
+					itemSelected.estatus = chxEstatus.selected;
+					switch(titleFormulario){
+						case CREAR:
+							roMarca.insertSubmarca(itemSelected);	
+							break;
+						case ACTUALIZAR:
+							roMarca.updateSubMarca(itemSelected);
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			private function deleteSubMarca():void{
+				if(itemSelected != null && itemSelected.submarca != null && itemSelected.submarca != ""){
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar la SubMarca?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmation);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmation (_event:CommonEvent):void{
+				roMarca.deleteSubMarca(itemSelected);
+			}
+			
+			private function clearFormulario():void{
+				titleFormulario = "Crear";
+				itemSelected = new SubMarcaVO();
+				//cmbMarca.selectedItem = null;
+				cmbMarcaEditor.selectedItem = null;
+				txtSubMarca.text = "";
+				//init();
+			}
+			
+			/**
+			 * Elimina la SubMarca Seleccionada
+			 */
+			private function eliminarSubMarca():void{
+				if(dtgSubMarca.selectedItem != null){
+					var tempSubmarca:SubMarcaVO = SubMarcaVO(dtgSubMarca.selectedItem);
+					roMarca.deleteSubmarca(tempSubmarca);
+				}
+			}
+			
+			protected function selectSubMarca(_event:MouseEvent):void
+			{
+				if(itemSelected == null){
+					itemSelected = new SubMarcaVO();
+				}
+				titleFormulario = "Actualizar";
+				itemSelected = _event.currentTarget.selectedItem as SubMarcaVO;
+				for(var i:int = 0; i < listMarcasEditor.length; i++){
+					var tempMarca:MarcaVO = listMarcasEditor[i] as MarcaVO;
+					if(itemSelected.idMarca == tempMarca.idMarca){
+						cmbMarcaEditor.selectedItem = tempMarca;
+						break;
+					}
+				}
+			}
+			
+			protected function selectMarcaEditor(_event:IndexChangeEvent):void{
+				var tempMarca:MarcaVO = _event.currentTarget.selectedItem as MarcaVO;
+				txtMarca.text = tempMarca.marca;
+				flagEditar = true;
+			}
+			
+			/**********************************/
+			/*******	REMOTE OBJECT	*******/
+			/**********************************/
+			
+			/***	infoTipocategoria	****/
+			private function resultTipoCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listTipoCategorias = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoTipocategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+				}
+			}
+			
+			private function faultListTipoCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoTipocategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+			}
+			
+			/***	infoCategoria	****/
+			private function resultCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listCategorias = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoCategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Categorías");
+				}
+			}
+			
+			private function faultListCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoCategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Categorías");
+			}
+			
+			/***	info SubCategorias	****/
+			private function resultSubCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listSubCategorias = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoSubCategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de SubCategorías");
+				}
+			}
+			
+			private function faultListSubCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoCategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de SubCategorías");
+			}
+			
+			/***	info Marcas	****/
+			private function resultCatMarca (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listMarcas = _event.result as ArrayCollection;
+						listMarcasEditor = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoMarca"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Marcas");
+				}
+			}
+			
+			private function faultCatMarca (_event:FaultEvent):void{
+				//Alert.show("Error", "infoMarcas"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Marcas");
+			}
+			
+			/***	info Sub Marcas	****/
+			private function resultCatSubMarca (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listSubMarcas = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoSubMarcas"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de SubMarcas");
+				}
+			}
+			
+			private function faultCatSubMarca (_event:FaultEvent):void{
+				//Alert.show("Error", "infoSubMarcas"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de SubMarcas");
+			}
+			
+			/****	insertSubmarca	****/
+			protected function resultHandlerinsertSubmarca(_event:ResultEvent):void
+			{
+				try{
+					if(_event.result != null){
+						itemSelected = new SubMarcaVO();
+						if(listSubMarcas != null){
+							listSubMarcas.addItem(SubMarcaVO(_event.result));	
+						}
+						
+						txtSubMarca.text = "";
+					}
+				}catch(e:Error){
+					AlertUtils.showErrorMessage("Error", "No se pudo guardar la SubMarca");
+				}
+			}
+			protected function faultHandlerinsertSubmarca(_event:FaultEvent):void
+			{
+				AlertUtils.showErrorMessage("Error", "No se pudo guardar la SubMarca");	
+			}
+			
+			/****	updateSubMarca	****/
+			private function resultUpdateSubMarca (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new SubMarcaVO();
+						cmbMarcaEditor.selectedItem = null;
+						upData();
+						txtSubMarca.text = "";
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "updateSubMarca" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo actualizar la SubMarca");
+				}
+			}
+			
+			private function faultUpdateSubMarca (_event:FaultEvent):void{
+				//Alert.show("Error", "updateSubMarca" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo guardar la SubMarca");
+			}
+			
+			/****	deleteSubMarca	****/
+			private function resultDeleteSubMarca (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new SubMarcaVO();
+						cmbMarcaEditor.selectedItem = null;
+						upData();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteSubMarca" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo borrar la SubMarca");
+				}
+			}
+			
+			private function faultDeleteSubMarca (_event:FaultEvent):void{
+				//Alert.show("Error", "deleteSubMarca" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo borrar la SubMarca");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<mx:HDividedBox
+		width="100%" height="100%">
+		<s:Panel
+			title="Sub Marca"
+			width="65%" height="100%">
+			<s:layout>
+				<s:VerticalLayout verticalAlign="middle" paddingLeft="10" paddingTop="5"/>
+			</s:layout>
+			<s:HGroup
+				width="100%" height="60">
+				<s:HGroup
+					width="100%" height="100%">
+					<s:Label
+						text="Tipo de Categoría"/>
+					<s:DropDownList
+						id="cmbTipoCategoria"
+						prompt="Selecciona un Tipo de Categoría"
+						labelField="tipocategoria"
+						dataProvider="{listTipoCategorias}"
+						change="upListCategorias()"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="100%">
+					<s:Label
+						text="Categorías"/>
+					<s:DropDownList
+						id="cmbCategoria"
+						prompt="Selecciona una Categoría"
+						enabled="{flagCategoria}"
+						labelField="categoria"
+						dataProvider="{listCategorias}"
+						change="upListSubcategorias()"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="100%">
+					<s:Label
+						text="Sub Categorías"/>
+					<s:DropDownList
+						id="cmbSubCategoria"
+						prompt="Selecciona una Sub Categoría"
+						enabled="{flagSubCategoria}"
+						labelField="subcategoria"
+						dataProvider="{listSubCategorias}"
+						change="upListMarcas()"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="60">
+					<s:Label
+						text="Marca"/>
+					<s:DropDownList
+						id="cmbMarca"
+						prompt="Selecciona una Marca"
+						enabled="{flagMarca}"
+						labelField="marca"
+						dataProvider="{listMarcas}"
+						change="upData()"/>
+				</s:HGroup>
+			</s:HGroup>
+			<s:DataGrid
+				id="dtgSubMarca"
+				width="100%" height="100%"
+				dataProvider="{listSubMarcas}"
+				doubleClickEnabled="true"
+				doubleClick="selectSubMarca(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="Sub Marca" dataField="submarca"/>
+						<s:GridColumn headerText="Marca" dataField="marca"/>
+						<s:GridColumn headerText="Estatus" dataField="estatus"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			<s:HGroup
+				width="100%" height="60">
+				<s:Button 
+					label="Eliminar" 
+					icon="@Embed(source='assets/icons/delete.png')"
+					click="eliminarSubMarca()"/>
+				<s:Button
+					label="Limpiar" click="cleanFilter()"/>
+			</s:HGroup>
+		</s:Panel>
+		<!--	Formulario para Crear o Editar una Sub Marca		-->
+		<s:Panel
+			title="{titleFormulario}"
+			width="35%" height="100%">
+			<s:layout>
+				<s:VerticalLayout
+					gap="5"
+					paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"/>
+			</s:layout>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Marca" textAlign="right"/>
+				<s:DropDownList
+					id="cmbMarcaEditor"
+					prompt="Selecciona una Marca"
+					labelField="marca"
+					enabled="{flagMarca}"
+					dataProvider="{listMarcasEditor}"
+					change="selectMarcaEditor(event)"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Sub Marca" textAlign="right"/>
+				<s:TextInput 
+					width="300" 
+					id="txtSubMarca"
+					enabled="{flagEditar}"
+					text="{itemSelected.submarca}"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Marca" textAlign="right"/>
+				<s:TextInput 
+					width="300" 
+					id="txtMarca"
+					enabled="false" editable="false"
+					text="{itemSelected.marca}"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Estatus" textAlign="right"/>
+				<s:CheckBox 
+					id="chxEstatus"
+					enabled="{flagEditar}"
+					selected="{itemSelected.estatus}"/>
+			</s:HGroup>
+			<s:controlBarContent>
+				<s:Button 
+					label="Limpiar" 
+					icon="@Embed(source='assets/icons/cancel.png')"
+					click="clearFormulario()"/>
+				<s:Button 
+					id="guardarButton" 
+					label="Guardar" 
+					enabled="{flagEditar}"
+					icon="@Embed(source='assets/icons/add.png'" 
+					styleName="primaryButton"
+					click="saveSubMarca()"/>
+			</s:controlBarContent>
+		</s:Panel>
+	</mx:HDividedBox>
+</mx:VBox>

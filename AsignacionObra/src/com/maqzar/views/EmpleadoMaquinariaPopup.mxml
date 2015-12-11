@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<!--
+  Created by carloszaragoza on 11/09/15.
+-->
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:components="com.hillelcoren.components.*" close="{PopUpManager.removePopUp(this)}"
+               width="600" height="500" title="Asignación de empleado a maquinaria"
+               xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="initPop()">
+    <fx:Script><![CDATA[
+        import com.maqzar.dtos.AsignacionDTO;
+        import com.maqzar.dtos.EmpleadoDisponibleVO;
+        import com.maqzar.dtos.EquipoVO;
+        import com.maqzar.events.AsignacionEvent;
+        import com.maqzar.models.AsignacionModel;
+
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.events.CloseEvent;
+        import mx.managers.PopUpManager;
+
+        [Dispatcher]
+        public var dispatcher:IEventDispatcher;
+
+        [Inject]
+        [Bindable]
+        public var asignacionModel:AsignacionModel;
+
+        public var maquinaria:EquipoVO = new EquipoVO();
+        public var empleado:EmpleadoDisponibleVO = new EmpleadoDisponibleVO();
+
+        public function initPop():void {
+            //llamamos al servicio por medio de evento
+            var llamaListaEmpleadosEvent:AsignacionEvent = new AsignacionEvent(AsignacionEvent.CALL_ASIGNACIONES_DISPONIBLES_EMPLEADOS);
+            var asignacionEmpleado:AsignacionDTO = new AsignacionDTO();
+            asignacionEmpleado.typeQuery = "EQUIPOS";
+            asignacionEmpleado.idEquipo = asignacionModel.maquinariaSelected.id_equipo;
+            asignacionEmpleado.idEmpleado = empleado.idEmpleado.toString();
+            asignacionEmpleado.idObra = asignacionModel.obraSelected.idObra;
+            asignacionEmpleado.idAsignacionObra = "";
+            llamaListaEmpleadosEvent.asignacionDTO = asignacionEmpleado;
+            dispatcher.dispatchEvent(llamaListaEmpleadosEvent);
+
+        }
+
+        protected function changeSeleccionaEmpleadoValidaDisponibilidad(event:Event):void {
+            // obtiene el valor del datagrid:
+            empleado = autoCompleteEmpleados.selectedItem as EmpleadoDisponibleVO;
+            trace(empleado.nombre);
+            trace(maquinaria.nombre);
+            //Ya trengo las dos cosas, al empleado y la obra, aqui validamos si el empleado tiene asignado ya una maquinaria de la tabla.
+            //se hace un servicio para probar que el empleado tiene asignado una maquinaria, si la tiene se le avisa
+            //si queire reasignar a la nueva maquinara, de lo contrario, se regresa a la caja de texto para buscar.
+            validaEmpleado(empleado);
+
+        }
+
+        protected function validaEmpleado(empleado:EmpleadoDisponibleVO):void {
+            var eventoValidaEmpleado:AsignacionEvent = new AsignacionEvent(AsignacionEvent.CALL_EQUIPOS_QUE_TIENE_EMPLEADO);
+            var asignacionEmpleado:AsignacionDTO = new AsignacionDTO();
+
+            asignacionEmpleado.typeQuery = "EMPLEADOS";
+            asignacionEmpleado.idEmpleado = empleado.idEmpleado.toString();
+            asignacionEmpleado.idEquipo = asignacionModel.maquinariaSelected.id_equipo;
+            asignacionEmpleado.idObra = asignacionModel.obraSelected.idObra;
+            asignacionEmpleado.idAsignacionObra = '';
+            eventoValidaEmpleado.asignacionDTO = asignacionEmpleado;
+
+            dispatcher.dispatchEvent(eventoValidaEmpleado);
+        }
+
+        public var transferencia:Boolean = false;
+
+        protected function empleadoSeleccionado(event:MouseEvent):void {
+            if (listEmpleadosLocalizados.selectedIndex != -1) {
+                Alert.show("El empleado está activo en otra equipo, deseas transferirlo", "", 3, this, cambiarVariable);
+                trace("Insertar si hay transferencia de empleados");
+            } else {
+                //no se transfiere
+                transferencia = false;
+                insertar(transferencia);
+                trace("Insertar no hay referencia, no se esta usando el equipo");
+            }
+
+
+        }
+
+        public function cambiarVariable(event:CloseEvent):void {
+
+            trace("Captura el SI o el No");
+            if (event.detail == Alert.YES) {
+                trace("Transfiere");
+                transferencia = true;
+                insertar(transferencia);
+            } else {
+                trace("No Transfiere");
+                transferencia = false;
+                insertar(transferencia);
+            }
+
+        }
+
+        public function insertar(transferir:Boolean):void {
+            var evento:AsignacionEvent = new AsignacionEvent(AsignacionEvent.INSERT_ASIGNACION_OBRA);
+            var asignacionObjeto:AsignacionDTO = new AsignacionDTO();
+            if (transferir) {
+                asignacionObjeto.transferencia = true;
+                asignacionObjeto.typeInsert = 'EMPLEADO_EQUIPO';
+            } else {
+                asignacionObjeto.transferencia = false;
+                asignacionObjeto.typeInsert = 'EQUIPO';
+            }
+
+            asignacionObjeto.idEmpleado = empleado.idEmpleado.toString();
+            if(asignacionObjeto.idEmpleado.length>0){
+                asignacionObjeto.typeInsert = 'EMPLEADO_EQUIPO';
+            }
+            asignacionObjeto.idObra = asignacionModel.obraSelected.idObra;
+            asignacionObjeto.idEquipo = asignacionModel.maquinariaSelected.id_equipo.toString();
+            if (autoCompleteEmpleados.selectedItem) {
+                asignacionObjeto.tipoAsignacion = "EE";
+                asignacionObjeto.estatus = 'A';
+            } else {
+                asignacionObjeto.tipoAsignacion = "EQ";
+                asignacionObjeto.estatus = '';
+
+            }
+            asignacionObjeto.estatusEquipo = 'A';
+            asignacionObjeto.fechaAsignacion = '';
+
+            evento.asignacionDTO = asignacionObjeto;
+            dispatcher.dispatchEvent(evento);
+
+        }
+
+        [EventHandler(event="AsignacionEvent.LISTA_EQUIPOS_ASIGNADOS_A_EMPLEADO", properties="listado")]
+        public function listaDeEquiposAsignadosCatchEvent(listado:ArrayCollection):void {
+            trace(listado);
+            listEmpleadosLocalizados.dataProvider = listado;
+            trace("LISTA_EQUIPOS_ASIGNADOS_A_EMPLEADO");
+        }
+
+        [EventHandler(event="AsignacionEvent.LISTA_EQUIPOS_ASIGNADOS_A_EMPLEADO_LISTADO", properties="listado")]
+        public function listaDeEquiposAsignadosCatchEventEmpleados(listado:ArrayCollection):void {
+            trace(listado);
+            listEquipos.dataProvider = listado;
+            trace("LISTA_EQUIPOS_ASIGNADOS_A_EMPLEADO_LISTADO");
+        }
+
+        [EventHandler(event="AsignacionEvent.CIERRA_POPUP")]
+        public function cierraPopup():void {
+            PopUpManager.removePopUp(this);
+        }
+        ]]></fx:Script>
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+    <s:controlBarContent>
+        <s:Button width="100%" label="Asignar empleado al equipo" click="empleadoSeleccionado(event)"
+                  styleName="primaryButton"/>
+    </s:controlBarContent>
+    <s:VGroup width="100%" height="100%" gap="2" paddingBottom="5" paddingLeft="5" paddingRight="5"
+              paddingTop="5">
+        <s:Label text="Equipo seleccionado"/>
+        <s:TextInput text="{asignacionModel.maquinariaSelected.numeroeconomico}" width="100%" enabled="false"/>
+        <s:VGroup width="100%" height="100%">
+            <s:Label width="100%" text="Empleados que usan el equipo"/>
+            <s:List width="100%" height="100%" labelField="nombreCompleto" id="listEmpleadosLocalizados"/>
+        </s:VGroup>
+        <mx:HRule width="100%"/>
+        <s:Label text="Nombre del empleado a asignar"/>
+        <components:AutoComplete width="100%" label="nombre" id="autoCompleteEmpleados"
+                                 change="changeSeleccionaEmpleadoValidaDisponibilidad(event)" labelField="nombre"
+                                 dataProvider="{asignacionModel.acPersonalDisponible}"/>
+
+        <s:VGroup width="100%" height="100%">
+            <s:Label width="100%" text="Equipos que tiene asignados"/>
+            <s:List width="100%" height="100%" id="listEquipos" labelField="numeroeconomico"/>
+        </s:VGroup>
+
+
+    </s:VGroup>
+</s:TitleWindow>

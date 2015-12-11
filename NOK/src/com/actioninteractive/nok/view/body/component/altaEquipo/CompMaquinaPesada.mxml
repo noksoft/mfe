@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark" 
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  width="100%" height="100%"
+		  verticalAlign="middle">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.controller.EquipoController;
+			import com.actioninteractive.nok.event.EquipoEvent;
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.model.EquipoModel;
+			import com.actioninteractive.nok.vo.CategoriaVO;
+			import com.actioninteractive.nok.vo.MarcaMotorVO;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			import com.actioninteractive.nok.vo.SubCategoriaVO;
+			import com.actioninteractive.nok.vo.equipo.EquipoVO;
+			import com.esri.ags.esri_internal;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Inject]
+			[Bindable]
+			public var marcasModel:CRUDModel;
+			
+			[Inject]
+			[Bindable]
+			public var modelEquipo:EquipoModel;
+
+			public var utilMantEquipo:UtilMantEquipo = new UtilMantEquipo();
+			
+			public function actualizarDTO():void{
+				trace("Actualización Maquinaria Pesada.");
+				changeCambioAceite();
+				changeCombustible();
+				changeNumMotor();
+				changeMarcaMotor();
+				changeModeloMotor();
+				changeTipoMedida();
+				changeNumCabina();
+				changeTipoRodaje();
+				changeHP();
+				changeTorque();
+				changePeso();
+				changeLlanta();
+				changeRin();
+				changeLargoDim();
+				changeAnchoDim();
+				changeAltoDim();
+				changeLargoAdi();
+				changeAnchoAdi();
+				changeAltoAdi();
+			}
+			
+			public function cleanComponent():void{
+				nsCambAceite.value = 0;
+				modelEquipo.equipoVO.cambioaceite = "";
+				
+				listCombustible.selectedIndex = -1;
+				modelEquipo.equipoVO.combustible = "";
+					
+				txtNoMotor.text = "";
+				modelEquipo.equipoVO.numeromotor = "";
+					
+				listMarcaMotor.selectedIndex = -1;
+				modelEquipo.equipoVO.marcamotor = "";
+					
+				txtModeloMotor.text = "";
+				modelEquipo.equipoVO.modelomotor = "";
+					
+				txtTipoMedida.text = "";
+				modelEquipo.equipoVO.tipomedida = "";
+					
+				txtNumCabina.text = "";
+				modelEquipo.equipoVO.numerocabina = "";
+				
+				listTipoRodaje.selectedIndex = -1;
+				modelEquipo.equipoVO.tiporodaje = "";
+					
+				nstpHP.value = 0;
+				modelEquipo.equipoVO.hp = "";
+					
+				nstpTorque.value = 0;
+				modelEquipo.equipoVO.torque = "";
+					
+				nstpPeso.value = 0;
+				modelEquipo.equipoVO.peso = "";
+				
+				txtLlanta.text = "";
+				modelEquipo.equipoVO.tipollanta = "";
+					
+				nstpRin.value = 0
+				modelEquipo.equipoVO.rin = "";
+				
+				nstpLargoDim.value = 0;
+				modelEquipo.equipoVO.dimensioneslargo = "";
+					
+				nstpAnchoDim.value = 0;
+				modelEquipo.equipoVO.dimensionesancho = "";
+					
+				nstpAltoDim.value = 0;
+				modelEquipo.equipoVO.dimensionesalto = "";
+					
+				nstpLargoAdi.value = 0;
+				modelEquipo.equipoVO.dimaditamientolargo = "";
+					
+				nstpAnchoAdi.value = 0;
+				modelEquipo.equipoVO.dimaditamientoancho = "";
+					
+				nstpAltoAdi.value = 0;
+				modelEquipo.equipoVO.dimaditamientoalto = "";
+					
+			}
+			
+			public function selectItem(_equipoVO:EquipoVO):void{
+				nsCambAceite.value = Number(_equipoVO.cambioaceite);
+				for(var ic:int = 0; ic < modelEquipo.acCombustible.length; ic++){
+					var objc:Object = modelEquipo.acCombustible[ic];
+					if(objc.name == _equipoVO.combustible){
+						listCombustible.selectedIndex = ic;
+						break;
+					}
+				}
+				
+				txtNoMotor.text = _equipoVO.numeromotor;
+				
+				for(var imm:int = 0; imm < modelEquipo.acMarcasMotor.length; imm++){
+					var objmm:Object = modelEquipo.acMarcasMotor[imm];
+					if(objmm.marcaMotor == _equipoVO.marcamotor){
+						listMarcaMotor.selectedIndex = imm;
+						break;
+					}
+				}
+				
+				txtModeloMotor.text = _equipoVO.modelomotor;
+				
+				txtTipoMedida.text = _equipoVO.tipomedida;
+				txtNumCabina.text = _equipoVO.numerocabina;
+				
+				for(var itr:int = 0; itr < modelEquipo.acTipoRodaje.length; itr++ ){
+					var objitr:Object = modelEquipo.acTipoRodaje[itr];
+					if(objitr.descripcion == _equipoVO.tiporodaje){
+						listTipoRodaje.selectedIndex = itr;
+						break;
+					}
+				}
+
+				nstpHP.value = Number(_equipoVO.hp);;
+				nstpTorque.value = Number(_equipoVO.torque);
+				nstpPeso.value = Number(_equipoVO.peso);
+				
+				txtLlanta.text = _equipoVO.tipollanta;
+				nstpRin.value = Number(_equipoVO.rin);
+				
+				nstpLargoDim.value = Number(_equipoVO.dimensioneslargo);				
+				nstpAnchoDim.value = Number(_equipoVO.dimensionesancho);
+				nstpAltoDim.value = Number(_equipoVO.dimensionesalto);
+				
+				nstpLargoAdi.value = Number(_equipoVO.dimaditamientolargo);
+				nstpAnchoAdi.value = Number(_equipoVO.dimaditamientoancho);
+				nstpAltoAdi.value = Number(_equipoVO.dimaditamientoalto);
+			}
+			
+			private function changeCambioAceite ():void{
+				var value:String = String(nsCambAceite.value);
+				if(value != ""){
+					modelEquipo.equipoVO.cambioaceite = value;
+				}
+			}
+			
+			private function changeCombustible ():void{
+				var item:Object = listCombustible.selectedItem;
+				if(item != null && item.hasOwnProperty("name")){
+					if(item.name != ""){
+						modelEquipo.equipoVO.combustible = item.name;						
+					}
+				}
+			}
+			
+			private function changeNumMotor ():void{
+				var value:String = txtNoMotor.text;
+				if(value != ""){
+					modelEquipo.equipoVO.numeromotor = value;
+				}
+			}
+			
+			/**
+			 * Guarda la marca de motor seleccionada
+			 **/
+			private function changeMarcaMotor ():void{
+				var _marcaMotor:MarcaMotorVO = listMarcaMotor.selectedItem as MarcaMotorVO;
+				modelEquipo.equipoVO.idMarcamotor = _marcaMotor.idMarcaMotor
+				modelEquipo.equipoVO.marcamotor = _marcaMotor.marcaMotor;
+			}
+			
+			/**
+			 * Guarda el modelo del motor
+			 **/
+			private function changeModeloMotor ():void{
+				var tempValue:String = txtModeloMotor.text;
+				if(tempValue != ""){
+					modelEquipo.equipoVO.modelomotor = tempValue;
+					//modelEquipo.equipoVO.idModelomotor = tempValue;
+				}
+			}
+			
+			private function changeTipoMedida():void{
+				var value:String = txtTipoMedida.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipomedida = value;
+				}
+			}
+			
+			private function changeNumCabina():void{
+				var value:String = txtNumCabina.text;
+				if(value != ""){
+					modelEquipo.equipoVO.numerocabina = value;
+				}else{
+					modelEquipo.equipoVO.numerocabina = "0";
+				}
+			}
+			
+			private function changeTipoRodaje ():void{
+				var value:String = Object(listTipoRodaje.selectedItem).descripcion;
+				if(value != ""){
+					modelEquipo.equipoVO.tiporodaje = value;	
+				}else{
+					modelEquipo.equipoVO.tiporodaje = "";
+				}
+			}
+			
+			private function changeHP ():void{
+				var value:String = String(nstpHP.value);
+				if(value != ""){
+					modelEquipo.equipoVO.hp = value;
+				}else{
+					modelEquipo.equipoVO.hp = "0";
+				}
+			}
+			
+			private function changeTorque ():void{
+				var value:String = String(nstpTorque.value);
+				if(value != ""){
+					modelEquipo.equipoVO.torque = value;
+				}else{
+					modelEquipo.equipoVO.torque = "0";
+				}
+			}
+			
+			private function changePeso():void{
+				var value:String = String(nstpPeso.value);
+				if(value != ""){
+					modelEquipo.equipoVO.peso = value;
+				}else{
+					modelEquipo.equipoVO.peso = "0";
+				}
+			}
+			
+			private function changeLlanta ():void{
+				var value:String = txtLlanta.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipollanta = value;
+				}
+			}
+			
+			private function changeRin():void{
+				var value:String = String(nstpRin.value);
+				if(value != ""){
+					modelEquipo.equipoVO.rin = value;
+				}
+			}
+
+			private function changeLargoDim ():void{
+				var value:String =  String(nstpLargoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensioneslargo = value;
+				}
+			}
+			
+			private function changeAnchoDim ():void{
+				var value:String = String(nstpAnchoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensionesancho = value;
+				}
+			}
+			
+			private function changeAltoDim ():void{
+				var value:String = String(nstpAltoDim.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimensionesalto = value;
+				}
+			}
+			
+			
+			private function changeLargoAdi ():void{
+				var value:String =  String(nstpLargoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientolargo = value;
+				}
+			}
+			
+			private function changeAnchoAdi ():void{
+				var value:String = String(nstpAnchoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientoancho = value;
+				}
+			}
+			
+			private function changeAltoAdi ():void{
+				var value:String = String(nstpAltoAdi.value);
+				if(value != ""){
+					modelEquipo.equipoVO.dimaditamientoalto = value;
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<!--Contenedor principal-->
+	
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:Label 
+			text="Cambio de Aceite" 
+			textAlign="right" 
+			width="120"/>
+		<s:NumericStepper
+			id="nsCambAceite"
+			snapInterval="500"
+			minimum="500"
+			maximum="500000"/>
+		<s:Label 
+			text="Combustible:" 
+			textAlign="right" 
+			width="120"/>
+		<s:DropDownList
+			id="listCombustible"
+			dataProvider="{modelEquipo.acCombustible}"
+			labelField="name"
+			selectedIndex="-1"
+			prompt="Selecciona una opción"/>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:Label 
+			text="No. de Motor" 
+			textAlign="right" 
+			width="120"
+			/>
+		<s:TextInput 
+			id="txtNoMotor"
+			width="300"
+			maxChars="9"
+			restrict="0-9"/>
+		<s:Label 
+			text="Marca Motor" 
+			textAlign="right" 
+			width="120"/>
+		<s:DropDownList 
+			width="100%"
+			id="listMarcaMotor"
+			prompt="Selecciona la marca" 
+			dataProvider="{modelEquipo.acMarcasMotor}"
+			labelField="marcaMotor"/>			
+	</s:HGroup>	
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:Label 
+			text="Modelo Motor" 
+			textAlign="right" 
+			width="120"/>
+		<s:TextInput
+			id="txtModeloMotor"
+			width="120"/>
+		<s:Label 
+			text="Tipo de Medida" 
+			textAlign="right" 
+			width="120"/>
+		<s:TextInput
+			id="txtTipoMedida"
+			width="120"
+			text="Horas"
+			keyDown="txtTipoMedida.enabled = true"
+			keyUp="txtTipoMedida.enabled = false"/>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:Label 
+			text="Num. Cabina" 
+			textAlign="right" 
+			width="120"/>
+		<s:TextInput
+			id="txtNumCabina"
+			width="120"
+			maxChars="25"/>
+		<s:Label 
+			text="Tipo de Rodaje" 
+			textAlign="right" 
+			width="120"/>
+		<s:DropDownList
+			id="listTipoRodaje"
+			width="100%" 
+			prompt="Selecciona tipo de Rodaje" 
+			requireSelection="true"
+			dataProvider="{modelEquipo.acTipoRodaje}"
+			labelField="descripcion"/>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">		
+		<s:Label 
+			text="HP" 
+			textAlign="right" 
+			width="120"/>
+		<s:NumericStepper
+			id="nstpHP"
+			snapInterval="500"
+			minimum="500"
+			maximum="500000"/>
+		<s:Label 
+			text="Torque" 
+			textAlign="right" 
+			width="120"/>
+		<s:NumericStepper
+			id="nstpTorque"
+			snapInterval="50"
+			minimum="10"
+			maximum="500000"/>
+		<s:Label 
+			text="Peso Kgs." 
+			textAlign="right" 
+			width="120"/>
+		<s:NumericStepper
+			id="nstpPeso"
+			snapInterval="1"
+			minimum="10"
+			maximum="500000"/>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:Label 
+			text="Llanta" 
+			textAlign="right" 
+			width="120"/>
+		<s:TextInput
+			id="txtLlanta"
+			width="300"
+			maxChars="15"/>
+		<s:Label 
+			text="Rin" 
+			textAlign="right" 
+			width="120"/>
+		<s:NumericStepper
+			id="nstpRin"
+			maximum="30"
+			minimum="15"/>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:VGroup
+			width="100%" 
+			height="100%" 
+			horizontalAlign="center">
+			<s:Label 
+				text="Dimensiones (m)" 
+				textAlign="right" 
+				width="120"/>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Largo" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpLargoDim"
+					maximum="50"
+					minimum="1"/>
+			</s:HGroup>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Ancho" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpAnchoDim"
+					maximum="10"
+					minimum="1"/>
+			</s:HGroup>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Alto" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpAltoDim"
+					maximum="5"
+					minimum="1"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:HGroup>
+	<s:HGroup 
+		width="100%" 
+		verticalAlign="middle">
+		<s:VGroup
+			width="100%" 
+			height="100%" 
+			horizontalAlign="center">
+			<s:Label 
+				text="Aditamiento (m)" 
+				textAlign="right" 
+				width="120"/>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Largo" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpLargoAdi"
+					maximum="50"
+					minimum="1"/>
+			</s:HGroup>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Ancho" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpAnchoAdi"
+					maximum="10"
+					minimum="1"/>
+			</s:HGroup>
+			<s:HGroup 
+				width="100%" 
+				height="100%">
+				<s:Label 
+					text="Alto" 
+					textAlign="right" 
+					width="120"/>
+				<s:NumericStepper 
+					id="nstpAltoAdi"
+					maximum="5"
+					minimum="1"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:HGroup>
+</s:VGroup>

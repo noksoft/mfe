@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AutoComplete-1.2-Fx4" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/AutoComplete-1.2-Fx4.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

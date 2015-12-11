@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+CATALOGO DE EMPLEADOS
+Autor: Carlos Zaragoza
+-->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*" 
+				 xmlns:component="com.actioninteractive.nok.view.body.component.*"
+				 creationComplete="init()" xmlns:renders="com.actioninteractive.nok.view.body.renders.*"
+				 >
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.DireccionEvent;
+			import com.actioninteractive.nok.event.EmpleadoEvent;
+			import com.actioninteractive.nok.model.DireccionModel;
+			import com.actioninteractive.nok.model.EmpleadoModel;
+			import com.actioninteractive.nok.model.UsuarioModel;
+			import com.actioninteractive.nok.view.AssetManagerIn;
+			import com.actioninteractive.nok.vo.EmpleadoVO;
+			import com.actioninteractive.nok.vo.HabilidadDTO;
+			import com.actioninteractive.nok.vo.direccion.LocalidadVO;
+			import com.actioninteractive.nok.vo.direccion.MunicipioVO;
+			
+			import flashx.textLayout.events.ModelChange;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.IViewCursor;
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			import mx.graphics.BitmapFillMode;
+			import mx.utils.ObjectUtil;
+			import mx.validators.Validator;
+			
+			import spark.collections.Sort;
+			import spark.collections.SortField;
+			import spark.events.IndexChangeEvent;
+			
+			
+			[Bindable] private var perfilList:ArrayCollection = new ArrayCollection([{tipo_empleado:"Gerente", id_tipo_empleado:100, status:true},
+				{tipo_empleado:"Residente", id_tipo_empleado:200, status:true},
+				{tipo_empleado:"Operador de maquinaria", id_tipo_empleado:300, status:true},
+				{tipo_empleado:"Mecanico", id_tipo_empleado:400, status:true},
+				{tipo_empleado:"Ayudante en general", id_tipo_empleado:500, status:true}]); 
+			
+			[Inject]
+			[Bindable] public var direccionModel:DireccionModel;
+			
+			[Inject]
+			[Bindable] public var empleadoModel:EmpleadoModel;
+			[Inject]
+			[Bindable] public var usuarioModel:UsuarioModel;
+			
+			
+			private var flagLocated:Boolean;
+			private var cursorEntidad:IViewCursor;
+			private var cursorMunicipio:IViewCursor;
+			private var cursorLocalidad:IViewCursor;
+			private var entidadSeleccionada:String;
+			private var municipioSeleccionado:String;
+			private var isUpdated:Boolean;
+			private var fileReference:FileReference = new FileReference();
+			
+			/*Funcion para inicializar los parametros*/
+			protected function init():void
+			{
+				fileReference.addEventListener(Event.SELECT,fileReference_select);
+				fileReference.addEventListener(Event.COMPLETE, fileReference_complete);
+			}
+			
+			/*	Lista la información */
+			protected function changeEntidadList(event:IndexChangeEvent):void
+			{
+				entidadSeleccionada = event.target.selectedItem['idEntidad'];
+				var eventMunicipio:DireccionEvent = new DireccionEvent(DireccionEvent.MUNICIPIO_LIST_DATA);
+				var mpio:MunicipioVO = new MunicipioVO();
+				mpio.idEntidad = entidadSeleccionada;
+				eventMunicipio.municipioVO = mpio;
+				dispatchEvent(eventMunicipio);
+			}
+			
+			/*[EventHandler(event="DireccionEvent.LOCALIZA_MUNICIPIO")] //localizamos evento cuando es de update
+			public function filterMunicipios(event:DireccionEvent):void
+			{
+			doSort('idMunicipio', direccionModel.acListMunicipio);
+			cursorMunicipio = direccionModel.acListMunicipio.createCursor();
+			var found:Boolean = cursorMunicipio.findAny(obraVOtmp);
+			//var foundMpio:Boolean = cursorMunicipio.findAny(event.obraVO);
+			if (found)
+			{
+			ddlMunicipio.selectedItem = cursorMunicipio.current;
+			var changeEvent:IndexChangeEvent = new IndexChangeEvent(IndexChangedEvent.CHANGE);
+			this.ddlMunicipio.dispatchEvent(changeEvent);
+			direccionModel.municipioLocated = true;
+			
+			}
+			}
+			
+			[EventHandler(event="DireccionEvent.LOCALIZA_LOCALIDAD")] //localizamos evento cuando es de update
+			public function filterlocalidad(event:DireccionEvent):void
+			{
+			doSort('idLocalidad', direccionModel.acListLocalidad);
+			cursorLocalidad = direccionModel.acListLocalidad.createCursor();
+			var found:Boolean = cursorLocalidad.findAny(obraVOtmp);
+			//var foundMpio:Boolean = cursorMunicipio.findAny(event.obraVO);
+			if (found)
+			{
+			ddlLocalidad.selectedItem = cursorLocalidad.current;
+			
+			}
+			}*/
+			
+			protected function changeMunicipio(event:IndexChangeEvent):void
+			{
+				municipioSeleccionado = event.target.selectedItem['idMunicipio'];
+				// TODO Auto-generated method stub
+				var eventLocalidad:DireccionEvent =  new DireccionEvent(DireccionEvent.LOCALIDAD_LIST_DATA);
+				var localidad:LocalidadVO = new LocalidadVO();
+				localidad.idEntidad = entidadSeleccionada;
+				localidad.idMunicipio = municipioSeleccionado;
+				eventLocalidad.localidadVO = localidad;
+				dispatchEvent(eventLocalidad);
+			}
+			private function doSort(campo:String, arreglo:*):void{
+				var sf:SortField = new SortField(campo);
+				var s:Sort = new Sort();
+				s.fields = [sf];
+				arreglo.sort = s;
+				arreglo.refresh();
+			}
+			
+			
+			protected function changeNombrePerfil(event:IndexChangeEvent):void
+			{
+				// TODO Auto-generated method stub
+				lblPerfil.text = event.target.selectedItem.tipo_empleado;
+			}
+			
+			protected function imageEmpleado_clickHandler(event:MouseEvent):void
+			{
+				var formatos:Array = [];
+				formatos.push(new FileFilter("Imagenes", "*.jpeg;*.jpg;*.png"));
+				fileReference.browse(formatos);
+				
+			}
+			private function fileReference_select(evt:Event):void {
+				fileReference.load();
+			}
+			
+			private function fileReference_complete(evt:Event):void {
+				imageEmpleado.source = fileReference.data;
+				imageEmpleado.width = 135;
+				imageEmpleado.height = 150;
+				imageEmpleado.fillMode = BitmapFillMode.SCALE;
+				Alert.show(ObjectUtil.toString(fileReference));
+			}
+			
+			protected function btnCancelar_clickHandler(event:MouseEvent):void
+			{
+				
+				clearControls();
+				
+			}
+			
+			
+			[EventHandler(event="EmpleadoEvent.EMPLEADO_LIMPIA_FORMULARIO")]
+			public function clearControls():void
+			{
+				txtRFC.text = "";
+				txtNombre.text= "";
+				txtPaterno.text= "";
+				txtMaterno.text= "";
+				txtTelefono.text= "";
+				txtCelular.text= "";
+				
+				txtFechaIngreso.text= "";
+				txtDomicilio.text= "";
+				txtNoExterior.text= "";
+				txtNoInterior.text= "";
+				txtColonia.text= "";
+				txtCP.text= "";
+				imageEmpleado.source = null;
+				combos();
+				vGroupAcceso.visible=false;
+				datosUsuario();
+				txtRFC.setFocus();
+				function combos():void
+				{
+					cboEntidad.selectedIndex = -1;
+					cboMunicipio.selectedIndex = -1;
+					cboLocalidad.selectedIndex = -1;
+					cboPerfil.selectedIndex = -1;
+				}
+				
+				function datosUsuario():void
+				{
+					txtPassword.text = "";
+					txtPasswordConfirm.text = "";
+					cboPerfilUsuario.selectedIndex = -1;
+					
+				}
+				
+			}
+			
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				var errores:Array = new Array();
+				var empleado:EmpleadoVO = new EmpleadoVO();
+				var empleadoEsUsuario:Boolean;
+				if(checkBoxUsuarioMostrar.selected)
+				{
+					empleado.esusuario = 'true';
+					empleadoEsUsuario = true;
+					errores=Validator.validateAll([validaRFC, validaNombre
+						,validaPaterno, validaMaterno, validaTelefono, validaCelular, 
+						validaDomicilio, validaNoExterior, validaColonia, validaCP, validaClave, validaClaveConfirm]);
+				}else
+				{
+					empleadoEsUsuario = false;
+					empleado.esusuario = 'false';
+					errores=Validator.validateAll([validaRFC, validaNombre
+						,validaPaterno, validaMaterno, validaTelefono, validaCelular, 
+						validaDomicilio, validaNoExterior, validaColonia, validaCP]);
+				}
+				
+				if(errores.length == 0 && cboEntidad.selectedIndex != -1 && cboMunicipio.selectedIndex != -1 && cboLocalidad.selectedIndex != -1 && cboPerfil.selectedIndex != -1)
+				{
+					if(txtPassword.text == txtPasswordConfirm.text){
+						
+						empleado.rfcEmpleado = txtRFC.text;
+						empleado.nombre = txtNombre.text;
+						empleado.paterno = txtPaterno.text;
+						empleado.materno = txtMaterno.text;
+						empleado.telefono = txtTelefono.text;
+						empleado.celular = txtCelular.text;
+						empleado.idLocalidad = cboLocalidad.selectedItem.idLocalidad;
+						empleado.idMunicipio = cboMunicipio.selectedItem.idMunicipio;
+						empleado.idEntidad = cboEntidad.selectedItem.idEntidad;
+						empleado.cp = txtCP.text;
+						if(empleadoEsUsuario) empleado.idPerfil = cboPerfilUsuario.selectedItem.idPerfil;
+						
+						empleado.numInterior = txtNoInterior.text;
+						empleado.numExterior = txtNoExterior.text;
+						empleado.idTipoEmpleado = cboPerfil.selectedItem.id_tipo_empleado;
+						empleado.domicilio = txtDomicilio.text;
+						empleado.colonia = txtColonia.text;
+						empleado.fechaAlta = txtFechaIngreso.text;
+						empleado.password = txtPassword.text;
+						
+						
+						var eventEmpleadoSave:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_SAVE);
+						eventEmpleadoSave.empleadoVO  = empleado;
+						dispatchEvent(eventEmpleadoSave);
+					}else
+					{
+						Alert.show("La clave de acceso no es la misma, verifica","Clave de acceso");
+					}
+				}else
+				{
+					Alert.show("Existen datos que falta completar","Campos vacios");
+				}
+				
+				
+			}
+			
+			[EventHandler(event="EmpleadoEvent.EMPLEADO_BOTON_BUSCAR_EMPLEADO")]
+			public function btnBuscarEmpleado_clickHandler():void
+			{
+				var eventBuscarEmpleado:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_BUSCAR_POR_RFC)
+				var empleado:EmpleadoVO = new EmpleadoVO();
+				empleado.rfcEmpleado = txtRFCPerfil.text;
+				eventBuscarEmpleado.empleadoVO = empleado;
+				txtHabilidadPerfil.text = "";
+				txtDescripcionPerfil.text = "";
+				dispatchEvent(eventBuscarEmpleado);
+			}
+			
+			[EventHandler(event="EmpleadoEvent.EMPLEADO_ENCONTRADO_POR_RFC", properties="empleadoVO")]
+			public function llenarCajasConEmpleado(empleado:EmpleadoVO):void
+			{
+				txtNombrePerfil.text = empleado.nombre;
+				txtPaternoPerfil.text = empleado.paterno;
+				txtMaternoPerfil.text = empleado.materno;
+				empleadoModel.empleadoSelected = empleado;
+				
+			}
+			
+			protected function btnHabilidadAgregar_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				var habilidad:HabilidadDTO = new HabilidadDTO();
+				habilidad.descripcion = txtDescripcionPerfil.text;
+				habilidad.habilidad = txtHabilidadPerfil.text;
+				habilidad.idEmpleado = empleadoModel.empleadoSelected.idEmpleado;
+				habilidad.filterEstatusFalla = 'true';
+				//empleadoModel.habilidadList.addItem(habilidad);
+				if(updatedHabilidad){
+					var eventHabilidadActualizar:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_ACTUALIZAR_HABILIDAD);
+					habilidad.idHabilidad = habilidadSelected.idHabilidad;
+					eventHabilidadActualizar.habilidad = habilidad;
+					dispatchEvent(eventHabilidadActualizar);
+				}else{
+					var eventHabilidad:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_GUARDAR_HABILIDAD);
+					eventHabilidad.habilidad = habilidad;
+					dispatchEvent(eventHabilidad);	
+				}
+				
+			}
+			
+			protected function cboPerfilUsuario_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var eventoPerfil:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_BUSCAR_PERFILES_USUARIO);
+				dispatchEvent(eventoPerfil);
+			}
+			
+			protected function buscarEmpleadoClic(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var eventBusqueda:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_BUSCAR);
+				var empleado:EmpleadoVO = new EmpleadoVO();
+				empleado.rfcEmpleado = txtRFCNombreBuscar.text;
+				eventBusqueda.empleadoVO = empleado;
+				dispatchEvent(eventBusqueda);
+			}
+			private var objetoToBorrar:HabilidadDTO;
+			public function borrarHabilidad(data:Object):void
+			{
+				objetoToBorrar = data as HabilidadDTO;
+				Alert.show("Estas seguro de borra la habilidad?","Prevención",3,this,iamShureToDelete);
+			}
+			
+			public function iamShureToDelete(event:CloseEvent):void
+			{
+				var eventBorrarHabilidad:EmpleadoEvent = new EmpleadoEvent(EmpleadoEvent.EMPLEADO_HABILIDAD_BORRAR);
+				eventBorrarHabilidad.habilidad = objetoToBorrar;
+				dispatchEvent(eventBorrarHabilidad);
+			}
+			
+			public function borrarEmpleadoDataGrid(data:Object):void
+			{
+				
+			}
+			
+			protected function btnReinicio_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				txtRFCPerfil.text = "";
+				txtNombrePerfil.text = "";
+				txtPaternoPerfil.text = "";
+				txtMaternoPerfil.text = "";
+				txtHabilidadPerfil.text = "";
+				txtDescripcionPerfil.text = "";
+				txtRFCPerfil.setFocus();
+				empleadoModel.habilidadList.removeAll();
+			}
+			protected var habilidadSelected:HabilidadDTO;
+			[Bindable] protected var updatedHabilidad:Boolean;
+			public function editarHabilidad(object:HabilidadDTO):void
+			{
+				//COLOCAMOS EL OBJECT EN EL RECIPIENTE DE EDICIÓN
+				//
+				txtHabilidadPerfil.text = object.habilidad;
+				txtDescripcionPerfil.text =object.descripcion;
+				habilidadSelected = object;
+				updatedHabilidad = true;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<mx:StringValidator id="validaRFC" source="{txtRFC}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaNombre" source="{txtNombre}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaPaterno" source="{txtPaterno}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaMaterno" source="{txtMaterno}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaTelefono" source="{txtTelefono}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaCelular" source="{txtCelular}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaDomicilio" source="{txtDomicilio}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaNoExterior" source="{txtNoExterior}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaColonia" source="{txtColonia}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaCP" source="{txtCP}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaClave" source="{txtPassword}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+		<mx:StringValidator id="validaClaveConfirm" source="{txtPasswordConfirm}" property="text"
+							trigger="{btnSave}" triggerEvent="click" 
+							requiredFieldError="El campo es requerido"/>
+	</fx:Declarations>
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<s:Label text="Buscar Empleado" x="10" y="11" buttonMode="true" useHandCursor="true"  click="viewStackEmpleados.selectedIndex=0"/>
+			<s:Label text="|" x="110" y="11"  />
+			<s:Label text="Alta Empleado" x="120" y="11" buttonMode="true" useHandCursor="true" click="viewStackEmpleados.selectedIndex=1"/>
+			<s:Label text="|" x="200" y="11"  />
+			<s:Label text="Alta de Habilidades" x="210" y="11" buttonMode="true" useHandCursor="true" click="viewStackEmpleados.selectedIndex=2"/>
+			<mx:ViewStack width="100%" height="100%" x="0" y="0" id="viewStackEmpleados">
+				<s:NavigatorContent  width="100%" height="100%" label="Busqueda de empleados">
+					<s:SkinnableContainer width="100%" height="100%" x="1" y="6" top="40">
+						<s:layout>
+							<s:VerticalLayout/>
+						</s:layout>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="RFC a localizar"/>
+							<s:TextInput width="22%" maxChars="13"  id="txtRFCNombreBuscar"/>
+							<s:Button label="Buscar" click="buscarEmpleadoClic(event)"/>
+							
+						</s:HGroup>
+						<s:HGroup width="100%" height="100%" paddingLeft="10" paddingRight="10" paddingBottom="20">
+							<s:SkinnableContainer  width="100%" height="100%"
+												   skinClass="com.actioninteractive.nok.skins.DataGridContainerSkin">
+								<s:layout>
+									<s:VerticalLayout paddingLeft="1" paddingRight="1" paddingBottom="30"/>
+								</s:layout>
+								<s:SkinnableContainer width="100%">
+									<s:layout>
+										<s:HorizontalLayout paddingLeft="10" paddingBottom="0" paddingTop="10" 
+															verticalAlign="middle"/>
+									</s:layout>
+									<s:Label text="Lista de habilidades" top="0" right="0" left="0"/>
+								</s:SkinnableContainer>	
+								<s:SkinnableContainer width="99%" height="100%">
+									<s:layout>
+										<s:HorizontalLayout paddingTop="-10"/>
+									</s:layout>
+									<s:DataGrid width="100%" height="100%" id="dataGridResultadoEmpleado" dataProvider="{empleadoModel.empleadosBusquedaList}">
+										<s:columns>
+											<s:ArrayList>
+												<s:GridColumn width="35">
+													<s:itemRenderer>
+														<fx:Component>
+															<s:GridItemRenderer>
+																<s:HGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+																	<!--<s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>-->
+																	
+																	<s:Button buttonMode="true" useHandCursor="true" toolTip="Eliminar"
+																			  click="outerDocument.borrarEmpleadoDataGrid(data)" 
+																			  skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>
+																	
+																	<s:Button buttonMode="true" useHandCursor="true" 
+																			  click="outerDocument.borrarEmpleadoDataGrid(data)" toolTip="Modificar"
+																			  skinClass="com.actioninteractive.nok.skins.ButtonAddList"/>
+																</s:HGroup>
+																
+															</s:GridItemRenderer>
+														</fx:Component>
+													</s:itemRenderer>
+													
+												</s:GridColumn>
+												<s:GridColumn headerText="RFC" width="120" dataField="rfcEmpleado"/>
+												<s:GridColumn headerText="Nombre" dataField="nombre"/>
+												<s:GridColumn headerText="A. Paterno" dataField="paterno"/>
+												<s:GridColumn headerText="A. Materno" dataField="materno"/>
+												<s:GridColumn headerText="Teléfono" width="120" dataField="telefono"/>
+												<s:GridColumn headerText="Móvil" width="120" dataField="celular"/>
+											</s:ArrayList>
+										</s:columns>
+									</s:DataGrid>
+								</s:SkinnableContainer>
+							</s:SkinnableContainer>
+						</s:HGroup>
+					</s:SkinnableContainer>
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Alta de empleados">
+					
+					<s:SkinnableContainer width="100%" height="100%" x="1" y="6" top="40">
+						<s:layout>
+							<s:HorizontalLayout/>
+						</s:layout>
+						<s:SkinnableContainer width="70%" height="100%">
+							<s:layout>
+								<s:VerticalLayout paddingLeft="40"/>
+							</s:layout>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="RFC"/>
+								<s:TextInput width="50%" restrict="[A-Z] [0-9]" maxChars="13"  id="txtRFC"/>
+								<s:Label  textAlign="right" width="100" text="Perfil"/>
+								<s:DropDownList width="50%" id="cboPerfil" dataProvider="{perfilList}" 
+												change="changeNombrePerfil(event)" labelField="tipo_empleado"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Nombre"/>
+								<s:TextInput width="100%" id="txtNombre"/>	
+							</s:HGroup>
+							
+							<s:HGroup  width="100%" verticalAlign="middle">
+								<s:Label textAlign="right" width="100" text="Apellido Paterno"/>
+								<s:TextInput width="100%" id="txtPaterno"/>
+							</s:HGroup>
+							
+							<s:HGroup  width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Apellido Materno"/>
+								<s:TextInput width="100%" id="txtMaterno"/>
+							</s:HGroup>
+							
+							
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right"  width="100" text="Teléfono"/>
+								<s:TextInput width="50%" id="txtTelefono"/>
+								<s:Label  textAlign="right" width="100" text="Celular"/>
+								<s:TextInput width="50%" id="txtCelular"/>
+							</s:HGroup>
+							
+							<s:HGroup width="100%" verticalAlign="middle">
+								<!--<s:Label textAlign="right" width="100" text="Fecha nacimiento"/>
+								<mx:DateField skin="{AssetManagerIn.dateWrapper}" width="50%" formatString="YYYY-MM-DD"
+								monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+								dayNames="[D,L,M,M,J,V,S]" yearNavigationEnabled="true" id="txtFechaNacimiento"/>
+								-->
+								<s:Label textAlign="right" width="100" text="Fecha de Ingreso"/>
+								<mx:DateField skin="{AssetManagerIn.dateWrapper}" width="50%" formatString="YYYY-MM-DD"
+											  monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+											  dayNames="[D,L,M,M,J,V,S]" yearNavigationEnabled="true" id="txtFechaIngreso"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Domicilio"/>
+								<s:TextInput width="60%" id="txtDomicilio"/>
+								<s:Label  textAlign="right" text="N. Exterior"/>
+								<s:TextInput width="20%" id="txtNoExterior"/>
+								<s:Label  textAlign="right" text="N. Interior"/>
+								<s:TextInput width="20%" id="txtNoInterior"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Colonia"/>
+								<s:TextInput width="80%" id="txtColonia"/>
+								<s:Label  textAlign="right" width="100" text="Código postal"/>
+								<s:TextInput width="20%" id="txtCP"/>
+							</s:HGroup>
+							
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Entidad"/>
+								<s:DropDownList width="100%" prompt="-Entidad-" 
+												dataProvider="{direccionModel.acListEntidad}" labelField="entidad" change="changeEntidadList(event)"
+												id="cboEntidad"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Municipio"/>
+								<s:DropDownList width="100%" prompt="-Municipio-" 
+												dataProvider="{direccionModel.acListMunicipio}" labelField="municipio" change="changeMunicipio(event)"
+												id="cboMunicipio"/>
+							</s:HGroup>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label  textAlign="right" width="100" text="Localidad"/>
+								<s:DropDownList width="100%" prompt="-Localidad-" dataProvider="{direccionModel.acListLocalidad}" 
+												labelField="localidad"
+												id="cboLocalidad"/>
+							</s:HGroup>
+							
+							
+							<s:HGroup width="100%"  horizontalAlign="right">
+								<s:Button label="Cancelar" id="btnCancelar" click="btnCancelar_clickHandler(event)"/>
+								<s:Button label="Guardar" id="btnSave" click="btnSave_clickHandler(event)"/>
+							</s:HGroup>
+						</s:SkinnableContainer>
+						
+						<s:SkinnableContainer width="30%" height="100%">
+							<s:layout>
+								<s:VerticalLayout paddingLeft="33"/>
+							</s:layout>
+							<!--Contendor para la fotografia y asignaciones de perfil-->
+							<s:VGroup verticalAlign="bottom" width="100%">
+								<s:HGroup>
+									
+									<s:Image id="imageEmpleado"  fillMode="scale"
+											 skinClass="com.actioninteractive.nok.skins.ImagenEmpleadoSkin" 
+											 click="imageEmpleado_clickHandler(event)"
+											 />
+								</s:HGroup>
+								<s:VGroup gap="-2" width="100%">
+									<s:Label id="lblEmpleado" 
+											 text="{txtNombre.text + ' ' + txtPaterno.text +' '+ txtMaterno.text }" styleName="H1"/>
+									<s:Label id="lblPerfil" text="Operador" styleName="H3"/>
+								</s:VGroup>
+								<s:VGroup width="100%">
+									
+									<s:CheckBox  label="¿Es usuario de sistema?" id="checkBoxUsuarioMostrar" change="{(checkBoxUsuarioMostrar.selected? txtPassword.setFocus(): null)}"/>
+									<s:VGroup id="vGroupAcceso" visible="{checkBoxUsuarioMostrar.selected}" width="100%">
+										
+										
+										<s:Label text="Clave de acceso"/>
+										<s:TextInput id="txtPassword" displayAsPassword="true" width="100%"/>
+										<s:Label text="Confirma clave de acceso"/>
+										<s:TextInput id="txtPasswordConfirm" displayAsPassword="true" width="100%"/>
+										<s:Label text="Perfil"/>
+										<s:DropDownList width="100%" id="cboPerfilUsuario"  horizontalScrollPolicy="off"
+														creationComplete="cboPerfilUsuario_creationCompleteHandler(event)"
+														dataProvider="{usuarioModel.perfilesCollection}" labelField="descripcion"/>
+										
+									</s:VGroup>
+								</s:VGroup>
+							</s:VGroup>
+							
+						</s:SkinnableContainer>	
+					</s:SkinnableContainer>
+				</s:NavigatorContent>
+				
+				<s:NavigatorContent width="100%" height="100%" label="Alta de habilidades">
+					
+					<s:SkinnableContainer width="100%" height="100%" x="1" y="6" top="40">
+						<s:layout>
+							<s:VerticalLayout paddingLeft="40"/>
+						</s:layout>
+						<!--Contendor para asignaciones de perfil-->
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="RFC"/>
+							<s:TextInput width="36%" restrict="[A-Z] [0-9]" maxChars="13" id="txtRFCPerfil"/>
+							<s:Button label="Buscar al empleado" id="btnBuscar" enabled="{txtRFCPerfil.text.length!=0}" 
+									  click="btnBuscarEmpleado_clickHandler()"/>
+							<s:Button label="Reiniciar busqueda" id="btnReinicio" click="btnReinicio_clickHandler(event)"/>
+							<s:Spacer width="50%"/>
+							
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="Nombre"/>
+							<s:TextInput width="50%" text="" id="txtNombrePerfil" enabled="false"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="A. Paterno"/>
+							<s:TextInput width="50%" text="" id="txtPaternoPerfil" enabled="false"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="A. Materno"/>
+							<s:TextInput width="50%" text="" id="txtMaternoPerfil" enabled="false"/>
+						</s:HGroup>
+						
+						
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="Habilidad"/>
+							<s:TextInput width="50%" id="txtHabilidadPerfil" enabled="{btnBuscar.enabled}"/>
+						</s:HGroup>
+						<s:HGroup width="100%" verticalAlign="middle">
+							<s:Label  textAlign="right" width="100" text="Descripción"/>
+							<s:TextInput width="50%" id="txtDescripcionPerfil" enabled="{txtHabilidadPerfil.text.length != 0  }"/>
+							<s:Button label="{updatedHabilidad?'Actualizar habilidad':'Agregar habilidad'}" id="btnHabilidadAgregar" 
+									  click="btnHabilidadAgregar_clickHandler(event)"
+									  enabled="{txtDescripcionPerfil.text.length!=0}"/>
+							<s:Spacer width="50%"/>
+						</s:HGroup>
+						<s:HGroup width="100%">
+							<s:Spacer width="100"/>
+							<s:SkinnableContainer width="50%" height="100%"
+												  skinClass="com.actioninteractive.nok.skins.DataGridContainerSkin">
+								<s:layout>
+									<s:VerticalLayout/>
+								</s:layout>
+								<s:SkinnableContainer id="sc" width="100%">
+									<s:layout>
+										<s:HorizontalLayout paddingLeft="10" paddingBottom="0" paddingTop="10" 
+															verticalAlign="middle"/>
+									</s:layout>
+									<s:Label id="title" text="Lista de habilidades" fontWeight="bold" top="0" right="0" left="0"/>
+								</s:SkinnableContainer>	
+								<s:SkinnableContainer width="99%" height="100%">
+									<s:layout>
+										<s:HorizontalLayout paddingTop="-10"/>
+									</s:layout>
+									<s:DataGrid id="dataGridHabilidades" 
+												width="100%" height="300" dataProvider="{empleadoModel.habilidadList}">
+										<s:columns>
+											<s:ArrayList>
+												<s:GridColumn width="40">
+													<s:itemRenderer>
+														<fx:Component>
+															<s:GridItemRenderer>
+																<fx:Script>
+																	<![CDATA[
+																		import com.actioninteractive.nok.vo.HabilidadDTO;
+																	]]>
+																</fx:Script>
+																<s:HGroup width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+																	<s:Button click="outerDocument.borrarHabilidad(data)" skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>
+																	<s:Button buttonMode="true" useHandCursor="true" 
+																			  click="outerDocument.editarHabilidad(data as HabilidadDTO)" toolTip="Modificar"
+																			  skinClass="com.actioninteractive.nok.skins.ButtonAddList"/>
+																</s:HGroup>
+																
+															</s:GridItemRenderer>
+														</fx:Component>
+													</s:itemRenderer>
+													
+												</s:GridColumn>
+												<s:GridColumn dataField="habilidad" headerText="Habilidad"></s:GridColumn>
+												<s:GridColumn dataField="descripcion" headerText="Descripción"></s:GridColumn>
+												
+											</s:ArrayList>
+										</s:columns>
+									</s:DataGrid>
+								</s:SkinnableContainer>
+							</s:SkinnableContainer>
+							
+						</s:HGroup>
+					</s:SkinnableContainer>
+					
+				</s:NavigatorContent>
+				
+				
+			</mx:ViewStack>
+			
+			
+		</s:SkinnableContainer>
+		
+	</portlet:children>
+</portlet:Portlet>

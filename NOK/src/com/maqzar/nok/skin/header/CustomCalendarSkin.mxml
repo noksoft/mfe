@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename CustomCalendarSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns="http://www.degrafa.com/2007">
+
+	<geometry>
+		<RoundedRectangle width="{skinWidth}" height="{skinHeight - 1}" cornerRadius="4">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop color="#8C8C8C" />
+					<GradientStop color="#6F6F6F" />
+				</LinearGradientFill>
+			</fill>
+		</RoundedRectangle>
+		
+		<Polygon 
+			data="0,1 5.5,-7 11,1 0,1" x="75">		
+			<fill>
+				<SolidFill color="#8C8C8C"/>
+			</fill>
+		</Polygon>
+	</geometry>
+	
+</GraphicBorderSkin>

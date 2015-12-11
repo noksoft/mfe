@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body:PortletContainerBase
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:body="com.actioninteractive.nok.view.body.*"
+	xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*" 
+	>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.vo.PortletVO;
+		]]>
+	</fx:Script>
+	
+	<body:layout>
+		<s:BasicLayout/>
+	</body:layout>
+	
+	<fx:Declarations>
+		<s:Parallel id="slide"
+			startDelay="500"
+			duration="700"
+			effectEnd="slideEffectEnd()"
+			>
+			<s:Move id="mainContainerEffect"
+				xFrom="{mainContainerXFrom}" xTo="{mainContainerXTo}"
+				target="{mainContainer}"
+				/>
+			<s:Move id="tempContainerEffect"
+				xFrom="{tempContainerXFrom}" xTo="{tempContainerXTo}"
+				target="{tempContainer}"
+				/>
+		</s:Parallel>
+	</fx:Declarations>
+	
+	<s:HGroup id="mainContainer"
+		width="{this.width}" height="100%"
+		paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
+		gap="10"
+		horizontalAlign="center" verticalAlign="middle"
+		>
+		<s:VGroup id="portletGroupLeft" 
+			width="100%" height="100%"
+			gap="10"
+			>
+			<!--AQUI VAN LOS PORTLETS-->
+		</s:VGroup>
+		<s:VGroup id="portletGroupRight" 
+			width="100%" height="100%"
+			gap="10"
+			>
+			<!--AQUI VAN LOS PORTLETS-->
+		</s:VGroup>
+	</s:HGroup>
+	
+	<s:HGroup id="tempContainer"
+		width="{this.width}" height="100%"
+		paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
+		gap="10"
+		horizontalAlign="center" verticalAlign="middle"
+		>
+		<s:VGroup id="tempPortletGroupLeft" 
+			width="100%" height="100%"
+			gap="10"
+			>
+			<!--AQUI VAN LOS PORTLETS PARA EL EFECTO-->
+		</s:VGroup>
+		<s:VGroup id="tempPortletGroupRight" 
+			width="100%" height="100%"
+			gap="10"
+			>
+			<!--AQUI VAN LOS PORTLETS PARA EL EFECTO-->
+		</s:VGroup>
+	</s:HGroup>
+</body:PortletContainerBase>

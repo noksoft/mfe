@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox  
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	creationComplete="init()">
+	<fx:Declarations>
+		<!--	CATEGORIA	-->
+		<s:RemoteObject 
+			id="roCategorias"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="categoriaBusiness">
+			
+				<!--	Metodo para cargar los tipos de categorias 	-->
+				<s:method 
+					name="infoTipocategoria"
+					result="resultTipoCategorias(event)"
+					fault="faultListTipoCategorias(event)"/>
+			
+				<!-- 	Metodos para la Categoria		-->
+				<s:method 
+					name="catCategoria"
+					fault="faultListCategorias(event)"
+					result="resultCategorias(event)"/>
+				<s:method
+					name="insertCategoria"
+					fault="faultInsertCategoria(event)"
+					result="resultInsertCategoria(event)"/>
+				<s:method
+					name="updateCategoria"
+					fault="faultUpdateCategoria(event)"
+					result="resultUpdateCategoria(event)"/>
+				<s:method
+					name="deleteCategoria"
+					fault="faultDeleteCategoria(event)"
+					result="resultDeleteCategoria(event)"/>
+		</s:RemoteObject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import event.CommonEvent;
+			
+			import model.CategoriaVO;
+			import model.TipoCategoriaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import utils.AlertUtils;
+			
+			[Bindable]private var listTipoCategorias:ArrayCollection;
+			[Bindable]private var listTipoCategoriasEditor:ArrayCollection;
+			[Bindable]private var listCategorias:ArrayCollection = new ArrayCollection();
+			[Bindable]private var titleFormulario:String;
+			[Bindable]private var itemSelected:CategoriaVO;
+			private const CREAR:String = "Crear";
+			private const ACTUALIZAR:String = "Actualizar";
+			
+			private function init():void{
+				itemSelected = new CategoriaVO();
+				roCategorias.infoTipocategoria(new TipoCategoriaVO());
+				upData();
+			}
+			
+			private function upData():void{
+				if(cmbTipoCategoria.selectedItem != null){
+					var _tipoCategoria:TipoCategoriaVO = cmbTipoCategoria.selectedItem as TipoCategoriaVO;
+					var tempCategoria:CategoriaVO = new CategoriaVO();
+					tempCategoria.idtipocategoria = _tipoCategoria.id_tipocategoria;
+					roCategorias.catCategoria(tempCategoria);
+				}else{
+					roCategorias.catCategoria(new CategoriaVO());
+				}
+				titleFormulario = CREAR;
+				itemSelected = new CategoriaVO();
+				cmbTipoCategoriaEditor.selectedItem = null;
+			}
+			
+			private function itemDelete (event:ContextMenuEvent):void{
+				if(dtgTipoCategoria.selectedItem != null){
+					itemSelected = dtgTipoCategoria.selectedItem as CategoriaVO;
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar la Categoría?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmation);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+					
+				}else{
+					itemSelected = null;
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmation (_event:CommonEvent):void{
+				roCategorias.deleteCategoria(itemSelected);
+			}
+			
+			private function saveTipoCategoria():void{
+				if(itemSelected != null && txtCategoria.text != "" && cmbTipoCategoriaEditor.selectedItem != null){
+					itemSelected.idtipocategoria = TipoCategoriaVO(cmbTipoCategoriaEditor.selectedItem).id_tipocategoria;
+					itemSelected.categoria = txtCategoria.text;
+					itemSelected.estatus = chxEstatus.selected;
+					switch(titleFormulario){
+						case CREAR:
+							roCategorias.insertCategoria(itemSelected);	
+							break;
+						case ACTUALIZAR:
+							roCategorias.updateCategoria(itemSelected);
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			private function deleteCategoria():void{
+				if(itemSelected != null && itemSelected.tipocategoria != null && itemSelected.tipocategoria != ""){
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar la Categoría?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmation);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+				}
+			}
+			
+			private function clearFormulario():void{
+				titleFormulario = "Crear";
+				itemSelected = new CategoriaVO();
+				cmbTipoCategoriaEditor.selectedItem = null;
+				cmbTipoCategoria.selectedItem = null;
+			}
+			
+			protected function selectTipoCategoria(_event:MouseEvent):void
+			{
+				if(itemSelected == null){
+					itemSelected = new CategoriaVO();
+				}
+				if(_event.currentTarget.selectedItem != null){
+					titleFormulario = "Actualizar";
+					itemSelected = _event.currentTarget.selectedItem as CategoriaVO;
+					for(var i:int = 0; i < listTipoCategoriasEditor.length; i++){
+						var tempTipoCategoria:TipoCategoriaVO = listTipoCategoriasEditor[i] as TipoCategoriaVO;
+						if(itemSelected.idtipocategoria == tempTipoCategoria.id_tipocategoria){
+							cmbTipoCategoriaEditor.selectedItem = tempTipoCategoria;
+							break;
+						}
+					}
+				}
+			}
+			
+			protected function selectTipoCategoriaEditor(_event:IndexChangeEvent):void{
+				var tempTipoCategoria:TipoCategoriaVO = _event.currentTarget.selectedItem as TipoCategoriaVO;
+				txtTipoCategoria.text = tempTipoCategoria.tipocategoria;
+			}
+			
+			/**
+			 * Evento que limpia los filtros
+			 */
+			private function cleanFilter ():void{
+				cmbTipoCategoria.selectedItem = null;
+				cmbTipoCategoriaEditor.selectedItem = null;
+				itemSelected = new CategoriaVO();
+				roCategorias.infoTipocategoria(new TipoCategoriaVO());
+				upData();
+			}
+			
+			
+			/**********************************/
+			/*******	REMOTE OBJECT	*******/
+			/**********************************/
+			
+			/***	infoTipocategoria	****/
+			private function resultTipoCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listTipoCategorias = _event.result as ArrayCollection;
+						listTipoCategoriasEditor = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoTipocategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+				}
+			}
+			
+			private function faultListTipoCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoTipocategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+			}
+			
+			/***	infoCategoria	****/
+			private function resultCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listCategorias = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoCategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Categorías");
+				}
+			}
+			
+			private function faultListCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoCategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Categorías");
+			}
+			
+			
+			/****	insertCategoria	****/
+			private function resultInsertCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new CategoriaVO();
+						cmbTipoCategoriaEditor.selectedItem = null;
+						if(listCategorias != null){
+							listCategorias.addItem(CategoriaVO(_event.result));
+						}
+						txtCategoria.text = "";
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo guardar la Categorías");
+				}
+			}
+			
+			private function faultInsertCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "insertCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo guardar la Categorías");
+			}
+			
+			/****	updateCategoria	****/
+			private function resultUpdateCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new CategoriaVO();
+						cmbTipoCategoriaEditor.selectedItem = null;
+						upData();
+						txtCategoria.text = "";
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo actualizar la Categorías");
+				}
+			}
+			
+			private function faultUpdateCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "updateCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo actualizar la Categorías");
+			}
+			
+			/****	deleteTipocategoria	****/
+			private function resultDeleteCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new CategoriaVO();
+						cmbTipoCategoriaEditor.selectedItem = null;
+						upData();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo borrar la Categorías");
+				}
+			}
+			
+			private function faultDeleteCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "deleteCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo borrar la Categorías");
+			}
+		]]>
+	</fx:Script>
+	
+	<mx:HDividedBox
+		width="100%" height="100%">
+		<!--	Tabla con la lista de Tipo de Categorias	-->
+		<s:Panel
+			title="Categorías"
+			width="100%" height="100%">
+			<s:layout>
+				<s:VerticalLayout verticalAlign="middle" paddingLeft="10" paddingTop="5"/>
+			</s:layout>
+				<s:HGroup
+					width="100%" height="60">
+						<s:Label
+							text="Tipo Categorías"/>
+						<s:DropDownList
+							id="cmbTipoCategoria"
+							prompt="Selecciona un Tipo de Categoría"
+							labelField="tipocategoria"
+							dataProvider="{listTipoCategorias}"
+							change="upData()"/>
+				</s:HGroup>
+			<s:DataGrid
+				id="dtgTipoCategoria"
+				width="100%" height="100%"
+				dataProvider="{listCategorias}"
+				doubleClickEnabled="true"
+				doubleClick="selectTipoCategoria(event)">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Categoría" dataField="categoria"/>
+							<s:GridColumn headerText="Tipo Categoría" dataField="tipocategoria"/>
+							<s:GridColumn headerText="Estatus" dataField="estatus"/>
+						</s:ArrayList>
+					</s:columns>
+			</s:DataGrid>
+			<s:HGroup
+				width="100%" height="60">
+				<s:Button
+					label="Limpiar" click="cleanFilter()"/>
+			</s:HGroup>
+		</s:Panel>
+		<!--	Formulario para Crear o Editar un Tipo de Categoría		-->
+		<s:Panel
+			title="{titleFormulario}"
+			width="100%" height="100%">
+			<s:layout>
+				<s:VerticalLayout
+					gap="5"
+					paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"/>
+			</s:layout>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Tipo Categoría" textAlign="right"/>
+				<s:DropDownList
+					id="cmbTipoCategoriaEditor"
+					prompt="Selecciona un Tipo de Categoría"
+					labelField="tipocategoria"
+					dataProvider="{listTipoCategoriasEditor}"
+					change="selectTipoCategoriaEditor(event)"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Categoría" textAlign="right"/>
+				<s:TextInput 
+					width="300" 
+					id="txtCategoria"
+					text="{itemSelected.categoria}"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Tipo Categoría" textAlign="right"/>
+				<s:TextInput 
+					width="300" 
+					id="txtTipoCategoria"
+					enabled="false" editable="false"
+					text="{itemSelected.tipocategoria}"/>
+			</s:HGroup>
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label width="120" fontWeight="bold" text="Estatus" textAlign="right"/>
+				<s:CheckBox 
+					id="chxEstatus"
+					selected="{itemSelected.estatus}"/>
+			</s:HGroup>
+			<s:controlBarContent>
+				<!--s:Button 
+				label="Actualizar" 
+				icon="@Embed(source='assets/icons/application_form_edit.png')"
+				click="updateTipoCategoria()"/>
+				<s:Button 
+				label="Nuevo" 
+				icon="@Embed(source='assets/icons/application_add.png')"
+				click="saveTipoCategoria()"/-->
+				<s:Button 
+					label="Limpiar" 
+					icon="@Embed(source='assets/icons/cancel.png')"
+					click="clearFormulario()"/>
+				<s:Button 
+					id="guardarButton" 
+					label="Guardar" 
+					icon="@Embed(source='assets/icons/add.png'" 
+					styleName="primaryButton"
+					click="saveTipoCategoria()"/>
+			</s:controlBarContent>
+		</s:Panel>
+	</mx:HDividedBox>
+</mx:VBox>

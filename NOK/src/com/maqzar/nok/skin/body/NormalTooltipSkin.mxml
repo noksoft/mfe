@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename NormalTooltipSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin 
+	xmlns="*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:degrafa="http://www.degrafa.com/2007"
+	>
+	
+	<mx:GlowFilter id="glow" inner="false" blurX="4" blurY="4" color="0x666666" strength="1" />
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition filters="{[glow]}">
+		
+			<!--Body Color-->
+			<degrafa:RoundedRectangle width="{skinWidth}" height="{skinHeight}" cornerRadius="5" >
+				
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xe5e5e5" weight="1"/>
+				</degrafa:stroke>
+				
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xf3f3f3" />
+						<degrafa:GradientStop color="0xffffff" />
+				</degrafa:LinearGradientFill>
+						
+				</degrafa:fill>
+				
+			</degrafa:RoundedRectangle>
+			
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+	
+</degrafa:GraphicBorderSkin>

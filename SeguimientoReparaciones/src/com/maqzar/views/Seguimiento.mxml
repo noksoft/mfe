@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" creationComplete="initData()">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.DragEvent;
+			import mx.managers.PopUpManager;
+			
+			import spark.components.TitleWindow;
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				currentState = "segundo";
+				
+			}
+			import mx.collections.ArrayList;
+			
+			[Bindable]
+			private var DGArray:ArrayList = new ArrayList([
+				{Artist:'F987: Catepillar 1233FD', Album:'Slanted and Enchanted', Price:11.99},
+				{Artist:'D789: Trailer 1DS22FD', Album:'Brighten the Corners', Price:11.99}]);
+			
+			// Initialize initDG ArrayList variable from the ArrayList.
+			public function initData():void {
+				listFallas.dataProvider = DGArray;
+			}
+			
+			protected function abrePopupDetalleFalla(event:MouseEvent):void
+			{
+				
+				var popupFalla:PopupDetalleFalla = PopupDetalleFalla(PopUpManager.createPopUp(this, PopupDetalleFalla,true)  as spark.components.TitleWindow);
+				PopUpManager.centerPopUp(popupFalla);
+				
+				
+			}
+			
+			protected function abreVentanaAsignacion():void
+			{
+				//event.draggedItem;
+				//event.cancelable = true;
+				var popupAsignacion:PopupAsignaFalla = PopupAsignaFalla(PopUpManager.createPopUp(this, PopupAsignaFalla, true) as spark.components.TitleWindow);
+				PopUpManager.centerPopUp(popupAsignacion);
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="State1"/>
+	</s:states>
+	<fx:Declarations>
+		
+	</fx:Declarations>
+	
+	
+	
+	<s:Panel left="0" top="0" width="100%" height="100%">
+		<mx:HDividedBox width="100%" height="100%" x="0" y="0">
+			<s:Panel left="0" top="0" width="250" height="100%" title="Listado de fallas reportadas">
+				<s:controlBarContent>
+					<s:Spacer width="100%" height="10"/>
+					<s:Button label="Dar seguimiento &gt;" click="abreVentanaAsignacion()" enabled="{listFallas.selectedIndex != -1}" />
+				</s:controlBarContent>
+				
+				<s:List styleName="listMenu" id="listFallas" doubleClickEnabled="true" doubleClick="abrePopupDetalleFalla(event)" color="white"
+						labelField="Artist" x="0" y="0" width="100%" height="100%">
+					
+				</s:List>
+			</s:Panel>
+			<s:VGroup width="100%" height="100%">
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Button label="Ir a Semana actual"/>
+					<s:Label text="Selecciona una semana del calendario"/>
+					<mx:DateField/>
+				</s:HGroup>
+				<mx:AdvancedDataGrid id="adg1" y="0" left="255" width="100%" height="100%"
+									 designViewDataType="tree">
+					<mx:groupedColumns>
+						<mx:AdvancedDataGridColumn dataField="@equipo" headerText="Equipo"/>
+						<mx:AdvancedDataGridColumn dataField="@falla" headerText="Falla"/>
+						<mx:AdvancedDataGridColumn dataField="@personal" headerText="Personal"/>
+						<mx:AdvancedDataGridColumnGroup headerText="Semana de trabajo">
+							<mx:AdvancedDataGridColumnGroup headerText="L">
+								<mx:AdvancedDataGridColumn dataField="@semana.lunes.programado" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="M">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="M">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="J">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="V">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="S">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+							<mx:AdvancedDataGridColumnGroup headerText="D">
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
+								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
+							</mx:AdvancedDataGridColumnGroup>
+						</mx:AdvancedDataGridColumnGroup>
+						
+						
+					</mx:groupedColumns>
+					<mx:dataProvider>
+						<s:XMLListCollection id="dp">
+							<s:source>
+								<fx:XMLList>
+									<product equipo="Maquina 1" falla="Falla 1" personal="Personal 1">
+										<semana numero="Semana 1">
+											<lunes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</lunes>
+											<martes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</martes>
+											<miercoles>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</miercoles>
+											<jueves>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</jueves>
+											<viernes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</viernes>
+											<sabado>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</sabado>
+											<domingo>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</domingo>
+											
+											
+										</semana>
+									</product>
+									<product equipo="Maquina 1" falla="Falla 1" personal="Personal 1">
+										<semana numero="Semana 1">
+											<lunes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</lunes>
+											<martes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</martes>
+											<miercoles>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</miercoles>
+											<jueves>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</jueves>
+											<viernes>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</viernes>
+											<sabado>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</sabado>
+											<domingo>
+												<programado>1</programado>
+												<realizado>2</realizado>
+											</domingo>
+											
+											
+										</semana>
+									</product>
+									
+								</fx:XMLList>
+							</s:source>
+						</s:XMLListCollection>
+					</mx:dataProvider>
+				</mx:AdvancedDataGrid>
+			</s:VGroup>
+			
+		</mx:HDividedBox>
+			
+			
+			
+	</s:Panel>
+
+</s:Group>

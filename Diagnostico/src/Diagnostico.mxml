@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               xmlns:components="com.hillelcoren.components.*" height="536" minWidth="955"
+               minHeight="600" creationComplete="initcreationCompleteHandler(event)">
+
+
+    <s:layout>
+        <s:VerticalLayout verticalAlign="middle" horizontalAlign="center"/>
+    </s:layout>
+    <fx:Style source="assets/style.css"/>
+
+    <fx:Script>
+		<![CDATA[
+        import com.maqzar.constant.NOKConstants;
+        import com.maqzar.dtos.DiagnosticoDTO;
+        import com.maqzar.dtos.DiagnosticoDetalleDTO;
+        import com.maqzar.dtos.EquipoVO;
+        import com.maqzar.dtos.ObraVO;
+        import com.maqzar.dtos.SubCategoriaDTO;
+        import com.maqzar.dtos.SubFallaDTO;
+        import com.maqzar.events.DiagnosticoEvent;
+
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.events.FlexEvent;
+        import mx.events.ItemClickEvent;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.validators.Validator;
+
+        [Bindable]
+        public var acDiagnostico:ArrayCollection;
+        [Bindable]
+        public var acEquipo:ArrayCollection;
+        [Bindable]
+        public var acSubCategoria:ArrayCollection;
+        [Bindable]
+        public var acDiagnosticoDetalle:ArrayCollection;
+
+
+        protected var itemSelected:DiagnosticoDTO = new DiagnosticoDTO();
+        private var arrayValidationResult:Array;
+
+
+        protected function selectedDiagnostico(event:MouseEvent):void {
+            itemSelected = event.currentTarget.selectedItem as DiagnosticoDTO;
+
+        }
+
+        public function getDiagnosticoEquiporesult(event:ResultEvent):void {
+
+        }
+
+        private function diagnosticoFault(event:FaultEvent):void {
+            trace(event.message);
+
+        }
+
+        private function diagnosticoDetalleFault(event:FaultEvent):void {
+            trace(event.message);
+        }
+
+        private function insertDiagnosticoEquiporesult(event:ResultEvent):void {
+
+        }
+
+        private function updateDiagnosticoEquiporesult(event:ResultEvent):void {
+
+        }
+
+        private function deleteDiagnosticoEquiporesult(event:ResultEvent):void {
+
+        }
+
+        //inicializacion
+        protected function initcreationCompleteHandler(event:FlexEvent):void {
+            var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
+            var diagnosticoDetalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
+            var infoEquipo:EquipoVO = new EquipoVO();
+            //var infoObra:ObraVO = new ObraVO();
+            //var subFalla:SubFallaDTO = new SubFallaDTO();
+            var subCategoria:SubCategoriaDTO = new SubCategoriaDTO();
+            trace(subCategoria);
+            trace(infoEquipo);
+            roEquipo.infoEquipo(infoEquipo);
+            roCategoria.catSubcategoria(subCategoria);
+            roDiagnostico.getDiagnosticos(diagnosticoEquipo);
+            trace(diagnosticoDetalle);
+            roDiagnosticoDetalle.getDiagnosticoDetalle(diagnosticoDetalle);
+        }
+
+        private function validateAllInputs():void {
+            arrayValidationResult = new Array();
+            arrayValidationResult = Validator.validateAll([val_Equipo, val_Fecha, val_SubFalla, val_txtComentario]);
+        }
+
+        protected function infoEquipoResult(event:ResultEvent):void {
+            acEquipo = event.result as ArrayCollection;
+        }
+
+        private function getdiagnosticoDetalleresult(event:ResultEvent):void {
+
+        }
+
+        private function insertDiagnosticoDetalleresult(event:ResultEvent):void {
+
+        }
+
+        private function updateDiagnosticoDetalleresult(event:ResultEvent):void {
+
+        }
+
+        private function deleteDiagnosticoDetalleresult(event:ResultEvent):void {
+
+        }
+
+        private function Estatus_ItemClickHandler(event:ItemClickEvent):void {
+
+        }
+
+        private function beforesave():void {
+
+        }
+
+        public function saveDiagnostico():void {
+            if (itemSelected == null) {
+                Alert.show("No hay un elemento seleccionado")
+            }
+            else {
+                updateItemSelected();
+                trace(itemSelected.id_equipo);
+                roDiagnostico.insertDiagnostico(itemSelected);
+            }
+        }
+
+        //private function clean
+
+        private function updateItemSelected():void {
+            if (autoEquipo.selectedItem != null) {
+                itemSelected.id_equipo = EquipoVO(autoEquipo.selectedItem).id_equipo;
+            }
+            if (fechaDiagnostico.selectedDate != null) {
+                var tempDate:Date = fechaDiagnostico.selectedDate;
+                if (tempDate != null) {
+                    fechaDiagnostico.errorString = "";
+                    itemSelected.fecha_diagnostico = tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
+                }
+                else {
+                    fechaDiagnostico.errorString = "Debes ingresar una fecha";
+                }
+            }
+
+            var dateAlta:Date = new Date();
+            itemSelected.fecha_alta = dateAlta.getFullYear().toString() + "/" + (dateAlta.getMonth() + 1).toString() + "/" + dateAlta.getDate();
+        }
+
+        public function saveDiagnosticoDetalle():void {
+            if (itemSelected == null) {
+                Alert.show("No hay un elemento seleccionado")
+            }
+            else {
+                roDiagnosticoDetalle.insertDiagnosticoDetalle(itemSelected);
+            }
+        }
+
+        private var diagnosticoSelectedToDelete:DiagnosticoDTO;
+
+        private function deleteDiagnostico():void {
+            diagnosticoSelectedToDelete = dataGridListaDiagnostico.selectedItem as DiagnosticoDTO;
+            roDiagnostico.deleteDiagnostico(diagnosticoSelectedToDelete);
+
+        }
+
+        private function infoCategoriaResult(event:ResultEvent):void {
+            acSubCategoria = event.result as ArrayCollection;
+
+        }
+        ]]>
+	</fx:Script>
+
+    <fx:Declarations>
+
+
+        <!-- REMOTE OBJECTS-->
+
+        <!-- Remote Object para la Alta del Diagnostico -->
+        <s:RemoteObject id="roDiagnostico" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+                        fault="diagnosticoFault(event)">
+            <s:method name="getDiagnosticos" result="getDiagnosticoEquiporesult(event)"/>
+            <s:method name="insertDiagnostico" result="insertDiagnosticoEquiporesult(event)"/>
+            <s:method name="updateDiagnostico" result="updateDiagnosticoEquiporesult(event)"/>
+            <s:method name="deleteDiagnostico" result="deleteDiagnosticoEquiporesult(event)"/>
+        </s:RemoteObject>
+        <!-- End RO Alta Diagnostico -->
+
+
+        <!-- RO Diagnostico Detalle-->
+        <s:RemoteObject id="roDiagnosticoDetalle" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+                        fault="diagnosticoDetalleFault(event)">
+            <s:method name="getDiagnosticoDetalle" result="getdiagnosticoDetalleresult(event)"/>
+            <s:method name="insertDiagnosticoDetalle" result="insertDiagnosticoDetalleresult(event)"/>
+            <s:method name="updateDiagnosticoDetalle" result="updateDiagnosticoDetalleresult(event)"/>
+            <s:method name="deleteDiagnosticoDetalle" result="deleteDiagnosticoDetalleresult(event)"/>
+        </s:RemoteObject>
+        <!--  End Ro Diagnostico Detalle-->
+
+
+        <!--RO para el Equipo -->
+        <s:RemoteObject id="roEquipo" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+                        fault="diagnosticoFault(event)">
+            <s:method name="infoEquipo" result="infoEquipoResult(event)"/>
+        </s:RemoteObject>
+        <!-- End RO Equipo -->
+
+
+        <!-- RO para la Categoria-->
+        <s:RemoteObject id="roCategoria" destination="categoriaBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+                        fault="diagnosticoFault(event)">
+            <s:method name="catSubcategoria" result="infoCategoriaResult(event)"/>
+
+        </s:RemoteObject>
+        <!-- End RO Falla-->
+
+        <s:RadioButtonGroup id="estatusButtonGroup"
+                            itemClick="Estatus_ItemClickHandler(event);"/>
+        <s:RadioButtonGroup id="estatusdiagnosticoButtonGroup"
+                            itemClick="Estatus_ItemClickHandler(event);"/>
+
+
+        <!-- Validadores -->
+
+        <mx:StringValidator id="val_Equipo"
+                            source="{autoEquipo}"
+                            property="text"
+                            required="true"
+                            requiredFieldError="Debes de elejir un Equipo de la lista."/>
+
+        <mx:DateValidator id="val_Fecha"
+                          source="{fechaDiagnostico}"
+                          property="text"
+                          inputFormat="YYYY-MM-DD"
+                          required="true"
+                          requiredFieldError="Es necesario ingresar una Fecha."/>
+
+        <mx:StringValidator id="val_SubFalla"
+                            source="{autoSubCategoria}"
+                            property="text"
+                            required="true"
+                            requiredFieldError="Debes de elejir una SubCategoría de la lista."/>
+        <mx:StringValidator id="val_txtComentario"
+                            source="{txtComentario}"
+                            property="text"
+                            required="true"
+                            requiredFieldError="Debes ingresar un comentario."/>
+
+        <!-- End Validadores -->
+
+    </fx:Declarations>
+
+
+    <!-- VIEW APPLICATION-->
+
+    <s:ButtonBar
+            width="100%"
+            textAlign="center"
+            dataProvider="{viewDiagnostico}">
+    </s:ButtonBar>
+    <mx:ViewStack id="viewDiagnostico" width="100%">
+        <s:NavigatorContent
+                width="100%"
+                label="Diagnostico Princial">
+        </s:NavigatorContent>
+    </mx:ViewStack>
+    <s:Group x="0" y="0" width="100%" height="100%">
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+
+        <!-- Panel Lista de Diagnosticos -->
+        <s:Panel width="100%" height="100%" title="Lista de Diagnósticos">
+            <s:controlBarContent>
+                <s:Button label="Eliminar"
+                          click="deleteDiagnostico()"
+                />
+            </s:controlBarContent>
+            <s:DataGrid x="0" y="0" width="100%" height="100%" requestedRowCount="4" id="dataGridListaDiagnostico"
+                        doubleClickEnabled="true" doubleClick="selectedDiagnostico(event)"
+                        dataProvider="{acDiagnostico}">
+                <s:columns>
+                    <s:ArrayList>
+                        <s:GridColumn dataField="id_t_diagnostico" headerText="FOLIO" width="50"></s:GridColumn>
+                        <s:GridColumn dataField="numeroeconomico" headerText="Maquinaria"></s:GridColumn>
+                        <s:GridColumn dataField="fecha_diagnostico" headerText="Fecha de diagnostico"></s:GridColumn>
+                        <s:GridColumn dataField="dataField3" headerText="Estatus"></s:GridColumn>
+                        <s:GridColumn dataField="nombre_empleado" headerText="Reporta"></s:GridColumn>
+                    </s:ArrayList>
+                </s:columns>
+            </s:DataGrid>
+        </s:Panel>
+        <!-- End Panel Lista de Diagnosticos -->
+
+
+        <!--Panel Registro de Diagnostico -->
+        <s:Panel width="100%" height="100%" title="Registro de Diagnóstico">
+            <s:layout>
+                <s:VerticalLayout/>
+            </s:layout>
+
+            <!-- Grupo diagnostico -->
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Equipo" width="120" textAlign="right"/>
+                <components:AutoComplete id="autoEquipo" width="100%" dataProvider="{acEquipo}"
+                                         labelField="numeroeconomico"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Fecha de diagnostico" width="120" textAlign="right"/>
+                <mx:DateField id="fechaDiagnostico" yearNavigationEnabled="true" formatString="YYYY-MM-DD"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Estatus" width="120" textAlign="right"/>
+                <s:RadioButton id="rbFalla" selected="true" label="FALLA" value="FALLA" group="{estatusButtonGroup}"/>
+                <s:RadioButton id="rbCorrecto" label="CORRECTO" value="CORRRECTO" group="{estatusButtonGroup}"/>
+                <s:RadioButton id="rbIncompleto" label="INCOMPLETO" value="INCOMPLETO" group="{estatusButtonGroup}"/>
+                <s:RadioButton id="rbCompleto" label="COMPLETO" value="COMPLETO" group="{estatusButtonGroup}"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
+                <s:Button label="Nuevo Diagnostico"/>
+                <s:Button label="Ingresar"
+                          styleName="primaryButton"
+                          click="saveDiagnostico()"
+                />
+            </s:HGroup>
+            <!-- End Grupo Diagnostico-->
+
+            <!-- Grupo Subcategoria -->
+            <mx:HRule width="100%"/>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Subcategoria" width="120" textAlign="right"/>
+                <components:AutoComplete id="autoSubCategoria" width="100%" dataProvider="{acSubCategoria}"
+                                         labelField="subcategoria"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Estatus" width="120" textAlign="right"/>
+                <s:RadioButton id="rbFallaDetalle" selected="true" label="FALLA" value="FALLA"
+                               group="{estatusdiagnosticoButtonGroup}"/>
+                <s:RadioButton id="rbCorrectoDetalle" label="CORRECTO" value="CORRECTO"
+                               group="{estatusdiagnosticoButtonGroup}"/>
+            </s:HGroup>
+
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Comentario" width="120" textAlign="right"/>
+                <s:TextArea id="txtComentario" width="100%" height="100"/>
+            </s:HGroup>
+            <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
+                <s:Button label="Agregar al diagnóstico" styleName="primaryButton"
+                          click="saveDiagnosticoDetalle()"/>
+            </s:HGroup>
+            <!-- End Grupo Subcategoria -->
+            <!-- End Registro de Diagnostico-->
+
+            <!-- Lista de Categorias -->
+            <s:DataGrid width="100%" height="100%" requestedRowCount="4" id="dataGridDiagnosticoDetalle"
+                        dataProvider="{acDiagnostico}">
+                <s:columns>
+                    <s:ArrayList>
+                        <s:GridColumn dataField="id_t_diagnostico_detalle" headerText="Tipo" width="50"></s:GridColumn>
+                        <s:GridColumn dataField="dataField1" headerText="Categoria"></s:GridColumn>
+                        <s:GridColumn dataField="dataField2" headerText="Subcategoria"></s:GridColumn>
+                        <s:GridColumn dataField="dataField3" headerText="Estatus"></s:GridColumn>
+                        <s:GridColumn dataField="dataField3" headerText="Comentario"></s:GridColumn>
+                        <s:GridColumn dataField="dataField3" headerText="Reporta"></s:GridColumn>
+                    </s:ArrayList>
+                </s:columns>
+            </s:DataGrid>
+            <!-- End Lista de Categorias -->
+        </s:Panel>
+        <!-- End Panel Registro de Diagnostico -->
+    </s:Group>
+</s:Application>
+        <!-- END VIEW APPLICATION-->

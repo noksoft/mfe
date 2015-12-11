@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="654f1d0a-ece3-46df-a7d0-766b2446cf7a" projectUUID="654f1d0a-ece3-46df-a7d0-766b2446cf7a" pureCatalystProject="false" sdkVersion="4.6.0" uuid="813b5d4b-7be6-4b5f-adcd-49a03cb290a2" version="15">
+  <projects>
+    <project filename="NOKLibrary.fxpl" position="2" projectUUID="078c0166-7e3f-4561-9086-c0755fe72de0" uuid="813b5d4b-7be6-4b5f-adcd-49a03cb290a2"/>
+  </projects>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="813b5d4b-7be6-4b5f-adcd-49a03cb290a2"/>
+    <linked location="/libs" path="/libs" position="1" uuid="0c37ed3e-40bf-44f2-9408-9eea46ef6199"/>
+  </swc>
+  <misc/>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

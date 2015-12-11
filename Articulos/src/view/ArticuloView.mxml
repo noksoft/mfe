@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:ArticuloViewBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:view="view.*"
+	creationComplete="init();"
+	title="Artículos"
+	width="100%" height="100%"
+	creationPolicy="all">
+	<fx:Declarations>
+		<mx:NumberValidator
+			id="validatorSubcategoria"
+			source="{cmbSubCategoriaEditor}"
+			property="selectedIndex"
+			required="true"
+			minValue="0"
+			lowerThanMinError="Debes Seleccionar la Subcategoría"
+			valid="validateSubCategoriaHandler(event)"
+			invalid="validSubCategoriaFault(event)"/>
+		<mx:NumberValidator
+			id="validatorMarca"
+			source="{cmbMarcaEditor}"
+			property="selectedIndex"
+			required="true"
+			minValue="0"
+			lowerThanMinError="Debes Seleccionar la Marca"
+			valid="validateMarcaHandler(event)"
+			invalid="validMarcaFault(event)"/>
+		<mx:NumberValidator
+			id="validatorSubMarca"
+			source="{cmbSubMarcaEditor}"
+			property="selectedIndex"
+			required="true"
+			minValue="0"
+			lowerThanMinError="Debes Seleccionar la SubMarca"
+			valid="validateSubMarcaHandler(event)"
+			invalid="validSubMarcaFault(event)"/>
+		<mx:NumberValidator
+			id="validatorUnidad"
+			source="{cmbUnidad}"
+			property="selectedIndex"
+			required="true"
+			minValue="0"
+			lowerThanMinError="Debes Seleccionar la Unidad"
+			valid="validateUnidadHandler(event)"
+			invalid="validUnidadFault(event)"/>
+		<mx:StringValidator
+			id="validatorNombre"
+			source="{txtNombre}"
+			property="text"
+			required="true"
+			requiredFieldError="Debes ingresar un Nombre del Producto o Artículo"/>
+		<mx:DateValidator
+			id="validatorFechaAlta"
+			source="{dateAdquisicion}"
+			property="text"
+			required="true"
+			requiredFieldError="Debes ingresar la fecha de la Requisición"
+			inputFormat="mm/dd/yyyy"
+			allowedFormatChars="*#~/"/>
+			
+	</fx:Declarations>
+	
+	<view:layout>
+		<s:VerticalLayout verticalAlign="middle" horizontalAlign="center"/>
+	</view:layout>
+	
+	<s:ButtonBar 
+		id="btnBarEquipo" 
+		textAlign="center"
+		width="100%"
+		dataProvider="{vsArticulo}"/>
+	
+	<mx:ViewStack id="vsArticulo" width="100%" height="100%" left="8" y="23" paddingTop="0">
+		<s:NavigatorContent
+			width="100%" height="100%"
+			id="containerConsultaArticulo"
+			label="Consulta">
+			<mx:VBox 
+				label="Consulta"
+				verticalAlign="middle"
+				paddingLeft="10" paddingTop="5"
+				width="100%" height="100%">
+				<s:HGroup
+					width="100%" height="60">
+					<s:HGroup
+						width="100%" height="100%">
+						<s:Label
+							text="Sub Categorías"/>
+						<s:DropDownList
+							id="cmbSubCategoria"
+							width="200"
+							useHandCursor="true" buttonMode="true"
+							prompt="Selecciona una Sub Categoría"
+							labelField="subcategoria"
+							dataProvider="{listSubCategorias}"
+							change="upListMarcas()"/>
+					</s:HGroup>
+					<s:HGroup
+						width="100%" height="100%">
+						<s:Label
+							text="Marca"/>
+						<s:DropDownList
+							id="cmbMarca"
+							width="200"
+							useHandCursor="true" buttonMode="true"
+							prompt="Selecciona una Marca"
+							enabled="false"
+							labelField="marca"
+							dataProvider="{listMarcas}"
+							change="upListSubMarcas()"/>
+					</s:HGroup>
+					<s:HGroup
+						width="100%" height="100%">
+						<s:Label
+							text="SubMarca"/>
+						<s:DropDownList
+							id="cmbSubMarca"
+							width="200"
+							useHandCursor="true" buttonMode="true"
+							prompt="Selecciona una SubMarca"
+							enabled="false"
+							labelField="submarca"
+							dataProvider="{listSubMarcas}"
+							change="updateData()"/>
+					</s:HGroup>
+				</s:HGroup>
+				<s:DataGrid
+					id="dtgArticulo"
+					width="100%" height="100%"
+					dataProvider="{listArticulos}"
+					doubleClickEnabled="true"
+					doubleClick="selectedItem(event)">
+					<s:columns>
+						<s:ArrayList>
+							<s:GridColumn headerText="Nombre" dataField="descripcion"/>
+							<s:GridColumn headerText="No. Parte" dataField="nParte"/>
+							<s:GridColumn headerText="Cantidad" showDataTips="true" itemRenderer="view.renderer.ItemRendererCantidad"/>
+							<s:GridColumn headerText="Minímo" dataField="stockMin"/>
+							<s:GridColumn headerText="Máximo" dataField="stockMax"/>
+							<!--s:GridColumn headerText="Costo Unitario" dataField="costoUnitario"/-->
+							<!--s:GridColumn headerText="Costo Total" dataField="costoTotal"/-->
+							<s:GridColumn headerText="Ubicación" dataField="ubicacion"/>
+							<s:GridColumn headerText="Unidad" dataField="unidad"/>
+							<s:GridColumn headerText="Fecha Adquisición" dataField="fechaAdquisicion"/>
+							<s:GridColumn headerText="Categoria" dataField="categoria"/>
+							<s:GridColumn headerText="Sub Categoría" dataField="subcategoria"/>
+							<s:GridColumn headerText="Marca" dataField="marca"/>
+							<s:GridColumn headerText="SubMarca" dataField="submarca"/>
+							<s:GridColumn headerText="Tipo Categoría" dataField="nombreTipocategoria"/>
+							<s:GridColumn headerText="Estatus" dataField="estatus"/>
+						</s:ArrayList>
+					</s:columns>
+				</s:DataGrid>
+				<s:HGroup
+					width="100%" height="60">
+					<s:Button
+						useHandCursor="true" buttonMode="true"
+						label="Limpiar" click="cleanFilters()"/>
+				</s:HGroup>
+			</mx:VBox>
+		</s:NavigatorContent>
+		<s:NavigatorContent
+			width="100%" height="100%"
+			id="containerArticulo"
+			label="Alta Articulo">
+			<!--	Formulario para Crear o Editar una Marca		-->
+			<mx:VBox
+				label="{titleFormulario}"
+				width="100%" height="100%"
+				verticalAlign="middle"
+				verticalGap="5"
+				paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10">
+				<s:HGroup
+					width="100%" height="35">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Sub Categorías"/>
+					<s:DropDownList
+						id="cmbSubCategoriaEditor"
+						width="300"
+						prompt="Selecciona una Sub Categoría"
+						labelField="subcategoria"
+						dataProvider="{listSubCategoriasEditor}"
+						change="upListMarcasEditor()"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="35">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Marca"/>
+					<s:DropDownList
+						id="cmbMarcaEditor"
+						width="300"
+						prompt="Selecciona una Marca"
+						enabled="false"
+						labelField="marca"
+						dataProvider="{listMarcasEditor}"
+						change="upListSubMarcasEditor()"/>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="35">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="SubMarca"/>
+					<s:DropDownList
+						id="cmbSubMarcaEditor"
+						width="300"
+						prompt="Selecciona una SubMarca"
+						enabled="false"
+						labelField="submarca"
+						dataProvider="{listSubMarcasEditor}"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Nombre" textAlign="right"/>
+					<s:TextInput 
+						width="300" 
+						id="txtNombre"
+						text="{itemSelected.descripcion}"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="No. Parte" textAlign="right"/>
+					<s:TextInput 
+						width="300" 
+						id="txtNoParte"
+						text="{itemSelected.nParte}"/>
+				</s:HGroup>
+
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Stock Mínimo" textAlign="right"/>
+					<s:TextInput 
+						width="300" 
+						restrict="0-9"
+						id="txtStockMin"
+						text="{itemSelected.stockMin}"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Stock Máximo" textAlign="right"/>
+					<s:TextInput 
+						width="300" 
+						restrict="0-9"
+						id="txtStockMax"
+						text="{itemSelected.stockMax}"/>
+				</s:HGroup>
+
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Ubicación" textAlign="right"/>
+					<s:TextInput 
+						width="300" 
+						id="txtUbicacion"
+						text="{itemSelected.ubicacion}"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Unidad" textAlign="right"/>
+					<s:DropDownList
+						id="cmbUnidad"
+						width="300"
+						prompt="Selecciona una Unidad">
+						<s:ArrayCollection>
+							<fx:String>GALON</fx:String>
+							<fx:String>CAJA</fx:String>
+							<fx:String>METROS</fx:String>
+							<fx:String>M2</fx:String>
+							<fx:String>M3</fx:String>
+							<fx:String>LITROS</fx:String>
+							<fx:String>KILOMETROS</fx:String>
+						</s:ArrayCollection>
+					</s:DropDownList>
+				</s:HGroup>
+				<s:HGroup
+					width="100%" height="100%"
+					verticalAlign="middle">
+					<s:Label
+						width="120" fontWeight="bold" textAlign="right"
+						text="Fecha de Adquisición"/>
+					<mx:DateField
+						id="dateAdquisicion"
+						selectedDate="{itemSelected.fechaAdquisicion}"
+						width="300"/>
+				</s:HGroup>
+				<s:HGroup width="100%" verticalAlign="middle">
+					<s:Label width="120" fontWeight="bold" text="Estatus" textAlign="right"/>
+					<s:CheckBox 
+						id="chxEstatus"
+						selected="{itemSelected.estatus}"/>
+				</s:HGroup>
+				<mx:ControlBar>
+					<s:Button 
+						label="Limpiar" 
+						icon="@Embed(source='assets/icons/cancel.png')"
+						useHandCursor="true"
+						buttonMode="true"
+						click="cleanFormulario()"/>
+					<s:Button 
+						id="guardarButton" 
+						label="{titleFormulario}" 
+						icon="@Embed(source='assets/icons/add.png'" 
+						styleName="primaryButton"
+						useHandCursor="true"
+						buttonMode="true"
+						click="saveItem()"/>
+					<s:Button
+						id="btnDelete"
+						label="Borrar"
+						icon="@Embed(source='assets/icons/delete.png')"
+						useHandCursor="true"
+						buttonMode="true"
+						click="deleteItem()"/>
+				</mx:ControlBar>
+			</mx:VBox>
+		</s:NavigatorContent>
+	</mx:ViewStack>
+
+</view:ArticuloViewBase>

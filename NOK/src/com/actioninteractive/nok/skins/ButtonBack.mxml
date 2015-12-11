@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Metadata>
+		[HostComponent("spark.components.Button")]
+	</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect width="4" width.over="5" height="13" height.over="15" radiusX="1" rotation="225" alpha="0.5" alpha.over="1">
+		<s:stroke>
+			<s:SolidColorStroke color="0x8c9c9c" weight="2"/>
+		</s:stroke>
+		<s:filters>
+			<s:BevelFilter
+				distance="0"
+				angle="5" angle.over="5"
+				highlightColor="0xbbbbbb" highlightColor.over="0xaaaaaa"
+				highlightAlpha="1" highlightAlpha.over="1"
+				shadowColor="0xaaaaaa" shadowColor.down="0xffffff"
+				shadowAlpha="1" shadowAlpha.over="1"
+				blurX="5" blurX.over="6"
+				blurY="5" blurY.over="6"
+				strength="2" strength.over="2"
+				type="inner"
+				/>
+		</s:filters>
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x8c9c9c" color.over="0xD6D6D6" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	<s:Rect width="4" width.over="5" height="10" height.over="13" radiusX="1" rotation="315" alpha="0.5" alpha.over="1">
+		<s:stroke>
+			<s:SolidColorStroke color="0x8c9c9c" weight="1"/>
+		</s:stroke>
+		<s:filters>
+			<s:BevelFilter
+				distance="0"
+				angle="5" angle.over="5"
+				highlightColor="0xbbbbbb" highlightColor.over="0xaaaaaa"
+				highlightAlpha="1" highlightAlpha.over="1"
+				shadowColor="0xaaaaaa" shadowColor.over="0xffffff"
+				shadowAlpha="1" shadowAlpha.over="1"
+				blurX="5" blurX.over="6"
+				blurY="5" blurY.over="6"
+				strength="2" strength.over="2"
+				type="inner"
+				/>
+		</s:filters>
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x8c9c9c" color.down="0xD6D6D6" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+</s:SparkSkin>

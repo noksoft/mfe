@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.view.AssetManagerIn;
+			
+			import spark.filters.DropShadowFilter;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("spark.components.Button")]
+	</fx:Metadata>
+	
+	<s:Image source="{AssetManagerIn.buttonGraySkin}"
+			 source.over="{AssetManagerIn.buttonGrayHoverSkin}"
+			 alpha.disabled="0.5"
+
+			 left="0" right="0" top="0" bottom="0" scaleMode="stretch"/>
+	<s:Image source="{AssetManagerIn.buttonDateNextSkin}"
+			 source.over="{AssetManagerIn.buttonDateNextSkin}"
+			 alpha.disabled="0.5" verticalCenter="0"
+			 right="5" scaleMode="stretch"/>
+	
+	<!-- layer 8: text -->
+	<s:Label id="labelDisplay" filters="{[new spark.filters.DropShadowFilter(1, 13, 0x000000, .5)]}"
+			 textAlign="center"
+			 verticalAlign="middle"
+			 maxDisplayedLines="1" color="0xffffff"
+			 horizontalCenter="-2" verticalCenter="0"
+			 left="15" right="15" top="1" bottom="2" />
+</s:SparkSkin>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename FooterSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<GraphicBorderSkin xmlns:mx="http://www.adobe.com/2006/mxml"
+				   xmlns="http://www.degrafa.com/2007">
+	
+	<geometry>
+		<RoundedRectangle width="{skinWidth}" height="{skinHeight}">
+			<fill>
+				<LinearGradientFill angle="90">
+					<GradientStop alpha="1" color="#0899E1" ratio="0.0"/>
+					<GradientStop alpha="1" color="#068CCF" ratio="1.0"/>
+				</LinearGradientFill>
+			</fill>
+		</RoundedRectangle>
+	</geometry>
+</GraphicBorderSkin>

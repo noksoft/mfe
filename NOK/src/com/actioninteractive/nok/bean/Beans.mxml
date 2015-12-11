@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:BeanProvider 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:swiz="http://swiz.swizframework.org" 
+	xmlns:controller="com.actioninteractive.nok.controller.*" 
+	xmlns:model="com.actioninteractive.nok.model.*"
+	>
+	
+	<controller:CommonController id="commonController" />
+	<model:CommonModel id="commonModel" />
+	
+	<controller:CRUDController id="crudController"/>
+	<model:CRUDModel id="crudModel"/>
+	
+	<controller:ObraController id="obraController" />
+	<model:ObraModel id="obraModel"/>
+	
+	<controller:EmpleadoController id="empleadoController" />
+	<model:EmpleadoModel id="empleadoModel" />
+	
+	<controller:DireccionController id="direccionController" />
+	<model:DireccionModel id="direccionModel" />
+	
+	<controller:EquipoController id="equipoController"/>
+	<model:EquipoModel id="equipoModel"/>
+	
+	<controller:UsuarioController id="usuarioController"/>
+	<model:UsuarioModel id="usuarioModel"/>
+	
+</swiz:BeanProvider>

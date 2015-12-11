@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Created by RZARAGOZA on 23/05/2015
+-->
+<view:RequisicionViewBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:view="view.*"
+	creationComplete="init();"
+	width="100%" height="100%" xmlns:components="com.hillelcoren.components.*">
+	
+	<s:ButtonBar 
+		id="btnBarEquipo" 
+		textAlign="center"
+		width="100%"
+		dataProvider="{vsRequisicion}"/>
+	
+		<mx:ViewStack id="vsRequisicion" width="100%" height="100%" left="8" y="23" paddingTop="10">
+			<s:NavigatorContent
+				width="100%" height="100%"
+				id="containerConsultaRequisicion"
+				label="Consulta Requisicion">
+				<s:Panel
+					width="100%" height="100%"
+					title="Lista de Requisiciones">
+					<s:layout>
+						<s:VerticalLayout 
+							gap="5" 
+							paddingBottom="10" paddingLeft="10" 
+							paddingRight="10" paddingTop="10"/>
+					</s:layout>
+					<components:AutoComplete
+						id="autoCompleteRequisiciones"
+						dataProvider="{requisicionModel.acRequisiciones}"
+						toolTip="Ingresa el nombre de la Requisición a Buscar"
+						prompt="Ingresa el nombre de la Requisición a Buscar"
+						labelField="observacionRequisicion"
+						width="100%"/>
+					<!-- Requisición -->
+					<s:DataGrid
+						id="dataGridRequisicion"
+						width="100%" height="100%"
+						dataProvider="{requisicionModel.acRequisiciones}"
+						doubleClickEnabled="true"
+						doubleClick="requisicionSelected(event)">
+						<s:columns>
+							<s:ArrayList>
+								<s:GridColumn headerText="Observacion Requisicion" dataField="observacionRequisicion"/>
+								<s:GridColumn headerText="Fecha Requisición" dataField="fechaRequisicion"/>
+								<s:GridColumn headerText="RFC" dataField="rfcRequisicion"/>
+								<s:GridColumn headerText="Empleado Requisicion" dataField="nombreRequisicion"/>
+								<!--s:GridColumn headerText="Descripcion Falla" dataField="descripcion"/>
+								<s:GridColumn headerText="SubFalla" dataField="subfalla"/>
+								<s:GridColumn headerText="Prioridad" dataField="prioridad"/-->
+							</s:ArrayList>
+						</s:columns>
+					</s:DataGrid>
+					
+				</s:Panel>
+			</s:NavigatorContent>
+			<s:NavigatorContent
+				width="100%" height="100%"
+				id="containerAltaRequisicion"
+				label="Alta Requisicion">
+					<s:Panel
+						width="100%" height="100%"
+						title="Lista de Requisiciones">
+						<s:layout>
+							<s:VerticalLayout 
+								gap="5" 
+								paddingBottom="10" paddingLeft="10" 
+								paddingRight="10" paddingTop="10"/>
+						</s:layout>
+							<!-- ENCABEZADO PARA LOS CONTROLES DE BUSQUEDA DE REQUISICIONES Y SU DETALLE-->
+							<s:VGroup width="100%">
+								<s:HGroup
+									width="100%" height="100%">
+									<s:HGroup width="100%" verticalAlign="middle">
+										<s:Label text="Empleado Requisición" textAlign="right" width="120"/>
+										<s:DropDownList 
+											width="100%" 
+											id="cmbEmpleadoRequisicion"
+											labelField="nombre"
+											buttonMode="true" useHandCursor="true"
+											dataProvider="{requisicionModel.acEmpleadosRequisicion}" />
+									</s:HGroup>
+									<s:HGroup width="100%" verticalAlign="middle">
+										<s:Label text="Fecha Requisición" textAlign="right" width="120"/>
+										<mx:DateField 
+											id="dateFieldFechaRequisicion" width="100%"
+											buttonMode="true" useHandCursor="true"/>
+									</s:HGroup>
+								</s:HGroup>
+								
+								<s:HGroup width="100%" verticalAlign="top">
+									<s:Label text="Observaciones" textAlign="right" width="120"/>
+									<s:TextArea 
+										id="txtObservacionesRequisicion" 
+										width="100%" height="50"
+										text="{requisicionModel.requisicionSelected.observacionRequisicion}"/>
+								</s:HGroup>
+						</s:VGroup>
+						<mx:HRule width="100%" height="3"/>
+						<s:Label text="Requisición Detalle" styleName="titule"/>
+						<s:Spacer height="10"/>
+							<s:HGroup width="100%">
+								<!-- ENCABEZADO PARA LOS CONTROLES DE BUSQUEDA DE REQUISICIONES Y SU DETALLE-->
+								<!--	<components:AutoComplete prompt="Escribe el nombre del personal a filtrar" dataProvider="{asignacionModel.acPersonalDisponible}" labelField="nombre" width="100%"/>	-->
+								<s:Label
+									text="Artículo"/>
+								<components:AutoComplete
+									id="articuloComplete"
+									labelFunction="labelFunctionMarcaArticulo"
+									backspaceAction="remove"
+									enabled="{flagAutocomplete}"
+									toolTip="Ingresa el nombre del Artículo a Buscar"
+									prompt="Ingresa el nombre del Artículo a Buscar"
+									dataProvider="{requisicionModel.acArticulos}"
+									labelField="descripcion"
+									width="100%"/>
+								<s:HGroup width="100%" verticalAlign="middle">
+									<s:Label text="Cantidad Requerida" textAlign="right" width="120"/>
+									<s:NumericStepper
+										id="ntsCantidadRequerida"
+										maximum="99999"
+										minimum="1"/>
+								</s:HGroup>
+							</s:HGroup>
+							<s:VGroup
+								width="100%" height="100%">
+								<s:HGroup
+									width="100%"
+									gap="5">
+									<s:Spacer width="100%"/>
+									<mx:LinkButton
+										label="{titleButtonRequisicionDetalle}"
+										click="addRequisicionDetalle()"/>
+								</s:HGroup>
+								<s:DataGrid
+									id="dataGridRequisicionDetalle"
+									width="100%" height="100%"
+									dataProvider="{requisicionModel.acRequisicionesDetalle}"
+									doubleClickEnabled="true"
+									doubleClick="requisicionDetalleSelected(event)">
+									<s:columns>
+										<s:ArrayList>
+											<s:GridColumn headerText="Articulo" dataField="descripcionArticulo"/>
+											<s:GridColumn headerText="Cantidad Requerida" dataField="cantidadRequerida"/>
+											<s:GridColumn headerText="Estatus Requisición Detalle" dataField="estatusRequisicionDetalle"/>
+											<s:GridColumn headerText="" dataField="">
+												<s:itemRenderer>
+													<fx:Component>
+														<s:GridItemRenderer>
+															<fx:Script>
+																<![CDATA[
+																	import model.ProcesoEstatusEnum;
+																]]>
+															</fx:Script>
+															<s:CheckBox
+																id="estatusRequisicionDetalle"
+																label="Activar/Desactivar"
+																selected="{(this.data.estatusRequisicionDetalle = ProcesoEstatusEnum.NUEVO) ? true : false}"
+																click="outerDocument.activarDesactivar(event, data)"/>
+															<!--mx:LinkButton label="Eliminar" click="outerDocument.deleteRequisicionDetalle(data)"/-->
+														</s:GridItemRenderer>
+													</fx:Component>
+												</s:itemRenderer>
+											</s:GridColumn>
+										</s:ArrayList>
+									</s:columns>
+								</s:DataGrid>
+							</s:VGroup>
+						<s:controlBarContent>
+							<s:Button
+								label="Limpiar"
+								icon="@Embed(source='/assets/icons/cancel.png')"
+								useHandCursor="true"
+								buttonMode="true"
+								click="clearFormulario()"/>
+							<s:Button
+								id="guardarButton"
+								label="{requisicionModel.titleFormulario}"
+								icon="@Embed(source='/assets/icons/add.png')"
+								styleName="primaryButton"
+								useHandCursor="true"
+								buttonMode="true"
+								click="saveRequisicion()"/>
+							<s:Button
+								id="btnDelete"
+								label="Borrar"
+								icon="@Embed(source='/assets/icons/delete.png')"
+								useHandCursor="true"
+								buttonMode="true"
+								click="deleteRequisicion()"/>
+						</s:controlBarContent>
+					</s:Panel>
+				</s:NavigatorContent>
+		</mx:ViewStack>
+
+</view:RequisicionViewBase>

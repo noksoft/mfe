@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark"  height="26"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	autoDrawBackground="true" doubleClickEnabled="true" 
+	creationComplete="init()" 
+	doubleClick="changeTextEnabled(event)"
+	useHandCursor="true"
+	buttonMode="true">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.view.body.portlet.CatalogoArticulos;
+			import com.actioninteractive.nok.vo.CategoriaVO;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			import com.actioninteractive.nok.vo.SubCategoriaVO;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			
+			private function init():void
+			{
+				setStyle("rollOverColor", 0xfaddce);
+				setStyle("selectionColor", 0xfcebe2);
+			}
+			private function getListSubCategorias():void
+			{
+				var listSubCategoriasEvent:CRUDEvent = new CRUDEvent(CRUDEvent.SUBCATEGORIA_LIST_PRODUCTOS);
+				var tempCategoria:CategoriaVO = data as CategoriaVO;
+				var tempSubCategoria:SubCategoriaVO = new SubCategoriaVO;
+				tempSubCategoria.categoria = tempCategoria.categoria;
+				tempSubCategoria.idCategoria = tempCategoria.idCategoria;
+				tempSubCategoria.estatus = true;
+				tempSubCategoria.filterEstatusSubcategoria = 'true';
+				listSubCategoriasEvent.subcategoriaVO = new SubCategoriaVO();
+				listSubCategoriasEvent.subcategoriaVO = tempSubCategoria;
+				dispatchEvent(listSubCategoriasEvent);
+			}
+			/*
+			private function deleteElementOfList(e:CloseEvent):void
+			{
+				if (e.detail==Alert.YES){
+					var deleteCategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CATEGORIA_DELETE);
+					deleteCategoriaEvent.categoriaVO = data as CategoriaVO;
+					dispatchEvent(deleteCategoriaEvent);
+				}
+			}
+			*/
+			protected function changeTextEnabled(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				txtTMP.editable = true;
+			}
+			
+			protected function txtTMP_enterHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(CategoriaVO(data).categoria != txtTMP.text){
+					var categoria:CategoriaVO = new CategoriaVO();
+					categoria.idCategoria = CategoriaVO(data).idCategoria;
+					categoria.estatus = true;
+					categoria.categoria = txtTMP.text;
+					categoria.filterEstatusCategoria = "true";
+					categoria.idtipocategoria = CategoriaVO(data).idtipocategoria;
+					categoria.tipocategoria = CategoriaVO(data).tipocategoria;
+					var editCategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CATEGORIA_PRODUCTO_UPDATE);
+					editCategoriaEvent.categoriaVO = categoria;
+					dispatchEvent(editCategoriaEvent);
+					txtTMP.editable = false;
+				}
+				
+				
+			}
+			/*
+			private function preventAlert(e:Event):void
+			{
+				Alert.yesLabel = "Si";
+				Alert.noLabel = "No";
+				Alert.show("¿Quieres borrar el item?","Borrar",3,null, deleteElementOfList)
+			}
+			*/
+			
+			private function editableText ():void{
+				txtTMP.editable = true;
+				txtTMP.enabled = true;
+				txtTMP.setFocus();
+				txtTMP.selectRange(0, txtTMP.text.length);
+				txtTMP.setStyle("color", "#AAFF00");
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="middle"/>
+	</s:layout>
+	<s:HGroup width="100%" verticalAlign="middle" paddingRight="5" paddingLeft="2" paddingBottom="2" paddingTop="2">
+		<s:TextInput  id="txtTMP" skinClass="com.actioninteractive.nok.skins.TextInputLine0Skin" 
+					  editable="false" text="{data.categoria}" width="100%" enter="txtTMP_enterHandler(event)"
+					  click="editableText()"
+					  doubleClick="getListSubCategorias()"/>
+		<s:Button 
+			skinClass="com.actioninteractive.nok.skins.ButtonAddList"
+			useHandCursor="true"
+			buttonMode="true"
+			click="getListSubCategorias()"/>
+		<!--s:Button skinClass="com.actioninteractive.nok.skins.ButtonCloseList" click="preventAlert(event)"/-->
+		
+	</s:HGroup>
+	
+	
+</s:ItemRenderer>

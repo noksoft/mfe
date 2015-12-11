@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark"  height="26" creationComplete="init()"
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true" doubleClickEnabled="true" doubleClick="changeTextEnabled(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.vo.SubfallaVO;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			private function init():void
+			{
+				setStyle("rollOverColor", 0xfaddce);
+				setStyle("selectionColor", 0xfcebe2);
+			}
+			private function deleteElementOfList(e:CloseEvent):void
+			{
+				if(e.detail == Alert.YES){
+					var deleteFallaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.SUBFALLA_DELETE);
+					deleteFallaEvent.subfallaVO = data as SubfallaVO;
+					dispatchEvent(deleteFallaEvent);	
+				}
+				
+			}
+			private function preventAlert():void
+			{
+				Alert.yesLabel = "Si";
+				Alert.noLabel = "No";
+				Alert.show("¿Quieres borrar el item?","Borrar",3,null, deleteElementOfList)
+			}
+			
+			protected function changeTextEnabled(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				txtTMP.editable = true;
+			}
+			
+			protected function txtTMP_enterHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				var editFallaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.SUBFALLA_UPDATE);
+				editFallaEvent.subfallaVO = data as SubfallaVO;
+				editFallaEvent.subfallaVO.subfalla = txtTMP.text;
+				dispatchEvent(editFallaEvent);
+				txtTMP.editable = false;
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="middle"/>
+	</s:layout>
+	<s:HGroup width="100%" verticalAlign="middle"
+			  paddingRight="5" paddingLeft="5" paddingBottom="2" paddingTop="2">
+		<s:TextInput id="txtTMP" skinClass="com.actioninteractive.nok.skins.TextInputLine0Skin" 
+					 editable="false" text="{data.subfalla}" width="100%" enter="txtTMP_enterHandler(event)"/>
+		<s:Button click="preventAlert()" skinClass="com.actioninteractive.nok.skins.ButtonCloseList"/>
+		
+	</s:HGroup>
+	
+	
+</s:ItemRenderer>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.model.CommonModel;
+			import com.actioninteractive.nok.model.EquipoModel;
+			import com.actioninteractive.nok.vo.MarcaMotorVO;
+			import com.actioninteractive.nok.vo.equipo.EquipoVO;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			
+			[Inject]
+			[Bindable]
+			public var modelEquipo:EquipoModel;
+			
+			public function actualizarDTO():void{
+				selectFechaVerificacion();
+				selectedListVerificacion();
+				selectFechaTenencia();
+				selectedListTenencia();
+				changeCambioAceite();
+				changeCombustible();
+				changeNumMotor();
+				changeMarcaMotor();
+				changeModeloMotor();
+				changeTipoMedida();
+				changeTipoRodaje();
+				changeHP();
+				changeTorque();
+				changeLlanta();
+				changeRin();
+				changeCapCarga();
+				changeCilindros();
+			}
+			
+			public function cleanComponent():void{
+				
+				fechVerificaion.selectedDate = new Date();
+				modelEquipo.equipoVO.fechaverificacion = "1900/1/1";
+				
+				listTipoVerificacion.selectedIndex = -1;
+				modelEquipo.equipoVO.verificacion = "0";
+				
+				fechTenencia.selectedDate = new Date();
+				modelEquipo.equipoVO.fechatenencia = "1900/1/1";
+				
+				listTenencia.selectedIndex = -1;
+				modelEquipo.equipoVO.tenencia = "1900";
+				
+				nsCambAceite.value = 0;
+				modelEquipo.equipoVO.cambioaceite = "";
+				
+				listCombustible.selectedIndex = -1;
+				modelEquipo.equipoVO.combustible = "";
+				
+				txtNoMotor.text = "";
+				modelEquipo.equipoVO.numeromotor = "";
+				
+				listMarcaMotor.selectedIndex = -1;
+				modelEquipo.equipoVO.marcamotor = "";
+				
+				txtModeloMotor.text = "";
+				modelEquipo.equipoVO.modelomotor = "";
+				
+				txtTipoMedida.text = "";
+				modelEquipo.equipoVO.tipomedida = "";
+				
+				listTipoRodaje.selectedIndex = -1;
+				modelEquipo.equipoVO.tiporodaje = "";
+				
+				nstpHP.value = 0;
+				modelEquipo.equipoVO.hp = "";
+				
+				nstpTorque.value = 0;
+				modelEquipo.equipoVO.torque = "";
+				
+				txtLlanta.text = "";
+				modelEquipo.equipoVO.tipollanta = "";
+				
+				nstpRin.value = 0
+				modelEquipo.equipoVO.rin = "";
+				
+				nstpCapCarga.value = 0;
+				modelEquipo.equipoVO.capacidadcarga = "0";
+				
+				nstpCilindros.value = 0;
+				modelEquipo.equipoVO.cilindros = "0";
+				
+			}
+			
+			public function selectItem(_equipoVO:EquipoVO):void{
+				
+				//var sDate:Date=DateField.stringToDate(startDS,"MMDDYYYY");
+				
+				//fechVerificaion.selectedDate = DateField.stringToDate(_equipoVO.fechaverificacion, 
+				
+				nsCambAceite.value = Number(_equipoVO.cambioaceite);
+				
+				for(var ic:int = 0; ic < modelEquipo.acCombustible.length; ic++){
+					var objc:Object = modelEquipo.acCombustible[ic];
+					if(objc.name == _equipoVO.combustible){
+						listCombustible.selectedIndex = ic;
+					}
+				}
+				
+				txtNoMotor.text = _equipoVO.numeromotor;
+				
+				for(var imm:int = 0; imm < modelEquipo.acMarcasMotor.length; imm++){
+					var objmm:Object = modelEquipo.acMarcasMotor[imm];
+					if(objmm.marcaMotor == _equipoVO.marcamotor){
+						listMarcaMotor.selectedIndex = imm;
+					}
+				}
+				
+				txtModeloMotor.text = _equipoVO.modelomotor;
+				
+				txtTipoMedida.text = _equipoVO.tipomedida;
+				
+				for(var itr:int = 0; itr < modelEquipo.acTipoRodaje.length; itr++ ){
+					var objitr:Object = modelEquipo.acTipoRodaje[itr];
+					if(objitr.descripcion == _equipoVO.tiporodaje){
+						listTipoRodaje.selectedIndex = itr;
+					}
+				}
+				
+				nstpHP.value = Number(_equipoVO.hp);;
+				nstpTorque.value = Number(_equipoVO.torque);
+				
+				txtLlanta.text = _equipoVO.tipollanta;
+				
+				nstpRin.value = Number(_equipoVO.rin);
+				
+			}
+			
+			/**
+			 * Método para obetner la fecha seleccionada en Fecha de Verificación
+			 */
+			public function selectFechaVerificacion ():void{
+				var tempDate:Date = fechVerificaion.selectedDate;
+				if(tempDate == null){
+					fechVerificaion.text = "Fecha:__ ___ ___";
+				}else{
+					modelEquipo.equipoVO.fechaverificacion = tempDate.getFullYear().toString() +	'/' + (tempDate.getMonth()+1).toString() + '/' + tempDate.getDate();
+				}
+			}
+			
+			/**
+			 * Guarda la el tipo de verificación
+			 **/
+			private function selectedListVerificacion ():void{				
+				var obj:Object = listTipoVerificacion.selectedItem;
+				modelEquipo.equipoVO.verificacion = obj.verificacion;
+			}
+			
+			/**
+			 * Método para obetner la fecha seleccionada en Fecha de Tenencia
+			 */
+			public function selectFechaTenencia ():void{
+				var tempDate:Date = fechTenencia.selectedDate;
+				if(tempDate == null){
+					fechTenencia.text = "Fecha:__ ___ ___";
+				}else{
+					modelEquipo.equipoVO.fechatenencia = tempDate.getFullYear().toString() +	'/' + (tempDate.getMonth()+1).toString() + '/' + tempDate.getDate();
+				}
+			}
+			
+			/**
+			 * Guarda la el tipo de tenencia
+			 **/
+			private function selectedListTenencia ():void{
+				var obj:Object = listTenencia.selectedItem;
+				modelEquipo.equipoVO.tenencia = obj.tenencia;
+			}
+			
+			private function changeCambioAceite ():void{
+				var value:String = String(nsCambAceite.value);
+				if(value != ""){
+					modelEquipo.equipoVO.cambioaceite = value;
+				}
+			}
+			
+			private function changeCombustible ():void{
+				var item:Object = listCombustible.selectedItem;
+				modelEquipo.equipoVO.combustible = item.name;
+			}
+			
+			private function changeNumMotor ():void{
+				var value:String = txtNoMotor.text;
+				if(value != ""){
+					modelEquipo.equipoVO.numeromotor = value;
+				}
+			}
+			
+			/**
+			 * Guarda la marca de motor seleccionada
+			 **/
+			private function changeMarcaMotor ():void{
+				var _marcaMotor:MarcaMotorVO = listMarcaMotor.selectedItem as MarcaMotorVO;
+				modelEquipo.equipoVO.idMarcamotor = _marcaMotor.idMarcaMotor
+				modelEquipo.equipoVO.marcamotor = _marcaMotor.marcaMotor;
+			}
+			
+			/**
+			 * Guarda el modelo del motor
+			 **/
+			private function changeModeloMotor ():void{
+				var tempValue:String = txtModeloMotor.text;
+				if(tempValue != ""){
+					modelEquipo.equipoVO.modelomotor = tempValue;
+					//modelEquipo.equipoVO.idModelomotor = tempValue;
+				}
+			}
+			
+			private function changeTipoMedida():void{
+				var value:String = txtTipoMedida.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipomedida = value;
+				}
+			}
+			
+			private function changeTipoRodaje ():void{
+				var value:String = Object(listTipoRodaje.selectedItem).descripcion;
+				if(value != ""){
+					modelEquipo.equipoVO.tiporodaje = value;	
+				}else{
+					modelEquipo.equipoVO.tiporodaje = "";
+				}
+			}
+			
+			private function changeHP ():void{
+				var value:String = String(nstpHP.value);
+				if(value != ""){
+					modelEquipo.equipoVO.hp = value;
+				}
+			}
+			
+			private function changeTorque ():void{
+				var value:String = String(nstpTorque.value);
+				if(value != ""){
+					modelEquipo.equipoVO.torque = value;
+				}
+			}
+			
+			private function changeLlanta ():void{
+				var value:String = txtLlanta.text;
+				if(value != ""){
+					modelEquipo.equipoVO.tipollanta = value;
+				}
+			}
+			
+			private function changeRin():void{
+				var value:String = String(nstpRin.value);
+				if(value != ""){
+					modelEquipo.equipoVO.rin = value;
+				}
+			}
+			
+			private function changeCapCarga ():void{
+				var value:String = nstpCapCarga.value.toString();
+				if(value != ""){
+					modelEquipo.equipoVO.capacidadcarga = value;
+				}
+			}
+			
+			/**
+			 * Guarda el cambio de la selección de cilindros
+			 **/
+			private function changeCilindros ():void{
+				var tempValue:Number = nstpCilindros.value;
+				if(tempValue > 0){
+					modelEquipo.equipoVO.cilindros = tempValue.toString();
+				}
+				
+			}
+
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:HorizontalLayout paddingTop="40"/>
+	</s:layout>
+	<!--Contenedor principal-->
+		
+	<s:Group width="100%">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:Label text="Última fecha Verificación" textAlign="right" width="120" top="4"/>
+			<mx:DateField
+				id="fechVerificaion"
+				dayNames="{CommonModel.dayArray}"
+				monthNames="{CommonModel.monthArray}"
+				formatString="YYYY/MM/DD"/>
+			<s:Label text="Tipo Verificación" textAlign="right" width="120" top="4"/>
+			<s:DropDownList
+				id="listTipoVerificacion"
+				width="100%"
+				dataProvider="{crudModel.acListaVerificacion}"
+				labelField="verificacion"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:Label text="Último pago Tenencia" textAlign="right" width="120" top="4"/>
+			<mx:DateField
+				id="fechTenencia"
+				dayNames="{CommonModel.dayArray}"
+				monthNames="{CommonModel.monthArray}"
+				change="selectFechaTenencia()"/>
+			<s:Label text="Verificar en:" textAlign="right" width="120" top="4"/>
+			<s:DropDownList
+				id="listTenencia"
+				width="100%"
+				dataProvider="{crudModel.acListaTenencia}"
+				labelField="tenencia"
+				selectedIndex="-1"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+		
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Cambio de Aceite" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nsCambAceite"
+				snapInterval="500"
+				minimum="500"
+				maximum="500000"/>
+			<s:Label 
+				text="Combustible:" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listCombustible"
+				dataProvider="{modelEquipo.acCombustible}"
+				labelField="name"
+				selectedIndex="-1"
+				prompt="Selecciona una opción"/>
+		</s:HGroup>
+		
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="No. de Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput 
+				id="txtNoMotor"
+				width="300"
+				maxChars="9"
+				restrict="0-9"/>
+			<s:Label 
+				text="Marca Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listMarcaMotor"
+				width="100%" 
+				prompt="Selecciona la marca" 
+				dataProvider="{modelEquipo.acMarcasMotor}" 
+				labelField="marcaMotor"/>			
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Modelo Motor" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtModeloMotor"
+				width="120"/>
+			<s:Label 
+				text="Tipo de Medida" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtTipoMedida"
+				width="120"
+				text="Horas"
+				keyDown="txtTipoMedida.enabled = true"
+				keyUp="txtTipoMedida.enabled = false"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Tipo de Rodaje" 
+				textAlign="right" 
+				width="120"/>
+			<s:DropDownList
+				id="listTipoRodaje"
+				width="100%" 
+				prompt="Selecciona tipo de Rodaje" 
+				requireSelection="true"
+				dataProvider="{modelEquipo.acTipoRodaje}"
+				labelField="descripcion"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">		
+			<s:Label 
+				text="HP" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpHP"
+				snapInterval="500"
+				minimum="500"
+				maximum="500000"/>
+			<s:Label 
+				text="Torque" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpTorque"
+				snapInterval="50"
+				minimum="10"
+				maximum="500000"/>
+		</s:HGroup>
+		<s:HGroup 
+			width="100%" 
+			verticalAlign="middle">
+			<s:Label 
+				text="Llanta" 
+				textAlign="right" 
+				width="120"/>
+			<s:TextInput
+				id="txtLlanta"
+				width="300"
+				maxChars="15"/>
+			<s:Label 
+				text="Rin" 
+				textAlign="right" 
+				width="120"/>
+			<s:NumericStepper
+				id="nstpRin"
+				maximum="30"
+				minimum="15"/>
+		</s:HGroup>
+		<s:HGroup width="100%" verticalAlign="middle">
+			<s:Label text="Capacidad de Carga" textAlign="right" width="120" top="4"/>
+			<s:NumericStepper
+				id="nstpCapCarga"
+				snapInterval="1"
+				maximum="500000"
+				minimum="50"/>
+			<s:Label text="Cilindros" textAlign="right" width="120" top="4"/>
+			<s:NumericStepper
+				id="nstpCilindros"
+				maximum="12"
+				minimum="1"/>
+		</s:HGroup>
+	</s:Group>
+</s:Group>

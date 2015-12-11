@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	creationComplete="init()">
+	<fx:Declarations>
+		<s:RemoteObject id="roCategorias"
+			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			destination="categoriaBusiness">
+			<!--	TIPO CATEGORIA	-->
+			<s:method 
+				name="infoTipocategoria"
+				result="resultTipoCategorias(event)"
+				fault="faultListTipoCategorias(event)"/>
+			<s:method
+				name="insertTipocategoria"
+				result="resultInsertTipoCategoria(event)"
+				fault="faultInsertTipoCategoria(event)"/>
+			<s:method
+				name="updateTipocategoria"
+				result="resultUpdateTipoCategoria(event)"
+				fault="faultUpdateTipoCategoria(event)"/>
+			<s:method
+				name="deleteTipocategoria"
+				result="resultDeleteTipoCategoria(event)"
+				fault="faultDeleteTipoCategoria(event)"/>
+			
+		</s:RemoteObject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import event.CommonEvent;
+			import model.TipoCategoriaVO;
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import spark.components.Grid;
+			import spark.events.GridSelectionEvent;
+			import utils.AlertUtils;
+			
+			[Bindable]private var listTipoCategorias:ArrayCollection = new ArrayCollection();
+			[Bindable]private var titleFormulario:String;
+			[Bindable]private var cm:ContextMenu;
+			[Bindable]private var itemSelected:TipoCategoriaVO;
+			private const CREAR:String = "Crear";
+			private const ACTUALIZAR:String = "Actualizar";
+			
+			private function init():void{
+				itemSelected = new TipoCategoriaVO();
+				
+				var cmi:ContextMenuItem = new ContextMenuItem("Borrar", true);
+				cmi.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, itemDelete);
+				
+				cm = new ContextMenu();
+				cm.hideBuiltInItems();
+				cm.customItems = [cmi];
+				//cm.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenu_menuSelect);
+				upData();
+			}
+			
+			private function upData():void{
+				roCategorias.infoTipocategoria(new TipoCategoriaVO());
+				titleFormulario = CREAR;
+			}
+			
+			private function itemDelete (_event:ContextMenuEvent):void{
+				if(dtgTipoCategoria.selectedItem != null){
+					itemSelected = dtgTipoCategoria.selectedItem as TipoCategoriaVO;
+					var customAlertConfirmation:AlertConfirmation = new AlertConfirmation();
+					customAlertConfirmation.newCustomAlert("Por favor confirma!", "¿Estás seguro de Eliminar el Tipo de Categoría?", 340, 155);
+					customAlertConfirmation.addEventListener(CommonEvent.CUSTOM_ALERT_ACCEPTED_EVENT, listenerAcceptedConfirmation);
+					PopUpManager.addPopUp(customAlertConfirmation, DisplayObject(FlexGlobals.topLevelApplication),true);
+					
+				}else{
+					itemSelected = null;
+				}
+			}
+			
+			/**
+			 * Confirmación de eliminación
+			 */
+			private function listenerAcceptedConfirmation (_event:CommonEvent):void{
+				roCategorias.deleteTipocategoria(itemSelected);
+			}
+			
+			private function saveTipoCategoria():void{
+				if(itemSelected != null && txtTipoCategoria.text != ""){
+					switch(titleFormulario){
+						case CREAR:
+								roCategorias.insertTipocategoria(itemSelected);	
+							break;
+						case ACTUALIZAR:
+								itemSelected.tipocategoria = txtTipoCategoria.text;
+								roCategorias.updateTipocategoria(itemSelected);
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			private function clearFormulario():void{
+				titleFormulario = "Crear";
+				itemSelected = new TipoCategoriaVO();
+			}
+			
+			protected function selectTipoCategoria(_event:MouseEvent):void
+			{
+				if(itemSelected == null){
+					itemSelected = new TipoCategoriaVO();
+				}
+				titleFormulario = "Actualizar";
+				itemSelected = _event.currentTarget.selectedItem as TipoCategoriaVO;
+				
+			}
+			
+			
+			/**********************************/
+			/*******	REMOTE OBJECT	*******/
+			/**********************************/
+			
+			/***	infoTipocategoria	****/
+			private function resultTipoCategorias (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						listTipoCategorias = _event.result as ArrayCollection;
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "infoTipocategoria"+ e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+				}
+			}
+			
+			private function faultListTipoCategorias (_event:FaultEvent):void{
+				//Alert.show("Error", "infoTipocategoria"+ _event.fault.faultDetail);
+				AlertUtils.showErrorMessage("Error", "No se pudo cargar la información de Tipo de Categorías");
+			}
+			
+			
+			/****	insertTipoCategoria	****/
+			private function resultInsertTipoCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new TipoCategoriaVO();
+						if(listTipoCategorias != null){
+							listTipoCategorias.addItem(TipoCategoriaVO(_event.result));
+						}
+						txtTipoCategoria.text = "";
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertTipoCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo guardar el Tipo de Categorías");
+				}
+			}
+			
+			private function faultInsertTipoCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "insertTipoCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo guardar el Tipo de Categorías");
+			}
+			
+			/****	updateTipocategoria	****/
+			private function resultUpdateTipoCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new TipoCategoriaVO();
+						upData();
+						txtTipoCategoria.text = "";
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "insertTipoCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo actualizar el Tipo de Categorías");
+				}
+			}
+			
+			private function faultUpdateTipoCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "updateTipoCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo actualizar el Tipo de Categorías");
+			}
+			
+			/****	deleteTipocategoria	****/
+			private function resultDeleteTipoCategoria (_event:ResultEvent):void{
+				try{
+					if(_event.result != null){
+						itemSelected = new TipoCategoriaVO();
+						upData();
+					}
+				}catch(e:Error){
+					//Alert.show("Error", "deleteTipoCategoria" + e.message);
+					AlertUtils.showErrorMessage("Error", "No se pudo eliminar el Tipo de Categorías");
+				}
+			}
+			
+			private function faultDeleteTipoCategoria (_event:FaultEvent):void{
+				//Alert.show("Error", "deleteTipoCategoria" + _event.fault.message);
+				AlertUtils.showErrorMessage("Error", "No se pudo eliminar el Tipo de Categorías");
+			}
+			
+		]]>
+	</fx:Script>
+	<mx:HDividedBox
+		width="100%" height="100%">
+			<!--	Tabla con la lista de Tipo de Categorias	-->
+			<s:Panel
+				title="Tipo Categorías"
+				width="100%" height="100%">
+					<s:DataGrid
+						id="dtgTipoCategoria"
+						width="100%" height="100%"
+						dataProvider="{listTipoCategorias}"
+						doubleClickEnabled="true"
+						doubleClick="selectTipoCategoria(event)">
+							<s:columns>
+								<s:ArrayList>
+									<s:GridColumn headerText="Tipo Categoría" dataField="tipocategoria"/>
+									<s:GridColumn headerText="Estatus" dataField="estatus"/>
+								</s:ArrayList>
+							</s:columns>
+					</s:DataGrid>
+				
+			</s:Panel>
+			<!--	Formulario para Crear o Editar un Tipo de Categoría		-->
+			<s:Panel
+				title="{titleFormulario}"
+				width="100%" height="100%">
+					<s:layout>
+						<s:VerticalLayout
+							gap="5"
+							paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"/>
+					</s:layout>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label width="120" fontWeight="bold" text="Tipo Categoría" textAlign="right"/>
+						<s:TextInput 
+							width="300" 
+							id="txtTipoCategoria"
+							text="{itemSelected.tipocategoria}"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label width="120" fontWeight="bold" text="Estatus" textAlign="right"/>
+						<s:CheckBox 
+							id="chxEstatus"
+							selected="{itemSelected.estatus}"/>
+					</s:HGroup>
+					<s:controlBarContent>
+						<!--s:Button 
+							label="Actualizar" 
+							icon="@Embed(source='assets/icons/application_form_edit.png')"
+							click="updateTipoCategoria()"/>
+						<s:Button 
+							label="Nuevo" 
+							icon="@Embed(source='assets/icons/application_add.png')"
+							click="saveTipoCategoria()"/-->
+						<s:Button 
+							label="Limpiar" 
+							icon="@Embed(source='assets/icons/cancel.png')"
+							click="clearFormulario()"/>
+						<s:Button 
+							id="guardarButton" 
+							label="Guardar" 
+							icon="@Embed(source='assets/icons/add.png'" 
+							styleName="primaryButton"
+							click="saveTipoCategoria()"/>
+					</s:controlBarContent>
+			</s:Panel>
+	</mx:HDividedBox>
+</mx:VBox>

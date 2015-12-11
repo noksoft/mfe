@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Created by RZARAGOZA on 27/06/2015
+-->
+<view:SolicitudViewBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:view="view.*" 
+	xmlns:components="com.hillelcoren.components.*">
+
+	<s:Panel
+		width="100%" height="100%"
+		title="Solicitudes">
+		<s:layout>
+			<s:VerticalLayout
+				gap="0"
+				paddingBottom="10" paddingLeft="10"
+				paddingRight="10" paddingTop="10"/>
+		</s:layout>
+		<components:AutoComplete
+			id="autocompleteSolicitudes"
+			height="30"
+			styleName="textInputWithout"
+			dataProvider="{solicitudModel.acSolicitudes}"
+			toolTip="Ingresa el nombre de la Solicitud"
+			prompt="Ingresa e nombre de la Solicitud"
+			labelField="nombre_solicitud"
+			width="100%"/>
+		<s:DataGrid
+			id="dataGridSolicitud"
+			width="100%" height="100%"
+			dataProvider="{solicitudModel.acSolicitudes}"
+			doubleClickEnabled="true"
+			doubleClick="solicitudSelected(event)">
+			<s:columns>
+				<s:ArrayList>
+					<s:GridColumn headerText="Proceso"				width="90"	itemRenderer="view.render.ToggleButtonSolicitud"/>
+					<s:GridColumn headerText="Estatus Proceso" 		width="90"	dataField="estatus_proceso"/>
+					<s:GridColumn headerText="Nombre Solicitud"		width="90"	dataField="nombre_solicitud"/>
+					<s:GridColumn headerText="RFC Requisición" 		width="90"	dataField="rfc_requisicion"/>
+					<s:GridColumn headerText="RFC Adquisición"		width="90"  dataField="rfc_adquisicion"/>
+					<s:GridColumn headerText="Artículo" 			width="90"	dataField="descripcion"/>
+					<s:GridColumn headerText="Cantidad" 			width="90"	dataField="cantidad"/>
+					<s:GridColumn headerText="Costo Unidad"			width="90"  dataField="costo_unidad"/>
+					<s:GridColumn headerText="Total"				width="90"	dataField="costo_total"/>
+					<s:GridColumn headerText="Forma de Pago"		width="90"	dataField="forma_pago"/>
+					<s:GridColumn headerText="Fecha Requisición" 	width="100"	dataField="fecha_requisicion"/>
+					<s:GridColumn headerText="Fecha Adquisición"	width="100" dataField="fecha_adquisicion"/>
+					<s:GridColumn headerText="Tiempo de Entrega"	width="90"  dataField="tiempo_entrega"/>
+					<s:GridColumn headerText="Descripción Falla"	width="90"	dataField="descripcion_falla"/>
+					<s:GridColumn headerText="Equipo"				width="90"	dataField="nombreequipo"/>
+					<s:GridColumn headerText="Prioridad Falla"		width="90"	dataField="prioridad"/>
+					<s:GridColumn headerText="Observaciones Falla"	width="120"	dataField="observaciones"/>
+				</s:ArrayList>
+			</s:columns>
+		</s:DataGrid>
+		<mx:ControlBar horizontalAlign="right"
+					   width="100%">
+			<s:Button 
+				id="guardarButton" 
+				label="Guardar Cambios" 
+				icon="@Embed(source='assets/icons/add.png'" 
+				styleName="primaryButton"
+				useHandCursor="true"
+				buttonMode="true"
+				click="updateSolicitudes()"/>
+		</mx:ControlBar>
+	</s:Panel>
+</view:SolicitudViewBase>

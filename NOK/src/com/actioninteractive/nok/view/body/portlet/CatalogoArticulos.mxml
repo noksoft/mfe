@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+CATALOGO DE ARTICULOS
+-->
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" 
+				 xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*" 
+				 xmlns:component="com.actioninteractive.nok.view.body.component.*"
+				 creationComplete="init(event)" xmlns:components="org.flashcommander.components.*"
+				 >
+	
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.controller.CRUDController;
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.model.CRUDModel;
+			import com.actioninteractive.nok.util.Tools;
+			import com.actioninteractive.nok.view.AssetManagerIn;
+			import com.actioninteractive.nok.vo.ArticuloVO;
+			import com.actioninteractive.nok.vo.MarcaVO;
+			import com.actioninteractive.nok.vo.SubMarcaVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.UIComponent;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			import mx.formatters.DateFormatter;
+			import mx.managers.PopUpManager;
+			import mx.validators.Validator;
+			
+			import spark.components.TitleWindow;
+			import spark.events.IndexChangeEvent;
+			
+			[Inject]
+			[Bindable]
+			public var crudModel:CRUDModel;
+			
+			private var eventCrud:CRUDEvent;
+			
+			private function nsValueFormatFunc(value: Number):String
+			{
+				return usdFormatter.format( value );
+			}
+			private function nsValueParseFunc(value: String): Number
+			{
+				return parseInt(value.substring(1));
+			}
+			protected function buscarProductos(event:MouseEvent):void
+			{
+				//Abrir popup con los datos.
+				var articulo:ArticuloVO = new ArticuloVO();
+				articulo.idArticulo 	= '';
+				articulo.descripcion 	= txtBusquedaArticulos.text;
+				articulo.idMarca		= '';
+				articulo.idSubmarca 	= '';
+				articulo.estatus 		= 'true';
+				var articuloBusquedaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.ARTICULO_BUSQUEDA_DATA);
+				articuloBusquedaEvent.articuloVO 	= articulo;
+				dispatchEvent(articuloBusquedaEvent);
+				expandeCajaParaBusqueda(event,false);
+				
+			}
+			[EventHandler(event="CRUDEvent.ITEM_FOUND_DATA")]
+			public function lanzaVentanaResultadoEvent():void
+			{
+				var resultWindowArticulo:ResultArticuloPopup = ResultArticuloPopup(PopUpManager.createPopUp(this,ResultArticuloPopup, true) as spark.components.TitleWindow);
+				trace("event ------> ITEM_FOUND_DATA")
+				PopUpManager.centerPopUp(resultWindowArticulo);
+				resultWindowArticulo.addEventListener(CRUDEvent.ITEM_SELECTED_DATA,itemSelectedEvent);
+			}
+			
+			/* [EventHandler(event="CRUDEvent.ITEM_SELECTED_DATA", properties="articuloVO")] */
+			[Bindable] private var articuloToUpdate:ArticuloVO;
+			public function itemSelectedEvent(e:CRUDEvent):void
+			{
+				trace("event----->selected---articulo a mostrar, listo "+e.articuloVO.idArticulo);
+				
+				if(e.articuloVO)
+				{
+					crudModel.articuloUpdated = true;
+					articuloToUpdate = e.articuloVO;
+					//Encontramos el articulo y se cambia el área de articulos
+					txtDescripcion.text = e.articuloVO.descripcion;
+					//ddlMarca.selectedValue = e.articuloVO.marca;
+					Tools.locateAndSelect(ddlMarca,e.articuloVO.idMarca,'idMarca');
+					
+					
+					
+					txtNoParte.text = e.articuloVO.nParte;
+					nsCantidad.text = e.articuloVO.cantidad.toString();
+					nsStockMinimo.value = e.articuloVO.stockMin;
+					nsStockMaximo.value = e.articuloVO.stockMax;
+					nsCostoUnitario.value = e.articuloVO.costoUnitario;
+					
+					txtUbicacion.text = e.articuloVO.ubicacion;
+					Tools.locateAndSelect(ddlUnidad,e.articuloVO.unidad,'label');
+					//Cambiar datos para
+				}
+			}
+			
+			[EventHandler(event="CRUDEvent.ARTICULO_UPDATED")]
+			public function articuloUpdatedLocateSubmarca():void
+			{
+				Tools.locateAndSelect(ddlSubmarca,articuloToUpdate.idSubmarca, 'idSubmarca');
+			}
+			protected function expandeCajaParaBusqueda(event:MouseEvent, grown:Boolean):void
+			{
+				if(grown)
+				{
+					txtBusquedaArticulos.left = 150;
+					txtBusquedaArticulos.alpha = 1;
+					txtBusquedaArticulos.setFocus();
+				}else
+				{
+					txtBusquedaArticulos.alpha = .3;
+					txtBusquedaArticulos.left = null;
+				}
+			}
+			private function validateInputValue():Boolean
+			{
+				var ok:Boolean;
+				var errores:Array = Validator.validateAll([validaTxtDescripcion,validaTxtNoParte,validaTxtUbicacion,
+					validaNsCantidad]);
+				var errorsDDL:Boolean;
+				if (ddlMarca.selectedIndex == -1 || ddlSubmarca.selectedIndex == -1 || ddlUnidad.selectedIndex == -1)
+					errorsDDL = true;
+				else
+					errorsDDL = false;
+				
+				if (errores.length==0 && !errorsDDL)
+				{
+					ok = true;
+				}
+				else{
+					ok = false;
+					Alert.show("Errores");
+				}
+				return ok;
+			}
+			
+			protected function guardarArticulo(event:MouseEvent):void
+			{
+				if(validateInputValue())
+				{
+					var formatoFecha:DateFormatter = new DateFormatter();
+					formatoFecha.formatString= "YYYY-MM-DD J:N:S";
+					var fecha:Date = new Date();
+					var articulo:ArticuloVO = new ArticuloVO();
+					articulo.idArticulo = "";
+					articulo.descripcion = txtDescripcion.text;
+					articulo.idSubmarca = SubMarcaVO(ddlSubmarca.selectedItem).idSubmarca;
+					articulo.nParte = txtNoParte.text;
+					articulo.cantidad = Number(nsCantidad.text);
+					articulo.stockMin = nsStockMinimo.value;
+					articulo.stockMax = nsStockMaximo.value;
+					articulo.costoUnitario = nsCostoUnitario.value;
+					articulo.costoTotal = nsCostoTotal.value;
+					articulo.ubicacion = txtUbicacion.text;
+					articulo.fechaAdquisicion = formatoFecha.format(fecha).toString();
+					articulo.unidad = ddlUnidad.selectedItem.label;
+					if(crudModel.articuloUpdated){
+						articulo.idArticulo = articuloToUpdate.idArticulo;
+						var updateArticuloEvent:CRUDEvent = new CRUDEvent(CRUDEvent.ARTICULO_UPDATE_DATA);
+						updateArticuloEvent.articuloVO = articulo;
+						dispatchEvent(updateArticuloEvent);
+						cancelarOperacion();
+					}else{
+						var saveArticuloEvent:CRUDEvent = new CRUDEvent(CRUDEvent.ARTICULO_SAVE_DATA);
+						saveArticuloEvent.articuloVO = articulo;
+						dispatchEvent(saveArticuloEvent);	
+					}
+					
+					limpiezaInputs();
+					
+				}
+				else
+				{
+					trace("There are errors");
+				}
+				
+			}
+			
+			protected function cancelarOperacion():void
+			{
+				if (crudModel.articuloUpdated){
+					crudModel.articuloUpdated = !crudModel.articuloUpdated;
+					limpiezaInputs();
+				}
+			}
+			
+			
+			protected function init(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				/* var eventSubmarca:CRUDEvent = new CRUDEvent(CRUDEvent.SUBMARCA_GET_LIST);
+				eventSubmarca.subMarcaVO = _subMarcaVO;
+				dispatchEvent(eventSubmarca);
+				
+				var tempSubMarcaVO:SubMarcaVO = new SubMarcaVO();
+				tempSubMarcaVO.
+				
+				CRUDEvent = new CRUDEvent(CRUDEvent.SUBMARCA_GET_LIST);
+				
+				CRUDEvent.SUBMARCA_GET_LIST;
+				eventCrud = new CRUDEvent(CRUDEvent.); */
+			}
+			
+			protected function seleccionaMarca(event:Event):void
+			{
+				var listSubMarcasEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_LIST_SUBMARCAS);
+				listSubMarcasEvent.marcaVO = event.target.selectedItem as MarcaVO;
+				dispatchEvent(listSubMarcasEvent)
+			}
+			protected function seleccionaMarcaCommit(event:Event):void
+			{
+				if(crudModel.articuloUpdated){
+					trace(crudModel.articuloUpdated);
+					var listSubMarcasEvent:CRUDEvent = new CRUDEvent(CRUDEvent.CRUD_LIST_SUBMARCAS);
+					listSubMarcasEvent.marcaVO = event.target.selectedItem as MarcaVO;
+					dispatchEvent(listSubMarcasEvent)
+				}
+				
+			}
+			
+			protected function resetValidationWarnings():void
+			{
+				for each (var validator:Validator in validadores)
+				{
+					UIComponent(validator.source).errorString = '';
+				}
+			}
+			protected function limpiezaInputs():void
+			{
+				
+				txtDescripcion.text = '';
+				ddlMarca.selectedIndex = -1;
+				ddlSubmarca.selectedIndex = -1;
+				txtNoParte.text = '';
+				nsCantidad.text = '0';
+				nsStockMinimo.value = 0;
+				nsStockMaximo.value = 0;
+				nsCostoUnitario.value = 0;
+				txtUbicacion.text = '';
+				ddlUnidad.selectedIndex = -1;
+				callLater(resetValidationWarnings);
+				
+			}
+			
+			
+			protected function borrarArticulo(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				Alert.yesLabel = "Si";
+				Alert.noLabel = "No";
+				Alert.show("¿Quieres borrar el artículo?","Borrar",3,null, deleteElement)
+				
+			}
+			private function deleteElement(e:CloseEvent):void
+			{
+				if (e.detail==Alert.YES){
+					var borrarArticuloEvento:CRUDEvent = new CRUDEvent(CRUDEvent.ARTICULO_DELETE_DATA);
+					borrarArticuloEvento.articuloVO = articuloToUpdate;
+					dispatchEvent(borrarArticuloEvento);
+					cancelarOperacion();
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Binding source="{Number(nsCantidad.text)*nsCostoUnitario.value}" destination="nsCostoTotal.value"/>
+	
+	<fx:Declarations>
+		
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<mx:CurrencyFormatter id="usdFormatter" precision="2" 
+							  currencySymbol="$" decimalSeparatorFrom="."
+							  decimalSeparatorTo="." useNegativeSign="true" 
+							  useThousandsSeparator="true" alignSymbol="left"/>
+		<fx:Array id="validadores">
+			<mx:StringValidator required="true" trigger="{btnAlta}" triggerEvent="click" id="validaTxtDescripcion" source="{txtDescripcion}" property="text" requiredFieldError="Escribe el nombre del artículo"/>
+			<mx:StringValidator required="true" trigger="{btnAlta}" triggerEvent="click" id="validaTxtNoParte" source="{txtNoParte}" property="text" requiredFieldError="Si no hay número de parte, escribe NO APLICA"/>
+			<mx:StringValidator required="true" trigger="{btnAlta}" triggerEvent="click" id="validaTxtUbicacion" source="{txtUbicacion}" property="text" requiredFieldError="Se requiere saber donde se encuentra el artículo"/>
+		</fx:Array>
+		<s:NumberValidator required="false" trigger="{btnAlta}" triggerEvent="click" id="validaNsCantidad" source="{nsCantidad}" property="text" requiredFieldError="Escribe la cantidad del artículo"/>	
+		
+		
+	</fx:Declarations>
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<s:Label text="Alta de refacciones" x="5" y="10"/>
+			
+			
+			<!--<s:ComboBox y="6" right="50" width="17" alpha=".3" id="txtBusquedaArticulos" 
+			mouseOver="expandeCajaParaBusqueda(event,true)"
+			focusOut="expandeCajaParaBusqueda(null,false)" dataProvider="{crudModel.acListArticulos}"/>-->
+			<s:TextInput y="6" right="50" width="17" alpha=".3" id="txtBusquedaArticulos" 
+						 mouseOver="expandeCajaParaBusqueda(event,true)"
+						 focusOut="expandeCajaParaBusqueda(null,false)"
+						 />
+			<s:Button y="6" skinClass="com.actioninteractive.nok.skins.ButtonSearhSkin"  right="10" 
+					  icon="{AssetManagerIn.iconZoom}" click="buscarProductos(event)"/>	
+			<s:SkinnableContainer width="100%" height="100%" x="1" y="6">
+				<s:layout>
+					<s:HorizontalLayout paddingRight="20"/>
+				</s:layout>
+				<s:Group width="100%" height="100%">
+					<!--Contenedor para lista de datos del empleado-->
+					
+					<s:layout>
+						<s:VerticalLayout paddingTop="40"/>
+					</s:layout>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Descripción" textAlign="right" width="100" top="4"/>
+						<s:TextArea id="txtDescripcion" height="43" width="100%"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Marca" top="4" textAlign="right" width="100"/>
+						
+						<s:DropDownList width="100%" id="ddlMarca" labelField="marca" 
+										dataProvider="{crudModel.acListMarcas}" valueCommit="seleccionaMarcaCommit(event)" change="seleccionaMarca(event)"
+										prompt="Selecciona la marca" requireSelection="true"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Submarca" top="4" textAlign="right" width="100"/>
+						<s:DropDownList width="100%" id="ddlSubmarca" labelField="submarca" 
+										dataProvider="{crudModel.acListSubMarcas}"
+										prompt="Selecciona una submarca" requireSelection="true"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="No. Parte" top="4" textAlign="right" width="100"/>
+						<s:TextInput width="100%" id="txtNoParte"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Cantidad" top="4" textAlign="right" width="100"/>
+						<s:TextInput id="nsCantidad" width="100%" restrict="[0-9.00]"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Stock Mínimo" top="4" textAlign="right" width="100"/>
+						<s:NumericStepper width="100%" maximum="10000" id="nsStockMinimo"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Stock Máximo" top="4" textAlign="right" width="100"/>
+						<s:NumericStepper width="100%" maximum="10000" id="nsStockMaximo"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Costo Unitario" top="4" textAlign="right" width="100"/>
+						<s:NumericStepper width="100%" snapInterval="0.01" stepSize="0.01" maximum="100000000" id="nsCostoUnitario"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Costo Total" top="4" textAlign="right" width="100"/>
+						<s:NumericStepper width="100%" maximum="100000000" snapInterval="0.01" stepSize="0.01" valueFormatFunction="nsValueFormatFunc" id="nsCostoTotal" enabled="false"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Ubicación" textAlign="right" width="100" top="4"/>
+						<s:TextArea height="43" width="100%" id="txtUbicacion"/>
+					</s:HGroup>
+					<s:HGroup width="100%" verticalAlign="middle">
+						<s:Label text="Unidad" top="4" textAlign="right" width="100"/>
+						<s:DropDownList  width="100%" id="ddlUnidad" requireSelection="true" 
+										 dataProvider="{crudModel.acListaUnidades}" labelField="label"/>
+					</s:HGroup>
+					<s:HGroup width="100%" horizontalAlign="right">
+						<s:Button label="Actualizar" id="btnActualizar" click="guardarArticulo(event)" visible="{crudModel.articuloUpdated}"/>
+						<s:Button label="Borrar" click="borrarArticulo(event)" enabled="{crudModel.articuloUpdated}" />
+						<s:Button label="Alta" id="btnAlta" click="guardarArticulo(event)" 
+								  enabled="{!crudModel.articuloUpdated}"/>
+						<s:Button label="Cancelar" click="cancelarOperacion()"/>
+					</s:HGroup>
+				</s:Group>
+			</s:SkinnableContainer>
+			
+			
+		</s:SkinnableContainer>
+		
+	</portlet:children>
+</portlet:Portlet>

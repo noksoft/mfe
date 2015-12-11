@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark"  height="26"
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				autoDrawBackground="true" doubleClickEnabled="true" 
+				creationComplete="init()" 
+				doubleClick="changeTextEnabled(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.event.CRUDEvent;
+			import com.actioninteractive.nok.vo.TipocategoriaVO;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var flagEditText:Boolean = false;
+			
+			private var eventTipocategoria:CRUDEvent;
+			
+			private function init():void
+			{
+				setStyle("rollOverColor", 0xfaddce);
+				setStyle("selectionColor", 0xfcebe2);
+			}
+			/*
+			private function getListTipocategorias():void
+			{
+				var listTipocategoriasEvent:CRUDEvent = new CRUDEvent(CRUDEvent.TIPOCATEGORIA_GET_LIST);
+				listTipocategoriasEvent.tipocategoriaVO = data as TipocategoriaVO;
+				dispatchEvent(listTipocategoriasEvent);
+			}
+			*/
+			private function deleteElementOfList(e:CloseEvent):void
+			{
+				if (e.detail==Alert.YES){
+					var deleteTipocategoriaEvent:CRUDEvent = new CRUDEvent(CRUDEvent.TIPOCATEGORIA_DELETE);
+					deleteTipocategoriaEvent.tipocategoriaVO = data as TipocategoriaVO;
+					dispatchEvent(deleteTipocategoriaEvent);
+				}
+			}
+			
+			protected function changeTextEnabled(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				flagEditText = true;
+				txtTMP.setFocus();
+			}
+			
+			protected function txtTMP_enterHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				trace("txtTMP.text: " + txtTMP.text);
+				trace("TipocategoriaVO(data).tipocategoria: " + TipocategoriaVO(data).tipocategoria);
+				if(txtTMP.text != "" && txtTMP.text != TipocategoriaVO(data).tipocategoria){
+					eventTipocategoria = new CRUDEvent(CRUDEvent.TIPOCATEGORIA_UPDATE);
+					eventTipocategoria.tipocategoriaVO = TipocategoriaVO(data);
+					eventTipocategoria.tipocategoriaVO.tipocategoria = txtTMP.text;
+					trace(eventTipocategoria.tipocategoriaVO);
+					
+					dispatchEvent(eventTipocategoria);
+					flagEditText = false;	
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="middle"/>
+	</s:layout>
+	<s:HGroup width="100%" verticalAlign="middle" paddingRight="5" paddingLeft="2" paddingBottom="2" paddingTop="2">
+		<s:TextInput  
+			id="txtTMP" 
+			skinClass="com.actioninteractive.nok.skins.TextInputLine0Skin" 
+		    editable="{flagEditText}" 
+			text="{data.tipocategoria}" 
+			width="100%" 
+			enter="txtTMP_enterHandler(event)"/>
+		<!--s:Button 
+			skinClass="com.actioninteractive.nok.skins.ButtonAddList" 
+			click="getListTipocategorias()"/-->
+		
+	</s:HGroup>
+	
+	
+</s:ItemRenderer>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spark:AccordionHeaderSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+						   xmlns:s="library://ns.adobe.com/flex/spark" 
+						   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:spark="mx.skins.spark.*" minWidth="16" minHeight="16">
+	<spark:states>
+		<s:State name="disabled"/>
+		<s:State name="up"/>
+		<s:State name="down"/>
+		<s:State name="over"/>
+		<s:State name="selectedUp"/>
+		<s:State name="selectedOver"/>
+	</spark:states>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<!-- host component -->
+	<!-- states -->
+	
+	<!-- layer 2: fill -->
+	<!--- @private -->
+	<s:Rect id="fill" left="1" right="1" top="1" bottom="1" height="28"
+			>
+		<s:fill>
+			<s:SolidColor color="0x151D29" 
+						  color.selectedOver="0x314563" 
+						  color.selectedUp="0x4E7FE0"
+						  color.down="0x151D15" 
+						  alpha.over="0.80"
+						  />
+		</s:fill>
+	</s:Rect>
+	
+	
+	<!-- layer 7: border - put on top of the fill so it doesn't disappear when scale is less than 1 -->
+	<!--- @private -->
+	<s:Rect id="border" left="0" right="0" top="0" bottom="0" width="69"
+			height="28" radiusX="0">
+		<s:stroke>
+			<s:LinearGradientStroke rotation="90" weight="1">
+				<s:GradientEntry color="0x151D29"
+								 color.selectedOver="0x314563"
+								 alpha="0.5625"
+								 alpha.down="0.6375"
+								 />
+				<s:GradientEntry color="0x151D29" 
+								 alpha="0.75" 
+								 alpha.down="0.85"
+								 />
+			</s:LinearGradientStroke>
+		</s:stroke>
+	</s:Rect>
+</spark:AccordionHeaderSkin>

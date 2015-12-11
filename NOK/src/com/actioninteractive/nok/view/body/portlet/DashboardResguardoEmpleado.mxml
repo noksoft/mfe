@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<portlet:Portlet xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				 xmlns:s="library://ns.adobe.com/flex/spark" 
+				 xmlns:mx="library://ns.adobe.com/flex/mx" 
+				 xmlns:portlet="com.actioninteractive.nok.view.body.portlet.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.actioninteractive.nok.view.AssetManager;
+			import com.actioninteractive.nok.view.AssetManagerIn;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]private var txtEmpleadoSelected:String = "";
+			[Bindable]private var txtInsumos:String = "insumos asignados";
+			[Bindable]private var numInsumos:int = 0;
+			
+			[Bindable]private var collectionPersonal:ArrayCollection = new ArrayCollection([{name:"Personal 1"}, {name:"Personal 2"}, {name:"Personal 3"}, {name:"Personal 4"}]);
+			[Bindable]private var collectionInsumo:ArrayCollection = new ArrayCollection([{name:"Insumo 1"}, {name:"Insumo 2"}, {name:"Insumo 3"}, {name:"Insumo 4"}, {name:"Insumo 5"}]);
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<portlet:children>
+		
+		<s:SkinnableContainer  width="100%" height="100%" skinClass="com.actioninteractive.nok.skins.PortletInHeaderSkin">
+			<s:layout>
+				<s:BasicLayout/>
+			</s:layout>
+			<!--  ENCABEZADO DEL PANEL   -->
+			<s:Label text="Resguardo por Empleado" x="5" y="10"/>
+			
+			<!--  CONTENEDOR GENERAL     -->
+			<s:SkinnableContainer width="100%" height="100%" x="1" y="6">
+				<s:layout>
+					<s:HorizontalLayout paddingRight="20"/>
+				</s:layout>
+				<s:Group width="100%" height="100%">
+					<!--Contenedor principal-->					
+					<s:layout>
+						<s:HorizontalLayout paddingTop="40"/>
+					</s:layout>
+					<s:Image width="100%" height="100%" source="{AssetManagerIn.testPortletResguardoEmpleado}"/>
+					
+					<s:Group width="100%" height="100%">
+						<s:layout>
+							<s:VerticalLayout/>
+						</s:layout>
+							<s:HGroup width="100%" verticalAlign="middle">
+								<s:Label
+									textAlign="right" width="120" top="4"
+									styleName="subtitule"
+									text="Recursos Disponibles"/>
+								<s:VGroup
+									width="100%" verticalAlign="middle">
+									<s:HGroup
+										width="100%" verticalAlign="middle">
+										<s:Label
+											textAlign="right" width="120" top="4"
+											text="Personal:"/>
+								<!--		<s:TextInput
+											width="300"
+											id="txtPersonal"/>-->
+										<s:DropDownList
+											width="100%"
+											id="listPersonal"
+											dataProvider="{collectionPersonal}"
+											labelField="name"
+											prompt="Selecciona un empleado"/>
+									</s:HGroup>
+									<s:HGroup
+										width="100%" verticalAlign="middle">
+										<s:Label
+											textAlign="right" width="120" top="4"
+											text="Insumo:"/>
+										<!--	<s:TextInput
+										width="300"
+										id="txtInsumo"/>-->
+										<s:DropDownList
+											id="listInsumos"
+											width="100%"
+											dataProvider="{collectionInsumo}"
+											labelField="name"
+											prompt="Selecciona un insumo"/>
+									</s:HGroup>
+									<s:HGroup
+										width="100%"
+										verticalAlign="middle">
+										<s:Label
+											textAlign="right" width="120" top="4"
+											text="Fecha Asignación: "/>
+										<mx:DateChooser
+											headerStyleName="dateChooserHeader"
+											styleName="dateChooser"
+											id="dateAsignacion"/>
+									</s:HGroup>
+									<s:HGroup
+										width="100%"
+										verticalAlign="middle">
+										<s:Label
+											textAlign="right" width="120" top="4"
+											text="Comentarios"/>
+										<s:TextArea
+											width="300" height="100"/>								
+									</s:HGroup>
+								</s:VGroup>	
+							</s:HGroup>
+							
+							
+							<s:HGroup
+								width="100%"
+								verticalAlign="middle">
+								<s:Button
+									id="btnAgregar"/>
+							</s:HGroup>
+							<s:VGroup
+								width="100%" verticalAlign="middle">
+									<s:HGroup
+										width="100%" verticalAlign="middle">
+											<s:Label
+												textAlign="right" width="120" top="4"
+												id="lblEmpleadoSelected"
+												text="{txtEmpleadoSelected}"/>
+											<s:Label
+												textAlign="right" width="120" top="4"
+												id="lblInsumos"
+												text="{numInsumos + txtInsumos}"/>
+									</s:HGroup>
+									<s:HGroup
+										width="100%">
+											<s:DataGrid
+												id="dtgInsumosEmpleado"
+												width="100%" height="100%">
+											</s:DataGrid>
+											<s:Button
+												id="btnImprimir"
+												label="Imprimir"/>										
+									</s:HGroup>
+							</s:VGroup>
+					</s:Group>
+				</s:Group>
+			</s:SkinnableContainer>
+			
+			
+		</s:SkinnableContainer>
+		
+	</portlet:children>
+</portlet:Portlet>

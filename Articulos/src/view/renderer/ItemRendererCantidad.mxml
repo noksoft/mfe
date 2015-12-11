@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:GridItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					xmlns:mx="library://ns.adobe.com/flex/mx" clipAndEnableScrolling="true">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			private const COLOR_RED:uint = 0xD90000;
+			private const COLOR_GREEN:uint = 0x00C907;
+			[Bindable]
+			private var colorCantidad:uint = 0x000000;
+			
+			override public function prepare(hasBeenRecycled:Boolean):void {
+				trace(data);
+				if(data != null){
+					if(data.hasOwnProperty("stockMin")
+						&& data.hasOwnProperty("cantidad")){
+						var _stockMinimo:int = data.stockMin;
+						var _cantidad:int = data.cantidad;
+						
+						if(_cantidad <= _stockMinimo){
+							colorCantidad = COLOR_RED;
+						}else{
+							colorCantidad = COLOR_GREEN;
+						}
+						
+					}
+				lblData.text = data.cantidad;
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Label 
+		id="lblData"
+		fontSize="12"
+		fontWeight="bold"
+		color="{colorCantidad}"
+		top="9" 
+		left="7"/>
+	
+</s:GridItemRenderer>

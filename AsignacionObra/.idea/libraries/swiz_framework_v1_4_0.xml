@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swiz-framework-v1.4.0" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/swiz-framework-v1.4.0.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

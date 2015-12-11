@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<header:PortletMenuBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:header="com.actioninteractive.nok.view.header.*" 
+	width="464"
+	clipAndEnableScrolling="true"
+	dragEnter="dragEnterHanlder(event)"
+	dragDrop="dragAcceptedHandler(event)"
+	>
+	<fx:Script>
+		<![CDATA[
+			import mx.effects.easing.Exponential;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:Parallel id="showEffect" 
+			duration="500"
+			effectEnd="showPortletEffectEnd()"
+			>
+			
+			<s:Resize 
+				heightTo="52"
+				target="{portletContainer}"
+				/>
+			<s:Move
+				yTo="-1"
+				target="{menuBackground}"
+				/>
+		</s:Parallel>
+		
+		<s:Parallel id="hideEffect" 
+			duration="500" 
+			effectStart="hidePortletEffectEnd()"
+			>
+			
+			<s:Resize 
+				heightTo="27"
+				target="{portletContainer}"
+				/>
+			<s:Move
+				yTo="-27"
+				target="{menuBackground}"
+				/>
+		</s:Parallel>
+		
+		<mx:AnimateProperty id="slidePortlets"
+			target="{portletContainer}"
+			property="horizontalScrollPosition"
+			duration="1000"
+			easingFunction="Exponential.easeOut"
+			fromValue="{currentPortletContainerHScrollPosition}"
+			toValue="{newPortletContainerHScrollPosition}"
+			/>
+	</fx:Declarations>
+	
+	<s:Image id="menuBackground"
+		x="24" y="-27"
+		source="@Embed(source='assets/maqzar_assets.swf', symbol='hd_wrapperGallery')"/>
+	
+	<s:Scroller id="portletScroller"
+		x="49"
+		width="390" height="100%"
+		horizontalScrollPolicy="on" verticalScrollPolicy="off"
+		>
+		<s:HGroup id="portletContainer"
+			x="49"
+			width="390" height="27"
+			verticalAlign="middle"
+			paddingTop="5" paddingBottom="5" 
+			gap="25"
+			>
+			<!--Aqui se agregan los portlets-->
+		</s:HGroup>
+	</s:Scroller>
+	
+	<s:ToggleButton id="portletButton"
+		y="-1"
+		click="showHidePortletMenu()"
+		styleName="portletToggleMenuButton"
+		/>
+	
+	<s:Button id="clickLeft" 
+		x="32" y="18"
+		width="10" height="15"
+		click="updateSlideEffectValues(false)"
+		visible="{showSlideButtons &amp;&amp; showSlideButtonsEnabled}"
+		/>
+	
+	<s:Button id="clickRight" 
+		x="445" y="18"
+		width="10" height="15"
+		click="updateSlideEffectValues(true)"
+		visible="{showSlideButtons &amp;&amp; showSlideButtonsEnabled}"
+		/>
+	
+</header:PortletMenuBase>

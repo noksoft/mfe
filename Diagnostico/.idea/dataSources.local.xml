@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Heroku Maqzar" uuid="1d87cec7-bfd8-43fd-9186-d19b3e7d6df5">
+      <secret-storage>master_key</secret-storage>
+      <user-name>zkriaoigfwylqg</user-name>
+      <schema-pattern>d9hcjiqbhdpe5j.pg_catalog d9hcjiqbhdpe5j.public</schema-pattern>
+      <default-schemas>d9hcjiqbhdpe5j.public</default-schemas>
+    </data-source>
+    <data-source name="Local Maqzar" uuid="b030ca97-c867-4817-a5bf-d9859c78a138">
+      <secret-storage>master_key</secret-storage>
+      <user-name>zkriaoigfwylqg</user-name>
+      <schema-pattern>d9hcjiqbhdpe5j.pg_catalog d9hcjiqbhdpe5j.public</schema-pattern>
+      <default-schemas>d9hcjiqbhdpe5j.public</default-schemas>
+    </data-source>
+  </component>
+</project>

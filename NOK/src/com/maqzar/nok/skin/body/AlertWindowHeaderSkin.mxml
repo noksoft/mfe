@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+* Copyright © 2015 Action IT. ALL RIGHTS RESERVED. 
+* This file contains proprietary and Action IT CONFIDENTIAL Information.
+* Use, disclosure or reproduction is prohibited.
+
+* @filename TitleWindowMediaValueSkin.mxml
+* @created on Enero 2015
+* @author RZS	
+* @version 1.0
+-->
+<degrafa:GraphicBorderSkin
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:degrafa="http://www.degrafa.com/2007" 
+	xmlns:geometry="com.degrafa.geometry.*"
+	>
+	
+	<degrafa:geometry>
+		<degrafa:GeometryComposition >
+			
+			<!--Header-->
+			<degrafa:RoundedRectangleComplex width="{skinWidth}" height="{skinHeight}" topLeftRadius="10" topRightRadius="10">
+				<degrafa:fill>
+					<degrafa:LinearGradientFill angle="90">
+						<degrafa:GradientStop color="0xffffff" />
+						<degrafa:GradientStop color="0xfdfdfd" />
+					</degrafa:LinearGradientFill>
+				</degrafa:fill>
+			</degrafa:RoundedRectangleComplex>
+			
+			<degrafa:Line x="0" x1="{skinWidth}" y="{skinHeight}" y1="{skinHeight}">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xd8d8d8" />
+				</degrafa:stroke>
+			</degrafa:Line>
+			
+			<degrafa:Line x="0" x1="{skinWidth}" y="{skinHeight + 1}" y1="{skinHeight + 1}">
+				<degrafa:stroke>
+					<degrafa:SolidStroke color="0xe5e5e5" />
+				</degrafa:stroke>
+			</degrafa:Line>
+		</degrafa:GeometryComposition>
+	</degrafa:geometry>
+	
+</degrafa:GraphicBorderSkin>

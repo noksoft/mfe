@@ -1,0 +1,217 @@
+
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace header "com.actioninteractive.nok.view.header.*";
+@namespace body "com.actioninteractive.maqzar.view.body.*";
+@namespace component "com.actioninteractive.maqzar.view.body.component.*";
+@namespace view "com.actioninteractive.nok.view.*";
+
+@font-face {
+	fontFamily: MyriadPro;
+	src: url("assets/fonts/MyriadPro-Regular.otf");
+}
+@font-face {
+	fontFamily: MyriadProTooltip;
+	src: url("assets/fonts/MyriadPro-Regular.otf");
+	embedAsCFF:false;
+	
+}
+@font-face {
+	fontFamily: MyriadProBold;
+	src: url("assets/fonts/MyriadPro-BoldCond.otf");
+}
+@font-face { 
+	fontFamily: Helvetica;
+	src: url("assets/fonts/HelveticaNeueLTStd-LtCn.otf");
+}
+@font-face {
+	fontFamily: HelveticaBold;
+	src: url("assets/fonts/HelveticaNeueLTStd-BdCn.otf");
+}
+
+/****	FONTS NOK	*****/
+@font-face
+{
+	fontFamily: InspiraPitch;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: url("assets/fonts/nok/GEINSPIRAPITCH.TTF");
+}
+
+@font-face
+{
+	fontFamily: Inspira;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: url("assets/fonts/nok/GEInspiraReg.TTF");
+}
+
+/**************************/
+
+global
+{
+	focusAlpha: 0;
+	chromeColor: #000000;
+}
+
+s|Application
+{
+	color:#CCCCCC;
+	fontFamily: "MyriadPro";
+}
+
+mx|Alert
+{
+	borderColor: #666666;
+	backgroundColor: #444444;
+	dropShadowVisible: true;
+	chromeColor: #000000;
+	color:#FFFFFF;
+	focusColor:#FFFFFF;
+	cornerRadius: 4;
+	fontFamily: MyriadProTooltip;
+	titleStyleName: alertTitle;
+	messageStyleName: alertMessage;
+}
+
+.alertTitle
+{
+	color: #CCCCCC;
+	fontSize: 12;
+	fontFamily: MyriadProTooltip;
+}
+
+.alertMessage
+{
+	cornerRadius: 4;
+	
+	color: #CCCCCC;
+	fontSize: 12;
+	fontFamily: MyriadProTooltip;
+}
+
+mx|ToolTip
+{
+	backgroundAlpha: 1.0;
+	backgroundColor: #444444;
+	color: #CCCCCC;
+	cornerRadius: 4;
+	fontSize: 12;
+	fontFamily: "MyriadProTooltip";
+}
+
+s|HScrollBar
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.scrollbar.HorizontalScrollSkin");
+}
+
+s|VScrollBar
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.scrollbar.VerticalScrollSkin")
+}
+
+s|TextInput
+{
+	color:#FFFFFF;
+	skinClass:ClassReference("com.actioninteractive.nok.skins.TextInputSkin");
+}
+
+s|Button
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.NormalButtonSkin");
+}
+
+s|Button:up 
+{
+	baseColor: #000000;
+	chromeColor: #000000;
+	fontWeight: normal;
+	color: #FFFFFF;
+}
+s|Button:over 
+{
+	baseColor: #333333;
+	chromeColor: #333333;
+	fontWeight: normal;
+	color: #FFFFFF;
+}
+s|Button:down 
+{
+	baseColor: #222222;
+	chromeColor: #222222;
+	fontWeight: normal;
+	color: #FFFFFF;
+}
+
+mx|Button
+{
+	chromeColor: #000000;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+	focusColor:#FFFFFF;
+}
+
+mx|HRule
+{
+	strokeColor: #1F1F1F;
+	shadowColor: #4D4D4D;
+}
+
+mx|DateField
+{
+	fontFamily: "Verdana";
+	/*	disabledSkin: Embed(source="assets/skins/DateField_disabledSkin.png");
+	downSkin: Embed(source="assets/skins/DateField_downSkin.png");
+	overSkin: Embed(source="assets/skins/DateField_overSkin.png");
+	upSkin: Embed(source="assets/skins/DateField_upSkin.png");*/
+	dateChooserStyleName: dateChooser;
+	textInputStyleName:"dateField";
+	
+	padding-left:6;
+	padding-right:0;
+	
+	background-color:#EFEFEF;
+	color:#F0F0F0;
+}
+
+.roundStyleDateFiled{
+	fontFamily:"Verdana";
+	fontSize:10;
+	cornerRadius: 20;
+	backgroundColor: "0x000000";
+	color: "0x333333";
+}
+
+mx|TextInput.dateField
+{
+	fontFamily:"Verdana";
+	fontSize:10;
+	borderSkin: ClassReference("com.actioninteractive.nok.skins.TextInputDFSkin");
+}
+
+mx|DateChooser
+{
+	color:#000000;
+	fontSize:12;
+	fontFamily: "";
+}
+
+view|Main
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.MainApplicationSkin")
+}
+
+header|Header
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.HeaderSkin");
+}
+
+.portletToggleMenuButton
+{
+	skinClass:ClassReference("com.actioninteractive.nok.skins.PortletMenuToggleButtonSkin")
+}
+
+.subtitule{
+	fontSize:14;
+}

@@ -1,0 +1,178 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace components "us.educative.views.components.*";
+@namespace skins "assets.skins.*";
+
+
+
+@font-face
+{
+	src: url("Roboto/Roboto-Regular.ttf");
+	fontFamily: Roboto;
+	embedAsCFF: true;
+	advancedAntiAliasing: true;
+}
+@font-face
+{
+	src: url("Roboto/Roboto-Bold.ttf");
+	fontFamily: Roboto;
+	fontWeight: bold;
+	embedAsCFF: true;
+}
+@font-face
+{
+	src: url("Roboto/Roboto-italic.ttf");
+	fontFamily: Roboto;
+	fontStyle: italic;
+	embedAsCFF: true;
+}
+
+s|Application
+{
+	
+	backgroundColor: #eaeaea;
+	color: #454545;
+}
+
+s|Panel{
+	dropShadowVisible: false;
+	borderColor: #C7C7C7;
+	chromeColor: #eaeaea;
+	
+	
+}
+s|RadioButton
+{
+	symbolColor: #444444;
+}
+s|Button{
+	fontFamily:"Roboto";
+	skinClass: ClassReference("assets.skins.ButtonEducative");
+	color: #19212d;
+	iconPlacement: left;
+		
+}
+
+.buttonOKError{
+	color: #B30424;
+}
+
+.primaryButton{
+	fontFamily:"Roboto";
+	skinClass: ClassReference("assets.skins.ButtonPrimaryEducative");
+	iconPlacement: left;
+	fontWeight:bold;
+}
+s|TextInput{
+	borderColor: #cccccc;
+	chromeColor: #cccccc;
+	focusColor: #507ce7;
+	fontFamily: "Roboto";
+	skinClass: ClassReference("assets.skins.TextInputEducative");	
+}
+
+
+s|Label
+{
+	fontFamily:"Roboto";
+	
+}
+mx|DateField{
+  	skin: Embed("assets/icons/calendar.png");
+	upSkin: ClassReference(null);
+	overSkin: ClassReference(null);
+	downSkin: ClassReference(null);
+	disabledSkin: ClassReference(null);
+}
+.dateFieldRounded
+{
+	corner-radius: 10;
+	borderStyle: solid;
+	
+	borderSkin: ClassReference("assets.skins.DateFielEducative");	
+}
+s|TextArea{
+	borderColor: #cccccc;
+	chromeColor: #cccccc;
+	focusColor: #507ce7;
+	fontFamily: "Roboto";
+	skinClass:ClassReference("assets.skins.TextAreaEducative");
+	
+}
+s|ButtonBar
+{
+	skinClass:ClassReference("assets.skins.ButtonBarEducative");
+	color: #1f273b;
+	fontFamily: "Roboto";
+}
+s|DropDownList
+{
+	skinClass:ClassReference("assets.skins.ddl.DropDownListEducative");
+	borderColor: #cccccc;
+}
+
+s|ComboBox
+{
+	skinClass:ClassReference("assets.skins.ddl.DropDownListEducative");
+	borderColor: #cccccc;
+}
+
+s|DataGrid{
+	skinClass:ClassReference("assets.skins.DataGridEducative");
+}
+s|NumericStepper{
+	borderColor: #cccccc;
+	focusColor: #507ce7;
+	chromeColor: #cccccc;
+	fontFamily: "Roboto";
+	skinClass:ClassReference("assets.skins.numeric.NumericEducative");
+}
+s|CheckBox
+{
+	focusColor: #507ce7;
+	chromeColor: #efc549;
+	skinClass:ClassReference("assets.skins.CheckBoxEducative");
+	fontFamily: "Roboto";
+}
+.acordion{
+	
+	color: #ffffff;
+	skin:ClassReference("assets.skins.AccordionEducativeSkin");
+	textRollOverColor: #ffffff;
+	
+	
+}
+skins|AccordionEducativeSkin{
+	fontFamily: "Roboto";
+}
+mx|Accordion
+{
+	headerStyleName: acordion;	
+	borderColor: #cccccc;
+}
+
+mx|TabNavigator{
+	borderColor: #cccccc;
+	tabStyleName: "myTabButton";
+}
+
+.myTabButton{
+	skinClass: ClassReference("assets.skins.ButtonEducative");
+}
+
+.listMenu
+{
+	skinClass:ClassReference("assets.skins.ListEducative");
+	borderAlpha: 0 ;
+	color: #ffffff;
+	fontFamily: "Roboto";
+}
+
+s|TitleWindow
+{
+	dropShadowVisible: false;
+	borderColor: #C7C7C7;
+	chromeColor: #eaeaea;
+}
+
