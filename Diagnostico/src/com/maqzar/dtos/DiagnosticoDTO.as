@@ -22,6 +22,7 @@ public class DiagnosticoDTO {
         private var _tipo_empleado:String;
         private var _telefono:String;
         private var _celular:String;
+    private var _estatus:String;
 
     public function DiagnosticoDTO() {
         id_t_diagnostico="";
@@ -151,6 +152,14 @@ public class DiagnosticoDTO {
 
     public function set celular(value:String):void {
         _celular = value;
+    }
+
+    public function get estatus():String {
+        return _estatus;
+    }
+
+    public function set estatus(value:String):void {
+        _estatus = value;
     }
 }
 }

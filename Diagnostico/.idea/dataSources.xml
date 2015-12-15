@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2461154596">
+  <component name="DataSourceManagerImpl" format="xml" hash="2820206668">
     <data-source source="LOCAL" name="Heroku Maqzar" uuid="1d87cec7-bfd8-43fd-9186-d19b3e7d6df5">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

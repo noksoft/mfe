@@ -1,0 +1,6 @@
+*.log
+.project
+.metadata
+.settings/
+.loadpath
+.idea/

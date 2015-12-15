@@ -39,6 +39,9 @@
         [Bindable]
         public var acDiagnosticoDetalle:ArrayCollection;
 
+        [Bindable]
+        public var acEstatus:ArrayCollection = new ArrayCollection([{label: "INCOMPLETO",data: "I"},{label:"COMPLETO", data:"C"}]);
+
 
         protected var itemSelected:DiagnosticoDTO = new DiagnosticoDTO();
         private var arrayValidationResult:Array;
@@ -50,7 +53,8 @@
         }
 
         public function getDiagnosticoEquiporesult(event:ResultEvent):void {
-
+            acDiagnostico = event.result as ArrayCollection;
+            trace(acDiagnostico.length);
         }
 
         private function diagnosticoFault(event:FaultEvent):void {
@@ -63,7 +67,10 @@
         }
 
         private function insertDiagnosticoEquiporesult(event:ResultEvent):void {
-
+            if(event.result == true){
+                Alert.show("El registro se agrego correctamente");
+                //limpiamos cajas
+            }
         }
 
         private function updateDiagnosticoEquiporesult(event:ResultEvent):void {
@@ -77,18 +84,11 @@
         //inicializacion
         protected function initcreationCompleteHandler(event:FlexEvent):void {
             var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
-            var diagnosticoDetalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
             var infoEquipo:EquipoVO = new EquipoVO();
-            //var infoObra:ObraVO = new ObraVO();
-            //var subFalla:SubFallaDTO = new SubFallaDTO();
             var subCategoria:SubCategoriaDTO = new SubCategoriaDTO();
-            trace(subCategoria);
-            trace(infoEquipo);
             roEquipo.infoEquipo(infoEquipo);
             roCategoria.catSubcategoria(subCategoria);
             roDiagnostico.getDiagnosticos(diagnosticoEquipo);
-            trace(diagnosticoDetalle);
-            roDiagnosticoDetalle.getDiagnosticoDetalle(diagnosticoDetalle);
         }
 
         private function validateAllInputs():void {
@@ -125,17 +125,26 @@
         }
 
         public function saveDiagnostico():void {
-            if (itemSelected == null) {
-                Alert.show("No hay un elemento seleccionado")
-            }
-            else {
-                updateItemSelected();
-                trace(itemSelected.id_equipo);
-                roDiagnostico.insertDiagnostico(itemSelected);
-            }
+            var diagnostico:DiagnosticoDTO = new DiagnosticoDTO();
+            diagnostico.id_equipo = EquipoVO(autoEquipo.selectedItem).id_equipo;
+            diagnostico.fecha_diagnostico = fechaDiagnostico.text;
+            diagnostico.estatus = ddlEstatus.selectedItem.data;
+            roDiagnostico.insertDiagnostico(diagnostico);
+//            if (itemSelected == null) {
+//                Alert.show("No hay un elemento seleccionado")
+//            }
+//            else {
+//                updateItemSelected();
+//                trace(itemSelected.id_equipo);
+//                roDiagnostico.insertDiagnostico(itemSelected);
+//            }
         }
 
-        //private function clean
+        private function clean(){
+            autoEquipo.selectedItem = null;
+            fechaDiagnostico.text = "";
+            ddlEstatus.selectedIndex = -1;
+        }
 
         private function updateItemSelected():void {
             if (autoEquipo.selectedItem != null) {
@@ -290,11 +299,11 @@
                         dataProvider="{acDiagnostico}">
                 <s:columns>
                     <s:ArrayList>
-                        <s:GridColumn dataField="id_t_diagnostico" headerText="FOLIO" width="50"></s:GridColumn>
-                        <s:GridColumn dataField="numeroeconomico" headerText="Maquinaria"></s:GridColumn>
-                        <s:GridColumn dataField="fecha_diagnostico" headerText="Fecha de diagnostico"></s:GridColumn>
-                        <s:GridColumn dataField="dataField3" headerText="Estatus"></s:GridColumn>
-                        <s:GridColumn dataField="nombre_empleado" headerText="Reporta"></s:GridColumn>
+                        <s:GridColumn dataField="id_t_diagnostico" headerText="FOLIO" width="50"/>
+                        <s:GridColumn dataField="numeroeconomico" headerText="Maquinaria"/>
+                        <s:GridColumn dataField="fecha_diagnostico" headerText="Fecha de diagnostico"/>
+                        <s:GridColumn dataField="dataField3" headerText="Estatus"/>
+                        <s:GridColumn dataField="nombre_empleado" headerText="Reporta"/>
                     </s:ArrayList>
                 </s:columns>
             </s:DataGrid>
@@ -320,10 +329,11 @@
             </s:HGroup>
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Estatus" width="120" textAlign="right"/>
-                <s:RadioButton id="rbFalla" selected="true" label="FALLA" value="FALLA" group="{estatusButtonGroup}"/>
-                <s:RadioButton id="rbCorrecto" label="CORRECTO" value="CORRRECTO" group="{estatusButtonGroup}"/>
-                <s:RadioButton id="rbIncompleto" label="INCOMPLETO" value="INCOMPLETO" group="{estatusButtonGroup}"/>
-                <s:RadioButton id="rbCompleto" label="COMPLETO" value="COMPLETO" group="{estatusButtonGroup}"/>
+                <s:DropDownList id="ddlEstatus" dataProvider="{acEstatus}" labelField="label" prompt="Selecciona un estatus" width="100%"/>
+                <!--<s:RadioButton id="rbFalla" selected="true" label="FALLA" value="FALLA" group="{estatusButtonGroup}"/>-->
+                <!--<s:RadioButton id="rbCorrecto" label="CORRECTO" value="CORRRECTO" group="{estatusButtonGroup}"/>-->
+                <!--<s:RadioButton id="rbIncompleto" label="INCOMPLETO" value="INCOMPLETO" group="{estatusButtonGroup}"/>-->
+                <!--<s:RadioButton id="rbCompleto" label="COMPLETO" value="COMPLETO" group="{estatusButtonGroup}"/>-->
             </s:HGroup>
             <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
                 <s:Button label="Nuevo Diagnostico"/>
