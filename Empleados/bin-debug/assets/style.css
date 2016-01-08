@@ -22,7 +22,7 @@
 }
 @font-face
 {
-	src: url("Roboto/Roboto-Italic.ttf");
+	src: url("Roboto/Roboto-italic.ttf");
 	fontFamily: Roboto;
 	fontStyle: italic;
 	embedAsCFF: true;
@@ -79,7 +79,7 @@ s|Label
 	
 }
 mx|DateField{
-  	skin: Embed("/assets/icons/calendar.png");
+  	skin: Embed("assets/icons/calendar.png");
 	upSkin: ClassReference(null);
 	overSkin: ClassReference(null);
 	downSkin: ClassReference(null);
@@ -174,11 +174,5 @@ s|TitleWindow
 	dropShadowVisible: false;
 	borderColor: #C7C7C7;
 	chromeColor: #eaeaea;
-}
-
-.textInputWithout{
-	borderColor: #000000;
-	borderVisible: false;
-	borderAlpha: 0;
 }
 

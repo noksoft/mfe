@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component:ComponentSolicitudBase 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:component="view.component.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Nombre Solicitud"
+			textAlign="right" width="120"/>
+		<s:TextInput
+			id="txtNomSolicitud"
+			width="100%"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Empleado Requisición"
+			textAlign="right" width="120"/>
+		<components:AutoComplete
+			id="autocompleteEmpleadoRequisicion"
+			width="100%"
+			dataProvider="{acEmpleadosRequisicion}"
+			toolTip="Ingresa el nombre del Empleado Requisición"
+			prompt="Empleado Requisición"
+			labelFunction="labelFunctionNombre"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Artículo"
+			textAlign="right" width="120"/>
+		<components:AutoComplete
+			id="autocompleteArticulo"
+			width="100%"
+			dataProvider="{acArticulos}"
+			toolTip="Ingresa el nombre del Artículo"
+			prompt="Artículo"
+			labelFunction="labelFunctionMarcaArticulo"/>
+		<s:Label
+			text="Cantidad"
+			textAlign="right" width="120"/>
+		<s:TextInput
+			id="txtCantidad"
+			width="80"
+			restrict="0-9"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Falla"
+			textAlign="right" width="120"/>
+		<components:AutoComplete
+			id="autocompleteFalla"
+			width="100%"
+			dataProvider="{acFallasEquipo}"
+			toolTip="Ingresa la Falla"
+			prompt="Falla"
+			labelField="descripcion"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Fecha Solicitud"
+			textAlign="right" width="120"/>
+		<mx:DateField
+			id="fechaRequisicion"
+			width="100%"
+			buttonMode="true" useHandCursor="true"/>
+	</s:HGroup>
+	<s:HGroup
+		width="100%" height="100%">
+		<s:Label
+			text="Observaciones"
+			textAlign="right" width="120"/>
+		<s:TextArea
+			id="txtObservaciones"
+			width="100%"/>
+	</s:HGroup>
+	<mx:ControlBar horizontalAlign="right"
+				   width="100%">
+		<s:Button 
+			label="Limpiar" 
+			icon="@Embed(source='assets/icons/cancel.png')"
+			useHandCursor="true"
+			buttonMode="true"
+			click="clearFormulario()"/>
+		<s:Button 
+			id="guardarButton" 
+			label="{solicitudModel.titleFormulario}" 
+			icon="@Embed(source='assets/icons/add.png'" 
+			styleName="primaryButton"
+			useHandCursor="true"
+			buttonMode="true"
+			click="saveSolicitud()"/>
+		<s:Button
+			id="btnDelete"
+			label="Borrar"
+			icon="@Embed(source='assets/icons/delete.png')"
+			useHandCursor="true"
+			buttonMode="true"
+			click="deleteSolicitud()"/>
+	</mx:ControlBar>
+</component:ComponentSolicitudBase>
