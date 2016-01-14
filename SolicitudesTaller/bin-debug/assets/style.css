@@ -22,7 +22,11 @@
 }
 @font-face
 {
+<<<<<<< HEAD
 	src: url("Roboto/Roboto-italic.ttf");
+=======
+	src: url("Roboto/Roboto-Italic.ttf");
+>>>>>>> 54d59fbfa61161df7605b69e4fb7d29003a28f15
 	fontFamily: Roboto;
 	fontStyle: italic;
 	embedAsCFF: true;
@@ -79,7 +83,11 @@ s|Label
 	
 }
 mx|DateField{
+<<<<<<< HEAD
   	skin: Embed("assets/icons/calendar.png");
+=======
+  	skin: Embed("/assets/icons/calendar.png");
+>>>>>>> 54d59fbfa61161df7605b69e4fb7d29003a28f15
 	upSkin: ClassReference(null);
 	overSkin: ClassReference(null);
 	downSkin: ClassReference(null);

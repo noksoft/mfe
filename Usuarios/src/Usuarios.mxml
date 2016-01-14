@@ -8,22 +8,22 @@
 	xmlns:swiz="http://swiz.swizframework.org" 
 	xmlns:bean="bean.*"
 	xmlns:view="view.*" >
-	<fx:Style source="assets/style.css"/>
+	<fx:Style source="/assets/style.css"/>
 	<fx:Declarations>
 		<swiz:Swiz>
 			<swiz:beanProviders>
 				<bean:Beans/>
 			</swiz:beanProviders>
 			<swiz:config>
-				<swiz:SwizConfig 
-					eventPackages="event.*"
-					viewPackages="view.*"/>
+				<swiz:SwizConfig
+						eventPackages="event.*"
+						viewPackages="view.*"/>
 			</swiz:config>
 		</swiz:Swiz>
 	</fx:Declarations>
 	<s:layout>
 		<s:VerticalLayout/>
 	</s:layout>
-	<view:SolicitudView
+	<view:UsuarioView
 		width="100%" height="100%"/>
 </s:Application>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				creationComplete="init()"
+				autoDrawBackground="true"
+				height="100" width="100%"
+				xmlns:components="com.hillelcoren.components.*">
+	<fx:Script>
+		<![CDATA[
+			import model.ProcesoEstatusEnum;
+			import model.SolicitudModel;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			
+			[Inject]
+			[Bindable]
+			public var solicitudModel:SolicitudModel;
+
+			[Bindable]
+			private var acEstatus:ArrayCollection = new ArrayCollection();
+			
+			private function init():void{
+				acEstatus = new ArrayCollection([{estatus:ProcesoEstatusEnum.REQUISICION},{estatus:ProcesoEstatusEnum.ADQUISICION}]);
+				Alert.show("Init Render");
+			}
+			
+			override public function set data(value:Object):void{
+				super.data = value;
+				Alert.show("Set Data");
+			}
+			
+			/**
+			 * Label Function para mostrar la marca y el nombre del Artícuo concatenados
+			 */
+			protected function labelFunctionNombre (item:Object):String{
+				return item.nombre + " " + item.paterno + " " + item.materno;
+			}
+			
+			/**
+			 * Label Function para mostrar la marca y el nombre del Artícuo concatenados
+			 */
+			protected function labelFunctionMarcaArticulo (item:Object):String{
+				return item.marca + " - " + item.descripcion;
+			}
+			
+			/**
+			 * Label Function para mostrar la descripción de la Falla y el Equipo asociado
+			 */
+			protected function labelFunctionFallaEquipo (item:Object):String{
+				return item.nombreequipo + " - " + item.nombreequipo;
+			}
+		]]>
+	</fx:Script>
+	
+	<mx:HBox
+		horizontalScrollPolicy="on"
+		verticalCenter="0" left="2" right="2" top="2" bottom="2">
+		<components:AutoComplete
+			id="autocompleteEmpleadoRequisicion"
+			dataProvider="{solicitudModel.acEmpleadosRequisicion}"
+			toolTip="Ingresa el nombre del Empleado Requisición"
+			prompt="Empleado Requisición"
+			labelFunction="labelFunctionNombre"/>
+		<components:AutoComplete
+			id="autocompleteArticulo"
+			dataProvider="{solicitudModel.acArticulos}"
+			toolTip="Ingresa el nombre del Artículo"
+			prompt="Artículo"
+			labelFunction="labelFunctionMarcaArticulo"/>
+		<s:TextInput
+			id="txtCantidad"
+			restrict="0-9"
+			text="{data.cantidad}"/>
+		<s:TextInput
+			id="txtCostoUnidad"
+			text="{data.costo_unidad}"/>
+		<s:TextInput
+			id="txtCostoTotal"
+			text="{data.costo_total}"/>
+		<s:TextInput
+			id="txtTiempoEntrega"
+			text="{data.tiempo_entrega}"/>
+		<s:DropDownList
+			id="cmbEstatusProceso"
+			dataProvider="{acEstatus}"
+			labelField="estatus"/>
+		<mx:DateField
+			id="fechaRequisicion"
+			buttonMode="true" useHandCursor="true"/>
+		<s:TextArea
+			id="txtObservaciones"
+			text="{data.observaciones}"/>
+		<components:AutoComplete
+			id="autocompleteEmpleadoAdquisicion"
+			dataProvider="{solicitudModel.acEmpleadosAdquisicion}"
+			toolTip="Ingresa el nombre del Empleado Adquisición"
+			prompt="Empleado Adquisición"
+			labelFunction="labelFunctionNombre"/>
+		<mx:DateField
+			id="fechaAdquisicion"
+			buttonMode="true" useHandCursor="true"/>
+		<components:AutoComplete
+			id="autocompleteFalla"
+			dataProvider="{solicitudModel.acFallas}"
+			toolTip="Ingresa la Falla"
+			prompt="Falla"
+			labelFunction="labelFunctionFallaEquipo"/>
+	</mx:HBox>
+</s:ItemRenderer>

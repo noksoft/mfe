@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view:UsuarioViewBase xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark" 
+					  xmlns:mx="library://ns.adobe.com/flex/mx"
+					  xmlns:components="com.hillelcoren.components.*"
+					  xmlns:view="view.*">
+    <fx:Declarations>
+        <mx:NumberValidator
+                id="validatorEmpleado"
+                source="{autocompleteEmpleado}"
+                property="selectedIndex"
+                minValue="0"
+                lowerThanMinError="Debes Seleccionar un Empleado"
+                valid="validEmpleado(event)"
+                invalid="invalidEmpleado(event)"/>
+        <mx:NumberValidator
+                id="validatorPerfil"
+                source="{cmbPerfiles}"
+                property="selectedIndex"
+                minValue="0"
+                lowerThanMinError="Debes Seleccionar un Perfil"
+                valid="validPerfil(event)"
+                invalid="invalidPerfil(event)"/>
+        <mx:StringValidator
+                id="validatorPassword"
+                source="{txtPassword}"
+                property="text"
+                required="true"
+                requiredFieldError="Debes ingresar un password"/>
+        <mx:StringValidator
+                id="validatorPasswordRep"
+                source="{txtPasswordRep}"
+                property="text"
+                required="true"
+                requiredFieldError="Debes ingresar un password y debe coincidir con el anterior"/>
+    </fx:Declarations>
+	<s:Panel
+		width="100%" height="100%"
+		title="Usuarios">
+		<s:layout>
+			<s:HorizontalLayout
+				gap="0"
+				paddingBottom="10" paddingLeft="10"
+				paddingRight="10" paddingTop="10"/>
+		</s:layout>
+		<s:VGroup
+			width="100%" height="100%"
+			gap="0">
+			<s:HGroup
+				width="100%" height="80">
+				<components:AutoComplete
+					id="autocompleteUsuarios"
+					height="30"
+					styleName="textInputWithout"
+					dataProvider="{usuarioModel.acUsuarios}"
+					toolTip="Ingresa el nombre del Usuario"
+					prompt="Ingresa el nombre del Usuario"
+					labelField="nombre"
+					width="100%"/>
+			</s:HGroup>
+			
+			<s:DataGrid
+				id="dataGridUsuarios"
+				width="100%" height="100%"
+				dataProvider="{usuarioModel.acUsuarios}"
+				doubleClickEnabled="true"
+				doubleClick="usuarioSelected(event)">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn headerText="Nombre"				width="90"	dataField="nombre"/>
+						<s:GridColumn headerText="Apeido Paterno" 		width="90"	dataField="paterno"/>
+						<s:GridColumn headerText="Apeido Materno" 		width="90"	dataField="materno"/>
+						<s:GridColumn headerText="RFC" 					width="90"	dataField="rfcUsuario"/>
+						<s:GridColumn headerText="Perfil" 				width="120"	dataField="perfil"/>
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+		</s:VGroup>
+		<s:VGroup
+			width="100%" height="100%"
+			gap="0"
+            paddingTop="80">
+			<s:HGroup
+				width="100%" height="100%"
+                paddingLeft="5">
+				<s:Label
+					text="Empleado:"
+					textAlign="left" width="120"/>
+				<s:DropDownList
+					id="autocompleteEmpleado"
+                    useHandCursor="true"
+                    buttonMode="true"
+					width="100%"
+					dataProvider="{usuarioModel.acEmpleados}"
+					toolTip="Ingresa el nombre del Empleado"
+					prompt="- Empleado -"
+                    change="selectedEmpleado()"
+					labelFunction="labelFunctionNombre"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+                paddingLeft="5">
+				<s:Label
+					text="Password:"
+					textAlign="left" width="120"/>
+				<s:TextInput
+					id="txtPassword"
+					focusOut="validPassword()"
+					width="100%"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+                paddingLeft="5">
+				<s:Label
+					text="Repite el Password:"
+					textAlign="left" width="120"/>
+				<s:TextInput
+					id="txtPasswordRep"
+					change="validPassword()"
+					focusIn="validPassword()"
+					width="100%"/>
+			</s:HGroup>
+			<s:HGroup
+				width="100%" height="100%"
+                paddingLeft="5">
+				<s:Label
+					text="Perfil:"
+					textAlign="left" width="120"/>
+				<s:DropDownList
+					id="cmbPerfiles"
+                    useHandCursor="true"
+                    buttonMode="true"
+					width="100%"
+					dataProvider="{usuarioModel.acPerfiles}"
+					prompt="- Perfil -"
+					labelField="descripcion"/>
+			</s:HGroup>
+			<mx:ControlBar
+                    horizontalAlign="right"
+					height="120" width="100%"
+                    verticalAlign="bottom">
+				<!--suppress CheckTagEmptyBody -->
+                <s:Button
+					label="Limpiar" 
+					icon="@Embed(source='/assets/icons/cancel.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					width="100"
+					click="clearFormulario()"></s:Button>
+				<s:Button 
+					id="guardarButton" 
+					label="{usuarioModel.titleFormulario}" 
+					icon="@Embed(source='/assets/icons/add.png')"
+                    width="100"
+					styleName="primaryButton"
+					useHandCursor="true"
+					buttonMode="true"
+					click="saveUsuario()"/>
+				<s:Button
+					id="btnDelete"
+					label="Borrar"
+					width="100"
+					icon="@Embed(source='/assets/icons/delete.png')"
+					useHandCursor="true"
+					buttonMode="true"
+					click="deleteUsuario()"/>
+			</mx:ControlBar>
+		</s:VGroup>
+	</s:Panel>
+</view:UsuarioViewBase>
