@@ -2,16 +2,153 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15bbbe78-d47b-407b-99a2-0cee669e5ae1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/playerProductInstall.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/framework_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/mx_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/rpc_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/spark_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/sparkskins_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/textLayout_2.0.0.232.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Black.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-BlackItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Bold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-BoldItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Italic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Light.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-LightItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Medium.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-MediumItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-Thin.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/Roboto-ThinItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/application_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/application_form_edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/arrow_refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/calendar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/camera.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/ic_assignment_return_grey600_18dp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/login.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/money_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/people.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/icons/printer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/framework_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/mx_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/rpc_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/spark_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/sparkskins_4.6.0.23201.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin-debug/textLayout_2.0.0.232.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/history/history.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/history/history.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/history/historyFrame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/swfobject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/Roboto/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/assets/style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/AsignacionVO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/EmpleadoAsignadoVO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/EmpleadoDisponibleVO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/EquiposAsignadosObraVO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/ObraVO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/SubFallaDTO.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/events/AsignacionEvent.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/events/ObraEvent.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/models/AsignacionModel.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/models/DiagnosticoModel.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/services/AsignacionService.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/services/DiagnosticoServices.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/views/Asignacion.mxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/views/AsignacionBase.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Proveedores/.idea/vcs.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.swf" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.swf" afterPath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.swf" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.swf" afterPath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.swf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Diagnostico.swf" afterPath="$PROJECT_DIR$/bin-debug/Diagnostico.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.swf" afterPath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.swf" afterPath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.swf" afterPath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/bin-debug/Obras.swf" afterPath="$PROJECT_DIR$/../Obras/bin-debug/Obras.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.swf" afterPath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.swf" afterPath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.swf" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.swf" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.swf" afterPath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/AltaFalla.iml" afterPath="$PROJECT_DIR$/../AltaFalla/AltaFalla.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.html" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/src/NokConstants.as" afterPath="$PROJECT_DIR$/../AltaFalla/src/NokConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.html" afterPath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Articulos/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/view/ArticuloView.mxml" afterPath="$PROJECT_DIR$/../Articulos/src/view/ArticuloView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/view/ArticuloViewBase.as" afterPath="$PROJECT_DIR$/../Articulos/src/view/ArticuloViewBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/../AsignacionObra/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AsignacionObra/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.html" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/src/com/maqzar/constant/NOKConstants.as" afterPath="$PROJECT_DIR$/../AsignacionObra/src/com/maqzar/constant/NOKConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/.actionScriptProperties" afterPath="$PROJECT_DIR$/../Categorias/.actionScriptProperties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Categorias/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/.project" afterPath="$PROJECT_DIR$/../Categorias/.project" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Categorias/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/CategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/CategoriaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/MarcaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/MarcaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/SubCategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/SubCategoriaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/SubMarcaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/SubMarcaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/TipoCategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/TipoCategoriaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.html" afterPath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/NokConstants.as" afterPath="$PROJECT_DIR$/../Clientes/src/NokConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Clientes/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Diagnostico.mxml" afterPath="$PROJECT_DIR$/src/Diagnostico.mxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" afterPath="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as" afterPath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/services/AsignacionService.as" afterPath="$PROJECT_DIR$/src/com/maqzar/services/AsignacionService.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/services/DiagnosticoServices.as" afterPath="$PROJECT_DIR$/src/com/maqzar/services/DiagnosticoServices.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" afterPath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as" afterPath="$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.html" afterPath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Empleados/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/src/view/EmpleadoView.mxml" afterPath="$PROJECT_DIR$/../Empleados/src/view/EmpleadoView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.html" afterPath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/assets/style.css" afterPath="$PROJECT_DIR$/../Equipo/src/assets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Equipo/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanico.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanico.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanicoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanicoBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopografico.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopografico.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopograficoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopograficoBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesado.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesado.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesadoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesadoBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigero.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigero.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigeroBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigeroBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesado.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesado.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesadoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesadoBase.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.html" afterPath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Fallas/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/src/view/FallaView.mxml" afterPath="$PROJECT_DIR$/../Fallas/src/view/FallaView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Obras/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/bin-debug/Obras.html" afterPath="$PROJECT_DIR$/../Obras/bin-debug/Obras.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/src/NokConstants.as" afterPath="$PROJECT_DIR$/../Obras/src/NokConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Obras/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Proveedores/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.html" afterPath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/assets/style.css" afterPath="$PROJECT_DIR$/../Proveedores/src/assets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Proveedores/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/view/ProveedorView.mxml" afterPath="$PROJECT_DIR$/../Proveedores/src/view/ProveedorView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Requisiciones/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../Requisiciones/src/constants/NOKConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Requisiciones/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Requisiciones/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.html" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/src/constants/NOKConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/src/view/SolicitudView.mxml" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/src/view/SolicitudView.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesOficina/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesOficina/src/constants/NOKConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesOficina/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesOficina/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/constants/NOKConstants.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/utils/EnvironmentUtil.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/view/SolicitudView.mxml" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/view/SolicitudView.mxml" />
     </list>
     <ignored path="Diagnostico.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,90 +226,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DiagnosticoEvent.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NOKConstants.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="76" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Diagnostico.mxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Diagnostico.mxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38977072">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding>
-                <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-                <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-                <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-                <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+                <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+                <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+                <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+                <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+                <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsignacionBase.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/AsignacionBase.as">
+      <file leaf-file-name="SubCategoriaDTO.as" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b030ca97-c867-4817-a5bf-d9859c78a138/console.sql">
+      <file leaf-file-name="NOKConstants.as" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8">
-              <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.17877094">
+              <caret line="10" column="90" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -181,9 +305,11 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="29" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <marker date="1452724431157" expanded="true" signature="0:35" placeholder="select * fro... t_diagnostico" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,19 +318,19 @@
         <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+              <caret line="7" column="34" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsignacionModel.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/models/AsignacionModel.as">
+      <file leaf-file-name="DiagnosticoDTO.as" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#66#104#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,18 +349,29 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as" />
-        <option value="$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b030ca97-c867-4817-a5bf-d9859c78a138/console.sql" />
         <option value="dbroutine:/f44d1b9a/b030ca97-c867-4817-a5bf-d9859c78a138/d9hcjiqbhdpe5j.public.spr_diagnostico_detalle" />
         <option value="$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as" />
         <option value="$PROJECT_DIR$/src/com/maqzar/services/AsignacionService.as" />
         <option value="$PROJECT_DIR$/src/com/maqzar/services/DiagnosticoServices.as" />
         <option value="$PROJECT_DIR$/src/Base.as" />
-        <option value="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/events/AsignacionEvent.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/events/ObraEvent.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/models/DiagnosticoModel.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/models/AsignacionModel.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/AsignacionBase.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/Asignacion.mxml" />
+        <option value="C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/libs/player/11.1/playerglobal.swc!/library.swf" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as" />
+        <option value="/ECMA Script Level 4 Fragment (Diagnostico.mxml:555).as" />
         <option value="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as" />
+        <option value="dbroutine:/3e4b4e45/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/d9hcjiqbhdpe5j.public.spr_diagnostico_detalle" />
         <option value="$PROJECT_DIR$/src/Diagnostico.mxml" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" />
       </list>
     </option>
   </component>
@@ -351,8 +488,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -402,6 +539,10 @@
               <option name="myItemId" value="maqzar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -421,7 +562,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dtos" />
+              <option name="myItemId" value="constant" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,7 +575,7 @@
     <property name="recentsLimit" value="5" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AltaFalla" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -916,43 +1057,81 @@
       <workItem from="1449805042897" duration="2385000" />
       <workItem from="1449811003037" duration="2014000" />
       <workItem from="1449813056399" duration="2130000" />
-      <workItem from="1450134143664" duration="8923000" />
+      <workItem from="1450134143664" duration="13136000" />
+      <workItem from="1450157479544" duration="3229000" />
+      <workItem from="1450218625616" duration="1897000" />
+      <workItem from="1450232404716" duration="2186000" />
+      <workItem from="1450234835920" duration="9357000" />
+      <workItem from="1450307993704" duration="65000" />
+      <workItem from="1450374349821" duration="30000" />
+      <workItem from="1450740303712" duration="47000" />
+      <workItem from="1450740368551" duration="7424000" />
+      <workItem from="1451789248813" duration="37000" />
+      <workItem from="1452716731220" duration="8058000" />
+      <workItem from="1452725637964" duration="3633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36589000" />
+    <option name="totallyTimeSpent" value="76765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3564464" sideWeight="0.48541668" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1369936" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17697228" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1641791" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21055438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45178765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15458423" sideWeight="0.5039604" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35427952" sideWeight="0.48541668" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33666667" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33586133" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1641791" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21055438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45178765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35427952" sideWeight="0.48541668" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13646056" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33586133" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15458423" sideWeight="0.5039604" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -975,32 +1154,35 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="flex">
           <url>file://$PROJECT_DIR$/src/Diagnostico.mxml</url>
-          <line>73</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/Diagnostico.mxml</url>
-          <line>140</line>
-          <option name="timeStamp" value="5" />
+          <line>94</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="18" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="FlashRunConfigurationType">
+        <watch expression="itemSelected" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b030ca97-c867-4817-a5bf-d9859c78a138/console.sql">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="51" />
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1008,27 +1190,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1452724431157" expanded="true" signature="0:35" placeholder="select * fro... t_diagnostico" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="40" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="40" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding>
+            <marker date="1452724431157" expanded="true" signature="0:35" placeholder="select * fro... t_diagnostico" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbroutine:/3e4b4e45/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/d9hcjiqbhdpe5j.public.spr_diagnostico_detalle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1037,80 +1258,87 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-            <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-            <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b030ca97-c867-4817-a5bf-d9859c78a138/console.sql">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+          <caret line="27" column="40" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="40" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#66#104#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding>
+            <marker date="1452724431157" expanded="true" signature="0:35" placeholder="select * fro... t_diagnostico" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbroutine:/3e4b4e45/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/d9hcjiqbhdpe5j.public.spr_diagnostico_detalle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="149" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1119,40 +1347,389 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-            <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-            <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding>
+            <element signature="e#66#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1161,82 +1738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="51" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1252,73 +1753,52 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-            <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-            <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1327,167 +1807,51 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
           <folding>
-            <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-            <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-            <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/EmpleadoAsignadoVO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/EmpleadoDisponibleVO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/EquiposAsignadosObraVO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/controllers/DiagnosticoController.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.038938053">
-          <caret line="23" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/events/DiagnosticoEvent.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/services/AsignacionService.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11681416">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/services/DiagnosticoServices.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15575221">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/models/DiagnosticoModel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46725664">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/models/AsignacionModel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/DiagnosticoPrincipal.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.923077">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/AsignacionBase.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="76" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1495,77 +1859,207 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b030ca97-c867-4817-a5bf-d9859c78a138/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.8">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-          <folding />
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/utils/NameUtil.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="29" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/core/FlexSprite.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/resources/ResourceManager.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/skins/ddl/DropDownListEducative.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7352941">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/events/FlexEvent.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.319403">
+          <caret line="1449" column="0" selection-start-line="1449" selection-start-column="0" selection-end-line="1449" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/EquipoVO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/collections/ListCollectionView.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33274648">
+          <caret line="84" column="13" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/projects/framework/src/mx/collections/ArrayCollection.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33274648">
+          <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Adobe/Adobe Flash Builder 4.6/sdks/4.6.0/frameworks/libs/player/11.1/playerglobal.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5038023">
+          <caret line="8606" column="17" selection-start-line="8606" selection-start-column="17" selection-end-line="8606" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45936397">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#66#104#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <marker date="1452724431157" expanded="true" signature="0:35" placeholder="select * fro... t_diagnostico" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5.VIEW:d9hcjiqbhdpe5j.public.vw_diagnostico_detalle">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>1d87cec7-bfd8-43fd-9186-d19b3e7d6df5.VIEW:d9hcjiqbhdpe5j.public.vw_diagnostico_detalle</OriginalElement>
+          <nodes>
+            <node x="" y="">1d87cec7-bfd8-43fd-9186-d19b3e7d6df5.VIEW:d9hcjiqbhdpe5j.public.vw_diagnostico_detalle</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="279.0" y="213.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbview:/3e4b4e45/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/d9hcjiqbhdpe5j.public.vw_diagnostico_detalle">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38977072">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
-            <marker date="1450151235215" expanded="true" signature="583:1222" placeholder="..." />
-            <marker date="1450151235215" expanded="true" signature="1852:1943" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2020:2133" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2200:2246" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2320:2365" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2446:2610" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2484:2600" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2691:2703" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2784:2796" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="2900:3270" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3322:3499" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3569:3636" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3715:3727" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3809:3821" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3903:3915" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="3997:4009" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4088:4100" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4145:4157" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4543" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4206:4867" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4545:4857" placeholder="//..." />
-            <marker date="1450151235215" expanded="true" signature="4585:4666" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4686:4857" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="4901:5039" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5092:5975" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5143:5244" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5300:5775" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5407:5641" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="5663:5761" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6031:6268" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6071:6148" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6166:6258" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6385:6570" placeholder="{...}" />
-            <marker date="1450151235215" expanded="true" signature="6641:6715" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="583:1296" placeholder="..." />
+            <marker date="1452720460700" expanded="true" signature="1664:1770" placeholder="[...]" />
+            <marker date="1452720460700" expanded="true" signature="1665:1734" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
+            <marker date="1452720460700" expanded="true" signature="2113:2304" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3436" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2376:3478" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="2749:2828" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3023:3103" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3555:3627" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3694:3811" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="3885:4002" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4083:4641" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4213:4539" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4307:4382" placeholder="//..." />
+            <marker date="1452720460700" expanded="true" signature="4545:4631" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4722:4734" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4815:4827" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="4931:5358" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5410:5587" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5657:5724" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5803:5882" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="5964:6309" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6391:6403" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6485:6497" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6576:6588" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6633:6669" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6718:7200" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="6749:7124" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7130:7189" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7240:7513" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7401:7466" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7566:8449" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7617:7718" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7774:8249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="7881:8115" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8137:8235" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8584:9259" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8624:8701" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="8719:9249" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9376:9561" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9632:9706" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9778:9863" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="9958:10131" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10204:10474" placeholder="{...}" />
+            <marker date="1452720460700" expanded="true" signature="10260:10464" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbroutine:/3e4b4e45/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/d9hcjiqbhdpe5j.public.spr_diagnostico_detalle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7586207">
+          <caret line="4" column="84" selection-start-line="4" selection-start-column="84" selection-end-line="4" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17877094">
+          <caret line="10" column="90" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>

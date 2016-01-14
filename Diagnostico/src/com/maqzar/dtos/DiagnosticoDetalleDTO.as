@@ -7,42 +7,45 @@ package com.maqzar.dtos {
 [RemoteClass(alias="mx.com.nok.equipo.model.dto.DiagnosticoDetalle")]
 public class DiagnosticoDetalleDTO {
 
-        private var _id_t_diagnostico_detalle:String;
-        private var _id_t_diagnostico:String;
-        private var _id_subcategoria:String;
-        private var _comentario:String;
-        private var _id_empleado:String;
-        private var _id_equipo:String;
-        private var _descripcion:String;
-        private var _fecha_diagnostico:String;
-        private var _fecha_alta:String;
-        private var _numeroeconomico:String;
-        private var _rfc_empleado:String;
-        private var _nombre_empleado:String;
-        private var _paterno:String;
-        private var _materno:String;
-        private var _tipo_empleado:String;
-        private var _telefono:String;
-        private var _celular:String;
-        private var _estatus:Boolean;
+    private var _id_t_diagnostico_detalle:String;
+    private var _id_t_diagnostico:String;
+    private var _id_subcategoria:String;
+    private var _comentario:String;
+    private var _id_empleado:String;
+    private var _id_equipo:String;
+    private var _descripcion:String;
+    private var _fecha_diagnostico:String;
+    private var _fecha_alta:String;
+    private var _numeroeconomico:String;
+    private var _rfc_empleado:String;
+    private var _nombre_empleado:String;
+    private var _paterno:String;
+    private var _materno:String;
+    private var _tipo_empleado:String;
+    private var _telefono:String;
+    private var _celular:String;
+    private var _estatus:Boolean;
+    private var _cartegoria:String;
+    private var _subcateogoria:String;
+
     public function DiagnosticoDetalleDTO() {
-        id_t_diagnostico_detalle="";
-        id_t_diagnostico="";
-        id_subcategoria="";
-        comentario="";
-        id_empleado="";
-        id_equipo="";
-        descripcion="";
-        fecha_diagnostico="";
-        fecha_alta="";
-        numeroeconomico="";
-        rfc_empleado="";
-        nombre_empleado="";
-        paterno="";
-        materno="";
-        tipo_empleado="";
-        telefono="";
-        celular="";
+        id_t_diagnostico_detalle = "";
+        id_t_diagnostico = "";
+        id_subcategoria = "";
+        comentario = "";
+        id_empleado = "";
+        id_equipo = "";
+        descripcion = "";
+        fecha_diagnostico = "";
+        fecha_alta = "";
+        numeroeconomico = "";
+        rfc_empleado = "";
+        nombre_empleado = "";
+        paterno = "";
+        materno = "";
+        tipo_empleado = "";
+        telefono = "";
+        celular = "";
         estatus = true;
     }
 
@@ -188,6 +191,22 @@ public class DiagnosticoDetalleDTO {
 
     public function set estatus(value:Boolean):void {
         _estatus = value;
+    }
+
+    public function get cartegoria():String {
+        return _cartegoria;
+    }
+
+    public function set cartegoria(value:String):void {
+        _cartegoria = value;
+    }
+
+    public function get subcateogoria():String {
+        return _subcateogoria;
+    }
+
+    public function set subcateogoria(value:String):void {
+        _subcateogoria = value;
     }
 }
 }

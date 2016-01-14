@@ -8,7 +8,7 @@
 		<!--	MARCA	-->
 		<s:RemoteObject 
 			id="roCategorias"
-			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
 			destination="categoriaBusiness">
 			<!-- Permite obtener la lista de Tipos de Categorias -->
 			<s:method 
@@ -28,7 +28,7 @@
 		</s:RemoteObject>
 		<s:RemoteObject
 			id="roMarca"
-			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
 			destination="articuloBusiness">
 			<!--	Metodos para las Marcas	-->
 				<s:method 
@@ -456,12 +456,12 @@
 			<s:controlBarContent>
 				<s:Button 
 					label="Limpiar" 
-					icon="@Embed(source='assets/icons/cancel.png')"
+					icon="@Embed(source='../assets/icons/cancel.png')"
 					click="clearFormulario()"/>
 				<s:Button 
 					id="guardarButton" 
 					label="Guardar" 
-					icon="@Embed(source='assets/icons/add.png'" 
+					icon="@Embed(source='../assets/icons/add.png')"
 					styleName="primaryButton"
 					enabled="{flagEditar}"
 					click="saveMarca()"/>

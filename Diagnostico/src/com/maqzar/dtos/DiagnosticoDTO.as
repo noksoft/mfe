@@ -2,44 +2,47 @@
  * Created by jess on 08/08/15.
  */
 package com.maqzar.dtos {
+import mx.collections.ArrayCollection;
+
 import spark.skins.spark.StackedFormHeadingSkin;
 
 [Bindable]
 [RemoteClass(alias="mx.com.nok.equipo.model.dto.DiagnosticoDTO")]
 
 public class DiagnosticoDTO {
-        private var _id_t_diagnostico:String;
-        private var _id_equipo:String;
-        private var _descripcion:String;
-        private var _fecha_diagnostico:String;
-        private var _fecha_alta:String;
-        private var _id_empleado:String;
-        private var _numeroeconomico:String;
-        private var _rfc_empleado:String;
-        private var _nombre_empleado:String;
-        private var _paterno:String;
-        private var _materno:String;
-        private var _tipo_empleado:String;
-        private var _telefono:String;
-        private var _celular:String;
+    private var _id_t_diagnostico:String;
+    private var _id_equipo:String;
+    private var _descripcion:String;
+    private var _fecha_diagnostico:String;
+    private var _fecha_alta:String;
+    private var _id_empleado:String;
+    private var _numeroeconomico:String;
+    private var _rfc_empleado:String;
+    private var _nombre_empleado:String;
+    private var _paterno:String;
+    private var _materno:String;
+    private var _tipo_empleado:String;
+    private var _telefono:String;
+    private var _celular:String;
     private var _estatus:String;
-
+    private var _detalle:ArrayCollection;
+    private var _nombreCompleto:String;
     public function DiagnosticoDTO() {
-        id_t_diagnostico="";
-        id_equipo="";
-        descripcion="";
-        fecha_diagnostico="";
-        fecha_alta="";
-        id_empleado="";
-        numeroeconomico="";
-        rfc_empleado="";
-        nombre_empleado="";
-        paterno="";
-        materno="";
-        tipo_empleado="";
-        telefono="";
-        telefono="";
-        celular="";
+        id_t_diagnostico = "";
+        id_equipo = "";
+        descripcion = "";
+        fecha_diagnostico = "";
+        fecha_alta = "";
+        id_empleado = "";
+        numeroeconomico = "";
+        rfc_empleado = "";
+        nombre_empleado = "";
+        paterno = "";
+        materno = "";
+        tipo_empleado = "";
+        telefono = "";
+        telefono = "";
+        celular = "";
     }
 
     public function get id_t_diagnostico():String {
@@ -160,6 +163,22 @@ public class DiagnosticoDTO {
 
     public function set estatus(value:String):void {
         _estatus = value;
+    }
+
+    public function get detalle():ArrayCollection {
+        return _detalle;
+    }
+
+    public function set detalle(value:ArrayCollection):void {
+        _detalle = value;
+    }
+
+    public function get nombreCompleto():String {
+        return nombre_empleado + ' ' + paterno + ' ' + materno;
+    }
+
+    public function set nombreCompleto(value:String):void {
+        //_nombreCompleto = value;
     }
 }
 }

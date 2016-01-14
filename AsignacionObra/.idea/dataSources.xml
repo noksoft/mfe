@@ -6,7 +6,6 @@
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/d9hcjiqbhdpe5j</jdbc-url>
-      <libraries />
     </data-source>
     <data-source source="LOCAL" name="PostgreSQL - d9hcjiqbhdpe5j@ec2-54-225-115-77.compute-1.amazonaws.com" uuid="3489af2b-7959-4ba0-ba6e-daa95f75a055">
       <driver-ref>postgresql</driver-ref>
@@ -17,7 +16,6 @@
         <property name="ssl" value="true" />
         <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
       </driver-properties>
-      <libraries />
     </data-source>
   </component>
 </project>

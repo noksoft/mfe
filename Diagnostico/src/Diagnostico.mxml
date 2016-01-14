@@ -17,18 +17,21 @@
         import com.maqzar.dtos.DiagnosticoDTO;
         import com.maqzar.dtos.DiagnosticoDetalleDTO;
         import com.maqzar.dtos.EquipoVO;
-        import com.maqzar.dtos.ObraVO;
         import com.maqzar.dtos.SubCategoriaDTO;
-        import com.maqzar.dtos.SubFallaDTO;
-        import com.maqzar.events.DiagnosticoEvent;
 
         import mx.collections.ArrayCollection;
+        import mx.collections.IViewCursor;
         import mx.controls.Alert;
+        import mx.events.CloseEvent;
         import mx.events.FlexEvent;
         import mx.events.ItemClickEvent;
+        import mx.formatters.DateFormatter;
         import mx.rpc.events.FaultEvent;
         import mx.rpc.events.ResultEvent;
         import mx.validators.Validator;
+
+        import spark.collections.Sort;
+        import spark.collections.SortField;
 
         [Bindable]
         public var acDiagnostico:ArrayCollection;
@@ -40,36 +43,79 @@
         public var acDiagnosticoDetalle:ArrayCollection;
 
         [Bindable]
-        public var acEstatus:ArrayCollection = new ArrayCollection([{label: "INCOMPLETO",data: "I"},{label:"COMPLETO", data:"C"}]);
+        public var acEstatus:ArrayCollection = new ArrayCollection([{
+            label: "INCOMPLETO",
+            estatus: "I"
+        }, {label: "COMPLETO", estatus: "C"}]);
 
 
         protected var itemSelected:DiagnosticoDTO = new DiagnosticoDTO();
         private var arrayValidationResult:Array;
+        private var cursorEstatus:IViewCursor;
+        private var cursorEquipo:IViewCursor;
+        [Bindable]
+        private var isUpdating:Boolean;
 
+        private function doSort(campo:String, arreglo:*):void {
+            var sf:SortField = new SortField(campo);
+            var s:Sort = new Sort();
+            s.fields = [sf];
+            arreglo.sort = s;
+            arreglo.refresh();
+        }
 
         protected function selectedDiagnostico(event:MouseEvent):void {
+            //Obtenemos los diagnostico
             itemSelected = event.currentTarget.selectedItem as DiagnosticoDTO;
 
+            //cargamos el elemento de equipo por medio de Cursor
+            doSort('id_equipo', acEquipo);
+            cursorEquipo = acEquipo.createCursor();
+            var found:Boolean = cursorEquipo.findAny(itemSelected);
+            if (found) {
+                autoEquipo.selectedItem = cursorEquipo.current;
+            }
+            doSort('estatus', acEstatus);
+            cursorEstatus = acEstatus.createCursor();
+            var foundEstatus = cursorEstatus.findAny(itemSelected);
+            if (foundEstatus) {
+                ddlEstatus.selectedItem = cursorEstatus.current;
+            }
+            var formateador:DateFormatter = new DateFormatter();
+            formateador.formatString = "YYYY-MM-DD";
+            fechaDiagnostico.text = formateador.format(itemSelected.fecha_diagnostico);
+
+            //disparamos el servicio para traer los registros detalle
+            acDiagnosticoDetalle = itemSelected.detalle;
+            isUpdating = true;
         }
 
         public function getDiagnosticoEquiporesult(event:ResultEvent):void {
             acDiagnostico = event.result as ArrayCollection;
-            trace(acDiagnostico.length);
         }
 
         private function diagnosticoFault(event:FaultEvent):void {
             trace(event.message);
-
+            Alert.show("No puede conectarse a la base de información");
         }
 
         private function diagnosticoDetalleFault(event:FaultEvent):void {
             trace(event.message);
+            Alert.show("No puede conectarse a la base de información");
         }
 
         private function insertDiagnosticoEquiporesult(event:ResultEvent):void {
-            if(event.result == true){
+            trace("Result de Insert-->" + event.result);
+            trace(event.result);
+            if (event.result != null) {
                 Alert.show("El registro se agrego correctamente");
+                clean();
+//                refrescamos el registro
                 //limpiamos cajas
+                var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
+                roDiagnostico.getDiagnosticos(diagnosticoEquipo);
+            } else {
+                Alert.show("No se puede dar de alta en este momento");
             }
         }
 
@@ -86,6 +132,7 @@
             var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
             var infoEquipo:EquipoVO = new EquipoVO();
             var subCategoria:SubCategoriaDTO = new SubCategoriaDTO();
+            subCategoria.filterEstatusSubcategoria = "";
             roEquipo.infoEquipo(infoEquipo);
             roCategoria.catSubcategoria(subCategoria);
             roDiagnostico.getDiagnosticos(diagnosticoEquipo);
@@ -100,12 +147,16 @@
             acEquipo = event.result as ArrayCollection;
         }
 
-        private function getdiagnosticoDetalleresult(event:ResultEvent):void {
-
+        private function getdiagnosticoDetalleResult(event:ResultEvent):void {
+            acDiagnosticoDetalle = event.result as ArrayCollection;
         }
 
         private function insertDiagnosticoDetalleresult(event:ResultEvent):void {
-
+            // se manda llamar al servicio par aactualizar los datos del datagrid.
+            var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
+            roDiagnostico.getDiagnosticos(diagnosticoEquipo);
+            // se agrega al modelo los valores para poder verlos.
+            itemSelected.detalle.addItem(detalle)
         }
 
         private function updateDiagnosticoDetalleresult(event:ResultEvent):void {
@@ -121,29 +172,31 @@
         }
 
         private function beforesave():void {
-
+            trace("OK");
         }
 
         public function saveDiagnostico():void {
-            var diagnostico:DiagnosticoDTO = new DiagnosticoDTO();
-            diagnostico.id_equipo = EquipoVO(autoEquipo.selectedItem).id_equipo;
-            diagnostico.fecha_diagnostico = fechaDiagnostico.text;
-            diagnostico.estatus = ddlEstatus.selectedItem.data;
-            roDiagnostico.insertDiagnostico(diagnostico);
-//            if (itemSelected == null) {
-//                Alert.show("No hay un elemento seleccionado")
-//            }
-//            else {
-//                updateItemSelected();
-//                trace(itemSelected.id_equipo);
-//                roDiagnostico.insertDiagnostico(itemSelected);
-//            }
+            if (!isUpdating) {
+                var diagnostico:DiagnosticoDTO = new DiagnosticoDTO();
+                diagnostico.id_equipo = EquipoVO(autoEquipo.selectedItem).id_equipo;
+                diagnostico.fecha_diagnostico = fechaDiagnostico.text;
+                diagnostico.estatus = ddlEstatus.selectedItem.estatus;
+                roDiagnostico.insertDiagnostico(diagnostico);
+            } else {
+                //Actualizamos el registro
+
+            }
+
         }
 
-        private function clean(){
-            autoEquipo.selectedItem = null;
+        private function clean():void {
+            autoEquipo.clear();
             fechaDiagnostico.text = "";
             ddlEstatus.selectedIndex = -1;
+            if(acDiagnosticoDetalle != null){
+                acDiagnosticoDetalle.removeAll();
+            }
+            acDiagnostico.refresh();
         }
 
         private function updateItemSelected():void {
@@ -164,13 +217,19 @@
             var dateAlta:Date = new Date();
             itemSelected.fecha_alta = dateAlta.getFullYear().toString() + "/" + (dateAlta.getMonth() + 1).toString() + "/" + dateAlta.getDate();
         }
-
+        public var detalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
         public function saveDiagnosticoDetalle():void {
             if (itemSelected == null) {
                 Alert.show("No hay un elemento seleccionado")
             }
             else {
-                roDiagnosticoDetalle.insertDiagnosticoDetalle(itemSelected);
+                var detalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
+                detalle.id_subcategoria = autoSubCategoria.selectedItem.idSubcategoria;
+                detalle.estatus = estatusdiagnosticoButtonGroup.selectedValue;
+                detalle.id_t_diagnostico = itemSelected.id_t_diagnostico;
+                detalle.comentario = txtComentario.text;
+                detalle.id_empleado = itemSelected.id_empleado;
+                roDiagnosticoDetalle.insertDiagnosticoDetalle(detalle);
             }
         }
 
@@ -186,6 +245,26 @@
             acSubCategoria = event.result as ArrayCollection;
 
         }
+
+        private function nuevoDiagnosticoClick(event:MouseEvent):void {
+            //Limpia
+            clean();
+            isUpdating = false;
+        }
+        public var objeto:Object;
+        function borrarDiagnosticoDetalle(data:Object):void {
+            //Metodo para borrar el registro
+            objeto = data;
+            Alert.show("Estás seguro de borrar el registro?","",3,this,iamShureToDelete);
+        }
+        public function iamShureToDelete(event:CloseEvent):void
+        {
+            if(event.detail == Alert.YES)
+            {
+                acDiagnosticoDetalle.removeItemAt(dataGridDiagnosticoDetalle.selectedIndex);
+                roDiagnosticoDetalle.deleteDiagnosticoDetalle(objeto as DiagnosticoDetalleDTO);
+            }
+        }
         ]]>
 	</fx:Script>
 
@@ -195,7 +274,7 @@
         <!-- REMOTE OBJECTS-->
 
         <!-- Remote Object para la Alta del Diagnostico -->
-        <s:RemoteObject id="roDiagnostico" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+        <s:RemoteObject id="roDiagnostico" showBusyCursor="true" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
                         fault="diagnosticoFault(event)">
             <s:method name="getDiagnosticos" result="getDiagnosticoEquiporesult(event)"/>
             <s:method name="insertDiagnostico" result="insertDiagnosticoEquiporesult(event)"/>
@@ -208,7 +287,7 @@
         <!-- RO Diagnostico Detalle-->
         <s:RemoteObject id="roDiagnosticoDetalle" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
                         fault="diagnosticoDetalleFault(event)">
-            <s:method name="getDiagnosticoDetalle" result="getdiagnosticoDetalleresult(event)"/>
+            <s:method name="getDiagnosticoDetalle" result="getdiagnosticoDetalleResult(event)"/>
             <s:method name="insertDiagnosticoDetalle" result="insertDiagnosticoDetalleresult(event)"/>
             <s:method name="updateDiagnosticoDetalle" result="updateDiagnosticoDetalleresult(event)"/>
             <s:method name="deleteDiagnosticoDetalle" result="deleteDiagnosticoDetalleresult(event)"/>
@@ -302,8 +381,16 @@
                         <s:GridColumn dataField="id_t_diagnostico" headerText="FOLIO" width="50"/>
                         <s:GridColumn dataField="numeroeconomico" headerText="Maquinaria"/>
                         <s:GridColumn dataField="fecha_diagnostico" headerText="Fecha de diagnostico"/>
-                        <s:GridColumn dataField="dataField3" headerText="Estatus"/>
-                        <s:GridColumn dataField="nombre_empleado" headerText="Reporta"/>
+                        <s:GridColumn dataField="estatus" headerText="Estatus">
+                            <s:itemRenderer>
+                                <fx:Component>
+                                    <s:GridItemRenderer>
+                                        <mx:Label text="{data.estatus=='C'?'Completo':'Incompleto'}"/>
+                                    </s:GridItemRenderer>
+                                </fx:Component>
+                            </s:itemRenderer>
+                        </s:GridColumn>
+                        <s:GridColumn dataField="nombreCompleto" headerText="Reporta"/>
                     </s:ArrayList>
                 </s:columns>
             </s:DataGrid>
@@ -329,17 +416,19 @@
             </s:HGroup>
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Estatus" width="120" textAlign="right"/>
-                <s:DropDownList id="ddlEstatus" dataProvider="{acEstatus}" labelField="label" prompt="Selecciona un estatus" width="100%"/>
+                <s:DropDownList id="ddlEstatus" dataProvider="{acEstatus}" labelField="label"
+                                prompt="Selecciona un estatus" width="100%"/>
                 <!--<s:RadioButton id="rbFalla" selected="true" label="FALLA" value="FALLA" group="{estatusButtonGroup}"/>-->
                 <!--<s:RadioButton id="rbCorrecto" label="CORRECTO" value="CORRRECTO" group="{estatusButtonGroup}"/>-->
                 <!--<s:RadioButton id="rbIncompleto" label="INCOMPLETO" value="INCOMPLETO" group="{estatusButtonGroup}"/>-->
                 <!--<s:RadioButton id="rbCompleto" label="COMPLETO" value="COMPLETO" group="{estatusButtonGroup}"/>-->
             </s:HGroup>
             <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
-                <s:Button label="Nuevo Diagnostico"/>
-                <s:Button label="Ingresar"
+                <s:Button label="Nuevo Diagnostico" click="nuevoDiagnosticoClick(event)"/>
+                <s:Button label="{isUpdating==true?'Actualizar':'Ingresar'}"
                           styleName="primaryButton"
                           click="saveDiagnostico()"
+                          enabled="{autoEquipo.selectedItem != null}"
                 />
             </s:HGroup>
             <!-- End Grupo Diagnostico-->
@@ -372,15 +461,26 @@
 
             <!-- Lista de Categorias -->
             <s:DataGrid width="100%" height="100%" requestedRowCount="4" id="dataGridDiagnosticoDetalle"
-                        dataProvider="{acDiagnostico}">
+                        dataProvider="{acDiagnosticoDetalle}">
                 <s:columns>
                     <s:ArrayList>
-                        <s:GridColumn dataField="id_t_diagnostico_detalle" headerText="Tipo" width="50"></s:GridColumn>
-                        <s:GridColumn dataField="dataField1" headerText="Categoria"></s:GridColumn>
-                        <s:GridColumn dataField="dataField2" headerText="Subcategoria"></s:GridColumn>
-                        <s:GridColumn dataField="dataField3" headerText="Estatus"></s:GridColumn>
-                        <s:GridColumn dataField="dataField3" headerText="Comentario"></s:GridColumn>
-                        <s:GridColumn dataField="dataField3" headerText="Reporta"></s:GridColumn>
+                        <s:GridColumn dataField="categoria" headerText="Categoria"/>
+                        <s:GridColumn dataField="subcategoria" headerText="Subcategoria"/>
+                        <s:GridColumn dataField="estatus" headerText="Estatus"/>
+                        <s:GridColumn dataField="comentario" headerText="Comentario"/>
+                        <s:GridColumn headerText="" width="77">
+                            <s:itemRenderer>
+                                <fx:Component>
+                                    <s:GridItemRenderer>
+                                        <s:HGroup horizontalAlign="center">
+                                            <s:Button icon="assets/icons/delete.png" width="36" click="outerDocument.borrarDiagnosticoDetalle(data)"/>
+                                            <!--<s:Button icon="assets/icons/application_form_edit.png" width="36" click="outerDocument.modificarDiagnositoDetalle(data)"/>-->
+                                        </s:HGroup>
+
+                                    </s:GridItemRenderer>
+                                </fx:Component>
+                            </s:itemRenderer>
+                        </s:GridColumn>
                     </s:ArrayList>
                 </s:columns>
             </s:DataGrid>

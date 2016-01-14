@@ -321,14 +321,14 @@
 					<mx:ControlBar>
 						<s:Button 
 							label="Limpiar" 
-							icon="@Embed(source='assets/icons/cancel.png')"
+							icon="@Embed(source='../../assets/icons/cancel.png')"
 							useHandCursor="true"
 							buttonMode="true"
 							click="cleanFormulario()"/>
 						<s:Button 
 							id="guardarButton" 
 							label="{titleFormulario}" 
-							icon="@Embed(source='assets/icons/add.png'" 
+							icon="@Embed(source='../../assets/icons/add.png'"
 							styleName="primaryButton"
 							useHandCursor="true"
 							buttonMode="true"
@@ -336,7 +336,7 @@
 						<s:Button
 							id="btnDelete"
 							label="Borrar"
-							icon="@Embed(source='assets/icons/delete.png')"
+							icon="@Embed(source='../../assets/icons/delete.png')"
 							useHandCursor="true"
 							buttonMode="true"
 							click="deleteItem()"/>

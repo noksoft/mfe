@@ -63,7 +63,7 @@ package view.components
 			titleFormulario = CREAR;
 			//Initialization to Remote Object
 			//EQUIPO
-			roEquipoData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roEquipoData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roEquipoData.destination = "equipoBusiness";
 			roEquipoData.showBusyCursor = true;
 			
@@ -85,12 +85,12 @@ package view.components
 			roEquipoData.getOperation("deleteEquipo").addEventListener(FaultEvent.FAULT, deleteItemFault);
 			
 			//MARCA / SUBMARCA
-			roMarcaSubmarca.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roMarcaSubmarca.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roMarcaSubmarca.destination = "articuloBusiness";
 			roMarcaSubmarca.showBusyCursor = true;
 			
 			//CATEGORIA
-			roCategoriaData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roCategoriaData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roCategoriaData.destination = "categoriaBusiness";
 			roCategoriaData.showBusyCursor = true;
 			

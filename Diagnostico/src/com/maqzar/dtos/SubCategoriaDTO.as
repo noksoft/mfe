@@ -10,6 +10,7 @@ public class SubCategoriaDTO {
     private var _idCategoria:String;
     private var _categoria:String;
     private var _estatus:Boolean;
+    private var _filterEstatusSubcategoria:String;
     public function SubCategoriaDTO() {
 
         idSubcategoria = "";
@@ -58,6 +59,14 @@ public class SubCategoriaDTO {
 
     public function set estatus(value:Boolean):void {
         _estatus = value;
+    }
+
+    public function get filterEstatusSubcategoria():String {
+        return _filterEstatusSubcategoria;
+    }
+
+    public function set filterEstatusSubcategoria(value:String):void {
+        _filterEstatusSubcategoria = value;
     }
 }
 }

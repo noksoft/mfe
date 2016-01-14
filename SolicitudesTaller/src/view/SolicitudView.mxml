@@ -187,14 +187,14 @@ Created by RZARAGOZA on 27/06/2015
 						   width="100%">
 				<s:Button 
 					label="Limpiar" 
-					icon="@Embed(source='assets/icons/cancel.png')"
+					icon="@Embed(source='../assets/icons/cancel.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="clearFormulario()"/>
 				<s:Button 
 					id="guardarButton" 
 					label="{solicitudModel.titleFormulario}" 
-					icon="@Embed(source='assets/icons/add.png'" 
+					icon="@Embed(source='../assets/icons/add.png'"
 					styleName="primaryButton"
 					useHandCursor="true"
 					buttonMode="true"
@@ -202,7 +202,7 @@ Created by RZARAGOZA on 27/06/2015
 				<s:Button
 					id="btnDelete"
 					label="Borrar"
-					icon="@Embed(source='assets/icons/delete.png')"
+					icon="@Embed(source='../assets/icons/delete.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="deleteSolicitud()"/>

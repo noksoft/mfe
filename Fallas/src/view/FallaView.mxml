@@ -12,7 +12,7 @@
 	<fx:Declarations>
 		<s:RemoteObject
 			id="roFalla"
-			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
 			destination="fallaBusiness">
 			<!--	Metodos para la sección de Fallas	-->
 				<s:method
@@ -546,14 +546,14 @@
 				height="100" width="100%">
 				<s:Button 
 					label="Limpiar" 
-					icon="@Embed(source='assets/icons/cancel.png')"
+					icon="@Embed(source='../assets/icons/cancel.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="clearFormularioFalla()"/>
 				<s:Button 
 					id="guardarButtonFalla" 
 					label="{titleFormularioFalla}" 
-					icon="@Embed(source='assets/icons/add.png'" 
+					icon="@Embed(source='../assets/icons/add.png'"
 					styleName="primaryButton"
 					useHandCursor="true"
 					buttonMode="true"
@@ -561,7 +561,7 @@
 				<s:Button
 					id="btnDeleteFalla"
 					label="Borrar"
-					icon="@Embed(source='assets/icons/delete.png')"
+					icon="@Embed(source='../assets/icons/delete.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="deleteFalla()"/>
@@ -639,14 +639,14 @@
 				height="100">
 				<s:Button 
 					label="Limpiar" 
-					icon="@Embed(source='assets/icons/cancel.png')"
+					icon="@Embed(source='../assets/icons/cancel.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="clearFormularioSubFalla(true)"/>
 				<s:Button 
 					id="guardarButtonSubFalla" 
 					label="{titleFormularioSubFalla}" 
-					icon="@Embed(source='assets/icons/add.png'" 
+					icon="@Embed(source='../assets/icons/add.png'"
 					styleName="primaryButton"
 					useHandCursor="true"
 					buttonMode="true"
@@ -654,7 +654,7 @@
 				<s:Button
 					id="btnDeleteSubFalla"
 					label="Borrar"
-					icon="@Embed(source='assets/icons/delete.png')"
+					icon="@Embed(source='../assets/icons/delete.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="deleteSubFalla()"/>

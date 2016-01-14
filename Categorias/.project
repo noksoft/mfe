@@ -19,7 +19,7 @@
 		<link>
 			<name>bin-debug</name>
 			<type>2</type>
-			<location>/Applications/apache-tomcat_actionit/webapps/ROOT/flash</location>
+			<location>C:/Applications/apache-tomcat_actionit/webapps/ROOT/flash</location>
 		</link>
 	</linkedResources>
 </projectDescription>

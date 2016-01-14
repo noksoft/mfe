@@ -79,7 +79,7 @@ s|Label
 	
 }
 mx|DateField{
-  	skin: Embed("assets/icons/calendar.png");
+  	skin: Embed("../assets/icons/calendar.png");
 	upSkin: ClassReference(null);
 	overSkin: ClassReference(null);
 	downSkin: ClassReference(null);

@@ -133,20 +133,24 @@ package view
 			titleFormulario = CREAR;
 			//Initialization to Remote Object
 			//ARTICULO
-			roArticuloData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+//			roArticuloData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roArticuloData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roArticuloData.destination = "articuloBusiness";
 			roArticuloData.showBusyCursor = true;
 			
-			roCategoriaData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+//			roCategoriaData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roCategoriaData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roCategoriaData.destination = "categoriaBusiness";
 			roCategoriaData.showBusyCursor = true;
 			
 			//EDITOR
-			roArticuloEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roArticuloEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+//			roArticuloEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
 			roArticuloEditor.destination = "articuloBusiness";
 			roArticuloEditor.showBusyCursor = true;
 			
-			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+//			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roCategoriaEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 			roCategoriaEditor.destination = "categoriaBusiness";
 			roCategoriaEditor.showBusyCursor = true;
 			
@@ -194,7 +198,8 @@ package view
 			
 			
 			//Editor
-			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
+			roCategoriaEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+//			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
 			roCategoriaEditor.destination = "categoriaBusiness";
 			roCategoriaEditor.showBusyCursor = true;
 			//SubCategoria

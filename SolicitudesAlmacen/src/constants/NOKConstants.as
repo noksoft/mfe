@@ -5,7 +5,7 @@ package constants
 		public function NOKConstants()
 		{
 		}
-		public static const SERVICE_URL:String = "http://localhost:8080/nok/messagebroker/amf";
+		public static const SERVICE_URL:String = "https://mmw-carast.c9.io/nok/messagebroker/amf";
 		public static const SERVICE_DESTINATION_SOLICITUDES:String = "solicitudBussiness";
 		public static const SERVICE_DESTINATION_ARTICULOS:String = "articuloBusiness";
 		public static const SERVICE_DESTINATION_CATEGORIAS:String = "categoriaBusiness";

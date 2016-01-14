@@ -12,7 +12,7 @@
 	<fx:Declarations>
 		<s:RemoteObject
 			id="roDireccion"
-			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
 			destination="direccionBusiness">
 				<s:method
 					name="catMunicipio"
@@ -29,7 +29,7 @@
 		</s:RemoteObject>
 		<s:RemoteObject
 			id="roProveedor"
-			endpoint="http://localhost:8080/nok/messagebroker/amf"
+			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
 			destination="proveedorBusiness">
 				<s:method
 					name="catProveedor"
@@ -709,14 +709,14 @@
 			<mx:ControlBar>
 				<s:Button 
 					label="Limpiar" 
-					icon="@Embed(source='assets/icons/cancel.png')"
+					icon="@Embed(source='../assets/icons/cancel.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="clearFormulario()"/>
 				<s:Button 
 					id="guardarButton" 
 					label="{titleFormulario}" 
-					icon="@Embed(source='assets/icons/add.png'" 
+					icon="@Embed(source='../assets/icons/add.png'"
 					styleName="primaryButton"
 					useHandCursor="true"
 					buttonMode="true"
@@ -724,7 +724,7 @@
 				<s:Button
 					id="btnDelete"
 					label="Borrar"
-					icon="@Embed(source='assets/icons/delete.png')"
+					icon="@Embed(source='../assets/icons/delete.png')"
 					useHandCursor="true"
 					buttonMode="true"
 					click="deleteProveedor()"/>
