@@ -24,9 +24,9 @@ public class DiagnosticoDetalleDTO {
     private var _tipo_empleado:String;
     private var _telefono:String;
     private var _celular:String;
-    private var _estatus:Boolean;
-    private var _cartegoria:String;
-    private var _subcateogoria:String;
+    private var _estatus:String;
+    private var _categoria:String;
+    private var _subcategoria:String;
 
     public function DiagnosticoDetalleDTO() {
         id_t_diagnostico_detalle = "";
@@ -46,7 +46,7 @@ public class DiagnosticoDetalleDTO {
         tipo_empleado = "";
         telefono = "";
         celular = "";
-        estatus = true;
+        estatus = "";
     }
 
     public function get id_t_diagnostico_detalle():String {
@@ -185,28 +185,28 @@ public class DiagnosticoDetalleDTO {
         _celular = value;
     }
 
-    public function get estatus():Boolean {
+    public function get estatus():String {
         return _estatus;
     }
 
-    public function set estatus(value:Boolean):void {
+    public function set estatus(value:String):void {
         _estatus = value;
     }
 
-    public function get cartegoria():String {
-        return _cartegoria;
+    public function get categoria():String {
+        return _categoria;
     }
 
-    public function set cartegoria(value:String):void {
-        _cartegoria = value;
+    public function set categoria(value:String):void {
+        _categoria = value;
     }
 
-    public function get subcateogoria():String {
-        return _subcateogoria;
+    public function get subcategoria():String {
+        return _subcategoria;
     }
 
-    public function set subcateogoria(value:String):void {
-        _subcateogoria = value;
+    public function set subcategoria(value:String):void {
+        _subcategoria = value;
     }
 }
 }
