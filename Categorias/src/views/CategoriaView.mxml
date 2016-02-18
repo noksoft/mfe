@@ -8,7 +8,7 @@
 		<!--	CATEGORIA	-->
 		<s:RemoteObject 
 			id="roCategorias"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="categoriaBusiness">
 			
 				<!--	Metodo para cargar los tipos de categorias 	-->
@@ -53,7 +53,8 @@
 			import spark.events.IndexChangeEvent;
 			
 			import utils.AlertUtils;
-			
+			import utils.NOKConstants;
+
 			[Bindable]private var listTipoCategorias:ArrayCollection;
 			[Bindable]private var listTipoCategoriasEditor:ArrayCollection;
 			[Bindable]private var listCategorias:ArrayCollection = new ArrayCollection();
@@ -271,6 +272,13 @@
 				//Alert.show("Error", "deleteCategoria" + _event.fault.message);
 				AlertUtils.showErrorMessage("Error", "No se pudo borrar la Categorías");
 			}
+			[Embed(source="../assets/icons/check.png")]
+			[Bindable]
+			public var check:Class;
+
+			[Embed(source="../assets/icons/uncheck.png")]
+			[Bindable]
+			public var uncheck:Class;
 		]]>
 	</fx:Script>
 	
@@ -304,7 +312,19 @@
 						<s:ArrayList>
 							<s:GridColumn headerText="Categoría" dataField="categoria"/>
 							<s:GridColumn headerText="Tipo Categoría" dataField="tipocategoria"/>
-							<s:GridColumn headerText="Estatus" dataField="estatus"/>
+							<s:GridColumn headerText="Estatus" dataField="estatus"  width="55">
+                                <s:itemRenderer>
+                                    <fx:Component>
+                                        <s:GridItemRenderer>
+                                            <s:HGroup width="100%" horizontalAlign="center">
+                                                <s:Image
+                                                        source="{data.estatus ? outerDocument.check :outerDocument.uncheck}"/>
+                                            </s:HGroup>
+                                        </s:GridItemRenderer>
+
+                                    </fx:Component>
+                                </s:itemRenderer>
+							</s:GridColumn>
 						</s:ArrayList>
 					</s:columns>
 			</s:DataGrid>

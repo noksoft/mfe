@@ -8,6 +8,12 @@
             <entry library-id="3c0062c1-14e2-4469-ae6f-a0d5974722ac">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="AutoComplete-1.2-Fx4" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="swiz-framework-v1.4.0" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="4.6.0" />
         </dependencies>
@@ -41,5 +47,7 @@
         <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="AutoComplete-1.2-Fx4" level="project" />
+    <orderEntry type="library" exported="" name="swiz-framework-v1.4.0" level="project" />
   </component>
 </module>

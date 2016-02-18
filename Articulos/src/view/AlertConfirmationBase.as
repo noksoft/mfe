@@ -42,11 +42,11 @@ package view
 		
 		public function init():void{
 			PopUpManager.centerPopUp(this);
-			this.mx_internal::closeButton.buttonMode = true;
-			this.mx_internal::closeButton.width = 13;
-			this.mx_internal::closeButton.height = 13;
-			this.mx_internal::closeButton.x = this.mx_internal::closeButton.x + 8;
-			this.mx_internal::closeButton.y = this.mx_internal::closeButton.y - 2;
+			//this.mx_internal::closeButton.buttonMode = true;
+//			this.mx_internal::closeButton.width = 13;
+//			this.mx_internal::closeButton.height = 13;
+//			this.mx_internal::closeButton.x = this.mx_internal::closeButton.x + 8;
+//			this.mx_internal::closeButton.y = this.mx_internal::closeButton.y - 2;
 			
 		}
 		

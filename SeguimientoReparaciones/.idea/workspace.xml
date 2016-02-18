@@ -17,6 +17,43 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Maqzar Local" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Maqzar Local" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SeguimientoReparaciones" />
@@ -26,37 +63,28 @@
       <file leaf-file-name="SeguimientoReparaciones.mxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+            <state vertical-scroll-proportion="-14.375">
+              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Seguimiento.mxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <file leaf-file-name="FallaEquipoDTO.as" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dtos/FallaEquipoDTO.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37910447">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="n#mx:dataProvider#0;n#mx:AdvancedDataGrid#0;n#s:VGroup#0;n#mx:HDividedBox#0;n#s:Panel#0;n#s:Group#0;n#!!top" expanded="false" />
-                <marker date="1449195593632" expanded="false" signature="278:378" placeholder="..." />
-                <marker date="1449195593632" expanded="true" signature="448:528" placeholder="{...}" />
-                <marker date="1449195593632" expanded="true" signature="632:798" placeholder="[...]" />
-                <marker date="1449195593632" expanded="true" signature="903:948" placeholder="{...}" />
-                <marker date="1449195593632" expanded="true" signature="1023:1233" placeholder="{...}" />
-                <marker date="1449195593632" expanded="true" signature="1292:1555" placeholder="{...}" />
-                <marker date="1449195593632" expanded="true" signature="1298:1349" placeholder="//..." />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopupAsignaFalla.mxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <file leaf-file-name="NOKConstants.as" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/NOKConstants.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -66,13 +94,41 @@
         <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <caret line="29" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="PopupAsignaFalla.mxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.82830626">
+              <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
+              <folding>
+                <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+                <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+                <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+                <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+                <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+                <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+                <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+                <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="ActionScript Class" />
+        <option value="ActionScript Class with Supers" />
+        <option value="Flex 4 Component" />
+      </list>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -82,12 +138,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SeguimientoReparaciones.mxml" />
         <option value="$PROJECT_DIR$/src/assets/skins/ListElementEducative.mxml" />
-        <option value="$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml" />
-        <option value="$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml" />
         <option value="$PROJECT_DIR$/src/assets/skins/ButtonPrimaryEducative.mxml" />
         <option value="$PROJECT_DIR$/src/assets/style.css" />
+        <option value="$PROJECT_DIR$/src/events/NotificaFallaAgregada.as" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/93a3c9bf-d81c-4ced-9551-d92a98df8275/console.sql" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/PopupReporte.mxml" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/6ec16e0c-cc98-4b4f-afa4-ecc118b27a61/console.sql" />
+        <option value="$PROJECT_DIR$/src/dtos/FallaEquipoDTO.as" />
+        <option value="$PROJECT_DIR$/src/dtos/EmpleadoDTO.as" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml" />
+        <option value="$PROJECT_DIR$/src/constants/NOKConstants.as" />
+        <option value="$PROJECT_DIR$/src/SeguimientoReparaciones.mxml" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml" />
+        <option value="$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml" />
       </list>
     </option>
   </component>
@@ -97,10 +161,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -128,6 +191,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -174,26 +239,87 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="constants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeguimientoReparaciones" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SolicitudesAlmacen" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SolicitudOficina" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
+      <recent name="com.maqzar.views" />
+      <recent name="events" />
+      <recent name="constants" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CarlosZaragoza\Documents\GitHub\mfe\SeguimientoReparaciones\src\dtos" />
       <recent name="C:\Users\CarlosZaragoza\Documents\GitHub\maqzar\front\SeguimientoReparaciones\src" />
     </key>
   </component>
@@ -202,65 +328,6 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
-      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
-      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
-      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
-      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
-      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
-      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -518,6 +585,18 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -662,39 +741,60 @@
       <workItem from="1449261447688" duration="3483000" />
       <workItem from="1449609526991" duration="1201000" />
       <workItem from="1452728061881" duration="59000" />
+      <workItem from="1453248401760" duration="26000" />
+      <workItem from="1453248564513" duration="12000" />
+      <workItem from="1453248596191" duration="4954000" />
+      <workItem from="1453343472317" duration="243000" />
+      <workItem from="1453345044702" duration="5431000" />
+      <workItem from="1453353987711" duration="6047000" />
+      <workItem from="1453413132488" duration="7644000" />
+      <workItem from="1453646713610" duration="2452000" />
+      <workItem from="1453766203230" duration="36965000" />
+      <workItem from="1454026727450" duration="184000" />
+      <workItem from="1454026947163" duration="5403000" />
+      <workItem from="1454364837044" duration="382000" />
+      <workItem from="1454365230228" duration="921000" />
+      <workItem from="1454385089836" duration="1152000" />
+      <workItem from="1454610129784" duration="198000" />
+      <workItem from="1454610420182" duration="609000" />
+      <workItem from="1454621352765" duration="2114000" />
+      <workItem from="1454624959714" duration="27000" />
+      <workItem from="1455240329217" duration="120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9034000" />
+    <option name="totallyTimeSpent" value="83918000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21668473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23618636" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17643923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5371179" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41247264" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21663019" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -714,14 +814,30 @@
     </ignored-roots>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+    <breakpoint-manager>
+      <option name="time" value="13" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="FlashRunConfigurationType">
+        <watch expression="acFallas" />
+        <watch expression="fallaPop" />
+        <watch expression="fallaPorNotificiacion" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -735,14 +851,31 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#mx:dataProvider#0;n#mx:AdvancedDataGrid#0;n#s:VGroup#0;n#mx:HDividedBox#0;n#s:Panel#0;n#s:Group#0;n#!!top" expanded="false" />
-            <marker date="1449195593632" expanded="false" signature="278:378" placeholder="..." />
-            <marker date="1449195593632" expanded="true" signature="448:528" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="632:798" placeholder="[...]" />
-            <marker date="1449195593632" expanded="true" signature="903:948" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1023:1233" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1292:1555" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1298:1349" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -751,7 +884,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -776,14 +918,31 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#mx:dataProvider#0;n#mx:AdvancedDataGrid#0;n#s:VGroup#0;n#mx:HDividedBox#0;n#s:Panel#0;n#s:Group#0;n#!!top" expanded="false" />
-            <marker date="1449195593632" expanded="false" signature="278:378" placeholder="..." />
-            <marker date="1449195593632" expanded="true" signature="448:528" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="632:798" placeholder="[...]" />
-            <marker date="1449195593632" expanded="true" signature="903:948" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1023:1233" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1292:1555" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1298:1349" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -792,7 +951,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -817,14 +985,31 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#mx:dataProvider#0;n#mx:AdvancedDataGrid#0;n#s:VGroup#0;n#mx:HDividedBox#0;n#s:Panel#0;n#s:Group#0;n#!!top" expanded="false" />
-            <marker date="1449195593632" expanded="false" signature="278:378" placeholder="..." />
-            <marker date="1449195593632" expanded="true" signature="448:528" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="632:798" placeholder="[...]" />
-            <marker date="1449195593632" expanded="true" signature="903:948" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1023:1233" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1292:1555" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1298:1349" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -833,7 +1018,351 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -894,46 +1423,197 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/events/NotificaFallaAgregada.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22158274">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/93a3c9bf-d81c-4ced-9551-d92a98df8275/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupReporte.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6885246">
+          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6ec16e0c-cc98-4b4f-afa4-ecc118b27a61/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.031578947">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dtos/EmpleadoDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupDetalleFalla.mxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <caret line="29" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+    <entry file="file://$PROJECT_DIR$/src/constants/NOKConstants.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+    <entry file="file://$PROJECT_DIR$/src/dtos/FallaEquipoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/Seguimiento.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37910447">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.56578946">
+          <caret line="247" column="9" selection-start-line="247" selection-start-column="9" selection-end-line="247" selection-end-column="9" />
           <folding>
-            <element signature="n#mx:dataProvider#0;n#mx:AdvancedDataGrid#0;n#s:VGroup#0;n#mx:HDividedBox#0;n#s:Panel#0;n#s:Group#0;n#!!top" expanded="false" />
-            <marker date="1449195593632" expanded="false" signature="278:378" placeholder="..." />
-            <marker date="1449195593632" expanded="true" signature="448:528" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="632:798" placeholder="[...]" />
-            <marker date="1449195593632" expanded="true" signature="903:948" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1023:1233" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1292:1555" placeholder="{...}" />
-            <marker date="1449195593632" expanded="true" signature="1298:1349" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="295:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="295:875" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="488:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="643:833" placeholder="..." />
+            <marker date="1454039136591" expanded="true" signature="950:1138" placeholder="[...]" />
+            <marker date="1454039136591" expanded="true" signature="1416:1943" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2085:3072" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="2686:3061" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3130:3824" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="3144:3203" placeholder="//..." />
+            <marker date="1454039136591" expanded="true" signature="3958:4370" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4444:4547" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4611:4692" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="4846:5307" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5014:5091" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5097:5177" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5385:5463" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5549:6020" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="5650:5800" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6087:6099" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6169:6239" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6330:6470" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6537:7005" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="6582:6995" placeholder="{...}" />
+            <marker date="1454039136591" expanded="true" signature="7652:7812" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeguimientoReparaciones.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/views/PopupAsignaFalla.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82830626">
+          <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
+          <folding>
+            <marker date="1454037155002" expanded="true" signature="539:920" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="539:960" placeholder="..." />
+            <marker date="1454037155002" expanded="true" signature="1207:1277" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1344:1409" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1463:1580" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1626:2720" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="1784:2623" placeholder="{...}" />
+            <marker date="1454037155002" expanded="true" signature="2629:2709" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SeguimientoReparaciones|SeguimientoReparaciones</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

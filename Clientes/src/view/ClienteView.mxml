@@ -121,10 +121,10 @@
 			property="text"
 			requiredFieldError="Debe de ingresar el Nombre del Contacto"
 			required="true"/>
-		<mx:DateValidator id="validatorDateAlta" 
+<!--		<mx:DateValidator id="validatorDateAlta"
 						  source="{dateAlta}" property="text" 
 						  inputFormat="dd/mm/yyyy"
-						  allowedFormatChars="*#~/"/>
+						  allowedFormatChars="*#~/"/>-->
 	</fx:Declarations>
 	<fx:Script source="ClienteSource.as"/>
 	<mx:HDividedBox
@@ -358,7 +358,9 @@
                             id="dateAlta"
                             enabled="{flagDateAlta}"
                             selectedDate="{itemSelected.fechaAlta}"
-                            width="300"/>
+                            width="300" yearNavigationEnabled="true" formatString="YYYY-MM-DD"
+							monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+							dayNames="[D,L,M,M,J,V,S]"/>
                 </s:HGroup>
                 <s:HGroup
                         width="100%"

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:GridItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					xmlns:mx="library://ns.adobe.com/flex/mx"
+					clipAndEnableScrolling="true">
+	<fx:Script>
+		<![CDATA[
+			import model.ProcesoEstatusEnum;
+			
+			import mx.events.FlexEvent;
+			/**
+			 * Creation Complete
+			 */
+			protected function creationCompleteHandler(event:FlexEvent):void{
+				trace(data);
+				if(data != null){
+					trace(data.hasOwnProperty("estatus_proceso"));	
+				}
+				
+				if(data != null
+					&& data.hasOwnProperty("estatus_proceso")
+					&& data.estatus_proceso != null
+					&& data.estatus_proceso != ""){
+					switch(data.estatus_proceso){
+						case ProcesoEstatusEnum.ADQUISICION:
+							toggleSolicitud.selected = false;
+							toggleSolicitud.label = ProcesoEstatusEnum.ADQUISICION;
+							break;
+						case ProcesoEstatusEnum.COMPRA:
+							toggleSolicitud.selected = true;
+							toggleSolicitud.label = ProcesoEstatusEnum.COMPRA;
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			override protected function updateDisplayList(unscaleWidth:Number, unscaleHeight:Number):void{
+				super.updateDisplayList(unscaleWidth, unscaleHeight);
+				trace(data);
+				if(data != null){
+					trace(data.hasOwnProperty("estatus_proceso"));	
+				}
+				
+				if(data != null
+					&& data.hasOwnProperty("estatus_proceso")
+					&& data.estatus_proceso != null
+					&& data.estatus_proceso != ""){
+					switch(data.estatus_proceso){
+						case ProcesoEstatusEnum.ADQUISICION:
+							toggleSolicitud.selected = false;
+							toggleSolicitud.label = ProcesoEstatusEnum.ADQUISICION;
+							break;
+						case ProcesoEstatusEnum.COMPRA:
+							toggleSolicitud.selected = true;
+							toggleSolicitud.label = ProcesoEstatusEnum.COMPRA;
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			
+			protected function toggleSolicitudClic(_e:MouseEvent):void
+			{
+				if(_e != null){
+					if(_e.currentTarget.selected){
+						data.estatus_proceso = ProcesoEstatusEnum.COMPRA;
+						toggleSolicitud.label = ProcesoEstatusEnum.COMPRA;
+					}else{
+						data.estatus_proceso = ProcesoEstatusEnum.ADQUISICION;
+						toggleSolicitud.label = ProcesoEstatusEnum.ADQUISICION;
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:ToggleButton
+		id="toggleSolicitud"
+		width="100%" height="100%"
+		skinClass="assets.skins.ButtonBar.FirstButtonEducative"
+		click="toggleSolicitudClic(event)"
+		creationComplete="creationCompleteHandler(event)"/>
+</s:GridItemRenderer>

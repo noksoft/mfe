@@ -1,6 +1,8 @@
 package view.components
 {
-	import event.CommonEvent;
+import constants.NOKConstants;
+
+import event.CommonEvent;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -31,7 +33,7 @@ package view.components
 	public class ViewTransportePesadoBase extends VBox
 	{
 		/***********	VARIABLE'S	*****************/
-		[Bindable]public var titlePanel:String = "Transporte Pesadio";
+		[Bindable]public var titlePanel:String = "Transporte Pesado";
 		[Bindable]protected var titleFormulario:String;
 		private const CREAR:String = "Crear";
 		private const ACTUALIZAR:String = "Actualizar";
@@ -68,7 +70,7 @@ package view.components
 			titleFormulario = CREAR;
 			//Initialization to Remote Object
 			//EQUIPO
-			roEquipoData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roEquipoData.endpoint = NOKConstants.SERVICE_URL;
 			roEquipoData.destination = "equipoBusiness";
 			roEquipoData.showBusyCursor = true;
 			
@@ -82,17 +84,17 @@ package view.components
 			roEquipoData.getOperation("insertEquipo").addEventListener(FaultEvent.FAULT, insertItemFault);
 			
 			//EQUIPO
-			roMarcaMotor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roMarcaMotor.endpoint = NOKConstants.SERVICE_URL;
 			roMarcaMotor.destination = "equipoBusiness";
 			roMarcaMotor.showBusyCursor = true;
 			
 			//MARCA / SUBMARCA
-			roMarcaSubmarca.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roMarcaSubmarca.endpoint = NOKConstants.SERVICE_URL;
 			roMarcaSubmarca.destination = "articuloBusiness";
 			roMarcaSubmarca.showBusyCursor = true;
 			
 			//CATEGORIA
-			roCategoriaData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roCategoriaData.endpoint = NOKConstants.SERVICE_URL;
 			roCategoriaData.destination = "categoriaBusiness";
 			roCategoriaData.showBusyCursor = true;
 			

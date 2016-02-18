@@ -2,7 +2,7 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
                xmlns:s="library://ns.adobe.com/flex/spark"
                xmlns:mx="library://ns.adobe.com/flex/mx"
-               xmlns:components="com.hillelcoren.components.*" height="536" minWidth="955"
+               xmlns:components="com.hillelcoren.components.*"
                minHeight="600" creationComplete="initcreationCompleteHandler(event)">
 
 
@@ -67,6 +67,7 @@
         protected function selectedDiagnostico(event:MouseEvent):void {
             //Obtenemos los diagnostico
             itemSelected = event.currentTarget.selectedItem as DiagnosticoDTO;
+            grupoSubDiagnostico.visible = true;
 
             //cargamos el elemento de equipo por medio de Cursor
             doSort('id_equipo', acEquipo);
@@ -120,7 +121,16 @@
         }
 
         private function updateDiagnosticoEquiporesult(event:ResultEvent):void {
-
+            if (event.result != null) {
+                Alert.show("El registro se actualizó correctamente");
+                clean();
+//                refrescamos el registro
+                //limpiamos cajas
+                var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
+                roDiagnostico.getDiagnosticos(diagnosticoEquipo);
+            } else {
+                Alert.show("No se puede actualizar en este momento");
+            }
         }
 
         private function deleteDiagnosticoEquiporesult(event:ResultEvent):void {
@@ -156,7 +166,11 @@
             var diagnosticoEquipo:DiagnosticoDTO = new DiagnosticoDTO();
             roDiagnostico.getDiagnosticos(diagnosticoEquipo);
             // se agrega al modelo los valores para poder verlos.
-            itemSelected.detalle.addItem(detalle)
+            itemSelected.detalle.addItem(event.result as DiagnosticoDetalleDTO);
+            //Limpiamos la caja de detalle:
+            autoSubCategoria.text = '';
+            txtComentario.text = '';
+            rbFallaDetalle.selected = true;
         }
 
         private function updateDiagnosticoDetalleresult(event:ResultEvent):void {
@@ -184,7 +198,11 @@
                 roDiagnostico.insertDiagnostico(diagnostico);
             } else {
                 //Actualizamos el registro
-
+                var diagnositicoActualizar:DiagnosticoDTO = new DiagnosticoDTO();
+                diagnositicoActualizar = itemSelected;
+                diagnositicoActualizar.fecha_diagnostico = fechaDiagnostico.text;
+                diagnositicoActualizar.estatus = ddlEstatus.selectedItem.estatus;
+                roDiagnostico.updateDiagnostico(diagnositicoActualizar);
             }
 
         }
@@ -193,10 +211,13 @@
             autoEquipo.clear();
             fechaDiagnostico.text = "";
             ddlEstatus.selectedIndex = -1;
-            if(acDiagnosticoDetalle != null){
+            if (acDiagnosticoDetalle != null) {
                 acDiagnosticoDetalle.removeAll();
             }
+            autoSubCategoria.clear();
+            txtComentario.text = "";
             acDiagnostico.refresh();
+            rbFallaDetalle.selected = true;
         }
 
         private function updateItemSelected():void {
@@ -217,7 +238,9 @@
             var dateAlta:Date = new Date();
             itemSelected.fecha_alta = dateAlta.getFullYear().toString() + "/" + (dateAlta.getMonth() + 1).toString() + "/" + dateAlta.getDate();
         }
+
         public var detalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
+
         public function saveDiagnosticoDetalle():void {
             if (itemSelected == null) {
                 Alert.show("No hay un elemento seleccionado")
@@ -236,9 +259,20 @@
         private var diagnosticoSelectedToDelete:DiagnosticoDTO;
 
         private function deleteDiagnostico():void {
-            diagnosticoSelectedToDelete = dataGridListaDiagnostico.selectedItem as DiagnosticoDTO;
-            roDiagnostico.deleteDiagnostico(diagnosticoSelectedToDelete);
+            //alert
+            Alert.yesLabel = 'Si';
+            //objeto = data;
+            Alert.show("Estás seguro de borrar el registro?", "", 3, this, shureToDelete);
 
+
+        }
+
+        public function shureToDelete(event:CloseEvent):void {
+            if (event.detail == Alert.YES) {
+                diagnosticoSelectedToDelete = dataGridListaDiagnostico.selectedItem as DiagnosticoDTO;
+                roDiagnostico.deleteDiagnostico(diagnosticoSelectedToDelete);
+
+            }
         }
 
         private function infoCategoriaResult(event:ResultEvent):void {
@@ -248,19 +282,21 @@
 
         private function nuevoDiagnosticoClick(event:MouseEvent):void {
             //Limpia
+            grupoSubDiagnostico.visible = false;
             clean();
             isUpdating = false;
         }
+
         public var objeto:Object;
+
         function borrarDiagnosticoDetalle(data:Object):void {
             //Metodo para borrar el registro
             objeto = data;
-            Alert.show("Estás seguro de borrar el registro?","",3,this,iamShureToDelete);
+            Alert.show("Estás seguro de borrar el registro?", "", 3, this, iamShureToDelete);
         }
-        public function iamShureToDelete(event:CloseEvent):void
-        {
-            if(event.detail == Alert.YES)
-            {
+
+        public function iamShureToDelete(event:CloseEvent):void {
+            if (event.detail == Alert.YES) {
                 acDiagnosticoDetalle.removeItemAt(dataGridDiagnosticoDetalle.selectedIndex);
                 roDiagnosticoDetalle.deleteDiagnosticoDetalle(objeto as DiagnosticoDetalleDTO);
             }
@@ -274,7 +310,8 @@
         <!-- REMOTE OBJECTS-->
 
         <!-- Remote Object para la Alta del Diagnostico -->
-        <s:RemoteObject id="roDiagnostico" showBusyCursor="true" destination="equipoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+        <s:RemoteObject id="roDiagnostico" showBusyCursor="true" destination="equipoBusiness"
+                        endpoint="{NOKConstants.SERVICE_URL}"
                         fault="diagnosticoFault(event)">
             <s:method name="getDiagnosticos" result="getDiagnosticoEquiporesult(event)"/>
             <s:method name="insertDiagnostico" result="insertDiagnosticoEquiporesult(event)"/>
@@ -435,55 +472,59 @@
 
             <!-- Grupo Subcategoria -->
             <mx:HRule width="100%"/>
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Subcategoria" width="120" textAlign="right"/>
-                <components:AutoComplete id="autoSubCategoria" width="100%" dataProvider="{acSubCategoria}"
-                                         labelField="subcategoria"/>
-            </s:HGroup>
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Estatus" width="120" textAlign="right"/>
-                <s:RadioButton id="rbFallaDetalle" selected="true" label="FALLA" value="FALLA"
-                               group="{estatusdiagnosticoButtonGroup}"/>
-                <s:RadioButton id="rbCorrectoDetalle" label="CORRECTO" value="CORRECTO"
-                               group="{estatusdiagnosticoButtonGroup}"/>
-            </s:HGroup>
+            <s:VGroup id="grupoSubDiagnostico" width="100%" height="100%" visible="false">
+                <s:HGroup width="100%" verticalAlign="middle">
+                    <s:Label text="Subcategoria" width="120" textAlign="right"/>
+                    <components:AutoComplete id="autoSubCategoria" width="100%" dataProvider="{acSubCategoria}"
+                                             labelField="subcategoria"/>
+                </s:HGroup>
+                <s:HGroup width="100%" verticalAlign="middle">
+                    <s:Label text="Estatus" width="120" textAlign="right"/>
+                    <s:RadioButton id="rbFallaDetalle" selected="true" label="FALLA" value="FALLA"
+                                   group="{estatusdiagnosticoButtonGroup}"/>
+                    <s:RadioButton id="rbCorrectoDetalle" label="CORRECTO" value="CORRECTO"
+                                   group="{estatusdiagnosticoButtonGroup}"/>
+                </s:HGroup>
 
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Comentario" width="120" textAlign="right"/>
-                <s:TextArea id="txtComentario" width="100%" height="100"/>
-            </s:HGroup>
-            <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
-                <s:Button label="Agregar al diagnóstico" styleName="primaryButton"
-                          click="saveDiagnosticoDetalle()"/>
-            </s:HGroup>
-            <!-- End Grupo Subcategoria -->
-            <!-- End Registro de Diagnostico-->
+                <s:HGroup width="100%" verticalAlign="middle">
+                    <s:Label text="Comentario" width="120" textAlign="right"/>
+                    <s:TextArea id="txtComentario" width="100%" height="100"/>
+                </s:HGroup>
+                <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
+                    <s:Button label="Agregar al diagnóstico" styleName="primaryButton"
+                              click="saveDiagnosticoDetalle()" enabled="{!autoEquipo.text==''}"/>
+                </s:HGroup>
 
-            <!-- Lista de Categorias -->
-            <s:DataGrid width="100%" height="100%" requestedRowCount="4" id="dataGridDiagnosticoDetalle"
-                        dataProvider="{acDiagnosticoDetalle}">
-                <s:columns>
-                    <s:ArrayList>
-                        <s:GridColumn dataField="categoria" headerText="Categoria"/>
-                        <s:GridColumn dataField="subcategoria" headerText="Subcategoria"/>
-                        <s:GridColumn dataField="estatus" headerText="Estatus"/>
-                        <s:GridColumn dataField="comentario" headerText="Comentario"/>
-                        <s:GridColumn headerText="" width="77">
-                            <s:itemRenderer>
-                                <fx:Component>
-                                    <s:GridItemRenderer>
-                                        <s:HGroup horizontalAlign="center">
-                                            <s:Button icon="assets/icons/delete.png" width="36" click="outerDocument.borrarDiagnosticoDetalle(data)"/>
-                                            <!--<s:Button icon="assets/icons/application_form_edit.png" width="36" click="outerDocument.modificarDiagnositoDetalle(data)"/>-->
-                                        </s:HGroup>
+                <!-- End Grupo Subcategoria -->
+                <!-- End Registro de Diagnostico-->
 
-                                    </s:GridItemRenderer>
-                                </fx:Component>
-                            </s:itemRenderer>
-                        </s:GridColumn>
-                    </s:ArrayList>
-                </s:columns>
-            </s:DataGrid>
+                <!-- Lista de Categorias -->
+                <s:DataGrid width="100%" height="100%" requestedRowCount="4" id="dataGridDiagnosticoDetalle"
+                            dataProvider="{acDiagnosticoDetalle}">
+                    <s:columns>
+                        <s:ArrayList>
+                            <s:GridColumn dataField="categoria" headerText="Categoria"/>
+                            <s:GridColumn dataField="subcategoria" headerText="Subcategoria"/>
+                            <s:GridColumn dataField="estatus" headerText="Estatus"/>
+                            <s:GridColumn dataField="comentario" headerText="Comentario"/>
+                            <s:GridColumn headerText="" width="77">
+                                <s:itemRenderer>
+                                    <fx:Component>
+                                        <s:GridItemRenderer>
+                                            <s:HGroup horizontalAlign="center">
+                                                <s:Button icon="assets/icons/delete.png" width="36"
+                                                          click="outerDocument.borrarDiagnosticoDetalle(data)"/>
+                                                <!--<s:Button icon="assets/icons/application_form_edit.png" width="36" click="outerDocument.modificarDiagnositoDetalle(data)"/>-->
+                                            </s:HGroup>
+
+                                        </s:GridItemRenderer>
+                                    </fx:Component>
+                                </s:itemRenderer>
+                            </s:GridColumn>
+                        </s:ArrayList>
+                    </s:columns>
+                </s:DataGrid>
+            </s:VGroup>
             <!-- End Lista de Categorias -->
         </s:Panel>
         <!-- End Panel Registro de Diagnostico -->

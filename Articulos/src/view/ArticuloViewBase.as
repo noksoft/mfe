@@ -1,6 +1,8 @@
 package view
 {
-	import event.CommonEvent;
+import constants.NOKConstants;
+
+import event.CommonEvent;
 	
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
@@ -134,23 +136,23 @@ package view
 			//Initialization to Remote Object
 			//ARTICULO
 //			roArticuloData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
-			roArticuloData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roArticuloData.endpoint = NOKConstants.SERVICE_URL;
 			roArticuloData.destination = "articuloBusiness";
 			roArticuloData.showBusyCursor = true;
 			
 //			roCategoriaData.endpoint = "http://localhost:8080/nok/messagebroker/amf";
-			roCategoriaData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roCategoriaData.endpoint = NOKConstants.SERVICE_URL;
 			roCategoriaData.destination = "categoriaBusiness";
 			roCategoriaData.showBusyCursor = true;
 			
 			//EDITOR
-			roArticuloEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roArticuloEditor.endpoint = NOKConstants.SERVICE_URL;
 //			roArticuloEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
 			roArticuloEditor.destination = "articuloBusiness";
 			roArticuloEditor.showBusyCursor = true;
 			
 //			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
-			roCategoriaEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roCategoriaEditor.endpoint = NOKConstants.SERVICE_URL;
 			roCategoriaEditor.destination = "categoriaBusiness";
 			roCategoriaEditor.showBusyCursor = true;
 			
@@ -198,7 +200,7 @@ package view
 			
 			
 			//Editor
-			roCategoriaEditor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roCategoriaEditor.endpoint = NOKConstants.SERVICE_URL;
 //			roCategoriaEditor.endpoint = "http://localhost:8080/nok/messagebroker/amf";
 			roCategoriaEditor.destination = "categoriaBusiness";
 			roCategoriaEditor.showBusyCursor = true;
@@ -513,7 +515,7 @@ package view
 		public function listenerAcceptedConfirmation(_event:CommonEvent):void
 		{
 			if(itemSelected != null){
-				roArticuloData.deleteMarca(itemSelected);
+				roArticuloData.deleteArticulo(itemSelected);
 			}
 		}
 		

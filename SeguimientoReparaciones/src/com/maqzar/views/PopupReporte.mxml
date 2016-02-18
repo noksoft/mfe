@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+  Created by CarlosZaragoza on 1/27/2016.
+-->
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               xmlns:components="com.hillelcoren.components.*"
+               width="400" height="300" close="PopUpManager.removePopUp(this)" title="Reporte de avance">
+    <fx:Declarations>
+        <s:RemoteObject id="roFallas" destination="fallaEquipoBusiness" showBusyCursor="true" source=""
+                        endpoint="{NOKConstants.SERVICE_URL}" fault="roFallasFault(event)">
+            <s:method name="getFallasEquipo" result="getFallasEquipoResult(event)"/>
+        </s:RemoteObject>
+    </fx:Declarations>
+    <fx:Script><![CDATA[
+        import constants.NOKConstants;
+
+        import dtos.FallaEquipoDTO;
+
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+
+        import mx.events.FlexEvent;
+
+        import mx.managers.PopUpManager;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+
+        public var fallaEquipo:FallaEquipoDTO;
+        [Bindable]
+        public var acEstatusFalla:ArrayCollection;
+        private function init(event:FlexEvent):void {
+            //traemos los datos
+            roFallas.getFallasEquipo();
+        }
+
+        private function roFallasFault(event:FaultEvent):void {
+            Alert.show("No pudo cargar la información");
+        }
+
+        private function getFallasEquipoResult(event:ResultEvent):void {
+                acEstatusFalla = event.result as ArrayCollection;
+        }
+        ]]></fx:Script>
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+    <mx:BarChart id="myChart" dataProvider="{acEstatusFalla}" showDataTips="true" creationComplete="init(event)"
+    width="100%" height="100%">
+        <mx:verticalAxis>
+            <mx:CategoryAxis categoryField="month"/>
+        </mx:verticalAxis>
+        <mx:series>
+            <mx:BarSeries
+                    yField="month"
+                    xField="profit"
+                    displayName="Programado"/>
+            <mx:BarSeries
+                    yField="month"
+                    xField="expenses"
+                    displayName="Realizado"/>
+        </mx:series>
+    </mx:BarChart>
+    <mx:Legend dataProvider="{myChart}"/>
+</s:TitleWindow>

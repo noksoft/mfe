@@ -1,6 +1,8 @@
 package view.components
 {
-	import event.CommonEvent;
+import constants.NOKConstants;
+
+import event.CommonEvent;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;
@@ -69,7 +71,7 @@ package view.components
 			titleFormulario = CREAR;
 			//Initialization to Remote Object
 			//EQUIPO
-			roEquipoData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roEquipoData.endpoint = NOKConstants.SERVICE_URL;
 			roEquipoData.destination = "equipoBusiness";
 			roEquipoData.showBusyCursor = true;
 			
@@ -91,17 +93,17 @@ package view.components
 			roEquipoData.getOperation("deleteEquipo").addEventListener(FaultEvent.FAULT, deleteItemFault);
 			
 			//EQUIPO
-			roMarcaMotor.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roMarcaMotor.endpoint = NOKConstants.SERVICE_URL;
 			roMarcaMotor.destination = "equipoBusiness";
 			roMarcaMotor.showBusyCursor = true;
 			
 			//MARCA / SUBMARCA
-			roMarcaSubmarca.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roMarcaSubmarca.endpoint = NOKConstants.SERVICE_URL;
 			roMarcaSubmarca.destination = "articuloBusiness";
 			roMarcaSubmarca.showBusyCursor = true;
 			
 			//CATEGORIA
-			roCategoriaData.endpoint = "https://mmw-carast.c9.io/nok/messagebroker/amf";
+			roCategoriaData.endpoint = NOKConstants.SERVICE_URL;
 			roCategoriaData.destination = "categoriaBusiness";
 			roCategoriaData.showBusyCursor = true;
 			
@@ -144,7 +146,7 @@ package view.components
 		protected function selectedItem(_event:Event):void{
 			titleFormulario = ACTUALIZAR;
 			viewEquipo.vsEquipo.selectedIndex = 1;
-			itemSelected = _event.currentTarget.selectedItem;
+			itemSelected = _event.currentTarget.selectedItem as EquipoVO;
 			
 			viewEquipo.dtf_adquisicion.selectedDate = DateField.stringToDate(itemSelected.fechaadquisicion, "YYYY/MM/DD");
 			
@@ -324,7 +326,7 @@ package view.components
 			//Factura
 			itemSelected.factura = viewEquipo.txtFactura.text;
 			//idEquipo
-			itemSelected.id_equipo = itemSelected.numeroserie + itemSelected.factura;
+			itemSelected.id_equipo = itemSelected.id_equipo;
 			//Pedimefnto
 			itemSelected.pedimiento = viewEquipo.txtPedimento.text;
 			//Carga Foto

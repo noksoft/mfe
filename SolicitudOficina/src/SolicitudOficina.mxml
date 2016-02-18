@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"  
+	backgroundColor="0xFFFFFF"
+	creationPolicy="all"
+	xmlns:swiz="http://swiz.swizframework.org" 
+	xmlns:bean="bean.*"
+	xmlns:view="view.*" >
+	<fx:Style source="assets/style.css"/>
+	<!--
+	username: zaragozar83@gmail.com
+	password: gn9tP8Ee8fB9
+	-->
+	<fx:Declarations>
+		<swiz:Swiz>
+			<swiz:beanProviders>
+				<bean:Beans/>
+			</swiz:beanProviders>
+			<swiz:config>
+				<swiz:SwizConfig 
+					eventPackages="event.*"
+					viewPackages="view.*"/>
+			</swiz:config>
+		</swiz:Swiz>
+	</fx:Declarations>
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<view:SolicitudView
+		width="100%" height="100%"/>
+</s:Application>

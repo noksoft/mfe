@@ -12,7 +12,7 @@
 	<fx:Declarations>
 		<s:RemoteObject
 			id="roDireccion"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="direccionBusiness">
 			<s:method
 				name="catMunicipio"
@@ -29,7 +29,7 @@
 		</s:RemoteObject>
 		<s:RemoteObject
 			id="roTipoEmpleado"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="tipoempeladoBusiness">
 				<s:method
 					name="getTipoEmpleados"
@@ -38,7 +38,7 @@
 		</s:RemoteObject>
 		<s:RemoteObject
 			id="roEmpleado"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="empleadoBusiness">
 			<s:method
 				name="infoEmpleado"
@@ -92,7 +92,7 @@
 			source="{txtTelefono}"
 			property="text"
 			minLength="8"
-			maxLength="15"
+			maxLength="10"
 			tooShortError="El Telefono debe de ser minimo de 8 digitos"
 			requiredFieldError="Debe de ingresar un Télefono"
 			required="true"/>
@@ -100,6 +100,7 @@
 			id="validateCelular"
 			source="{txtCelular}"
 			property="text"
+			minLength="8" maxLength="10"
 			tooShortError="El Celular debe de ser minimo de 8 digitos"
 			requiredFieldError="Debe de ingresar un Celular"
 			required="true"/>
@@ -161,19 +162,18 @@
 			property="text"
 			requiredFieldError="Debe ingresar un Domicilio"
 			required="true"/>
-		<mx:DateValidator 
-			id="validatorDateAlta" 
-			source="{dateAlta}" property="text" 
-			allowedFormatChars="*#~/"
-			formatError="El formato de la fecha no es correcta."
-			invalidCharError="El caracter es incorrecto."
+		<!--<mx:DateValidator
+			id="validatorDateAlta"
+			source="{dateAlta}" property="text"
 			requiredFieldError="Debe ingresar la fecha de Alta"/>
-
+-->
 				
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import event.CommonEvent;
+		import constants.NOKConstants;
+
+		import event.CommonEvent;
 			
 			import model.EmpleadoVO;
 			import model.EntidadVO;
@@ -220,6 +220,7 @@
 			private function init():void{
 				itemSelected = new EmpleadoVO();
 				upData();
+                itemSelected.esusuario = false;
 			}
 			
 			private function upData():void{
@@ -300,9 +301,9 @@
 			private function validateAllInputs():void{
 				arrayValidationResult = new Array();
 				if(flagUserSystem){
-					arrayValidationResult = Validator.validateAll([validateRFC, validateCelular, validateCP, validateDomicilio, validateEntidad, validateLocalidad, validateMaterno, validateMunicipio, validateNombre, validatePaterno, validateTelefono, validateTipoEmpleado, validatorDateAlta, validatePerfil, validatePassword]);
+					arrayValidationResult = Validator.validateAll([validateRFC, validateCelular, validateCP, validateDomicilio, validateEntidad, validateLocalidad, validateMaterno, validateMunicipio, validateNombre, validatePaterno, validateTelefono, validateTipoEmpleado, validatePerfil, validatePassword]);
 				}else{
-					arrayValidationResult = Validator.validateAll([validateRFC, validateCelular, validateCP, validateDomicilio, validateEntidad, validateLocalidad, validateMaterno, validateMunicipio, validateNombre, validatePaterno, validateTelefono, validateTipoEmpleado, validatorDateAlta]);
+					arrayValidationResult = Validator.validateAll([validateRFC, validateCelular, validateCP, validateDomicilio, validateEntidad, validateLocalidad, validateMaterno, validateMunicipio, validateNombre, validatePaterno, validateTelefono, validateTipoEmpleado]);
 				}
 			}
 			
@@ -837,7 +838,7 @@
 				<s:TextInput
 					id="txtTelefono"
 					restrict="0-9"
-					maxChars="15"
+					maxChars="10"
 					text="{itemSelected.telefono}"
 					width="300"/>
 			</s:HGroup>
@@ -850,7 +851,7 @@
 				<s:TextInput
 					id="txtCelular"
 					restrict="0-9"
-					maxChars="15"
+					maxChars="10"
 					text="{itemSelected.celular}"
 					width="300"/>
 			</s:HGroup>
@@ -970,7 +971,9 @@
 					id="dateAlta"
 					enabled="true"
 					selectedDate="{itemSelected.fechaAlta}"
-					width="300"/>
+					width="300" yearNavigationEnabled="true" formatString="YYYY-MM-DD"
+					monthNames="['Enero', 'Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']"
+					dayNames="[D,L,M,M,J,V,S]"/>
 			</s:HGroup>
 			<s:HGroup
 				width="100%"

@@ -1,204 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" creationComplete="initData()">
-	
-	<fx:Script>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" creationComplete="initData()">
+
+    <fx:Script>
 		<![CDATA[
-			import mx.events.DragEvent;
-			import mx.managers.PopUpManager;
-			
-			import spark.components.TitleWindow;
-			protected function button1_clickHandler(event:MouseEvent):void
-			{
-				// TODO Auto-generated method stub
-				currentState = "segundo";
-				
-			}
-			import mx.collections.ArrayList;
-			
-			[Bindable]
-			private var DGArray:ArrayList = new ArrayList([
-				{Artist:'F987: Catepillar 1233FD', Album:'Slanted and Enchanted', Price:11.99},
-				{Artist:'D789: Trailer 1DS22FD', Album:'Brighten the Corners', Price:11.99}]);
-			
-			// Initialize initDG ArrayList variable from the ArrayList.
-			public function initData():void {
-				listFallas.dataProvider = DGArray;
-			}
-			
-			protected function abrePopupDetalleFalla(event:MouseEvent):void
-			{
-				
-				var popupFalla:PopupDetalleFalla = PopupDetalleFalla(PopUpManager.createPopUp(this, PopupDetalleFalla,true)  as spark.components.TitleWindow);
-				PopUpManager.centerPopUp(popupFalla);
-				
-				
-			}
-			
-			protected function abreVentanaAsignacion():void
-			{
-				//event.draggedItem;
-				//event.cancelable = true;
-				var popupAsignacion:PopupAsignaFalla = PopupAsignaFalla(PopUpManager.createPopUp(this, PopupAsignaFalla, true) as spark.components.TitleWindow);
-				PopUpManager.centerPopUp(popupAsignacion);
-				
-			}
-			
-		]]>
+        import constants.NOKConstants;
+
+        import dtos.EmpleadoDTO;
+        import dtos.FallaEquipoDTO;
+
+        import dtos.FallaEquipoDTO;
+
+        import events.NotificaFallaAgregada;
+
+        import mx.collections.ArrayCollection;
+        import mx.collections.IList;
+        import mx.controls.Alert;
+        import mx.events.CloseEvent;
+        import mx.events.DragEvent;
+        import mx.managers.PopUpManager;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+
+        import spark.components.TitleWindow;
+
+        import mx.collections.ArrayList;
+
+        [Bindable]
+        private var DGArray:ArrayList = new ArrayList([
+            {Artist: 'F987: Catepillar 1233FD', Album: 'Slanted and Enchanted', Price: 11.99},
+            {Artist: 'D789: Trailer 1DS22FD', Album: 'Brighten the Corners', Price: 11.99}]);
+        [Bindable]
+        private var acFallas:ArrayCollection = new ArrayCollection();
+
+        // Initialize initDG ArrayList variable from the ArrayList.
+        [Bindable]
+        private var acSeguimientoFallas:ArrayCollection;
+
+        public function initData():void {
+            //obtenemos remote objet los valores de las fallas:
+            var falla:FallaEquipoDTO = new FallaEquipoDTO();
+            falla.estatusProceso = 'PENDIENTE';
+            roFallas.getFallasEquipo(falla);
+            var seguimientoFalla:FallaEquipoDTO = new FallaEquipoDTO();
+            seguimientoFalla.estatusProceso = 'PROCESO';
+            roSeguimiento.getFallasEquipo(seguimientoFalla);
+
+            var empleado:EmpleadoDTO = new EmpleadoDTO();
+            roEmpleados.infoEmpleado(empleado);
+
+        }
+
+        [Bindable]
+        public var acEmpleados:ArrayCollection;
+
+        protected function abrePopupDetalleFalla(event:MouseEvent):void {
+
+            var popupFalla:PopupDetalleFalla = PopupDetalleFalla(PopUpManager.createPopUp(this, PopupDetalleFalla, true) as spark.components.TitleWindow);
+            PopUpManager.centerPopUp(popupFalla);
+            var falla:FallaEquipoDTO = event.currentTarget.selectedItem;
+            popupFalla.txtObra.text = (falla.nombreobra + "-" + falla.descripcionobra).toString();
+            popupFalla.txtEquipo.text = falla.numeroeconomico.toString();
+            popupFalla.txtFalla.text = falla.falla;
+            popupFalla.txtSubFalla.text = falla.subfalla;
+            switch (falla.prioridad) {
+                case 1:
+                    popupFalla.radioAlta.selected;
+
+                    break;
+                case 2:
+                    popupFalla.radioMedia.selected;
+                    break;
+                case 3:
+                    popupFalla.radioBaja.selected;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        protected function abreVentanaAsignacion():void {
+            //event.draggedItem;
+            //event.cancelable = true;
+            var popupAsignacion:PopupAsignaFalla = PopupAsignaFalla(PopUpManager.createPopUp(this, PopupAsignaFalla, true) as spark.components.TitleWindow);
+            PopUpManager.centerPopUp(popupAsignacion);
+            var item:FallaEquipoDTO = listFallas.selectedItem as FallaEquipoDTO;
+            popupAsignacion.txtEquipo.text = item.numeroeconomico;
+            popupAsignacion.txtFalla.text = item.falla;
+            popupAsignacion.txtSubFalla.text = item.subfalla;
+            popupAsignacion.fallaPop = item;
+            popupAsignacion.addEventListener("NotificaFallaAgregada", fallaAsignada);
+
+
+        }
+
+        private var fallaPorNotificiacion:FallaEquipoDTO;
+
+        private function fallaAsignada(event:NotificaFallaAgregada):void {
+            //mandamos a guardar todo y quitar el elemento seleccionado
+            trace("mandamos a guardar todo y quitar el elemento seleccionado");
+
+            fallaPorNotificiacion = event.fallaEquipo;
+            fallaPorNotificiacion.estatusProceso = 'PROCESO';
+            fallaPorNotificiacion.estatus = 'true';
+            roSeguimiento.updateFallaEquipoComplement(fallaPorNotificiacion);
+
+        }
+
+
+        private function getFallasEquipoResult(event:ResultEvent):void {
+            trace("Evento result");
+            acFallas = event.result as ArrayCollection;
+        }
+
+        private function roFallasFault(event:FaultEvent):void {
+            trace("Evento Falla");
+
+            trace(event.message);
+        }
+
+        public var estadoBloqueo:Boolean = false;
+        public var fallaParaBloquear:FallaEquipoDTO;
+
+        function bloqueoTarea(data:Object):void {
+            estadoBloqueo = !estadoBloqueo;
+            fallaParaBloquear = data as FallaEquipoDTO;
+
+            if (fallaParaBloquear.estatusProceso == "BLOQUEADO") {
+                fallaParaBloquear.estatusProceso = "PROCESO";
+            } else {
+                fallaParaBloquear.estatusProceso = "BLOQUEADO";
+
+            }
+            fallaParaBloquear.estatus='true';
+            roSeguimiento.updateFallaEquipoComplement(fallaParaBloquear);
+        }
+
+        private function getSeguimientoEquipoResult(event:ResultEvent):void {
+            acSeguimientoFallas = event.result as ArrayCollection;
+        }
+
+
+        private function updateFallaEquipoComplementResult(event:ResultEvent):void {
+            //lo que regresa cuando esta en orden.
+            if (listFallas.selectedIndex != -1) {
+                acFallas.removeItemAt(listFallas.selectedIndex);
+                //acSeguimientoFallas.addItem(fallaPorNotificiacion);
+            }
+            var falla:FallaEquipoDTO = new FallaEquipoDTO();
+            falla.estatusProceso = 'PROCESO';
+            roSeguimiento.getFallasEquipo(falla);
+
+
+            //Alert.show("Falla Asignada", "MMW");
+        }
+
+        private function roEmpleadosFault(event:FaultEvent):void {
+
+        }
+
+        private function infoEmpleadoResult(event:ResultEvent):void {
+            acEmpleados = event.result as ArrayCollection;
+        }
+
+        public var idmat:int;
+
+
+
+        public function terminarTarea(data:Object):void {
+            Alert.yesLabel = "Si";
+            Alert.show("¿Estás seguro de terminar la tarea?", "", 3, this, iamShureToDelete);
+        }
+
+        private function iamShureToDelete(event:CloseEvent):void {
+            if (event.detail == Alert.YES) {
+                // Terminamos la tarea
+                var item:FallaEquipoDTO = new FallaEquipoDTO();
+                item = dataGridMaquinaEquipoTransporteAsignado.selectedItem as FallaEquipoDTO;
+                item.estatusProceso = 'TERMINADO';
+                item.estatus = 'true';
+                trace(item.estatusProceso);
+                roSeguimiento.updateFallaEquipoComplement(item);
+
+            }
+        }
+
+        [Embed(source="../../../assets/icons/check.png")]
+        [Bindable]
+        public var check:Class;
+
+        [Embed(source="../../../assets/icons/uncheck.png")]
+        [Bindable]
+        public var uncheck:Class;
+
+        [Embed(source="../../../assets/icons/bloqueo.png")]
+        [Bindable]
+        public var bloqueo:Class;
+
+        [Embed(source="../../../assets/icons/terminar.png")]
+        [Bindable]
+        public var terminar:Class;
+
+        [Embed(source="../../../assets/icons/continuar.png")]
+        [Bindable]
+        public var continuar:Class;
+
+        private function filtradoTareas(event:MouseEvent, s:String):void {
+            var falla:FallaEquipoDTO = new FallaEquipoDTO();
+            falla.estatusProceso = s;
+            roSeguimiento.getFallasEquipo(falla);
+        }
+        ]]>
 	</fx:Script>
-	
-	<s:states>
-		<s:State name="State1"/>
-	</s:states>
-	<fx:Declarations>
-		
-	</fx:Declarations>
-	
-	
-	
-	<s:Panel left="0" top="0" width="100%" height="100%">
-		<mx:HDividedBox width="100%" height="100%" x="0" y="0">
-			<s:Panel left="0" top="0" width="250" height="100%" title="Listado de fallas reportadas">
-				<s:controlBarContent>
-					<s:Spacer width="100%" height="10"/>
-					<s:Button label="Dar seguimiento &gt;" click="abreVentanaAsignacion()" enabled="{listFallas.selectedIndex != -1}" />
-				</s:controlBarContent>
-				
-				<s:List styleName="listMenu" id="listFallas" doubleClickEnabled="true" doubleClick="abrePopupDetalleFalla(event)" color="white"
-						labelField="Artist" x="0" y="0" width="100%" height="100%">
-					
-				</s:List>
-			</s:Panel>
-			<s:VGroup width="100%" height="100%">
-				<s:HGroup width="100%" verticalAlign="middle">
-					<s:Button label="Ir a Semana actual"/>
-					<s:Label text="Selecciona una semana del calendario"/>
-					<mx:DateField/>
-				</s:HGroup>
-				<mx:AdvancedDataGrid id="adg1" y="0" left="255" width="100%" height="100%"
-									 designViewDataType="tree">
-					<mx:groupedColumns>
-						<mx:AdvancedDataGridColumn dataField="@equipo" headerText="Equipo"/>
-						<mx:AdvancedDataGridColumn dataField="@falla" headerText="Falla"/>
-						<mx:AdvancedDataGridColumn dataField="@personal" headerText="Personal"/>
-						<mx:AdvancedDataGridColumnGroup headerText="Semana de trabajo">
-							<mx:AdvancedDataGridColumnGroup headerText="L">
-								<mx:AdvancedDataGridColumn dataField="@semana.lunes.programado" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="M">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="M">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="J">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="V">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="S">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-							<mx:AdvancedDataGridColumnGroup headerText="D">
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="P" width="40"/>
-								<mx:AdvancedDataGridColumn dataField="col4" headerText="R" width="40"/>
-							</mx:AdvancedDataGridColumnGroup>
-						</mx:AdvancedDataGridColumnGroup>
-						
-						
-					</mx:groupedColumns>
-					<mx:dataProvider>
-						<s:XMLListCollection id="dp">
-							<s:source>
-								<fx:XMLList>
-									<product equipo="Maquina 1" falla="Falla 1" personal="Personal 1">
-										<semana numero="Semana 1">
-											<lunes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</lunes>
-											<martes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</martes>
-											<miercoles>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</miercoles>
-											<jueves>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</jueves>
-											<viernes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</viernes>
-											<sabado>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</sabado>
-											<domingo>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</domingo>
-											
-											
-										</semana>
-									</product>
-									<product equipo="Maquina 1" falla="Falla 1" personal="Personal 1">
-										<semana numero="Semana 1">
-											<lunes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</lunes>
-											<martes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</martes>
-											<miercoles>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</miercoles>
-											<jueves>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</jueves>
-											<viernes>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</viernes>
-											<sabado>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</sabado>
-											<domingo>
-												<programado>1</programado>
-												<realizado>2</realizado>
-											</domingo>
-											
-											
-										</semana>
-									</product>
-									
-								</fx:XMLList>
-							</s:source>
-						</s:XMLListCollection>
-					</mx:dataProvider>
-				</mx:AdvancedDataGrid>
-			</s:VGroup>
-			
-		</mx:HDividedBox>
-			
-			
-			
-	</s:Panel>
+
+    <s:states>
+        <s:State name="State1"/>
+    </s:states>
+    <fx:Declarations>
+        <s:RemoteObject id="roFallas" destination="fallaEquipoBusiness" showBusyCursor="true" source=""
+                        endpoint="{NOKConstants.SERVICE_URL}" fault="roFallasFault(event)">
+            <s:method name="getFallasEquipo" result="getFallasEquipoResult(event)"/>
+        </s:RemoteObject>
+        <s:RemoteObject id="roSeguimiento" destination="fallaEquipoBusiness" showBusyCursor="true" source=""
+                        endpoint="{NOKConstants.SERVICE_URL}" fault="roFallasFault(event)">
+            <s:method name="getFallasEquipo" result="getSeguimientoEquipoResult(event)"/>
+            <s:method name="updateFallaEquipoComplement" result="updateFallaEquipoComplementResult(event)"/>
+        </s:RemoteObject>
+        <s:RemoteObject id="roEmpleados" destination="empleadoBusiness" endpoint="{NOKConstants.SERVICE_URL}"
+                        fault="roEmpleadosFault(event)">
+            <s:method name="infoEmpleado" result="infoEmpleadoResult(event)"/>
+        </s:RemoteObject>
+    </fx:Declarations>
+
+
+    <s:Panel left="0" top="0" width="100%" height="100%">
+        <mx:HDividedBox width="100%" height="100%" x="0" y="0">
+            <s:Panel left="0" top="0" width="300" height="100%" title="Listado de fallas reportadas">
+                <s:controlBarContent>
+                    <s:Spacer width="100%" height="10"/>
+                    <s:Button label="Dar seguimiento &gt;" click="abreVentanaAsignacion()"
+                              enabled="{listFallas.selectedIndex != -1}"/>
+                </s:controlBarContent>
+
+                <s:List styleName="listMenu" id="listFallas" doubleClickEnabled="true"
+                        doubleClick="abrePopupDetalleFalla(event)" color="white" dataProvider="{acFallas}"
+                        labelField="falla_descripcion" x="0" y="0" width="100%" height="100%">
+
+                </s:List>
+            </s:Panel>
+            <s:VGroup width="100%" height="100%">
+                <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
+                    <s:Button label="PROCESO" click="filtradoTareas(event,'PROCESO')"/>
+                    <s:Button label="TERMINADO" click="filtradoTareas(event,'TERMINADO')"/>
+                    <s:Button label="BLOQUEADO" click="filtradoTareas(event,'BLOQUEADO')"/>
+                </s:HGroup>
+                <s:DataGrid
+                        id="dataGridMaquinaEquipoTransporteAsignado"
+                        width="100%" height="100%"
+                        dataProvider="{acSeguimientoFallas}">
+                    <s:columns>
+                        <s:ArrayList>
+                            <s:GridColumn dataField="estatusProceso" headerText="" width="22">
+                                <s:itemRenderer>
+                                    <fx:Component>
+                                        <s:GridItemRenderer>
+                                            <s:Image
+                                                    source="{data.estatusProceso == 'TERMINADO' ? outerDocument.check : outerDocument.uncheck}"/>
+                                        </s:GridItemRenderer>
+
+                                    </fx:Component>
+                                </s:itemRenderer>
+                            </s:GridColumn>
+                            <s:GridColumn headerText="Folio" dataField="id_tfallas"/>
+                            <s:GridColumn headerText="Equipo" dataField="numeroeconomico"/>
+                            <s:GridColumn headerText="Falla" dataField="falla"/>
+                            <s:GridColumn headerText="Fecha Reportada" dataField="fecha_registro"/>
+                            <s:GridColumn headerText="Asignado" dataField="reparador">
+                                <!--<s:itemRenderer>-->
+                                <!--<fx:Component>-->
+                                <!--<s:GridItemRenderer>-->
+                                <!--<s:ComboBox dataProvider="{outerDocument.acEmpleados}" labelField="nombreCompleto" selectedIndex="{outerDocument.cargaEmpleado(data.idEmpleado)}"/>-->
+                                <!--</s:GridItemRenderer>-->
+                                <!--</fx:Component>-->
+                                <!--</s:itemRenderer>-->
+                            </s:GridColumn>
+                            <s:GridColumn headerText="Fecha de inicio" dataField="fechaInicio"/>
+                            <s:GridColumn headerText="Fecha final" dataField="fechaFin"/>
+                            <s:GridColumn headerText="Estatus" dataField="estatusProceso"/>
+                            <s:GridColumn headerText="" dataField="">
+                                <s:itemRenderer>
+                                    <fx:Component>
+                                        <s:GridItemRenderer>
+                                            <s:HGroup>
+                                                <s:Button width="24" height="24"
+                                                          icon="{data.estatusProceso == 'BLOQUEADO' ? outerDocument.bloqueo : outerDocument.continuar}"
+                                                          click="outerDocument.bloqueoTarea(data)"
+                                                          enabled="{data.estatusProceso == 'TERMINADO' ? false : true}"/>
+                                                <s:Button width="24" height="24" icon="{outerDocument.terminar}"
+                                                          enabled="{(data.estatusProceso == 'BLOQUEADO') ? false : true}"
+                                                          styleName="primaryButton"
+                                                          click="outerDocument.terminarTarea(data)"/>
+                                            </s:HGroup>
+                                        </s:GridItemRenderer>
+                                    </fx:Component>
+                                </s:itemRenderer>
+                            </s:GridColumn>
+                        </s:ArrayList>
+                    </s:columns>
+                </s:DataGrid>
+
+            </s:VGroup>
+
+        </mx:HDividedBox>
+
+
+    </s:Panel>
 
 </s:Group>

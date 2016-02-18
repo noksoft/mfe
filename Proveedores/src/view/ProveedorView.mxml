@@ -12,7 +12,7 @@
 	<fx:Declarations>
 		<s:RemoteObject
 			id="roDireccion"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="direccionBusiness">
 				<s:method
 					name="catMunicipio"
@@ -29,7 +29,7 @@
 		</s:RemoteObject>
 		<s:RemoteObject
 			id="roProveedor"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="proveedorBusiness">
 				<s:method
 					name="catProveedor"
@@ -118,7 +118,9 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import event.CommonEvent;
+		import constants.NOKConstants;
+
+		import event.CommonEvent;
 			
 			import model.EntidadVO;
 			import model.LocalidadVO;

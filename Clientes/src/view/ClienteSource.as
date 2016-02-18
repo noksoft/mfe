@@ -1,5 +1,7 @@
 import event.CommonEvent;
 
+import flash.events.MouseEvent;
+
 import flashx.textLayout.formats.Direction;
 
 import model.ClienteVO;
@@ -17,6 +19,8 @@ import mx.rpc.events.ResultEvent;
 import mx.validators.Validator;
 
 import utils.AlertUtils;
+
+import view.AlertConfirmation;
 
 [Bindable]private var titleFormulario:String;
 private const CREAR:String = "Crear";
@@ -76,7 +80,7 @@ private function clearFormulario():void{
 }
 
 private function saveCliente():void{
-    var arrayValidationResult:Array = Validator.validateAll([validateRFC, validateRazonSocial, validateDireccion, validateCP, validatorEntidad, validatorMunicipio, validatorLocalidad, validatorTelefono, validatorCorreo, validatorNombreContacto, validatorDateAlta]);
+    var arrayValidationResult:Array = Validator.validateAll([validateRFC, validateRazonSocial, validateDireccion, validateCP, validatorEntidad, validatorMunicipio, validatorLocalidad, validatorTelefono, validatorCorreo, validatorNombreContacto]);
     switch(titleFormulario){
         case CREAR:
             if(arrayValidationResult.length == 0){
@@ -135,6 +139,7 @@ private function listenerAcceptedConfirmation (_event:CommonEvent):void{
 protected function selectCliente(_event:MouseEvent):void
 {
     titleFormulario = "Actualizar";
+
     itemSelected = _event.currentTarget.selectedItem as ClienteVO;
     for(var i:int = 0; i < listEntidades.length; i++){
         var objEntidad:EntidadVO = listEntidades[i] as EntidadVO;

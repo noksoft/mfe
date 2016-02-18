@@ -44,7 +44,8 @@ package utils
 			if( rawUrl.indexOf('file:///') > -1){
 				//This flow will help us to test the application in any environment as local, only for front-end testing.
 				
-				url = "https://mmw-carast.c9.io/nok/messagebroker/amf" + AMF_FILE; //Official Localhost
+//				url = "https://mmw-carast.c9.io/nok/messagebroker/amf" + AMF_FILE; //Official Localhost
+				url = "http://localhost:8080/nok/messagebroker/amf" + AMF_FILE; //Official Localhost
 				//url = "http://dev.mtm.corporate.ge.com/" + AMF_FILE;
 				//url = "http://stage.mtm.corporate.ge.com/" + AMF_FILE;
 			}else{

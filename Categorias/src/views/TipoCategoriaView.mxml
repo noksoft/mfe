@@ -6,7 +6,7 @@
 	creationComplete="init()">
 	<fx:Declarations>
 		<s:RemoteObject id="roCategorias"
-			endpoint="https://mmw-carast.c9.io/nok/messagebroker/amf"
+			endpoint="{NOKConstants.SERVICE_URL}"
 			destination="categoriaBusiness">
 			<!--	TIPO CATEGORIA	-->
 			<s:method 
@@ -41,7 +41,8 @@
 			import spark.components.Grid;
 			import spark.events.GridSelectionEvent;
 			import utils.AlertUtils;
-			
+			import utils.NOKConstants;
+
 			[Bindable]private var listTipoCategorias:ArrayCollection = new ArrayCollection();
 			[Bindable]private var titleFormulario:String;
 			[Bindable]private var cm:ContextMenu;
@@ -198,6 +199,13 @@
 				//Alert.show("Error", "deleteTipoCategoria" + _event.fault.message);
 				AlertUtils.showErrorMessage("Error", "No se pudo eliminar el Tipo de Categorías");
 			}
+			[Embed(source="../assets/icons/check.png")]
+			[Bindable]
+			public var check:Class;
+
+			[Embed(source="../assets/icons/uncheck.png")]
+			[Bindable]
+			public var uncheck:Class;
 			
 		]]>
 	</fx:Script>
@@ -216,7 +224,19 @@
 							<s:columns>
 								<s:ArrayList>
 									<s:GridColumn headerText="Tipo Categoría" dataField="tipocategoria"/>
-									<s:GridColumn headerText="Estatus" dataField="estatus"/>
+									<s:GridColumn width="55" headerText="Estatus" dataField="estatus">
+										<s:itemRenderer>
+											<fx:Component>
+												<s:GridItemRenderer>
+													<s:HGroup width="100%" horizontalAlign="center">
+														<s:Image
+																source="{data.estatus ? outerDocument.check :outerDocument.uncheck}"/>
+													</s:HGroup>
+												</s:GridItemRenderer>
+
+											</fx:Component>
+										</s:itemRenderer>
+									</s:GridColumn>
 								</s:ArrayList>
 							</s:columns>
 					</s:DataGrid>

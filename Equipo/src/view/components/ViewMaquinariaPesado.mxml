@@ -70,7 +70,7 @@
 		<s:NavigatorContent
 			width="100%" height="100%"
 			id="containerTransportePesada"
-			label="Alta Transporte Pesada">
+			label="Alta {titlePanel}">
 			<s:Scroller width="100%" height="100%">
 				<s:VGroup
 					width="100%" height="100%"
@@ -214,7 +214,7 @@
 							dataProvider="{acTipoMedidas}"
 							width="100%"
 							labelField="name"
-							selectedIndex="-1"
+							selectedIndex="1"
 							prompt="Selecciona una Medida"/>
 					</s:HGroup>	
 					<s:HGroup 
