@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15bbbe78-d47b-407b-99a2-0cee669e5ae1" name="Default" comment="" />
+    <list default="true" id="15bbbe78-d47b-407b-99a2-0cee669e5ae1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Diagnostico.mxml" afterPath="$PROJECT_DIR$/src/Diagnostico.mxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" afterPath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" />
+    </list>
     <ignored path="Diagnostico.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -78,17 +81,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Diagnostico.mxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Diagnostico.mxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0023202">
-              <caret line="274" column="13" selection-start-line="274" selection-start-column="13" selection-end-line="274" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
+                <marker date="1455679140984" expanded="false" signature="555:1268" placeholder="..." />
                 <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
                 <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
                 <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-                <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
                 <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
                 <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
                 <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
@@ -139,54 +141,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubCategoriaDTO.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="38" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NOKConstants.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiagnosticoDetalleDTO.as" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DiagnosticoDetalleDTO.as" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiagnosticoDTO.as" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="40" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="40" />
-              <folding>
-                <element signature="e#66#104#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -377,6 +337,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maqzar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maqzar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -392,6 +392,12 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CarlosZaragoza\Documents\GitHub\mfe\Diagnostico\src\com\maqzar\dtos" />
+      <recent name="C:\Users\CarlosZaragoza\Documents\GitHub\mfe\Diagnostico\src" />
+    </key>
   </component>
   <component name="RunManager" selected="Flash App.Diagnostico">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -842,16 +848,16 @@
       <workItem from="1455244459809" duration="3350000" />
       <workItem from="1455316663222" duration="691000" />
       <workItem from="1455673620076" duration="7291000" />
-      <workItem from="1455762938071" duration="1358000" />
+      <workItem from="1455762938071" duration="1524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97765000" />
+    <option name="totallyTimeSpent" value="97931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35197368" sideWeight="0.48541668" order="12" side_tool="false" content_ui="tabs" />
@@ -863,7 +869,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25328946" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24672489" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24672489" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16367266" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21055438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -925,23 +931,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/Diagnostico.mxml</url>
-          <line>95</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/Diagnostico.mxml</url>
-          <line>173</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/src/Diagnostico.mxml</url>
-          <line>133</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -982,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -997,14 +978,6 @@
           <folding>
             <element signature="e#66#104#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,73 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,62 +1029,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
           <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
+            <element signature="e#66#104#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1199,65 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1275,65 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1348,200 +1094,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-          <folding>
-            <element signature="e#66#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1556,124 +1108,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
-          <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
-            <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
-            <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
-            <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3575:3647" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3714:3831" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="3905:4022" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4103:4661" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4233:4559" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4327:4402" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="4565:4651" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4742:5212" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4782:5111" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="4879:4954" placeholder="//..." />
-            <marker date="1455679140984" expanded="true" signature="5117:5202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5293:5305" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5409:5836" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="5888:6065" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6135:6202" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6281:6360" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="6442:6983" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7065:7077" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7159:7171" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7250:7262" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7307:7343" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7392:8247" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7423:7798" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="7804:8236" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8287:8681" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8450:8515" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8734:9617" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8785:8886" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="8942:9417" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9049:9283" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9305:9403" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9754:10429" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9794:9871" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="9889:10419" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10546:10734" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10797:11049" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="10842:11039" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11120:11194" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11266:11400" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11497:11674" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1788,7 +1222,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/SubCategoriaDTO.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.35553047">
           <caret line="23" column="38" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="38" />
           <folding />
         </state>
@@ -1796,23 +1230,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.2200903">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDTO.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.42325056">
           <caret line="27" column="40" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="40" />
           <folding>
             <element signature="e#66#104#0" expanded="true" />
@@ -1822,7 +1248,7 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1d87cec7-bfd8-43fd-9186-d19b3e7d6df5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.017523365">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
@@ -1830,14 +1256,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0023202">
-          <caret line="274" column="13" selection-start-line="274" selection-start-column="13" selection-end-line="274" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
+            <marker date="1455679140984" expanded="false" signature="555:1268" placeholder="..." />
             <marker date="1455679140984" expanded="true" signature="1636:1742" placeholder="[...]" />
             <marker date="1455679140984" expanded="true" signature="1637:1706" placeholder="{&quot;label&quot;: &quot;INCOMPLETO&quot;...}" />
             <marker date="1455679140984" expanded="true" signature="2085:2276" placeholder="{...}" />
-            <marker date="1455679140984" expanded="true" signature="2348:3456" placeholder="{...}" />
             <marker date="1455679140984" expanded="true" signature="2348:3498" placeholder="{...}" />
             <marker date="1455679140984" expanded="true" signature="2769:2848" placeholder="{...}" />
             <marker date="1455679140984" expanded="true" signature="3043:3123" placeholder="{...}" />
@@ -1884,6 +1309,14 @@
             <marker date="1455679140984" expanded="true" signature="11740:11999" placeholder="{...}" />
             <marker date="1455679140984" expanded="true" signature="11785:11989" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

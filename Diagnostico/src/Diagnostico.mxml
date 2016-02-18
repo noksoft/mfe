@@ -48,12 +48,6 @@
             estatus: "I"
         }, {label: "COMPLETO", estatus: "C"}]);
 
-        [Bindable]
-        public var acEstatusdd:ArrayCollection = new ArrayCollection([{
-            label: "FALLA",
-            estatus: "FALLA"
-        }, {label: "CORRECTO", estatus: "CORRECTO"}]);
-
 
         protected var itemSelected:DiagnosticoDTO = new DiagnosticoDTO();
         private var arrayValidationResult:Array;
@@ -254,7 +248,7 @@
             else {
                 var detalle:DiagnosticoDetalleDTO = new DiagnosticoDetalleDTO();
                 detalle.id_subcategoria = autoSubCategoria.selectedItem.idSubcategoria;
-                detalle.estatus = ddlEstatusd.selectedItem.estatus;
+                detalle.estatus = estatusdiagnosticoButtonGroup.selectedValue;
                 detalle.id_t_diagnostico = itemSelected.id_t_diagnostico;
                 detalle.comentario = txtComentario.text;
                 detalle.id_empleado = itemSelected.id_empleado;
@@ -307,15 +301,6 @@
                 roDiagnosticoDetalle.deleteDiagnosticoDetalle(objeto as DiagnosticoDetalleDTO);
             }
         }
-
-        public function eliminarDiagnosticoMain(event:CloseEvent):void{
-            if(event.detail == Alert.OK){
-                acDiagnostico.removeItemAt(dataGridListaDiagnostico.selectedIndex);
-                roDiagnostico.deleteDiagnostico(objeto as DiagnosticoDTO);
-            }
-        }
-
-
         ]]>
 	</fx:Script>
 
@@ -422,9 +407,7 @@
         <s:Panel width="100%" height="100%" title="Lista de Diagnósticos">
             <s:controlBarContent>
                 <s:Button label="Eliminar"
-                          click='Alert.show("Estás seguro de borrar el Diagnostico?", "",
-            Alert.OK | Alert.CANCEL, this,
-            eliminarDiagnosticoMain, null, Alert.OK);'
+                          click="deleteDiagnostico()"
                 />
             </s:controlBarContent>
             <s:DataGrid x="0" y="0" width="100%" height="100%" requestedRowCount="4" id="dataGridListaDiagnostico"
@@ -489,7 +472,6 @@
 
             <!-- Grupo Subcategoria -->
             <mx:HRule width="100%"/>
-<<<<<<< HEAD
             <s:VGroup id="grupoSubDiagnostico" width="100%" height="100%" visible="false">
                 <s:HGroup width="100%" verticalAlign="middle">
                     <s:Label text="Subcategoria" width="120" textAlign="right"/>
@@ -543,59 +525,6 @@
                     </s:columns>
                 </s:DataGrid>
             </s:VGroup>
-=======
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Subcategoria" width="120" textAlign="right"/>
-                <components:AutoComplete id="autoSubCategoria" width="100%" dataProvider="{acSubCategoria}"
-                                         labelField="subcategoria"/>
-            </s:HGroup>
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Estatus" width="120" textAlign="right"/>
-                <!--<s:RadioButton id="rbFallaDetalle" selected="true" label="FALLA" value="FALLA"
-                               group="{estatusdiagnosticoButtonGroup}"/>
-                <s:RadioButton id="rbCorrectoDetalle" label="CORRECTO" value="CORRECTO"
-                               group="{estatusdiagnosticoButtonGroup}"/>-->
-                <s:DropDownList id="ddlEstatusd" dataProvider="{acEstatusdd}" labelField="label"
-                                prompt="Selecciona un estatus" width="100%"/>
-            </s:HGroup>
-
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Comentario" width="120" textAlign="right"/>
-                <s:TextArea id="txtComentario" width="100%" height="100"/>
-            </s:HGroup>
-            <s:HGroup width="100%" verticalAlign="middle" horizontalAlign="right">
-                <s:Button label="Agregar al diagnóstico" styleName="primaryButton"
-                          click="saveDiagnosticoDetalle()"/>
-            </s:HGroup>
-            <!-- End Grupo Subcategoria -->
-            <!-- End Registro de Diagnostico-->
-
-            <!-- Lista de Categorias -->
-            <s:DataGrid width="100%" height="100%" requestedRowCount="4" id="dataGridDiagnosticoDetalle"
-                        dataProvider="{acDiagnosticoDetalle}">
-                <s:columns>
-                    <s:ArrayList>
-                        <s:GridColumn dataField="categoria" headerText="Categoria"/>
-                        <s:GridColumn dataField="subcategoria" headerText="Subcategoria"/>
-                        <s:GridColumn dataField="estatus" headerText="Estatus"/>
-                        <s:GridColumn dataField="comentario" headerText="Comentario"/>
-                        <s:GridColumn headerText="" width="77">
-                            <s:itemRenderer>
-                                <fx:Component>
-                                    <s:GridItemRenderer>
-                                        <s:HGroup horizontalAlign="center">
-                                            <s:Button icon="assets/icons/delete.png" width="36" click="outerDocument.borrarDiagnosticoDetalle(data)"/>
-                                            <!--<s:Button icon="assets/icons/application_form_edit.png" width="36" click="outerDocument.modificarDiagnositoDetalle(data)"/>-->
-                                        </s:HGroup>
-
-                                    </s:GridItemRenderer>
-                                </fx:Component>
-                            </s:itemRenderer>
-                        </s:GridColumn>
-                    </s:ArrayList>
-                </s:columns>
-            </s:DataGrid>
->>>>>>> origin/master
             <!-- End Lista de Categorias -->
         </s:Panel>
         <!-- End Panel Registro de Diagnostico -->

@@ -24,11 +24,7 @@ public class DiagnosticoDetalleDTO {
     private var _tipo_empleado:String;
     private var _telefono:String;
     private var _celular:String;
-<<<<<<< HEAD
     private var _estatus:Boolean;
-=======
-    private var _estatus:String;
->>>>>>> origin/master
     private var _categoria:String;
     private var _subcategoria:String;
 
@@ -50,7 +46,7 @@ public class DiagnosticoDetalleDTO {
         tipo_empleado = "";
         telefono = "";
         celular = "";
-        estatus = "";
+        estatus = true;
     }
 
     public function get id_t_diagnostico_detalle():String {
@@ -189,18 +185,15 @@ public class DiagnosticoDetalleDTO {
         _celular = value;
     }
 
-    public function get estatus():String {
+    public function get estatus():Boolean {
         return _estatus;
     }
 
-    public function set estatus(value:String):void {
+    public function set estatus(value:Boolean):void {
         _estatus = value;
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
     public function get categoria():String {
         return _categoria;
     }
