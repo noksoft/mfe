@@ -1,105 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15bbbe78-d47b-407b-99a2-0cee669e5ae1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/PopupReporte.mxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/history/history.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/history/history.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/history/historyFrame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/framework_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/mx_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/rpc_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/spark_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/sparkskins_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/textLayout_2.0.0.232.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/advancedgrids_4.6.0.23201.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../SolicitudesOficina/SolicitudesOficina.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.swf" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.swf" afterPath="$PROJECT_DIR$/../Articulos/bin-debug/Articulos.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.swf" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/Categorias.swf" afterPath="$PROJECT_DIR$/../Categorias/Applications/apache-tomcat_actionit/webapps/ROOT/flash/Categorias.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.swf" afterPath="$PROJECT_DIR$/../Clientes/bin-debug/Clientes.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin-debug/Diagnostico.swf" afterPath="$PROJECT_DIR$/bin-debug/Diagnostico.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.swf" afterPath="$PROJECT_DIR$/../Empleados/bin-debug/Empleados.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.swf" afterPath="$PROJECT_DIR$/../Equipo/bin-debug/Equipo.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.swf" afterPath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/bin-debug/Obras.swf" afterPath="$PROJECT_DIR$/../Obras/bin-debug/Obras.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.swf" afterPath="$PROJECT_DIR$/../Proveedores/bin-debug/Proveedores.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.swf" afterPath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.swf" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.swf" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.swf" afterPath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.html" afterPath="$PROJECT_DIR$/../AltaFalla/bin-debug/AltaFalla.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/src/AltaFalla.mxml" afterPath="$PROJECT_DIR$/../AltaFalla/src/AltaFalla.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/src/FallaEquipoDTO.as" afterPath="$PROJECT_DIR$/../AltaFalla/src/FallaEquipoDTO.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AltaFalla/src/NokConstants.as" afterPath="$PROJECT_DIR$/../AltaFalla/src/NokConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Articulos/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/view/AlertConfirmationBase.as" afterPath="$PROJECT_DIR$/../Articulos/src/view/AlertConfirmationBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Articulos/src/view/ArticuloViewBase.as" afterPath="$PROJECT_DIR$/../Articulos/src/view/ArticuloViewBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AsignacionObra/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.html" afterPath="$PROJECT_DIR$/../AsignacionObra/bin-debug/AsignacionObra.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AsignacionObra/src/com/maqzar/constant/NOKConstants.as" afterPath="$PROJECT_DIR$/../AsignacionObra/src/com/maqzar/constant/NOKConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Categorias/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Categorias/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/CategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/CategoriaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/MarcaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/MarcaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/SubCategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/SubCategoriaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/SubMarcaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/SubMarcaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Categorias/src/views/TipoCategoriaView.mxml" afterPath="$PROJECT_DIR$/../Categorias/src/views/TipoCategoriaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/NokConstants.as" afterPath="$PROJECT_DIR$/../Clientes/src/NokConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Clientes/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/view/AlertConfirmationBase.as" afterPath="$PROJECT_DIR$/../Clientes/src/view/AlertConfirmationBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/view/ClienteSource.as" afterPath="$PROJECT_DIR$/../Clientes/src/view/ClienteSource.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clientes/src/view/ClienteView.mxml" afterPath="$PROJECT_DIR$/../Clientes/src/view/ClienteView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Diagnostico.mxml" afterPath="$PROJECT_DIR$/src/Diagnostico.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" afterPath="$PROJECT_DIR$/src/com/maqzar/constant/NOKConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" afterPath="$PROJECT_DIR$/src/com/maqzar/dtos/DiagnosticoDetalleDTO.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Empleados/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/src/view/AlertConfirmationBase.as" afterPath="$PROJECT_DIR$/../Empleados/src/view/AlertConfirmationBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Empleados/src/view/EmpleadoView.mxml" afterPath="$PROJECT_DIR$/../Empleados/src/view/EmpleadoView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Equipo/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/AlertConfirmationBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/AlertConfirmationBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanicoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoMecanicoBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopografico.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopografico.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopograficoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewEquipoTopograficoBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesado.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesado.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesadoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewMaquinariaPesadoBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigero.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigero.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigeroBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransporteLigeroBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesado.mxml" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesado.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesadoBase.as" afterPath="$PROJECT_DIR$/../Equipo/src/view/components/ViewTransportePesadoBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.html" afterPath="$PROJECT_DIR$/../Fallas/bin-debug/Fallas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Fallas/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fallas/src/view/FallaView.mxml" afterPath="$PROJECT_DIR$/../Fallas/src/view/FallaView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Obras/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/bin-debug/Obras.html" afterPath="$PROJECT_DIR$/../Obras/bin-debug/Obras.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/src/NokConstants.as" afterPath="$PROJECT_DIR$/../Obras/src/NokConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Obras/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Obras/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Proveedores/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../Proveedores/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/view/AlertConfirmationBase.as" afterPath="$PROJECT_DIR$/../Proveedores/src/view/AlertConfirmationBase.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Proveedores/src/view/ProveedorView.mxml" afterPath="$PROJECT_DIR$/../Proveedores/src/view/ProveedorView.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.html" afterPath="$PROJECT_DIR$/../Requisiciones/bin-debug/Requisiciones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/.idea/misc.xml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.html" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/bin-debug/SeguimientoReparaciones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/src/SeguimientoReparaciones.mxml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/src/SeguimientoReparaciones.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/PopupAsignaFalla.mxml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/PopupAsignaFalla.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/PopupDetalleFalla.mxml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/PopupDetalleFalla.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/Seguimiento.mxml" afterPath="$PROJECT_DIR$/../SeguimientoReparaciones/src/com/maqzar/views/Seguimiento.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.html" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/bin-debug/SolicitudesAlmacen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/src/constants/NOKConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesAlmacen/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesAlmacen/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesOficina/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesOficina/src/constants/NOKConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesOficina/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesOficina/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/SolicitudesTaller.iml" afterPath="$PROJECT_DIR$/../SolicitudesTaller/SolicitudesTaller.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.html" afterPath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/SolicitudesTaller.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/assets/style.css" afterPath="$PROJECT_DIR$/../SolicitudesTaller/bin-debug/assets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/constants/NOKConstants.as" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/constants/NOKConstants.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/utils/EnvironmentUtil.as" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/utils/EnvironmentUtil.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SolicitudesTaller/src/view/SolicitudView.mxml" afterPath="$PROJECT_DIR$/../SolicitudesTaller/src/view/SolicitudView.mxml" />
-    </list>
+    <list default="true" id="15bbbe78-d47b-407b-99a2-0cee669e5ae1" name="Default" comment="" />
     <ignored path="Diagnostico.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -179,7 +81,7 @@
       <file leaf-file-name="Diagnostico.mxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3692552">
+            <state vertical-scroll-proportion="1.0023202">
               <caret line="274" column="13" selection-start-line="274" selection-start-column="13" selection-end-line="274" selection-end-column="13" />
               <folding>
                 <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
@@ -440,15 +342,39 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Diagnostico" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Diagnostico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -916,12 +842,12 @@
       <workItem from="1455244459809" duration="3350000" />
       <workItem from="1455316663222" duration="691000" />
       <workItem from="1455673620076" duration="7291000" />
-      <workItem from="1455762938071" duration="740000" />
+      <workItem from="1455762938071" duration="1358000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97147000" />
+    <option name="totallyTimeSpent" value="97765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -935,9 +861,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25328946" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25328946" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24672489" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24672489" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16367266" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21055438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -963,19 +889,19 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16375546" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16367266" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21055438" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45168296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3522976" sideWeight="0.48541668" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35197368" sideWeight="0.48541668" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25382933" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3256579" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25328946" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24672489" sideWeight="0.4960396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33586133" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15458423" sideWeight="0.5039604" order="3" side_tool="true" content_ui="tabs" />
@@ -1904,7 +1830,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Diagnostico.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3692552">
+        <state vertical-scroll-proportion="1.0023202">
           <caret line="274" column="13" selection-start-line="274" selection-start-column="13" selection-end-line="274" selection-end-column="13" />
           <folding>
             <marker date="1455679140984" expanded="true" signature="555:1268" placeholder="..." />
